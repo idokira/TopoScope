@@ -1,0 +1,479 @@
+{
+  "meta": {
+    "design_id": "T3-1",
+    "tier": 3,
+    "type": "SEN",
+    "run_id": 4
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C13",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C14",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C15",
+        "part_number": "CAP_2.2uF"
+      },
+      {
+        "refdes": "C16",
+        "part_number": "CAP_2.2uF"
+      },
+      {
+        "refdes": "C17",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C18",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C19",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C20",
+        "part_number": "CAP_2.2nF"
+      },
+      {
+        "refdes": "C21",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C22",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C23",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_47uF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_10nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_4.7nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100pF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "D1",
+        "part_number": "DIODE_Schottky40V3A"
+      },
+      {
+        "refdes": "L1",
+        "part_number": "IND_6.8uH"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_31.6K_1%"
+      },
+      {
+        "refdes": "R10",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R11",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_10K_1%"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R7",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R8",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R9",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "TPS54331"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "ME6211"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "STM32F427"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "MPU-6050"
+      },
+      {
+        "refdes": "U5",
+        "part_number": "BMP280"
+      },
+      {
+        "refdes": "U6",
+        "part_number": "W25Q128JV"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "BOOT0",
+        "pins": [
+          "C17.1",
+          "R5.1",
+          "U3.BOOT0"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "C13.2",
+          "C14.2",
+          "C15.2",
+          "C16.2",
+          "C17.2",
+          "C18.2",
+          "C19.2",
+          "C20.2",
+          "C21.2",
+          "C22.2",
+          "C23.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "D1.A",
+          "R2.2",
+          "R5.2",
+          "R9.2",
+          "U1.GND",
+          "U2.VSS",
+          "U3.VREF_N",
+          "U3.VSSA",
+          "U3.VSS_1",
+          "U3.VSS_2",
+          "U3.VSS_3",
+          "U4.CLKIN",
+          "U4.FSYNC",
+          "U4.GND",
+          "U5.GND_1",
+          "U5.GND_2",
+          "U6.GND",
+          "Y1.2"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "R7.2",
+          "U3.PB6",
+          "U4.SCL"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "R8.2",
+          "U3.PB7",
+          "U4.SDA"
+        ]
+      },
+      {
+        "name": "IMU_INT",
+        "pins": [
+          "U3.PC13",
+          "U4.INT"
+        ]
+      },
+      {
+        "name": "SPI_CS_BARO",
+        "pins": [
+          "U3.PA4",
+          "U5.CSB"
+        ]
+      },
+      {
+        "name": "SPI_CS_FLASH",
+        "pins": [
+          "U3.PA15",
+          "U6.CS"
+        ]
+      },
+      {
+        "name": "SPI_MISO",
+        "pins": [
+          "U3.PA6",
+          "U5.SDO",
+          "U6.DO"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U3.PA7",
+          "U5.SDI",
+          "U6.DI"
+        ]
+      },
+      {
+        "name": "SPI_SCK",
+        "pins": [
+          "U3.PA5",
+          "U5.SCK",
+          "U6.CLK"
+        ]
+      },
+      {
+        "name": "U1_BOOT",
+        "pins": [
+          "C2.1",
+          "U1.BOOT"
+        ]
+      },
+      {
+        "name": "U1_COMP",
+        "pins": [
+          "C6.1",
+          "R3.1",
+          "U1.COMP"
+        ]
+      },
+      {
+        "name": "U1_COMP_RC",
+        "pins": [
+          "C5.1",
+          "R3.2"
+        ]
+      },
+      {
+        "name": "U1_PH",
+        "pins": [
+          "C2.2",
+          "D1.K",
+          "L1.1",
+          "U1.PH"
+        ]
+      },
+      {
+        "name": "U1_SS",
+        "pins": [
+          "C4.1",
+          "U1.SS"
+        ]
+      },
+      {
+        "name": "U1_VSENSE_DIV",
+        "pins": [
+          "R1.2",
+          "R2.1",
+          "U1.VSENSE"
+        ]
+      },
+      {
+        "name": "U3_NRST",
+        "pins": [
+          "R4.2",
+          "U3.NRST"
+        ]
+      },
+      {
+        "name": "U3_OSC_IN",
+        "pins": [
+          "U3.PH0",
+          "Y1.1"
+        ]
+      },
+      {
+        "name": "U3_VCAP1",
+        "pins": [
+          "C15.1",
+          "U3.VCAP1"
+        ]
+      },
+      {
+        "name": "U3_VCAP2",
+        "pins": [
+          "C16.1",
+          "U3.VCAP2"
+        ]
+      },
+      {
+        "name": "U4_AD0_CFG",
+        "pins": [
+          "R9.1",
+          "U4.AD0"
+        ]
+      },
+      {
+        "name": "U4_CPOUT",
+        "pins": [
+          "C20.1",
+          "U4.CPOUT"
+        ]
+      },
+      {
+        "name": "U4_REGOUT",
+        "pins": [
+          "C19.1",
+          "U4.REGOUT"
+        ]
+      },
+      {
+        "name": "U6_HOLD_PULLUP",
+        "pins": [
+          "R11.2",
+          "U6.HOLD"
+        ]
+      },
+      {
+        "name": "U6_WP_PULLUP",
+        "pins": [
+          "R10.2",
+          "U6.WP"
+        ]
+      },
+      {
+        "name": "VCC_3V3_ANA",
+        "pins": [
+          "C18.1",
+          "C21.1",
+          "C22.1",
+          "C8.1",
+          "U2.VOUT",
+          "U4.CS",
+          "U4.VDD",
+          "U5.VDD",
+          "U5.VDDIO"
+        ]
+      },
+      {
+        "name": "VCC_3V3_DIG",
+        "pins": [
+          "C10.1",
+          "C11.1",
+          "C12.1",
+          "C13.1",
+          "C14.1",
+          "C23.1",
+          "C3.1",
+          "C9.1",
+          "L1.2",
+          "R1.1",
+          "R10.1",
+          "R11.1",
+          "R4.1",
+          "R6.1",
+          "R7.1",
+          "R8.1",
+          "U3.PDR_ON",
+          "U3.VBAT",
+          "U3.VDDA",
+          "U3.VDD_1",
+          "U3.VDD_2",
+          "U3.VDD_3",
+          "U3.VDD_4",
+          "U3.VDD_USB",
+          "U3.VREF_P",
+          "U6.VCC"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "C7.1",
+          "U1.EN",
+          "U1.VIN",
+          "U2.CE",
+          "U2.VIN"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 1,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 0,
+      "U3": 0,
+      "U4": 0,
+      "U5": 0,
+      "U6": 1
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 37
+  }
+}

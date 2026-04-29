@@ -1,0 +1,254 @@
+{
+  "design_id": "T2-1",
+  "tier": 2,
+  "type": "SEN",
+  "description": "Environmental monitoring terminal. STM32F103C8T6 reads BME280 (temperature/humidity/pressure) via shared I2C bus and displays on SSD1306 128x64 OLED. AMS1117-3.3 provides single 3.3V rail from 5V input.",
+  "ic_list": [
+    "AMS1117-3.3 (U1)",
+    "STM32F103xB (U2)",
+    "BME280 (U3)",
+    "SSD1306 (U4)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T2-1-C01-001",
+      "check": "SAME_NET",
+      "desc": "GND unification: all ground pins across 4 ICs share one common ground net.",
+      "params": {
+        "pins": [
+          "U1.GND",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U2.VSSA",
+          "U3.GND_1",
+          "U3.GND_2",
+          "U4.GND"
+        ]
+      }
+    },
+    {
+      "id": "T2-1-C01-002",
+      "check": "SAME_NET",
+      "desc": "3.3V domain unification: regulator output, MCU core/analog/battery supply, sensor supply+IO, and display supply share one power net. CSB excluded (handled separately by ANY-002).",
+      "params": {
+        "pins": [
+          "U1.VOUT",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U2.VDDA",
+          "U2.VBAT",
+          "U3.VDD",
+          "U3.VDDIO",
+          "U4.VCC"
+        ]
+      }
+    },
+    {
+      "id": "T2-1-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical net isolation: GND, VCC_3V3, VIN, I2C SDA, I2C SCL, OSC_IN, OSC_OUT, and NRST must all reside on mutually distinct nets. Uses fixed peripheral-side bus pins so the check is invariant to MCU I2C pin mapping.",
+      "params": {
+        "groups": [
+          ["U2.VSS_1"],
+          ["U2.VDD_1"],
+          ["U1.VIN"],
+          ["U3.SDI"],
+          ["U3.SCK"],
+          ["U2.OSC_IN"],
+          ["U2.OSC_OUT"],
+          ["U2.NRST"]
+        ]
+      }
+    },
+    {
+      "id": "T2-1-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Unified ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U2.VSS_1"
+      }
+    },
+    {
+      "id": "T2-1-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U2.VDD_1"
+      }
+    },
+    {
+      "id": "T2-1-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "5V input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-1-C01-003",
+      "check": "SAME_NET",
+      "desc": "I2C bus legal bundle mapping: accept one complete legal SDA/SCL pair of STM32F103 hardware I2C routing. This avoids illegal mixed mappings such as PB7 for SDA with PB8 for SCL.",
+      "params": {
+        "net_group_candidates": [
+          {
+            "label": "I2C1_DEFAULT",
+            "pin_groups_list": [
+              [["U2.PB7"], ["U3.SDI"], ["U4.SDA"]],
+              [["U2.PB6"], ["U3.SCK"], ["U4.SCL"]]
+            ]
+          },
+          {
+            "label": "I2C1_REMAP",
+            "pin_groups_list": [
+              [["U2.PB9"], ["U3.SDI"], ["U4.SDA"]],
+              [["U2.PB8"], ["U3.SCK"], ["U4.SCL"]]
+            ]
+          },
+          {
+            "label": "I2C2",
+            "pin_groups_list": [
+              [["U2.PB11"], ["U3.SDI"], ["U4.SDA"]],
+              [["U2.PB10"], ["U3.SCK"], ["U4.SCL"]]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2-1-I01-001",
+      "check": "NOT_SAME_NET",
+      "desc": "BOOT0 must not be tied to VDD; doing so forces bootloader mode instead of normal flash boot.",
+      "params": {
+        "pins": ["U2.BOOT0", "U2.VDD_1"]
+      }
+    },
+    {
+      "id": "T2-1-ANY-001",
+      "type": "ANY_OF",
+      "desc": "BOOT0 grounding policy: accept either direct tie to GND or pull-down resistor to GND.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": ["U2.BOOT0", "U2.VSS_1"]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U2.BOOT0",
+            "destination": "U2.VSS_1",
+            "max_hops": 6,
+            "allowed_components": ["Resistor"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-1-ANY-002",
+      "type": "ANY_OF",
+      "desc": "BME280 CSB must select I2C mode: either direct tie to VDD or external pull-up resistor to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": ["U3.CSB", "U2.VDD_1"]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U3.CSB"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-1-ANY-003",
+      "type": "ANY_OF",
+      "desc": "BME280 SDO must select I2C address: tie to GND for 0x76 or VDD for 0x77.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": ["U3.SDO", "U2.VSS_1"]
+          }
+        },
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": ["U3.SDO", "U2.VDD_1"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-1-T12-001",
+      "check": "HAS_DECOUPLING_NETWORK",
+      "desc": "NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+      "params": {
+        "pin": "U2.NRST",
+        "require_pullup_to_power": true,
+        "require_cap_to_ground": true
+      }
+    },
+    {
+      "id": "T2-1-T05-001",
+      "check": "HAS_CRYSTAL_PAIR",
+      "desc": "HSE crystal on OSC_IN/OSC_OUT with load capacitors to ground on each side.",
+      "params": {
+        "pin_osc_in": "U2.OSC_IN",
+        "pin_osc_out": "U2.OSC_OUT"
+      }
+    },
+    {
+      "id": "T2-1-T06-001",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SDA line requires external pull-up resistor to power. Anchored on the fixed peripheral-side SDA pin so the assertion is invariant to MCU pin mapping.",
+      "params": {
+        "pin": "U3.SDI"
+      }
+    },
+    {
+      "id": "T2-1-T06-002",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SCL line requires external pull-up resistor to power. Anchored on the fixed peripheral-side SCL pin so the assertion is invariant to MCU pin mapping.",
+      "params": {
+        "pin": "U3.SCK"
+      }
+    },
+    {
+      "id": "T2-1-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "LDO input rail (VIN) must have bypass capacitor to ground.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-1-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V domain must have decoupling capacitor to ground. One T01 covers the unified rail per dedup rule.",
+      "params": {
+        "pin": "U2.VDD_1"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 17,
+    "by_category": {
+      "SAME_NET": 3,
+      "NET_GROUP_ISOLATION": 1,
+      "CONNECTED_TO_GROUND": 1,
+      "CONNECTED_TO_POWER": 2,
+      "NOT_SAME_NET": 1,
+      "ANY_OF": 3,
+      "HAS_DECOUPLING_NETWORK": 1,
+      "HAS_CRYSTAL_PAIR": 1,
+      "HAS_PULLUP_TO_POWER": 2,
+      "HAS_CAP_TO_GROUND": 2
+    }
+  }
+}

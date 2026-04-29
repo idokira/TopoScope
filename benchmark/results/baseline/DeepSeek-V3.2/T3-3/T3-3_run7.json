@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "design_id": "T3-3",
+    "tier": 3,
+    "type": "DRV",
+    "provider": "deepseek",
+    "model": "DeepSeek-V3.2",
+    "method": "baseline",
+    "run_id": 7,
+    "wall_time_seconds": 590.683
+  },
+  "compile_result": {
+    "refdes": "U1",
+    "part_number": "TPS54331"
+  },
+  "connection_set": {
+    "components": [],
+    "nets": []
+  },
+  "graph_snapshot": {
+    "directed": false,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "type": "Module",
+        "name": "baseline_module",
+        "description": "Auto-built from connection_set",
+        "id": "baseline_module"
+      }
+    ],
+    "links": []
+  },
+  "process_metrics": {}
+}

@@ -1,0 +1,484 @@
+{
+  "method": "erc_only",
+  "model": "gpt-5.4",
+  "ablation": null,
+  "design_id": "T3-6",
+  "tier": 3,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.7244897959183674,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-6_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7142857142857143,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-I02-003",
+        "T3-6-I02-005",
+        "T3-6-T01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]']; ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]']"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.INA'].; ALL_OF failed: Pin(s) not found: ['U5.INB']."
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U6.CS', 'U6.GND'].; No constrained path found from 'U6.CS' to 'U6.GND' within 6 hops using components ['resistor'].; ALL_OF failed: Some pin groups unresolved or floating: [{'group_index': 1, 'missing': ['U5.INA']}]"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pins are not on the same net: ['U4.VCC1', 'U1.VOUT'].; ALL_OF failed: Pins are not on the same net: ['U4.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pins are not on the same net: ['U5.VCC1', 'U1.VOUT'].; ALL_OF failed: Pins are not on the same net: ['U5.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Pin(s) not found: ['U4.INA']."
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7.VOUT' and 'U6.AIN0' share net(s) ['REF_5V']."
+        },
+        {
+          "id": "T3-6-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 VOUT should have stabilization capacitor to ISO_GND.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U7.VOUT'."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-6_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.75,
+      "violated_assertion_count": 7,
+      "violated_assertion_names": [
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-I02-003",
+        "T3-6-I02-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]']; ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]']"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.INA'].; ALL_OF failed: Pin(s) not found: ['U5.INB']."
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U6.CS', 'U6.GND'].; No constrained path found from 'U6.CS' to 'U6.GND' within 6 hops using components ['resistor'].; ALL_OF failed: Some pin groups unresolved or floating: [{'group_index': 1, 'missing': ['U5.INA']}]"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U4.GND1'].; ALL_OF failed: Pin(s) not found: ['U4.GND2']."
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.GND1'].; ALL_OF failed: Pin(s) not found: ['U5.GND2']."
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Pin(s) not found: ['U4.INA']."
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7.VOUT' and 'U6.AIN0' share net(s) ['REF_5V']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-6_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.75,
+      "violated_assertion_count": 7,
+      "violated_assertion_names": [
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-I02-003",
+        "T3-6-I02-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]']; ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]']"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.INA'].; ALL_OF failed: Pin(s) not found: ['U5.INB']."
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U6.CS', 'U6.GND'].; No constrained path found from 'U6.CS' to 'U6.GND' within 6 hops using components ['resistor'].; ALL_OF failed: Some pin groups unresolved or floating: [{'group_index': 1, 'missing': ['U5.INA']}]"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U4.GND1'].; ALL_OF failed: Pin(s) not found: ['U4.GND2']."
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.GND1'].; ALL_OF failed: Pin(s) not found: ['U5.GND2']."
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Pin(s) not found: ['U4.INA']."
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7.VOUT' and 'U6.AIN0' share net(s) ['REF_5V']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-6_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.75,
+      "violated_assertion_count": 7,
+      "violated_assertion_names": [
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-I02-003",
+        "T3-6-I02-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]']; ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]']"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.INA'].; ALL_OF failed: Pin(s) not found: ['U5.INB']."
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U6.CS', 'U6.GND'].; No constrained path found from 'U6.CS' to 'U6.GND' within 6 hops using components ['resistor'].; ALL_OF failed: Some pin groups unresolved or floating: [{'group_index': 1, 'missing': ['U5.INA']}]"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U4.GND1'].; ALL_OF failed: Pins are not on the same net: ['U4.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.GND1'].; ALL_OF failed: Pins are not on the same net: ['U5.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Pin(s) not found: ['U4.INA']."
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7.VOUT' and 'U6.AIN0' share net(s) ['VREF_5V']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-6_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7142857142857143,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-I02-003",
+        "T3-6-I02-005",
+        "T3-6-T01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]']; ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]']"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.INA'].; ALL_OF failed: Pin(s) not found: ['U5.INB']."
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U6.CS', 'U6.GND'].; No constrained path found from 'U6.CS' to 'U6.GND' within 6 hops using components ['resistor'].; ALL_OF failed: Some pin groups unresolved or floating: [{'group_index': 1, 'missing': ['U5.INA']}]"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pins are not on the same net: ['U4.VCC1', 'U1.VOUT'].; ALL_OF failed: Pins are not on the same net: ['U4.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pins are not on the same net: ['U5.VCC1', 'U1.VOUT'].; ALL_OF failed: Pins are not on the same net: ['U5.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Pin(s) not found: ['U4.INA']."
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7.VOUT' and 'U6.AIN0' share net(s) ['U7_VOUT']."
+        },
+        {
+          "id": "T3-6-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 VOUT should have stabilization capacitor to ISO_GND.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U7.VOUT'."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-6_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7142857142857143,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-I02-003",
+        "T3-6-I02-004",
+        "T3-6-I02-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]']; ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]']"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.INA'].; ALL_OF failed: Pin(s) not found: ['U5.INB']."
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U6.CS', 'U6.GND'].; No constrained path found from 'U6.CS' to 'U6.GND' within 6 hops using components ['resistor'].; ALL_OF failed: Some pin groups unresolved or floating: [{'group_index': 1, 'missing': ['U5.INA']}]"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U4.GND1'].; ALL_OF failed: Pin(s) not found: ['U4.GND2']."
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.GND1'].; ALL_OF failed: Pin(s) not found: ['U5.GND2']."
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Pin(s) not found: ['U4.INA']."
+        },
+        {
+          "id": "T3-6-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 output, isolated rails, isolated ground, and ADS1118 digital SPI pins must remain distinct.",
+          "message": "Isolation violated: 'U7.VOUT' and 'U2.VIN' share net(s) ['ISO_5V']."
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7.VOUT' and 'U6.AIN0' share net(s) ['ISO_5V']."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-6_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6785714285714286,
+      "violated_assertion_count": 9,
+      "violated_assertion_names": [
+        "T3-6-C01-003",
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-I02-003",
+        "T3-6-I02-005",
+        "T3-6-T01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "Non-isolated 3.3V backbone: U1 output powers STM32 core/analog supplies.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U3.VDD_1', 'U3.VDD_2', 'U3.VDD_3', 'U3.VDDA', 'U3.VBAT']."
+        },
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]']; ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]']"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.INA'].; ALL_OF failed: Pin(s) not found: ['U5.INB']."
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U6.CS', 'U6.GND'].; No constrained path found from 'U6.CS' to 'U6.GND' within 6 hops using components ['resistor'].; ALL_OF failed: Some pin groups unresolved or floating: [{'group_index': 1, 'missing': ['U5.INA']}]"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U4.GND1'].; ALL_OF failed: Pins are not on the same net: ['U4.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.GND1'].; ALL_OF failed: Pins are not on the same net: ['U5.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Pin(s) not found: ['U4.INA']."
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7.VOUT' and 'U6.AIN0' share net(s) ['REF_5V']."
+        },
+        {
+          "id": "T3-6-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 VOUT should have stabilization capacitor to ISO_GND.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U7.VOUT'."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "meta": {
+    "design_id": "T2-5",
+    "tier": 2,
+    "type": "COM",
+    "run_id": 5
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "GD32F103"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "SP3485"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "W25Q128JV"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_120R"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz"
+      },
+      {
+        "refdes": "D1",
+        "part_number": "DIODE_TVSS"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "U1.3",
+          "C1.1"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U1.2",
+          "C2.1",
+          "U2.1",
+          "U2.24",
+          "U2.36",
+          "U2.48",
+          "U2.9",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C6.1",
+          "C7.1",
+          "R1.1",
+          "U3.8",
+          "C11.1",
+          "U4.8",
+          "U4.3",
+          "U4.7",
+          "C12.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.1",
+          "C1.2",
+          "C2.2",
+          "U2.23",
+          "U2.35",
+          "U2.47",
+          "U2.8",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "C10.2",
+          "R2.2",
+          "R3.2",
+          "U3.5",
+          "C11.2",
+          "U4.4",
+          "C12.2"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "U2.5",
+          "Y1.1",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "U2.6",
+          "Y1.2",
+          "C9.1"
+        ]
+      },
+      {
+        "name": "U2_NRST",
+        "pins": [
+          "U2.7",
+          "R1.2",
+          "C10.1"
+        ]
+      },
+      {
+        "name": "U2_BOOT0",
+        "pins": [
+          "U2.44",
+          "R2.1"
+        ]
+      },
+      {
+        "name": "U2_PB2",
+        "pins": [
+          "U2.20",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "UART_TX",
+        "pins": [
+          "U2.12",
+          "U3.4"
+        ]
+      },
+      {
+        "name": "UART_RX",
+        "pins": [
+          "U2.13",
+          "U3.1"
+        ]
+      },
+      {
+        "name": "UART_DE",
+        "pins": [
+          "U2.10",
+          "U3.3"
+        ]
+      },
+      {
+        "name": "UART_RE",
+        "pins": [
+          "U2.11",
+          "U3.2"
+        ]
+      },
+      {
+        "name": "SPI_CLK",
+        "pins": [
+          "U2.15",
+          "U4.6"
+        ]
+      },
+      {
+        "name": "SPI_MISO",
+        "pins": [
+          "U2.16",
+          "U4.2"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U2.17",
+          "U4.5"
+        ]
+      },
+      {
+        "name": "SPI_CS",
+        "pins": [
+          "U2.14",
+          "U4.1"
+        ]
+      },
+      {
+        "name": "RS485_A",
+        "pins": [
+          "U3.6",
+          "R4.1",
+          "D1.A"
+        ]
+      },
+      {
+        "name": "RS485_B",
+        "pins": [
+          "U3.7",
+          "R4.2",
+          "D1.K"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

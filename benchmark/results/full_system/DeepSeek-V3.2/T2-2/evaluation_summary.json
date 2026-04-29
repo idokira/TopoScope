@@ -1,0 +1,435 @@
+{
+  "method": "full_system",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T2-2",
+  "tier": 2,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.776073187895848,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-2_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7428571428571429,
+      "violated_assertion_count": 9,
+      "violated_assertion_names": [
+        "T2-2-C01-002",
+        "T2-2-C01-009",
+        "T2-2-ANY-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU VCC+AVCC, IMU VDD, and Flash VCC share one power net. AVCC included per ATmega328P datasheet (direct connection standard for non-precision designs).",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.AD0', 'U1.VSS'].; Pins are not on the same net: ['U3.AD0', 'U1.VOUT']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R2_Pin2",
+          "message": "Pin 'R2_Pin2' is connected to multiple nets: [GND, I2C_SCL]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R3_Pin2",
+          "message": "Pin 'R3_Pin2' is connected to multiple nets: [GND, I2C_SDA]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R4_Pin2",
+          "message": "Pin 'R4_Pin2' is connected to multiple nets: [GND, SPI_SCK]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5_Pin2",
+          "message": "Pin 'R5_Pin2' is connected to multiple nets: [GND, SPI_MOSI]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R6_Pin2",
+          "message": "Pin 'R6_Pin2' is connected to multiple nets: [GND, SPI_MISO]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7_Pin2",
+          "message": "Pin 'R7_Pin2' is connected to multiple nets: [GND, SPI_CS_FLASH]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-2_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8275862068965517,
+      "violated_assertion_count": 5,
+      "violated_assertion_names": [
+        "T2-2-C01-002",
+        "T2-2-C01-005",
+        "T2-2-C01-006",
+        "T2-2-C01-008",
+        "T2-2-ANY-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU VCC+AVCC, IMU VDD, and Flash VCC share one power net. AVCC included per ATmega328P datasheet (direct connection standard for non-precision designs).",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-2-C01-005",
+          "check": "SAME_NET",
+          "desc": "SPI MOSI: ATmega328P PB3 and Flash DI share one net.",
+          "message": "Pins are not on the same net: ['U2.PB3', 'U4.DI']."
+        },
+        {
+          "id": "T2-2-C01-006",
+          "check": "SAME_NET",
+          "desc": "SPI MISO: ATmega328P PB4 and Flash DO share one net.",
+          "message": "Pins are not on the same net: ['U2.PB4', 'U4.DO']."
+        },
+        {
+          "id": "T2-2-C01-008",
+          "check": "SAME_NET",
+          "desc": "SPI CS: ATmega328P PB2 and Flash CS share one net.",
+          "message": "Pins are not on the same net: ['U2.PB2', 'U4.CS']."
+        },
+        {
+          "id": "T2-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.AD0', 'U1.VSS'].; Pins are not on the same net: ['U3.AD0', 'U1.VOUT']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-2_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7931034482758621,
+      "violated_assertion_count": 6,
+      "violated_assertion_names": [
+        "T2-2-C01-002",
+        "T2-2-C01-009",
+        "T2-2-ANY-001",
+        "T2-2-T05-001",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU VCC+AVCC, IMU VDD, and Flash VCC share one power net. AVCC included per ATmega328P datasheet (direct connection standard for non-precision designs).",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.AD0', 'U1.VSS'].; Pins are not on the same net: ['U3.AD0', 'U1.VOUT']."
+        },
+        {
+          "id": "T2-2-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "16MHz crystal on XTAL1/XTAL2 with load capacitors to ground.",
+          "message": "OSC pins are floating."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin27'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin28'."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-2_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7931034482758621,
+      "violated_assertion_count": 6,
+      "violated_assertion_names": [
+        "T2-2-C01-003",
+        "T2-2-C01-004",
+        "T2-2-C01-009",
+        "T2-2-ANY-001",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-003",
+          "check": "SAME_NET",
+          "desc": "I2C SDA bus: ATmega328P PC4 and MPU-6050 SDA share one net.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-C01-004",
+          "check": "SAME_NET",
+          "desc": "I2C SCL bus: ATmega328P PC5 and MPU-6050 SCL share one net.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.AD0', 'U1.VSS'].; Pins are not on the same net: ['U3.AD0', 'U1.VOUT']."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin27'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin28'."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-2_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6896551724137931,
+      "violated_assertion_count": 9,
+      "violated_assertion_names": [
+        "T2-2-C01-003",
+        "T2-2-C01-004",
+        "T2-2-C01-005",
+        "T2-2-C01-006",
+        "T2-2-C01-007",
+        "T2-2-C01-008",
+        "T2-2-C01-009",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-003",
+          "check": "SAME_NET",
+          "desc": "I2C SDA bus: ATmega328P PC4 and MPU-6050 SDA share one net.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-C01-004",
+          "check": "SAME_NET",
+          "desc": "I2C SCL bus: ATmega328P PC5 and MPU-6050 SCL share one net.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-C01-005",
+          "check": "SAME_NET",
+          "desc": "SPI MOSI: ATmega328P PB3 and Flash DI share one net.",
+          "message": "Pins are not on the same net: ['U2.PB3', 'U4.DI']."
+        },
+        {
+          "id": "T2-2-C01-006",
+          "check": "SAME_NET",
+          "desc": "SPI MISO: ATmega328P PB4 and Flash DO share one net.",
+          "message": "Pins are not on the same net: ['U2.PB4', 'U4.DO']."
+        },
+        {
+          "id": "T2-2-C01-007",
+          "check": "SAME_NET",
+          "desc": "SPI SCK: ATmega328P PB5 and Flash CLK share one net.",
+          "message": "Pins are not on the same net: ['U2.PB5', 'U4.CLK']."
+        },
+        {
+          "id": "T2-2-C01-008",
+          "check": "SAME_NET",
+          "desc": "SPI CS: ATmega328P PB2 and Flash CS share one net.",
+          "message": "Pins are not on the same net: ['U2.PB2', 'U4.CS']."
+        },
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin27'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin28'."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-2_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8275862068965517,
+      "violated_assertion_count": 5,
+      "violated_assertion_names": [
+        "T2-2-C01-005",
+        "T2-2-C01-006",
+        "T2-2-T05-001",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-005",
+          "check": "SAME_NET",
+          "desc": "SPI MOSI: ATmega328P PB3 and Flash DI share one net.",
+          "message": "Pins are not on the same net: ['U2.PB3', 'U4.DI']."
+        },
+        {
+          "id": "T2-2-C01-006",
+          "check": "SAME_NET",
+          "desc": "SPI MISO: ATmega328P PB4 and Flash DO share one net.",
+          "message": "Pins are not on the same net: ['U2.PB4', 'U4.DO']."
+        },
+        {
+          "id": "T2-2-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "16MHz crystal on XTAL1/XTAL2 with load capacitors to ground.",
+          "message": "OSC pins are floating."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin27'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin28'."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-2_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7586206896551724,
+      "violated_assertion_count": 7,
+      "violated_assertion_names": [
+        "T2-2-C03-003",
+        "T2-2-C01-005",
+        "T2-2-C01-006",
+        "T2-2-C01-008",
+        "T2-2-ANY-001",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "ME6211 CE must be driven high to enable the regulator. Typically tied to VIN.",
+          "message": "Pin 'U1_Pin3' is not connected to a power net."
+        },
+        {
+          "id": "T2-2-C01-005",
+          "check": "SAME_NET",
+          "desc": "SPI MOSI: ATmega328P PB3 and Flash DI share one net.",
+          "message": "Pins are not on the same net: ['U2.PB3', 'U4.DI']."
+        },
+        {
+          "id": "T2-2-C01-006",
+          "check": "SAME_NET",
+          "desc": "SPI MISO: ATmega328P PB4 and Flash DO share one net.",
+          "message": "Pins are not on the same net: ['U2.PB4', 'U4.DO']."
+        },
+        {
+          "id": "T2-2-C01-008",
+          "check": "SAME_NET",
+          "desc": "SPI CS: ATmega328P PB2 and Flash CS share one net.",
+          "message": "Pins are not on the same net: ['U2.PB2', 'U4.CS']."
+        },
+        {
+          "id": "T2-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.AD0', 'U1.VSS'].; Pins are not on the same net: ['U3.AD0', 'U1.VOUT']."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin27'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin28'."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "meta": {
+    "design_id": "T2-5",
+    "tier": 2,
+    "type": "COM",
+    "run_id": 3
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "GD32F103"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "SP3485"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_120R"
+      },
+      {
+        "refdes": "D1",
+        "part_number": "DIODE_TVS"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "W25Q128JV"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_100nF"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VIN",
+        "pins": [
+          "U1.VIN",
+          "C1.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.GND",
+          "C1.2",
+          "C2.2",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U2.VSSA",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "C10.2",
+          "R2.2",
+          "U3.GND",
+          "C11.2",
+          "D1.A",
+          "U4.GND",
+          "C12.2"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U1.VOUT",
+          "C2.1",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U2.VBAT",
+          "U2.VDDA",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C6.1",
+          "C7.1",
+          "R1.1",
+          "U3.VCC",
+          "C11.1",
+          "U4.VCC",
+          "U4.WP",
+          "U4.HOLD",
+          "C12.1"
+        ]
+      },
+      {
+        "name": "NRST",
+        "pins": [
+          "U2.NRST",
+          "R1.2",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "U2.OSCIN",
+          "Y1.1",
+          "C9.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "U2.OSCOUT",
+          "Y1.2",
+          "C10.1"
+        ]
+      },
+      {
+        "name": "BOOT0",
+        "pins": [
+          "U2.BOOT0",
+          "R2.1"
+        ]
+      },
+      {
+        "name": "RS485_A",
+        "pins": [
+          "U3.A",
+          "R3.1",
+          "D1.K"
+        ]
+      },
+      {
+        "name": "RS485_B",
+        "pins": [
+          "U3.B",
+          "R3.2"
+        ]
+      },
+      {
+        "name": "SPI_CS",
+        "pins": [
+          "U4.CS"
+        ]
+      },
+      {
+        "name": "SPI_CLK",
+        "pins": [
+          "U4.CLK"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U4.DI"
+        ]
+      },
+      {
+        "name": "SPI_MISO",
+        "pins": [
+          "U4.DO"
+        ]
+      },
+      {
+        "name": "RS485_DI",
+        "pins": [
+          "U3.DI"
+        ]
+      },
+      {
+        "name": "RS485_RO",
+        "pins": [
+          "U3.RO"
+        ]
+      },
+      {
+        "name": "RS485_RE",
+        "pins": [
+          "U3.RE"
+        ]
+      },
+      {
+        "name": "RS485_DE",
+        "pins": [
+          "U3.DE"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

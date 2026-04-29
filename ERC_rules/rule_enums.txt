@@ -1,0 +1,114 @@
+General rule object format (applies to all rules below):
+- rule_type: Rule type.
+- severity: Severity. Must be either "error" or "warning".
+- parameters: Rule parameter object.
+
+Recommended default severity:
+- error (hard violation): FORBID_FLOATING, MANDATORY_NET_CONNECTION, FORBIDDEN_CONNECTION, VOLTAGE_DOMAIN_MATCH, GROUND_SEPARATION, DIFFERENTIAL_PAIR, REQUIRE_BUS_TERMINATION, OPEN_DRAIN_OUTPUT_PULLUP
+- warning (soft violation): All other rules.
+
+Graph algorithm pattern categories (two-stage verification):
+- Class A (neighborhood existence check): REQUIRE_BYPASS_CAP, REQUIRE_PULL_UP_DOWN, FORBID_FLOATING, MANDATORY_NET_CONNECTION, FORBIDDEN_CONNECTION, OPEN_DRAIN_OUTPUT_PULLUP, REQUIRE_PARALLEL_PROTECTION
+- Class B (path topology check): REQUIRE_FEEDBACK_NETWORK, REQUIRE_SERIES_PASSIVE, REQUIRE_SENSE_RESISTOR, REQUIRE_GAIN_SETTING_NETWORK, REQUIRE_TIMING_NETWORK, REQUIRE_RESONATOR, REQUIRE_GATE_BASE_RESISTOR, REQUIRE_FREEWHEELING_DIODE, REQUIRE_CURRENT_LIMIT_RESISTOR, REQUIRE_AUDIO_STABILITY_NETWORK, REQUIRE_OSC_LOAD_CAPS, REQUIRE_PROGRAMMING_RESISTOR (default)
+- Class C (attribute propagation check): VOLTAGE_DOMAIN_MATCH, GROUND_SEPARATION, DIFFERENTIAL_PAIR, REQUIRE_BUS_TERMINATION, REQUIRE_PROGRAMMING_RESISTOR (when voltage-domain or cross-module propagation is involved)
+
+REQUIRE_BYPASS_CAP
+- Purpose: Requires bypass/decoupling capacitors.
+- parameters: {"target_pins": ["list of pins"], "reference_pin_type": "reference net, e.g., Ground", "cap_values": ["required capacitor values, e.g., 0.1uF, 10uF"]}
+
+REQUIRE_PULL_UP_DOWN
+- Purpose: Requires pull-up or pull-down resistors.
+- parameters: {"target_pins": ["list of pins"], "pull_type": "UP or DOWN", "resistor_value_range": "resistance range"}
+
+REQUIRE_SERIES_PASSIVE
+- Purpose: Requires a series passive component.
+- parameters: {"target_pins": ["list of pins"], "passive_type": "Resistor/Inductor/FerriteBead", "value_requirement": "resistance/inductance requirement, e.g., 22R"}
+
+REQUIRE_RESONATOR
+- Purpose: Requires an external crystal/resonator.
+- parameters: {"pin_in": "input pin", "pin_out": "output pin", "needs_load_caps": true/false}
+
+FORBID_FLOATING
+- Purpose: Forbids critical pins from floating.
+- parameters: {"target_pins": ["pins that must be connected"], "active_condition": "activation condition, e.g., 'Always' means always required, or 'If channel used' means checked only when the channel is enabled"}
+
+MANDATORY_NET_CONNECTION
+- Purpose: Enforces connection to a required net type, such as an exposed pad tied to ground.
+- parameters: {"target_pins": ["list of pins"], "required_net_type": "Ground or Power"}
+
+FORBIDDEN_CONNECTION
+- Purpose: Forbids connection of DNC/internal pins.
+- parameters: {"target_pins": ["pins that must never be connected"]}
+
+VOLTAGE_DOMAIN_MATCH
+- Purpose: Enforces strict voltage limits on specific pins. Pins that normally follow the system supply can be ignored.
+- parameters: {"target_pins": ["voltage-limited pins"], "voltage_constraint": "special voltage tolerance or fixed-voltage condition, e.g., <=5.5V"}
+
+GROUND_SEPARATION
+- Purpose: Enforces analog/digital ground separation.
+- parameters: {"analog_gnd_pins": ["analog ground pins"], "digital_gnd_pins": ["digital ground pins"]}
+
+DIFFERENTIAL_PAIR
+- Purpose: Checks differential-pair matching.
+- parameters: {"positive_pin": "positive pin", "negative_pin": "negative pin"}
+- Optional parameters: {"overlap_resistor_max_ohms": 10.0, "allow_common_mode_overlap": false}
+- Note: By default, the differential-domain overlap check treats only low-value resistors (<= overlap_resistor_max_ohms, default 10 ohms) as conductive.
+- Note: Termination resistors, such as 120-ohm resistors, do not trigger false "domains overlap" violations. If relaxation is required, set allow_common_mode_overlap=true.
+
+REQUIRE_FEEDBACK_NETWORK
+- Purpose: Requires a feedback divider network for buck/regulator ICs.
+- parameters: {"fb_pin": "feedback pin (FB/ADJ)", "vout_net_type": "PowerOut", "gnd_net_type": "Ground", "value_formula": "calculation formula, e.g., Vout = 1.25 * (1 + R1/R2)"}
+
+REQUIRE_SENSE_RESISTOR
+- Purpose: Requires a current-sense resistor.
+- parameters: {"sense_pins": ["sense pins"], "max_resistor_value": "maximum resistance limit"}
+
+REQUIRE_PROGRAMMING_RESISTOR
+- Purpose: Requires a programming resistor for current/frequency configuration, etc.
+- parameters: {"prog_pins": ["programming pins"], "reference_net": "reference net, e.g., Ground", "value_formula": "calculation formula, e.g., Iout = 1200 / R"}
+
+REQUIRE_BUS_TERMINATION
+- Purpose: Requires bus termination resistance.
+- parameters: {"bus_pin_a": "positive/A bus pin", "bus_pin_b": "negative/B bus pin", "termination_value": "termination resistance"}
+
+REQUIRE_GATE_BASE_RESISTOR
+- Purpose: Requires a gate/base drive current-limiting resistor.
+- parameters: {"control_pins": ["control pins"], "needs_pull_down": true/false}
+
+REQUIRE_FREEWHEELING_DIODE
+- Purpose: Requires a reverse/freewheeling diode.
+- parameters: {"drive_pins": ["drive pins"], "diode_type": "diode type, e.g., Schottky"}
+
+REQUIRE_CURRENT_LIMIT_RESISTOR
+- Purpose: Requires a current-limiting resistor for optocouplers/LEDs.
+- parameters: {"anode_pins": ["anode pins"], "cathode_pins": ["cathode pins"], "safe_current_range": "safe current range"}
+
+OPEN_DRAIN_OUTPUT_PULLUP
+- Purpose: Requires a pull-up resistor for open-drain/open-collector outputs.
+- parameters: {"output_pins": ["open-drain output pins"]}
+
+REQUIRE_AUDIO_STABILITY_NETWORK
+- Purpose: Requires an audio anti-oscillation RC series network.
+- parameters: {"output_pins": ["audio output pins"], "requires_zobel": true, "requires_ac_coupling": true/false}
+
+REQUIRE_OSC_LOAD_CAPS
+- Purpose: Requires crystal load capacitors to ground.
+- parameters: {"pin_1": "crystal pin 1", "pin_2": "crystal pin 2"}
+
+REQUIRE_PARALLEL_PROTECTION
+- Purpose: Requires parallel ESD/surge protection for interfaces.
+- parameters: {"target_pins": ["external-interface pins"], "protection_type": "TVS, ESD, etc.", "reference_net": "discharge/reference net, e.g., Ground"}
+
+REQUIRE_GAIN_SETTING_NETWORK
+- Purpose: Requires a gain-setting network for operational amplifiers/instrumentation amplifiers.
+- Op-amp-mode parameters: {"in_minus_pin": "inverting input pin", "in_plus_pin": "non-inverting input pin", "out_pin": "output pin", "gain_formula": "gain calculation formula, e.g., Gain = 1 + 49.4k / Rg"}
+- Instrumentation-amplifier/RG-mode parameters: {"gain_pin_1": "RG_1", "gain_pin_2": "RG_2", "requires_resistor": true}
+- Optional parameters: {"requires_capacitor": false, "gain_network_hops": 4}
+- Note: When RG_1/RG_2 are detected, or when gain_pin_1/gain_pin_2 are explicitly provided, the engine checks the RG pin pair and no longer incorrectly enforces an OUT-to-IN- feedback resistor.
+
+REQUIRE_TIMING_NETWORK
+- Purpose: Requires a frequency or timing-period setting network for timer/oscillator/PWM-controller circuits, typically an RC network.
+- parameters: {"timing_pins": ["pins involved in timing, e.g., THRES, DISCH"], "timing_formula": "frequency/time calculation formula, e.g., f = 1.44 / ((R1 + 2*R2) * C)"}
+- Optional parameters: {"requires_resistor": true/false, "requires_capacitor": true/false, "timing_network_hops": 3}
+- Note: The engine performs bounded-depth topology traversal over timing_pins to identify RC structures, rather than checking only the same directly connected net.
+- Note: When timing_pins match Soft-Start pins, such as SS/SoftStart, requires_resistor defaults to false to avoid falsely rejecting single-capacitor implementations allowed by the datasheet.

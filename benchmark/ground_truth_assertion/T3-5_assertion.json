@@ -1,0 +1,373 @@
+{
+  "design_id": "T3-5",
+  "tier": 3,
+  "type": "PM",
+  "description": "Branched multi-rail power management board without an MCU. TPS54331 converts 12V input to 5V. The 5V rail feeds TPS61088 to generate a boosted 12V load rail, AMS1117-3.3 to generate 3.3V, and TPS3703 to monitor the 5V rail. ME6211 converts 3.3V to 1.8V. TPS3703 outputs a single POWER_GOOD signal. This reduced benchmark focuses on branched power-tree distribution, rail isolation, boost/buck/LDO topology, and single-rail supervisor connection, not comparator-based sequencing or threshold design.",
+  "ic_list": [
+    "TPS54331 (U1)",
+    "TPS61088 (U2)",
+    "AMS1117-3.3 (U3)",
+    "ME6211 (U4)",
+    "TPS3703-Q1 (U5)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T3-5-C01-001",
+      "check": "SAME_NET",
+      "params": {
+        "pins": [
+          "U1.GND",
+          "U2.AGND",
+          "U2.PGND",
+          "U3.GND",
+          "U4.VSS",
+          "U5.GND"
+        ]
+      }
+    },
+    {
+      "id": "T3-5-C01-002",
+      "check": "SAME_NET",
+      "desc": "5V rail distribution: TPS54331 output rail feeds TPS61088 input and AMS1117 input.",
+      "params": {
+        "pins": [
+          "U2.VIN",
+          "U3.VIN"
+        ]
+      }
+    },
+    {
+      "id": "T3-5-C01-003",
+      "check": "SAME_NET",
+      "desc": "3.3V rail distribution: AMS1117 output feeds ME6211 input.",
+      "params": {
+        "pins": [
+          "U3.VOUT",
+          "U4.VIN"
+        ]
+      }
+    },
+    {
+      "id": "T3-5-C01-004",
+      "check": "SAME_NET",
+      "desc": "TPS3703 monitors the 5V rail through SENSE.",
+      "params": {
+        "pins": [
+          "U2.VIN",
+          "U5.SENSE"
+        ]
+      }
+    },
+    {
+      "id": "T3-5-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical power domains and local switching/feedback nodes must remain isolated: VIN_12V input, 5V rail, boosted 12V rail, 3.3V rail, 1.8V rail, GND, TPS54331 switch node, TPS61088 switch node, TPS54331 feedback node, TPS61088 feedback node, and POWER_GOOD.",
+      "params": {
+        "groups": [
+          [
+            "U1.VIN"
+          ],
+          [
+            "U2.VIN"
+          ],
+          [
+            "U2.VOUT"
+          ],
+          [
+            "U3.VOUT"
+          ],
+          [
+            "U4.VOUT"
+          ],
+          [
+            "U1.GND"
+          ],
+          [
+            "U1.PH"
+          ],
+          [
+            "U2.SW"
+          ],
+          [
+            "U1.VSENSE"
+          ],
+          [
+            "U2.FB"
+          ],
+          [
+            "U5.RESET"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-5-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Unified ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.GND"
+      }
+    },
+    {
+      "id": "T3-5-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "12V input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T3-5-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "5V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U2.VIN"
+      }
+    },
+    {
+      "id": "T3-5-C03-003",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "Boosted 12V load rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T3-5-C03-004",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U3.VOUT"
+      }
+    },
+    {
+      "id": "T3-5-C03-005",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "1.8V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U4.VOUT"
+      }
+    },
+    {
+      "id": "T3-5-S02-003",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "TPS3703 RESET / POWER_GOOD output must be connected.",
+      "params": {
+        "pin": "U5.RESET"
+      }
+    },
+    {
+      "id": "T3-5-T10-001",
+      "check": "HAS_FEEDBACK_DIVIDER",
+      "desc": "TPS54331 feedback divider on VSENSE sets the 5V buck output.",
+      "params": {
+        "pin_fb": "U1.VSENSE"
+      }
+    },
+    {
+      "id": "T3-5-T10-002",
+      "check": "HAS_FEEDBACK_DIVIDER",
+      "desc": "TPS61088 feedback divider on FB sets the boosted 12V load rail.",
+      "params": {
+        "pin_fb": "U2.FB"
+      }
+    },
+    {
+      "id": "T3-5-T03-001",
+      "check": "HAS_INDUCTOR_PATH",
+      "desc": "TPS54331 switch node PH must reach the 5V output rail through an inductor.",
+      "params": {
+        "pin_a": "U1.PH",
+        "pin_b": "U2.VIN"
+      }
+    },
+    {
+      "id": "T3-5-T03-002",
+      "check": "HAS_INDUCTOR_PATH",
+      "desc": "TPS61088 boost input/power stage must use an inductor path into the boost switch node.",
+      "params": {
+        "pin_a": "U2.VIN",
+        "pin_b": "U2.SW"
+      }
+    },
+    {
+      "id": "T3-5-T09-001",
+      "check": "HAS_FREEWHEELING_PATH",
+      "desc": "TPS54331 switch node must have a freewheeling diode path.",
+      "params": {
+        "pin": "U1.PH"
+      }
+    },
+    {
+      "id": "T3-5-T06-001",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "TPS3703 RESET is open-drain and requires a pull-up resistor to a valid logic power rail.",
+      "params": {
+        "pin": "U5.RESET"
+      }
+    },
+    {
+      "id": "T3-5-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "12V input rail must have input bypass capacitor to ground.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T3-5-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "5V rail must have output/decoupling capacitor to ground.",
+      "params": {
+        "pin": "U2.VIN"
+      }
+    },
+    {
+      "id": "T3-5-T01-003",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "Boosted 12V load rail must have output capacitor to ground.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T3-5-T01-004",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V rail must have output/decoupling capacitor to ground.",
+      "params": {
+        "pin": "U3.VOUT"
+      }
+    },
+    {
+      "id": "T3-5-T01-005",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "1.8V rail must have output capacitor to ground.",
+      "params": {
+        "pin": "U4.VOUT"
+      }
+    },
+    {
+      "id": "T3-5-ANY-001",
+      "type": "ANY_OF",
+      "desc": "ME6211 enable must implement always-on behavior: CE is directly tied to the 3.3V rail or pulled up to that rail through a resistor.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U3.VOUT",
+              "U4.CE"
+            ]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U4.CE",
+            "destination": "U3.VOUT",
+            "max_hops": 6,
+            "allowed_components": [
+              "Resistor"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-5-ANY-002",
+      "type": "ANY_OF",
+      "desc": "TPS3703 VDD must be powered from a valid local supply rail: either the monitored 5V rail or the downstream 3.3V logic rail.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U2.VIN",
+              "U5.VDD"
+            ]
+          }
+        },
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U3.VOUT",
+              "U5.VDD"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-5-ANY-003",
+      "type": "ANY_OF",
+      "desc": "TPS54331 enable must define always-on behavior: EN is directly tied to the 12V input rail or pulled up to that rail through a resistor.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U1.EN",
+              "U1.VIN"
+            ]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U1.EN",
+            "destination": "U1.VIN",
+            "max_hops": 6,
+            "allowed_components": [
+              "Resistor"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-5-ANY-004",
+      "type": "ANY_OF",
+      "desc": "TPS61088 enable must define always-on behavior: EN is directly tied to the 5V rail or pulled up to that rail through a resistor.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U2.EN",
+              "U2.VIN"
+            ]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U2.EN",
+            "destination": "U2.VIN",
+            "max_hops": 6,
+            "allowed_components": [
+              "Resistor"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "assertion_summary": {
+    "total": 27,
+    "by_category": {
+      "SAME_NET": 4,
+      "ANY_OF": 4,
+      "NET_GROUP_ISOLATION": 1,
+      "CONNECTED_TO_GROUND": 1,
+      "CONNECTED_TO_POWER": 5,
+      "PIN_NOT_FLOATING": 1,
+      "HAS_FEEDBACK_DIVIDER": 2,
+      "HAS_INDUCTOR_PATH": 2,
+      "HAS_FREEWHEELING_PATH": 1,
+      "HAS_PULLUP_TO_POWER": 1,
+      "HAS_CAP_TO_GROUND": 5,
+      "EXISTS_PATH": 0
+    }
+  }
+}

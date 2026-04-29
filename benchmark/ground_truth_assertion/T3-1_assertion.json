@@ -1,0 +1,481 @@
+{
+  "design_id": "T3-1",
+  "tier": 3,
+  "type": "SEN",
+  "description": "Flight controller core board. A 5V input feeds TPS54331 to generate a 3.3V digital rail and ME6211 to generate a separate 3.3V analog/sensor rail. STM32F427 connects to MPU-6050 IMU via I2C, and to BMP280 barometer plus W25Q128JV black-box Flash via shared SPI with separate chip-select signals. Common GND is used with analog/digital star-ground intent. The digital 3.3V and analog/sensor 3.3V rails must remain distinct, but grounds are not galvanically isolated.",
+  "ic_list": [
+    "TPS54331 (U1)",
+    "ME6211 (U2)",
+    "STM32F427 (U3)",
+    "MPU-6050 (U4)",
+    "BMP280 (U5)",
+    "W25Q128JV (U6)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T3-1-C01-001",
+      "check": "SAME_NET",
+      "desc": "Common ground: power regulators, STM32 grounds/reference-negative, IMU ground, barometer grounds, and flash ground share one common GND with star-ground layout intent.",
+      "params": {
+        "pins": [
+          "U1.GND",
+          "U2.VSS",
+          "U3.VSS_1",
+          "U3.VSS_2",
+          "U3.VSS_3",
+          "U3.VSSA",
+          "U3.VREF_N",
+          "U4.GND",
+          "U5.GND_1",
+          "U5.GND_2",
+          "U6.GND"
+        ]
+      }
+    },
+    {
+      "id": "T3-1-C01-002",
+      "check": "SAME_NET",
+      "desc": "5V input rail feeds both the TPS54331 digital buck input and the ME6211 analog/sensor LDO input.",
+      "params": {
+        "pins": [
+          "U1.VIN",
+          "U2.VIN"
+        ]
+      }
+    },
+    {
+      "id": "T3-1-C01-003",
+      "check": "SAME_NET",
+      "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+      "params": {
+        "pins": [
+          "U3.VDD_1",
+          "U3.VDD_2",
+          "U3.VDD_3",
+          "U3.VDD_4",
+          "U3.VDD_USB",
+          "U3.VBAT",
+          "U6.VCC"
+        ]
+      }
+    },
+    {
+      "id": "T3-1-C01-004",
+      "check": "SAME_NET",
+      "desc": "Core analog/sensor rail: ME6211 output powers the motion/barometer sensor supplies. This captures the separate sensor rail requirement without over-constraining STM32 analog-domain implementation details.",
+      "params": {
+        "pins": [
+          "U2.VOUT",
+          "U4.VDD",
+          "U5.VDD",
+          "U5.VDDIO"
+        ]
+      }
+    },
+    {
+      "id": "T3-1-C01-005",
+      "check": "SAME_NET",
+      "desc": "MPU-6050 I2C legal bundle mapping: accept one complete legal STM32F427 hardware I2C SDA/SCL pair to the IMU. This forbids illegal mixed mappings such as PB7 for SDA together with PB8 for SCL.",
+      "params": {
+        "net_group_candidates": [
+          {
+            "label": "I2C1_DEFAULT",
+            "pin_groups_list": [
+              [["U3.PB7"], ["U4.SDA"]],
+              [["U3.PB6"], ["U4.SCL"]]
+            ]
+          },
+          {
+            "label": "I2C1_ALT",
+            "pin_groups_list": [
+              [["U3.PB9"], ["U4.SDA"]],
+              [["U3.PB8"], ["U4.SCL"]]
+            ]
+          },
+          {
+            "label": "I2C2",
+            "pin_groups_list": [
+              [["U3.PB11"], ["U4.SDA"]],
+              [["U3.PB10"], ["U4.SCL"]]
+            ]
+          },
+          {
+            "label": "I2C3_STANDARD",
+            "pin_groups_list": [
+              [["U3.PC9"], ["U4.SDA"]],
+              [["U3.PA8"], ["U4.SCL"]]
+            ]
+          },
+          {
+            "label": "I2C3_ALT_SDA_PB4",
+            "pin_groups_list": [
+              [["U3.PB4"], ["U4.SDA"]],
+              [["U3.PA8"], ["U4.SCL"]]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T3-1-C01-007",
+      "check": "SAME_NET",
+      "desc": "MPU-6050 is configured for I2C mode by tying CS to its supply rail.",
+      "params": {
+        "pins": [
+          "U4.CS",
+          "U4.VDD"
+        ]
+      }
+    },
+    {
+      "id": "T3-1-C01-008",
+      "check": "SAME_NET",
+      "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+      "params": {
+        "net_group_candidates": [
+          {
+            "label": "SPI1_DEFAULT",
+            "pin_groups_list": [
+              [["U3.PA5"], ["U5.SCK"], ["U6.CLK"]],
+              [["U3.PA7"], ["U5.SDI"], ["U6.DI"]],
+              [["U3.PA6"], ["U5.SDO"], ["U6.DO"]]
+            ]
+          },
+          {
+            "label": "SPI1_ALT",
+            "pin_groups_list": [
+              [["U3.PB3"], ["U5.SCK"], ["U6.CLK"]],
+              [["U3.PB5"], ["U5.SDI"], ["U6.DI"]],
+              [["U3.PB4"], ["U5.SDO"], ["U6.DO"]]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T3-1-C01-011",
+      "check": "SAME_NET",
+      "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PA4",
+            "U3.PA15",
+            "U3.PB0",
+            "U3.PB1"
+          ],
+          [
+            "U5.CSB"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-1-C01-012",
+      "check": "SAME_NET",
+      "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PA4",
+            "U3.PA15",
+            "U3.PB0",
+            "U3.PB1"
+          ],
+          [
+            "U6.CS"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-1-ANY-001",
+      "type": "ANY_OF",
+      "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+      "conditions": [
+        {
+          "check": "CONNECTED_TO_GROUND",
+          "params": {
+            "pin": "U4.AD0"
+          }
+        },
+        {
+          "check": "CONNECTED_TO_POWER",
+          "params": {
+            "pin": "U4.AD0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-1-ANY-002",
+      "type": "ANY_OF",
+      "desc": "STM32F427 analog supply/reference-positive may either join the dedicated analog/sensor rail or remain on the digital 3.3V rail, but VDDA and VREF_P must be implemented consistently together.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U3.VDDA",
+              "U3.VREF_P",
+              "U2.VOUT"
+            ]
+          }
+        },
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U3.VDDA",
+              "U3.VREF_P",
+              "U6.VCC"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-1-ANY-003",
+      "type": "ANY_OF",
+      "desc": "W25Q128JV WP must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U6.WP",
+              "U6.VCC"
+            ]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U6.WP"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-1-ANY-004",
+      "type": "ANY_OF",
+      "desc": "W25Q128JV HOLD must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U6.HOLD",
+              "U6.VCC"
+            ]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U6.HOLD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-1-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+      "params": {
+        "groups": [
+          ["U1.VIN"],
+          ["U6.VCC"],
+          ["U2.VOUT"],
+          ["U1.GND"],
+          ["U1.PH"],
+          ["U1.VSENSE"],
+          ["U4.SDA"],
+          ["U4.SCL"],
+          ["U5.SCK"],
+          ["U5.SDI"],
+          ["U5.SDO"],
+          ["U5.CSB"],
+          ["U6.CS"]
+        ]
+      }
+    },
+    {
+      "id": "T3-1-I02-002",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Digital 3.3V and analog/sensor 3.3V rails are separate rails and must not be shorted.",
+      "params": {
+        "groups": [
+          ["U6.VCC"],
+          ["U2.VOUT"]
+        ]
+      }
+    },
+    {
+      "id": "T3-1-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Common ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.GND"
+      }
+    },
+    {
+      "id": "T3-1-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "5V input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T3-1-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V digital rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U6.VCC"
+      }
+    },
+    {
+      "id": "T3-1-C03-003",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V analog/sensor rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T3-1-S02-001",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "TPS54331 EN must not float; the digital buck regulator requires a defined enable state.",
+      "params": {
+        "pin": "U1.EN"
+      }
+    },
+    {
+      "id": "T3-1-T10-001",
+      "check": "HAS_FEEDBACK_DIVIDER",
+      "desc": "TPS54331 feedback divider on VSENSE sets the digital 3.3V buck output.",
+      "params": {
+        "pin_fb": "U1.VSENSE"
+      }
+    },
+    {
+      "id": "T3-1-T03-001",
+      "check": "HAS_INDUCTOR_PATH",
+      "desc": "TPS54331 switch node PH must reach the 3.3V digital output rail through an inductor.",
+      "params": {
+        "pin_a": "U1.PH",
+        "pin_b": "U6.VCC"
+      }
+    },
+    {
+      "id": "T3-1-T09-001",
+      "check": "HAS_FREEWHEELING_PATH",
+      "desc": "TPS54331 switch node must have a freewheeling diode path.",
+      "params": {
+        "pin": "U1.PH"
+      }
+    },
+    {
+      "id": "T3-1-T06-001",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+      "params": {
+        "pin": "U4.SDA"
+      }
+    },
+    {
+      "id": "T3-1-T06-002",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+      "params": {
+        "pin": "U4.SCL"
+      }
+    },
+    {
+      "id": "T3-1-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "5V input rail must have input bypass capacitor to ground.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T3-1-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V digital rail must have output/decoupling capacitor to ground.",
+      "params": {
+        "pin": "U6.VCC"
+      }
+    },
+    {
+      "id": "T3-1-T01-003",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V analog/sensor rail must have output/decoupling capacitor to ground.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T3-1-T01-004",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "MPU-6050 REGOUT requires capacitor to ground.",
+      "params": {
+        "pin": "U4.REGOUT"
+      }
+    },
+    {
+      "id": "T3-1-T01-005",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "MPU-6050 CPOUT requires charge-pump capacitor to ground.",
+      "params": {
+        "pin": "U4.CPOUT"
+      }
+    },
+    {
+      "id": "T3-1-T01-006",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "BMP280 VDD requires local decoupling capacitor to ground.",
+      "params": {
+        "pin": "U5.VDD"
+      }
+    },
+    {
+      "id": "T3-1-T01-007",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "W25Q128JV VCC requires local decoupling capacitor to ground.",
+      "params": {
+        "pin": "U6.VCC"
+      }
+    },
+    {
+      "id": "T3-1-I03-003",
+      "check": "PIN_NOT_ON_NET_WITH",
+      "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+      "params": {
+        "pin": "U4.CS",
+        "forbidden_pins": [
+          "U5.CSB",
+          "U6.CS"
+        ]
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 33,
+    "by_category": {
+      "SAME_NET": 9,
+      "ANY_OF": 4,
+      "NET_GROUP_ISOLATION": 2,
+      "CONNECTED_TO_GROUND": 1,
+      "CONNECTED_TO_POWER": 3,
+      "PIN_NOT_FLOATING": 1,
+      "HAS_FEEDBACK_DIVIDER": 1,
+      "HAS_INDUCTOR_PATH": 1,
+      "HAS_FREEWHEELING_PATH": 1,
+      "HAS_PULLUP_TO_POWER": 2,
+      "HAS_CAP_TO_GROUND": 7,
+      "PIN_NOT_ON_NET_WITH": 1
+    }
+  }
+}

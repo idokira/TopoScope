@@ -1,0 +1,505 @@
+{
+  "method": "baseline",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T2-8",
+  "tier": 2,
+  "type": "AUD",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.6481254515536191,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-8_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5652173913043478,
+      "violated_assertion_count": 10,
+      "violated_assertion_names": [
+        "T2-8-C01-003",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-003",
+          "check": "SAME_NET",
+          "desc": "Analog supply: VIN_5V input powers NE5532 positive supply.",
+          "message": "Pins are not on the same net: ['U1.VIN', 'U4.VCC_P']."
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U3.VOUT'].; ALL_OF failed: No constrained path found from 'U3.VOUT' to 'U4.IN2_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C11.1",
+          "message": "Pin 'C11.1' is connected to multiple nets: [AREF, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C12.1",
+          "message": "Pin 'C12.1' is connected to multiple nets: [VCC_POS, VIN_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C13.1",
+          "message": "Pin 'C13.1' is connected to multiple nets: [VCC_NEG, VIN_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R4.2",
+          "message": "Pin 'R4.2' is connected to multiple nets: [AUDIO_IN, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R6.2",
+          "message": "Pin 'R6.2' is connected to multiple nets: [GND, U4_SUMMING_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U4.VCC_N",
+          "message": "Pin 'U4.VCC_N' is connected to multiple nets: [GND, VCC_NEG]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for Y1.2",
+          "message": "Pin 'Y1.2' is connected to multiple nets: [GND, U2_OSC_OUT]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-8_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5789473684210527,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T2-8-C01-003",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003",
+        "T2-8-T06-001",
+        "T2-8-T06-002",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-003",
+          "check": "SAME_NET",
+          "desc": "Analog supply: VIN_5V input powers NE5532 positive supply.",
+          "message": "Pins are not on the same net: ['U1.VIN', 'U4.VCC_P']."
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        },
+        {
+          "id": "T2-8-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires pull-up resistor to power. Anchored on MCP4725 SDA so the assertion targets the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U3.SDA'."
+        },
+        {
+          "id": "T2-8-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires pull-up resistor to power. Anchored on MCP4725 SCL so the assertion targets the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U3.SCL'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R2.2",
+          "message": "Pin 'R2.2' is connected to multiple nets: [BIAS_VOLTAGE, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R3.2",
+          "message": "Pin 'R3.2' is connected to multiple nets: [GND, U4_IN1_N]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U2.AVCC",
+          "message": "Pin 'U2.AVCC' is connected to multiple nets: [AVCC_FILTER, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-8_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.75,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-8-C01-003",
+        "T2-8-ANY-001",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-003",
+          "check": "SAME_NET",
+          "desc": "Analog supply: VIN_5V input powers NE5532 positive supply.",
+          "message": "Pins are not on the same net: ['U1.VIN', 'U4.VCC_P']."
+        },
+        {
+          "id": "T2-8-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MCP4725 A0 must select I2C address: tie to GND for 0x60 or VDD for 0x61.",
+          "message": "ANY_OF failed: Pin not found.; Pin not found."
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-8_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.37142857142857144,
+      "violated_assertion_count": 22,
+      "violated_assertion_names": [
+        "T2-8-ANY-001",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7",
+        "AUTO-PIN_SINGLE_NET-8",
+        "AUTO-PIN_SINGLE_NET-9",
+        "AUTO-PIN_SINGLE_NET-10",
+        "AUTO-PIN_SINGLE_NET-11",
+        "AUTO-PIN_SINGLE_NET-12",
+        "AUTO-PIN_SINGLE_NET-13",
+        "AUTO-PIN_SINGLE_NET-14",
+        "AUTO-PIN_SINGLE_NET-15",
+        "AUTO-PIN_SINGLE_NET-16",
+        "AUTO-PIN_SINGLE_NET-17",
+        "AUTO-PIN_SINGLE_NET-18",
+        "AUTO-PIN_SINGLE_NET-19"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MCP4725 A0 must select I2C address: tie to GND for 0x60 or VDD for 0x61.",
+          "message": "ANY_OF failed: Pin not found.; Pin not found."
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pin(s) not found: ['U4.OUT2'].; ALL_OF failed: Pin(s) not found: ['U4.OUT2']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C2.1",
+          "message": "Pin 'C2.1' is connected to multiple nets: [U1_VCC_3V3, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C3.1",
+          "message": "Pin 'C3.1' is connected to multiple nets: [U2_VCC_3V3, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C4.1",
+          "message": "Pin 'C4.1' is connected to multiple nets: [U2_AVCC_3V3, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C6.1",
+          "message": "Pin 'C6.1' is connected to multiple nets: [U3_VCC_3V3, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R1.2",
+          "message": "Pin 'R1.2' is connected to multiple nets: [GND, U2_RESET]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R2.1",
+          "message": "Pin 'R2.1' is connected to multiple nets: [U4_OUT1, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R2.2",
+          "message": "Pin 'R2.2' is connected to multiple nets: [GND, U4_IN_N]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-8",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R3.1",
+          "message": "Pin 'R3.1' is connected to multiple nets: [DAC_OUT, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-9",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R3.2",
+          "message": "Pin 'R3.2' is connected to multiple nets: [GND, U4_BIAS]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-10",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R4.1",
+          "message": "Pin 'R4.1' is connected to multiple nets: [U4_BIAS, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-11",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R4.2",
+          "message": "Pin 'R4.2' is connected to multiple nets: [GND, U4_IN_N]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-12",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5.1",
+          "message": "Pin 'R5.1' is connected to multiple nets: [U4_UNUSED_IN_P, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-13",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R6.1",
+          "message": "Pin 'R6.1' is connected to multiple nets: [U4_UNUSED_IN_N, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-14",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U1.VOUT",
+          "message": "Pin 'U1.VOUT' is connected to multiple nets: [U1_VCC_3V3, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-15",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U2.AVCC",
+          "message": "Pin 'U2.AVCC' is connected to multiple nets: [U2_AVCC_3V3, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-16",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U2.VCC",
+          "message": "Pin 'U2.VCC' is connected to multiple nets: [U2_VCC_3V3, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-17",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U3.VDD",
+          "message": "Pin 'U3.VDD' is connected to multiple nets: [U3_VCC_3V3, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-18",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U4.VCC_N",
+          "message": "Pin 'U4.VCC_N' is connected to multiple nets: [GND, U4_VCC_N]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-19",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U4.VCC_P",
+          "message": "Pin 'U4.VCC_P' is connected to multiple nets: [U4_VCC_P, VIN_5V]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-8_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7647058823529411,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-8-C01-001",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, ATmega ground, MCP4725 ground, and NE5532 negative supply share common GND.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.GND', 'U2.GND_2', 'U3.VSS', 'U4.VCC_N']."
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C14.2",
+          "message": "Pin 'C14.2' is connected to multiple nets: [AMP_OUT, GND]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-8_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.631578947368421,
+      "violated_assertion_count": 7,
+      "violated_assertion_names": [
+        "T2-8-C01-002",
+        "T2-8-C01-003",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD']."
+        },
+        {
+          "id": "T2-8-C01-003",
+          "check": "SAME_NET",
+          "desc": "Analog supply: VIN_5V input powers NE5532 positive supply.",
+          "message": "Pins are not on the same net: ['U1.VIN', 'U4.VCC_P']."
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pin(s) not found: ['U4.OUT2'].; ALL_OF failed: Pin(s) not found: ['U4.OUT2']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C5.1",
+          "message": "Pin 'C5.1' is connected to multiple nets: [U2_VCC, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C6.1",
+          "message": "Pin 'C6.1' is connected to multiple nets: [AREF, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C8.1",
+          "message": "Pin 'C8.1' is connected to multiple nets: [AVCC, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-8_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-8-ANY-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    }
+  ]
+}

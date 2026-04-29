@@ -1,0 +1,1100 @@
+{
+  "method": "baseline",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T3-1",
+  "tier": 3,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.43385640946616555,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-1_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 33,
+      "violated_assertion_names": [
+        "T3-1-C01-001",
+        "T3-1-C01-002",
+        "T3-1-C01-003",
+        "T3-1-C01-004",
+        "T3-1-C01-005",
+        "T3-1-C01-007",
+        "T3-1-C01-008",
+        "T3-1-C01-011",
+        "T3-1-C01-012",
+        "T3-1-ANY-001",
+        "T3-1-ANY-002",
+        "T3-1-ANY-003",
+        "T3-1-ANY-004",
+        "T3-1-I02-001",
+        "T3-1-I02-002",
+        "T3-1-C02-001",
+        "T3-1-C03-001",
+        "T3-1-C03-002",
+        "T3-1-C03-003",
+        "T3-1-S02-001",
+        "T3-1-T10-001",
+        "T3-1-T03-001",
+        "T3-1-T09-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002",
+        "T3-1-T01-001",
+        "T3-1-T01-002",
+        "T3-1-T01-003",
+        "T3-1-T01-004",
+        "T3-1-T01-005",
+        "T3-1-T01-006",
+        "T3-1-T01-007",
+        "T3-1-I03-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: power regulators, STM32 grounds/reference-negative, IMU ground, barometer grounds, and flash ground share one common GND with star-ground layout intent.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-002",
+          "check": "SAME_NET",
+          "desc": "5V input rail feeds both the TPS54331 digital buck input and the ME6211 analog/sensor LDO input.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-004",
+          "check": "SAME_NET",
+          "desc": "Core analog/sensor rail: ME6211 output powers the motion/barometer sensor supplies. This captures the separate sensor rail requirement without over-constraining STM32 analog-domain implementation details.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-005",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 I2C legal bundle mapping: accept one complete legal STM32F427 hardware I2C SDA/SCL pair to the IMU. This forbids illegal mixed mappings such as PB7 for SDA together with PB8 for SCL.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-007",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 is configured for I2C mode by tying CS to its supply rail.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-ANY-002",
+          "check": "ANY_OF",
+          "desc": "STM32F427 analog supply/reference-positive may either join the dedicated analog/sensor rail or remain on the digital 3.3V rail, but VDDA and VREF_P must be implemented consistently together.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-ANY-003",
+          "check": "ANY_OF",
+          "desc": "W25Q128JV WP must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-ANY-004",
+          "check": "ANY_OF",
+          "desc": "W25Q128JV HOLD must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-I02-002",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Digital 3.3V and analog/sensor 3.3V rails are separate rails and must not be shorted.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Common ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "5V input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V digital rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V analog/sensor rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-S02-001",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TPS54331 EN must not float; the digital buck regulator requires a defined enable state.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T10-001",
+          "check": "HAS_FEEDBACK_DIVIDER",
+          "desc": "TPS54331 feedback divider on VSENSE sets the digital 3.3V buck output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "TPS54331 switch node PH must reach the 3.3V digital output rail through an inductor.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T09-001",
+          "check": "HAS_FREEWHEELING_PATH",
+          "desc": "TPS54331 switch node must have a freewheeling diode path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "5V input rail must have input bypass capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V digital rail must have output/decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V analog/sensor rail must have output/decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-004",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "MPU-6050 REGOUT requires capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "MPU-6050 CPOUT requires charge-pump capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-006",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "BMP280 VDD requires local decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-007",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "W25Q128JV VCC requires local decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-1_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6666666666666666,
+      "violated_assertion_count": 12,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-004",
+        "T3-1-C01-008",
+        "T3-1-C01-011",
+        "T3-1-I02-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002",
+        "T3-1-T01-005",
+        "T3-1-I03-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pin(s) not found: ['U3.VBAT']."
+        },
+        {
+          "id": "T3-1-C01-004",
+          "check": "SAME_NET",
+          "desc": "Core analog/sensor rail: ME6211 output powers the motion/barometer sensor supplies. This captures the separate sensor rail requirement without over-constraining STM32 analog-domain implementation details.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U4.VDD', 'U5.VDD', 'U5.VDDIO']."
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"No common net exists across pin groups: [[\\'U3.PA5\\'], [\\'U5.SCK\\'], [\\'U6.CLK\\']].\"]', 'Candidate SPI1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U5.CSB']]."
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Isolation violated: 'U2.VOUT' and 'U5.CSB' share net(s) ['VCC_3V3A']."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SDA'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SCL'."
+        },
+        {
+          "id": "T3-1-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "MPU-6050 CPOUT requires charge-pump capacitor to ground.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U4.CPOUT'."
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Pin 'U4.CS' shares forbidden net(s) ['VCC_3V3A'] with 'U5.CSB'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C10.1",
+          "message": "Pin 'C10.1' is connected to multiple nets: [U3_VCAP2, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C11.1",
+          "message": "Pin 'C11.1' is connected to multiple nets: [VCC_3V3, VCC_3V3A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C8.1",
+          "message": "Pin 'C8.1' is connected to multiple nets: [U3_VCAP1, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-1_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5454545454545454,
+      "violated_assertion_count": 20,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-005",
+        "T3-1-C01-008",
+        "T3-1-C01-011",
+        "T3-1-ANY-001",
+        "T3-1-I02-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002",
+        "T3-1-I03-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7",
+        "AUTO-PIN_SINGLE_NET-8",
+        "AUTO-PIN_SINGLE_NET-9",
+        "AUTO-PIN_SINGLE_NET-10",
+        "AUTO-PIN_SINGLE_NET-11"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pin(s) not found: ['U3.VBAT']."
+        },
+        {
+          "id": "T3-1-C01-005",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 I2C legal bundle mapping: accept one complete legal STM32F427 hardware I2C SDA/SCL pair to the IMU. This forbids illegal mixed mappings such as PB7 for SDA together with PB8 for SCL.",
+          "message": "All combination candidates failed: ['Candidate I2C1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB7\\']}]\"]', 'Candidate I2C1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB9\\']}]\"]', 'Candidate I2C2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB11\\']}]\"]', 'Candidate I2C3_STANDARD failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PC9\\']}]\"]', 'Candidate I2C3_ALT_SDA_PB4 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB4\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"No common net exists across pin groups: [[\\'U3.PA5\\'], [\\'U5.SCK\\'], [\\'U6.CLK\\']].\"]', 'Candidate SPI1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U5.CSB']]."
+        },
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pin 'U4.AD0' is not connected to a ground net.; Pin 'U4.AD0' is not connected to a power net."
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Isolation violated: 'U2.VOUT' and 'U5.CSB' share net(s) ['VCC_3V3_A']."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SDA'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SCL'."
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Pin 'U4.CS' shares forbidden net(s) ['VCC_3V3_A'] with 'U5.CSB'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C11.1",
+          "message": "Pin 'C11.1' is connected to multiple nets: [U3_BOOT0_NODE, VCC_3V3_D]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C15.1",
+          "message": "Pin 'C15.1' is connected to multiple nets: [U4_REGOUT_NODE, VCC_3V3_A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C3.2",
+          "message": "Pin 'C3.2' is connected to multiple nets: [GND, U1_SW]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C5.1",
+          "message": "Pin 'C5.1' is connected to multiple nets: [U1_SS_NODE, VCC_3V3_D]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C6.1",
+          "message": "Pin 'C6.1' is connected to multiple nets: [U1_COMP_NODE, VCC_3V3_D]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C6.2",
+          "message": "Pin 'C6.2' is connected to multiple nets: [GND, U1_COMP_RC_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C9.1",
+          "message": "Pin 'C9.1' is connected to multiple nets: [VCC_3V3_A, VCC_3V3_D]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-8",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R1.2",
+          "message": "Pin 'R1.2' is connected to multiple nets: [GND, U3_NRST_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-9",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R2.2",
+          "message": "Pin 'R2.2' is connected to multiple nets: [GND, U1_FB_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-10",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R3.1",
+          "message": "Pin 'R3.1' is connected to multiple nets: [U3_BOOT0_NODE, VCC_3V3_D]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-11",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R8.2",
+          "message": "Pin 'R8.2' is connected to multiple nets: [GND, U1_COMP_RC_NODE]"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-1_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6216216216216216,
+      "violated_assertion_count": 14,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-004",
+        "T3-1-C01-008",
+        "T3-1-C01-011",
+        "T3-1-ANY-001",
+        "T3-1-I02-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002",
+        "T3-1-T01-006",
+        "T3-1-I03-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pin(s) not found: ['U3.VBAT']."
+        },
+        {
+          "id": "T3-1-C01-004",
+          "check": "SAME_NET",
+          "desc": "Core analog/sensor rail: ME6211 output powers the motion/barometer sensor supplies. This captures the separate sensor rail requirement without over-constraining STM32 analog-domain implementation details.",
+          "message": "Pin(s) not found: ['U5.VDD']."
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"No common net exists across pin groups: [[\\'U3.PA5\\'], [\\'U5.SCK\\'], [\\'U6.CLK\\']].\"]', 'Candidate SPI1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U5.CSB']]."
+        },
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pin 'U4.AD0' is not connected to a ground net.; Pin 'U4.AD0' is not connected to a power net."
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Isolation violated: 'U2.VOUT' and 'U5.CSB' share net(s) ['VCC_3V3A']."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SDA'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SCL'."
+        },
+        {
+          "id": "T3-1-T01-006",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "BMP280 VDD requires local decoupling capacitor to ground.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Pin 'U4.CS' shares forbidden net(s) ['VCC_3V3A'] with 'U5.CSB'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C15.1",
+          "message": "Pin 'C15.1' is connected to multiple nets: [U3_VCAP1, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C16.1",
+          "message": "Pin 'C16.1' is connected to multiple nets: [U3_VCAP2, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C20.1",
+          "message": "Pin 'C20.1' is connected to multiple nets: [U4_REGOUT, VCC_3V3A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.CSB",
+          "message": "Pin 'U5.CSB' is connected to multiple nets: [SPI_CS_U5, VCC_3V3A]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-1_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5365853658536586,
+      "violated_assertion_count": 19,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-005",
+        "T3-1-C01-008",
+        "T3-1-C01-012",
+        "T3-1-ANY-001",
+        "T3-1-ANY-003",
+        "T3-1-ANY-004",
+        "T3-1-I02-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002",
+        "T3-1-I03-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7",
+        "AUTO-PIN_SINGLE_NET-8"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pin(s) not found: ['U3.VBAT']."
+        },
+        {
+          "id": "T3-1-C01-005",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 I2C legal bundle mapping: accept one complete legal STM32F427 hardware I2C SDA/SCL pair to the IMU. This forbids illegal mixed mappings such as PB7 for SDA together with PB8 for SCL.",
+          "message": "All combination candidates failed: ['Candidate I2C1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB7\\']}]\"]', 'Candidate I2C1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB9\\']}]\"]', 'Candidate I2C2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB11\\']}]\"]', 'Candidate I2C3_STANDARD failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PC9\\']}]\"]', 'Candidate I2C3_ALT_SDA_PB4 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB4\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"No common net exists across pin groups: [[\\'U3.PA6\\'], [\\'U5.SDO\\'], [\\'U6.DO\\']].\"]', 'Candidate SPI1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        },
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pin not found.; Pin not found."
+        },
+        {
+          "id": "T3-1-ANY-003",
+          "check": "ANY_OF",
+          "desc": "W25Q128JV WP must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U6.WP'].; Pin not found."
+        },
+        {
+          "id": "T3-1-ANY-004",
+          "check": "ANY_OF",
+          "desc": "W25Q128JV HOLD must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U6.HOLD'].; Pin not found."
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Isolation violated: 'U6.VCC' and 'U1.VSENSE' share net(s) ['VCC_3V3_D']."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SDA'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SCL'."
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Pin 'U4.CS' shares forbidden net(s) ['VCC_3V3_A'] with 'U5.CSB'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C4.1",
+          "message": "Pin 'C4.1' is connected to multiple nets: [U1_SS, VCC_3V3_D]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C5.1",
+          "message": "Pin 'C5.1' is connected to multiple nets: [U1_COMP_RC, VCC_3V3_D]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C6.1",
+          "message": "Pin 'C6.1' is connected to multiple nets: [U1_COMP, VCC_3V3_D]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R2.1",
+          "message": "Pin 'R2.1' is connected to multiple nets: [U1_FB_DIV, VCC_3V3_D]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U1.VSENSE",
+          "message": "Pin 'U1.VSENSE' is connected to multiple nets: [U1_FB_DIV, VCC_3V3_D]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.CSB",
+          "message": "Pin 'U5.CSB' is connected to multiple nets: [SPI_CS_U5, VCC_3V3_A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.SCK",
+          "message": "Pin 'U5.SCK' is connected to multiple nets: [I2C_SCL, SPI_CLK]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-8",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.SDI",
+          "message": "Pin 'U5.SDI' is connected to multiple nets: [I2C_SDA, SPI_MOSI]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-1_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 33,
+      "violated_assertion_names": [
+        "T3-1-C01-001",
+        "T3-1-C01-002",
+        "T3-1-C01-003",
+        "T3-1-C01-004",
+        "T3-1-C01-005",
+        "T3-1-C01-007",
+        "T3-1-C01-008",
+        "T3-1-C01-011",
+        "T3-1-C01-012",
+        "T3-1-ANY-001",
+        "T3-1-ANY-002",
+        "T3-1-ANY-003",
+        "T3-1-ANY-004",
+        "T3-1-I02-001",
+        "T3-1-I02-002",
+        "T3-1-C02-001",
+        "T3-1-C03-001",
+        "T3-1-C03-002",
+        "T3-1-C03-003",
+        "T3-1-S02-001",
+        "T3-1-T10-001",
+        "T3-1-T03-001",
+        "T3-1-T09-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002",
+        "T3-1-T01-001",
+        "T3-1-T01-002",
+        "T3-1-T01-003",
+        "T3-1-T01-004",
+        "T3-1-T01-005",
+        "T3-1-T01-006",
+        "T3-1-T01-007",
+        "T3-1-I03-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: power regulators, STM32 grounds/reference-negative, IMU ground, barometer grounds, and flash ground share one common GND with star-ground layout intent.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-002",
+          "check": "SAME_NET",
+          "desc": "5V input rail feeds both the TPS54331 digital buck input and the ME6211 analog/sensor LDO input.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-004",
+          "check": "SAME_NET",
+          "desc": "Core analog/sensor rail: ME6211 output powers the motion/barometer sensor supplies. This captures the separate sensor rail requirement without over-constraining STM32 analog-domain implementation details.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-005",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 I2C legal bundle mapping: accept one complete legal STM32F427 hardware I2C SDA/SCL pair to the IMU. This forbids illegal mixed mappings such as PB7 for SDA together with PB8 for SCL.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-007",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 is configured for I2C mode by tying CS to its supply rail.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-ANY-002",
+          "check": "ANY_OF",
+          "desc": "STM32F427 analog supply/reference-positive may either join the dedicated analog/sensor rail or remain on the digital 3.3V rail, but VDDA and VREF_P must be implemented consistently together.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-ANY-003",
+          "check": "ANY_OF",
+          "desc": "W25Q128JV WP must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-ANY-004",
+          "check": "ANY_OF",
+          "desc": "W25Q128JV HOLD must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-I02-002",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Digital 3.3V and analog/sensor 3.3V rails are separate rails and must not be shorted.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Common ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "5V input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V digital rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V analog/sensor rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-S02-001",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TPS54331 EN must not float; the digital buck regulator requires a defined enable state.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T10-001",
+          "check": "HAS_FEEDBACK_DIVIDER",
+          "desc": "TPS54331 feedback divider on VSENSE sets the digital 3.3V buck output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "TPS54331 switch node PH must reach the 3.3V digital output rail through an inductor.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T09-001",
+          "check": "HAS_FREEWHEELING_PATH",
+          "desc": "TPS54331 switch node must have a freewheeling diode path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "5V input rail must have input bypass capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V digital rail must have output/decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V analog/sensor rail must have output/decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-004",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "MPU-6050 REGOUT requires capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "MPU-6050 CPOUT requires charge-pump capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-006",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "BMP280 VDD requires local decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-T01-007",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "W25Q128JV VCC requires local decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-1_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6666666666666666,
+      "violated_assertion_count": 11,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-005",
+        "T3-1-C01-008",
+        "T3-1-C01-011",
+        "T3-1-C01-012",
+        "T3-1-ANY-001",
+        "T3-1-I02-001",
+        "T3-1-S02-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002",
+        "T3-1-I03-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pin(s) not found: ['U3.VBAT']."
+        },
+        {
+          "id": "T3-1-C01-005",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 I2C legal bundle mapping: accept one complete legal STM32F427 hardware I2C SDA/SCL pair to the IMU. This forbids illegal mixed mappings such as PB7 for SDA together with PB8 for SCL.",
+          "message": "All combination candidates failed: ['Candidate I2C1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB7\\']}]\"]', 'Candidate I2C1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB9\\']}]\"]', 'Candidate I2C2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB11\\']}]\"]', 'Candidate I2C3_STANDARD failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PC9\\']}]\"]', 'Candidate I2C3_ALT_SDA_PB4 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB4\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PA5\\']}]\"]', 'Candidate SPI1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1']}]"
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1']}]"
+        },
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pin 'U4.AD0' is not connected to a ground net.; Pin 'U4.AD0' is not connected to a power net."
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Isolation violated: 'U2.VOUT' and 'U5.CSB' share net(s) ['VCC_3V3A']."
+        },
+        {
+          "id": "T3-1-S02-001",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TPS54331 EN must not float; the digital buck regulator requires a defined enable state.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SDA'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SCL'."
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Pin 'U4.CS' shares forbidden net(s) ['VCC_3V3A'] with 'U5.CSB'."
+        }
+      ]
+    }
+  ]
+}

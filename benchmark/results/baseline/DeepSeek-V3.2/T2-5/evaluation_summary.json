@@ -1,0 +1,400 @@
+{
+  "method": "baseline",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T2-5",
+  "tier": 2,
+  "type": "COM",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.6779030910609858,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-5_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7777777777777778,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-5-C01-002",
+        "T2-5-C01-003",
+        "T2-5-C01-005",
+        "T2-5-C01-006"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, RS485 transceiver VCC, and Flash VCC share one power net.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VCC', 'U4.VCC']."
+        },
+        {
+          "id": "T2-5-C01-003",
+          "check": "SAME_NET",
+          "desc": "UART legal bundle mapping: accept one complete legal GD32F103 USART0 TX/RX pair to the SP3485 DI/RO pins, either default pins or remapped pins. This forbids illegal mixed mappings such as PA9 for TX together with PB7 for RX.",
+          "message": "All combination candidates failed: ['Candidate USART0_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PA9\\']}]\"]', 'Candidate USART0_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PB6\\']}]\"]']"
+        },
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U2.PA0', 'U2.PA1']}]"
+        },
+        {
+          "id": "T2-5-C01-006",
+          "check": "SAME_NET",
+          "desc": "SPI0 legal bundle mapping: accept one complete legal GD32F103 SPI0 routing bundle to Flash, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI0_DEFAULT failed: [\"No common net exists across pin groups: [[\\'U2.PA4\\'], [\\'U4.CS\\']].\"]', 'Candidate SPI0_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PB3\\']}]\"]']"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-5_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 18,
+      "violated_assertion_names": [
+        "T2-5-C01-001",
+        "T2-5-C01-002",
+        "T2-5-I02-001",
+        "T2-5-C02-001",
+        "T2-5-C03-001",
+        "T2-5-C03-002",
+        "T2-5-C01-003",
+        "T2-5-C01-005",
+        "T2-5-C01-006",
+        "T2-5-I01-001",
+        "T2-5-ANY-001",
+        "T2-5-ANY-002",
+        "T2-5-ANY-003",
+        "T2-5-T11-001",
+        "T2-5-T12-001",
+        "T2-5-T05-001",
+        "T2-5-T01-001",
+        "T2-5-T01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-001",
+          "check": "SAME_NET",
+          "desc": "GND unification: all ground pins across 4 ICs share one common ground net.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, RS485 transceiver VCC, and Flash VCC share one power net.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, VCC, VIN, UART TX, UART RX, DE/RE control, SPI SCK/MOSI/MISO/CS, RS485 A/B, crystal (OSCIN/OSCOUT), and NRST must all be on mutually distinct nets. Bus-related isolation is anchored on transceiver/flash-side pins so it is invariant to GD32F103 default/remap selection.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Unified ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "5V input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-C01-003",
+          "check": "SAME_NET",
+          "desc": "UART legal bundle mapping: accept one complete legal GD32F103 USART0 TX/RX pair to the SP3485 DI/RO pins, either default pins or remapped pins. This forbids illegal mixed mappings such as PA9 for TX together with PB7 for RX.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-C01-006",
+          "check": "SAME_NET",
+          "desc": "SPI0 legal bundle mapping: accept one complete legal GD32F103 SPI0 routing bundle to Flash, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-I01-001",
+          "check": "NOT_SAME_NET",
+          "desc": "BOOT0 must not be tied to VDD; forces bootloader mode instead of normal flash boot.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Flash WP must be inactive: direct tie to VDD or pull-up to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-ANY-003",
+          "check": "ANY_OF",
+          "desc": "Flash HOLD must be inactive: direct tie to VDD or pull-up to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "RS485 differential bus requires 120ohm termination resistor between A and B.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "GD32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "GD32 8MHz crystal on OSCIN/OSCOUT with load capacitors to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "LDO input rail (VIN) must have bypass capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-5-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V domain must have decoupling capacitor to ground. One T01 covers the unified rail.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-5_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8333333333333334,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-5-C01-003",
+        "T2-5-C01-005",
+        "T2-5-C01-006"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-003",
+          "check": "SAME_NET",
+          "desc": "UART legal bundle mapping: accept one complete legal GD32F103 USART0 TX/RX pair to the SP3485 DI/RO pins, either default pins or remapped pins. This forbids illegal mixed mappings such as PA9 for TX together with PB7 for RX.",
+          "message": "All combination candidates failed: ['Candidate USART0_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PA9\\']}]\"]', 'Candidate USART0_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PB6\\']}]\"]']"
+        },
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U2.PA0', 'U2.PA1']}]"
+        },
+        {
+          "id": "T2-5-C01-006",
+          "check": "SAME_NET",
+          "desc": "SPI0 legal bundle mapping: accept one complete legal GD32F103 SPI0 routing bundle to Flash, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI0_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PA5\\']}]\"]', 'Candidate SPI0_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PB3\\']}]\"]']"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-5_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T2-5-C01-002",
+        "T2-5-C01-003",
+        "T2-5-C01-005",
+        "T2-5-C01-006",
+        "T2-5-I01-001",
+        "T2-5-T12-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, RS485 transceiver VCC, and Flash VCC share one power net.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VCC', 'U4.VCC']."
+        },
+        {
+          "id": "T2-5-C01-003",
+          "check": "SAME_NET",
+          "desc": "UART legal bundle mapping: accept one complete legal GD32F103 USART0 TX/RX pair to the SP3485 DI/RO pins, either default pins or remapped pins. This forbids illegal mixed mappings such as PA9 for TX together with PB7 for RX.",
+          "message": "All combination candidates failed: ['Candidate USART0_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PA9\\']}]\"]', 'Candidate USART0_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PB6\\']}]\"]']"
+        },
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U2.PA0', 'U2.PA1']}]"
+        },
+        {
+          "id": "T2-5-C01-006",
+          "check": "SAME_NET",
+          "desc": "SPI0 legal bundle mapping: accept one complete legal GD32F103 SPI0 routing bundle to Flash, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI0_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PA5\\']}]\"]', 'Candidate SPI0_REMAP failed: [\"No common net exists across pin groups: [[\\'U2.PB3\\'], [\\'U4.CLK\\']].\"]']"
+        },
+        {
+          "id": "T2-5-I01-001",
+          "check": "NOT_SAME_NET",
+          "desc": "BOOT0 must not be tied to VDD; forces bootloader mode instead of normal flash boot.",
+          "message": "Pins share net(s): ['VCC_3V3']."
+        },
+        {
+          "id": "T2-5-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "GD32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "No decoupling network found for pin 'U2.NRST' (need pull-up to power and capacitor to ground)."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R2.1",
+          "message": "Pin 'R2.1' is connected to multiple nets: [BOOT0_NODE, NRST_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U2.BOOT0",
+          "message": "Pin 'U2.BOOT0' is connected to multiple nets: [BOOT0_NODE, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-5_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8421052631578947,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-5-C01-002",
+        "T2-5-C01-005",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, RS485 transceiver VCC, and Flash VCC share one power net.",
+          "message": "Pin(s) not found: ['U2.VBAT']."
+        },
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U2.PA0', 'U2.PA1']}]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C9.1",
+          "message": "Pin 'C9.1' is connected to multiple nets: [U2_NRST, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-5_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.85,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-5-C01-005",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U2.PA0', 'U2.PA1']}]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R1.2",
+          "message": "Pin 'R1.2' is connected to multiple nets: [GND, NRST]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R3.2",
+          "message": "Pin 'R3.2' is connected to multiple nets: [RS485_A, RS485_B]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-5_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8421052631578947,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-5-C01-003",
+        "T2-5-C01-005",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-003",
+          "check": "SAME_NET",
+          "desc": "UART legal bundle mapping: accept one complete legal GD32F103 USART0 TX/RX pair to the SP3485 DI/RO pins, either default pins or remapped pins. This forbids illegal mixed mappings such as PA9 for TX together with PB7 for RX.",
+          "message": "All combination candidates failed: ['Candidate USART0_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PA9\\']}]\"]', 'Candidate USART0_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PB6\\']}]\"]']"
+        },
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U2.PA0', 'U2.PA1']}]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C13.1",
+          "message": "Pin 'C13.1' is connected to multiple nets: [U2_NRST, VCC_3V3]"
+        }
+      ]
+    }
+  ]
+}

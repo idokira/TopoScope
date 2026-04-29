@@ -1,0 +1,526 @@
+{
+  "method": "erc_only",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T2-4",
+  "tier": 2,
+  "type": "COM",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.6273291925465838,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-4_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8695652173913043,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-4-C01-007",
+        "T2-4-I03-001",
+        "T2-4-I03-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "Pin(s) not found: ['U2.PA3']."
+        },
+        {
+          "id": "T2-4-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from skipping MCP2515 by wiring any STM32 SPI1 candidate pin directly to transceiver logic input.",
+          "message": "Pin(s) not found: ['U2.PB3', 'U2.PB5', 'U2.PB4', 'U2.PA15']."
+        },
+        {
+          "id": "T2-4-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from connecting any STM32 SPI1 candidate pin directly to CAN differential bus.",
+          "message": "Pin(s) not found: ['U2.PB3', 'U2.PB5', 'U2.PB4', 'U2.PA15']."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-4_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.043478260869565216,
+      "violated_assertion_count": 22,
+      "violated_assertion_names": [
+        "T2-4-C01-001",
+        "T2-4-C01-002",
+        "T2-4-I02-001",
+        "T2-4-C03-001",
+        "T2-4-C03-002",
+        "T2-4-C01-003",
+        "T2-4-C01-007",
+        "T2-4-C01-008",
+        "T2-4-C01-009",
+        "T2-4-I01-001",
+        "T2-4-ANY-001",
+        "T2-4-I01-002",
+        "T2-4-ANY-002",
+        "T2-4-ANY-003",
+        "T2-4-I03-001",
+        "T2-4-I03-002",
+        "T2-4-T11-001",
+        "T2-4-T12-001",
+        "T2-4-T05-001",
+        "T2-4-T05-002",
+        "T2-4-T01-001",
+        "T2-4-T01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-001",
+          "check": "SAME_NET",
+          "desc": "GND unification: all ground pins across 4 ICs share one common ground net.",
+          "message": "Pin(s) not found: ['U2.VSS_1', 'U2.VSS_2', 'U2.VSS_3', 'U2.VSSA', 'U3.VSS', 'U4.GND']."
+        },
+        {
+          "id": "T2-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, CAN controller VDD, and transceiver VCC share one power net.",
+          "message": "Pin(s) not found: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-4-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, VCC, VIN, SPI bundle lines (SCK/MOSI/MISO/CS), CAN logic (TXCAN/RXCAN), CAN differential (CANH/CANL), STM32 crystal (OSC_IN/OUT), MCP2515 crystal (OSC1/OSC2), and NRST must all be on mutually distinct nets. SPI isolation is anchored on MCP2515-side pins so it is invariant to STM32 SPI1 default/remap selection.",
+          "message": "Pin(s) not found: ['U1.VOUT']."
+        },
+        {
+          "id": "T2-4-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V rail must carry Power electrical attribute.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "5V input rail must carry Power electrical attribute.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "SPI1 legal bundle mapping: accept one complete legal STM32F103 SPI1 routing bundle to MCP2515, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PA5\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U3.SCK\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U3.SCK\\']}]\"]']"
+        },
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "Pin(s) not found: ['U2.PA3', 'U3.INT']."
+        },
+        {
+          "id": "T2-4-C01-008",
+          "check": "SAME_NET",
+          "desc": "CAN TX logic: MCP2515 TXCAN connects to SN65HVD230 D input.",
+          "message": "Pin(s) not found: ['U3.TXCAN', 'U4.D']."
+        },
+        {
+          "id": "T2-4-C01-009",
+          "check": "SAME_NET",
+          "desc": "CAN RX logic: MCP2515 RXCAN connects to SN65HVD230 R output.",
+          "message": "Pin(s) not found: ['U3.RXCAN', 'U4.R']."
+        },
+        {
+          "id": "T2-4-I01-001",
+          "check": "NOT_SAME_NET",
+          "desc": "BOOT0 must not be tied to VDD; forces bootloader mode instead of normal flash boot.",
+          "message": "Pin(s) not found: ['U2.BOOT0', 'U2.VDD_1']."
+        },
+        {
+          "id": "T2-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U2.BOOT0', 'U2.VSS_1'].; from_pin not found."
+        },
+        {
+          "id": "T2-4-I01-002",
+          "check": "NOT_SAME_NET",
+          "desc": "MCP2515 RESET must not be tied to GND; permanent reset locks out CAN controller.",
+          "message": "Pin(s) not found: ['U3.RESET', 'U3.VSS']."
+        },
+        {
+          "id": "T2-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "MCP2515 RESET must be held inactive: direct tie to VDD or external pull-up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U3.RESET', 'U1.VOUT'].; Pin not found."
+        },
+        {
+          "id": "T2-4-ANY-003",
+          "check": "ANY_OF",
+          "desc": "SN65HVD230 RS must select normal or slope-control mode: direct tie to GND or resistor to GND. High-impedance or VDD would force standby mode.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U4.RS', 'U4.GND'].; from_pin not found."
+        },
+        {
+          "id": "T2-4-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from skipping MCP2515 by wiring any STM32 SPI1 candidate pin directly to transceiver logic input.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from connecting any STM32 SPI1 candidate pin directly to CAN differential bus.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "CAN differential bus requires 120ohm termination resistor between CANH and CANL.",
+          "message": "pin_p or pin_n not found."
+        },
+        {
+          "id": "T2-4-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "STM32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "STM32 HSE 8MHz crystal on OSC_IN/OSC_OUT with load capacitors to ground.",
+          "message": "pin_osc_in or pin_osc_out not found."
+        },
+        {
+          "id": "T2-4-T05-002",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "MCP2515 8MHz crystal on OSC1/OSC2 with load capacitors to ground.",
+          "message": "pin_osc_in or pin_osc_out not found."
+        },
+        {
+          "id": "T2-4-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "LDO input rail (VIN) must have bypass capacitor to ground.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V domain must have decoupling capacitor to ground. One T01 covers the unified rail.",
+          "message": "Pin not found."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-4_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8695652173913043,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-4-C01-007",
+        "T2-4-I03-001",
+        "T2-4-I03-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "Pin(s) not found: ['U2.PA3', 'U3.INT']."
+        },
+        {
+          "id": "T2-4-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from skipping MCP2515 by wiring any STM32 SPI1 candidate pin directly to transceiver logic input.",
+          "message": "Pin(s) not found: ['U2.PB3', 'U2.PB5', 'U2.PB4', 'U2.PA15']."
+        },
+        {
+          "id": "T2-4-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from connecting any STM32 SPI1 candidate pin directly to CAN differential bus.",
+          "message": "Pin(s) not found: ['U2.PB3', 'U2.PB5', 'U2.PB4', 'U2.PA15']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-4_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8695652173913043,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-4-C01-007",
+        "T2-4-I03-001",
+        "T2-4-I03-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "Pin(s) not found: ['U2.PA3']."
+        },
+        {
+          "id": "T2-4-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from skipping MCP2515 by wiring any STM32 SPI1 candidate pin directly to transceiver logic input.",
+          "message": "Pin(s) not found: ['U2.PB3', 'U2.PB5', 'U2.PB4', 'U2.PA15']."
+        },
+        {
+          "id": "T2-4-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from connecting any STM32 SPI1 candidate pin directly to CAN differential bus.",
+          "message": "Pin(s) not found: ['U2.PB3', 'U2.PB5', 'U2.PB4', 'U2.PA15']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-4_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.043478260869565216,
+      "violated_assertion_count": 22,
+      "violated_assertion_names": [
+        "T2-4-C01-001",
+        "T2-4-C01-002",
+        "T2-4-I02-001",
+        "T2-4-C03-001",
+        "T2-4-C03-002",
+        "T2-4-C01-003",
+        "T2-4-C01-007",
+        "T2-4-C01-008",
+        "T2-4-C01-009",
+        "T2-4-I01-001",
+        "T2-4-ANY-001",
+        "T2-4-I01-002",
+        "T2-4-ANY-002",
+        "T2-4-ANY-003",
+        "T2-4-I03-001",
+        "T2-4-I03-002",
+        "T2-4-T11-001",
+        "T2-4-T12-001",
+        "T2-4-T05-001",
+        "T2-4-T05-002",
+        "T2-4-T01-001",
+        "T2-4-T01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-001",
+          "check": "SAME_NET",
+          "desc": "GND unification: all ground pins across 4 ICs share one common ground net.",
+          "message": "Pin(s) not found: ['U2.VSS_1', 'U2.VSS_2', 'U2.VSS_3', 'U2.VSSA', 'U3.VSS', 'U4.GND']."
+        },
+        {
+          "id": "T2-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, CAN controller VDD, and transceiver VCC share one power net.",
+          "message": "Pin(s) not found: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-4-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, VCC, VIN, SPI bundle lines (SCK/MOSI/MISO/CS), CAN logic (TXCAN/RXCAN), CAN differential (CANH/CANL), STM32 crystal (OSC_IN/OUT), MCP2515 crystal (OSC1/OSC2), and NRST must all be on mutually distinct nets. SPI isolation is anchored on MCP2515-side pins so it is invariant to STM32 SPI1 default/remap selection.",
+          "message": "Pin(s) not found: ['U1.VOUT']."
+        },
+        {
+          "id": "T2-4-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V rail must carry Power electrical attribute.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "5V input rail must carry Power electrical attribute.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "SPI1 legal bundle mapping: accept one complete legal STM32F103 SPI1 routing bundle to MCP2515, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PA5\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U3.SCK\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U2.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U3.SCK\\']}]\"]']"
+        },
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "Pin(s) not found: ['U2.PA3', 'U3.INT']."
+        },
+        {
+          "id": "T2-4-C01-008",
+          "check": "SAME_NET",
+          "desc": "CAN TX logic: MCP2515 TXCAN connects to SN65HVD230 D input.",
+          "message": "Pin(s) not found: ['U3.TXCAN', 'U4.D']."
+        },
+        {
+          "id": "T2-4-C01-009",
+          "check": "SAME_NET",
+          "desc": "CAN RX logic: MCP2515 RXCAN connects to SN65HVD230 R output.",
+          "message": "Pin(s) not found: ['U3.RXCAN', 'U4.R']."
+        },
+        {
+          "id": "T2-4-I01-001",
+          "check": "NOT_SAME_NET",
+          "desc": "BOOT0 must not be tied to VDD; forces bootloader mode instead of normal flash boot.",
+          "message": "Pin(s) not found: ['U2.BOOT0', 'U2.VDD_1']."
+        },
+        {
+          "id": "T2-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U2.BOOT0', 'U2.VSS_1'].; from_pin not found."
+        },
+        {
+          "id": "T2-4-I01-002",
+          "check": "NOT_SAME_NET",
+          "desc": "MCP2515 RESET must not be tied to GND; permanent reset locks out CAN controller.",
+          "message": "Pin(s) not found: ['U3.RESET', 'U3.VSS']."
+        },
+        {
+          "id": "T2-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "MCP2515 RESET must be held inactive: direct tie to VDD or external pull-up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U3.RESET', 'U1.VOUT'].; Pin not found."
+        },
+        {
+          "id": "T2-4-ANY-003",
+          "check": "ANY_OF",
+          "desc": "SN65HVD230 RS must select normal or slope-control mode: direct tie to GND or resistor to GND. High-impedance or VDD would force standby mode.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U4.RS', 'U4.GND'].; from_pin not found."
+        },
+        {
+          "id": "T2-4-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from skipping MCP2515 by wiring any STM32 SPI1 candidate pin directly to transceiver logic input.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from connecting any STM32 SPI1 candidate pin directly to CAN differential bus.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "CAN differential bus requires 120ohm termination resistor between CANH and CANL.",
+          "message": "pin_p or pin_n not found."
+        },
+        {
+          "id": "T2-4-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "STM32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "STM32 HSE 8MHz crystal on OSC_IN/OSC_OUT with load capacitors to ground.",
+          "message": "pin_osc_in or pin_osc_out not found."
+        },
+        {
+          "id": "T2-4-T05-002",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "MCP2515 8MHz crystal on OSC1/OSC2 with load capacitors to ground.",
+          "message": "pin_osc_in or pin_osc_out not found."
+        },
+        {
+          "id": "T2-4-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "LDO input rail (VIN) must have bypass capacitor to ground.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-4-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V domain must have decoupling capacitor to ground. One T01 covers the unified rail.",
+          "message": "Pin not found."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-4_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8695652173913043,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-4-C01-007",
+        "T2-4-I03-001",
+        "T2-4-I03-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "Pin(s) not found: ['U2.PA3']."
+        },
+        {
+          "id": "T2-4-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from skipping MCP2515 by wiring any STM32 SPI1 candidate pin directly to transceiver logic input.",
+          "message": "Pin(s) not found: ['U2.PB3', 'U2.PB5', 'U2.PB4', 'U2.PA15']."
+        },
+        {
+          "id": "T2-4-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from connecting any STM32 SPI1 candidate pin directly to CAN differential bus.",
+          "message": "Pin(s) not found: ['U2.PB3', 'U2.PB5', 'U2.PB4', 'U2.PA15']."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-4_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8260869565217391,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-4-C01-002",
+        "T2-4-C01-007",
+        "T2-4-I03-001",
+        "T2-4-I03-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, CAN controller VDD, and transceiver VCC share one power net.",
+          "message": "Pin(s) not found: ['U2.VDDA']."
+        },
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "Pin(s) not found: ['U2.PA3']."
+        },
+        {
+          "id": "T2-4-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from skipping MCP2515 by wiring any STM32 SPI1 candidate pin directly to transceiver logic input.",
+          "message": "Pin(s) not found: ['U2.PB3', 'U2.PB5', 'U2.PB4', 'U2.PA15']."
+        },
+        {
+          "id": "T2-4-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: prevent LLM from connecting any STM32 SPI1 candidate pin directly to CAN differential bus.",
+          "message": "Pin(s) not found: ['U2.PB3', 'U2.PB5', 'U2.PB4', 'U2.PA15']."
+        }
+      ]
+    }
+  ]
+}

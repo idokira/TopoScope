@@ -1,0 +1,424 @@
+{
+  "meta": {
+    "design_id": "T2-4",
+    "tier": 2,
+    "type": "COM",
+    "run_id": 3
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "C13",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C14",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C15",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C16",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C17",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_1.5K"
+      },
+      {
+        "refdes": "R7",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R8",
+        "part_number": "RES_120R"
+      },
+      {
+        "refdes": "R9",
+        "part_number": "RES_47K"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MCP2515"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "SN65HVD230"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz"
+      },
+      {
+        "refdes": "Y2",
+        "part_number": "CRYSTAL_32.768kHz"
+      },
+      {
+        "refdes": "Y3",
+        "part_number": "CRYSTAL_8MHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "BOOT0_NODE",
+        "pins": [
+          "R2.1",
+          "U2.BOOT0"
+        ]
+      },
+      {
+        "name": "BOOT1_NODE",
+        "pins": [
+          "R3.1",
+          "U2.PB2"
+        ]
+      },
+      {
+        "name": "CAN_H",
+        "pins": [
+          "R8.1",
+          "U4.CANH"
+        ]
+      },
+      {
+        "name": "CAN_L",
+        "pins": [
+          "R8.2",
+          "U4.CANL"
+        ]
+      },
+      {
+        "name": "CAN_RX",
+        "pins": [
+          "U3.RXCAN",
+          "U4.R"
+        ]
+      },
+      {
+        "name": "CAN_TX",
+        "pins": [
+          "U3.TXCAN",
+          "U4.D"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "C13.2",
+          "C14.2",
+          "C15.2",
+          "C16.2",
+          "C17.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "R2.2",
+          "R3.2",
+          "R4.2",
+          "R5.2",
+          "R9.2",
+          "U1.GND",
+          "U2.VSSA",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U3.VSS",
+          "U4.GND"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "R5.1",
+          "U2.PB6"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "R4.1",
+          "U2.PB7"
+        ]
+      },
+      {
+        "name": "INT_OUT",
+        "pins": [
+          "U3.INT"
+        ]
+      },
+      {
+        "name": "NRST_NODE",
+        "pins": [
+          "C8.1",
+          "R1.2",
+          "U2.NRST"
+        ]
+      },
+      {
+        "name": "OSC32_IN_NODE",
+        "pins": [
+          "C11.1",
+          "U2.PC14",
+          "Y2.1"
+        ]
+      },
+      {
+        "name": "OSC32_OUT_NODE",
+        "pins": [
+          "C12.1",
+          "U2.PC15",
+          "Y2.2"
+        ]
+      },
+      {
+        "name": "SPI_CS",
+        "pins": [
+          "U2.PA4",
+          "U3.CS"
+        ]
+      },
+      {
+        "name": "SPI_MISO",
+        "pins": [
+          "U2.PA6",
+          "U3.SO"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U2.PA7",
+          "U3.SI"
+        ]
+      },
+      {
+        "name": "SPI_SCK",
+        "pins": [
+          "U2.PA5",
+          "U3.SCK"
+        ]
+      },
+      {
+        "name": "SWCLK",
+        "pins": [
+          "U2.PA14"
+        ]
+      },
+      {
+        "name": "SWDIO",
+        "pins": [
+          "U2.PA13"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "C9.1",
+          "U2.OSC_IN",
+          "Y1.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "C10.1",
+          "U2.OSC_OUT",
+          "Y1.2"
+        ]
+      },
+      {
+        "name": "U3_OSC_IN",
+        "pins": [
+          "C15.1",
+          "U3.OSC1",
+          "Y3.1"
+        ]
+      },
+      {
+        "name": "U3_OSC_OUT",
+        "pins": [
+          "C16.1",
+          "U3.OSC2",
+          "Y3.2"
+        ]
+      },
+      {
+        "name": "U3_RESET",
+        "pins": [
+          "R7.2",
+          "U3.RESET"
+        ]
+      },
+      {
+        "name": "U4_RS_NODE",
+        "pins": [
+          "R9.1",
+          "U4.RS"
+        ]
+      },
+      {
+        "name": "U4_VREF",
+        "pins": [
+          "U4.VREF"
+        ]
+      },
+      {
+        "name": "USB_DM",
+        "pins": [
+          "U2.PA11"
+        ]
+      },
+      {
+        "name": "USB_DP",
+        "pins": [
+          "R6.1",
+          "U2.PA12"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C13.1",
+          "C14.1",
+          "C17.1",
+          "C2.1",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "R1.1",
+          "R7.1",
+          "U1.VOUT",
+          "U2.VBAT",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U3.VDD",
+          "U4.VCC"
+        ]
+      },
+      {
+        "name": "VDDA_NET",
+        "pins": [
+          "C6.1",
+          "C7.1",
+          "U2.VDDA"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "U1.VIN"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 6,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 6,
+      "U3": 0,
+      "U4": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {
+      "can_bus_termination": [
+        "CAN_H",
+        "CAN_L"
+      ]
+    },
+    "existing_passive_components_count": 29
+  }
+}

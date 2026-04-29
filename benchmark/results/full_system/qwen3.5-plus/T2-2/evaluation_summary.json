@@ -1,0 +1,135 @@
+{
+  "method": "full_system",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T2-2",
+  "tier": 2,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 7,
+  "pass_at_k": {
+    "pass_at_1": 1.0,
+    "pass_at_2": 1.0,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9753694581280788,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-2_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9655172413793104,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-2-C01-009"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-2_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9310344827586207,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-2-C01-005",
+        "T2-2-C01-006"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-005",
+          "check": "SAME_NET",
+          "desc": "SPI MOSI: ATmega328P PB3 and Flash DI share one net.",
+          "message": "Pins are not on the same net: ['U2.PB3', 'U4.DI']."
+        },
+        {
+          "id": "T2-2-C01-006",
+          "check": "SAME_NET",
+          "desc": "SPI MISO: ATmega328P PB4 and Flash DO share one net.",
+          "message": "Pins are not on the same net: ['U2.PB4', 'U4.DO']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-2_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-2_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9655172413793104,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-2-C01-009"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-2_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-2_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9655172413793104,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-2-C01-009"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-2_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    }
+  ]
+}

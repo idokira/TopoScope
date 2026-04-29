@@ -1,0 +1,420 @@
+{
+  "design_id": "T2-5",
+  "tier": 2,
+  "type": "COM",
+  "description": "RS485 Modbus node. GD32F103 communicates on RS485 bus via SP3485 half-duplex transceiver. USART0 TX/RX may use the default or remapped hardware pin pair; DE/RE are tied together on PA1 for direction control. W25Q128JV SPI Flash uses GD32F103 SPI0, either default or remapped pin bundle. AMS1117-3.3 provides 3.3V from 5V. 120ohm bus termination on RS485 A/B. GD32F103 uses OSCIN/OSCOUT naming for crystal pins.",
+  "ic_list": [
+    "AMS1117-3.3 (U1)",
+    "GD32F103xx (U2)",
+    "SP3485 (U3)",
+    "W25Q128JV (U4)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T2-5-C01-001",
+      "check": "SAME_NET",
+      "desc": "GND unification: all ground pins across 4 ICs share one common ground net.",
+      "params": {
+        "pins": [
+          "U1.ADJ",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U2.VSSA",
+          "U3.GND",
+          "U4.GND"
+        ]
+      }
+    },
+    {
+      "id": "T2-5-C01-002",
+      "check": "SAME_NET",
+      "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, RS485 transceiver VCC, and Flash VCC share one power net.",
+      "params": {
+        "pins": [
+          "U1.VOUT",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U2.VDDA",
+          "U2.VBAT",
+          "U3.VCC",
+          "U4.VCC"
+        ]
+      }
+    },
+    {
+      "id": "T2-5-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical pin isolation: GND, VCC, VIN, UART TX, UART RX, DE/RE control, SPI SCK/MOSI/MISO/CS, RS485 A/B, crystal (OSCIN/OSCOUT), and NRST must all be on mutually distinct nets. Bus-related isolation is anchored on transceiver/flash-side pins so it is invariant to GD32F103 default/remap selection.",
+      "params": {
+        "groups": [
+          [
+            "U1.ADJ"
+          ],
+          [
+            "U1.VOUT"
+          ],
+          [
+            "U1.VIN"
+          ],
+          [
+            "U3.DI"
+          ],
+          [
+            "U3.RO"
+          ],
+          [
+            "U3.DE"
+          ],
+          [
+            "U4.CLK"
+          ],
+          [
+            "U4.DI"
+          ],
+          [
+            "U4.DO"
+          ],
+          [
+            "U4.CS"
+          ],
+          [
+            "U3.A"
+          ],
+          [
+            "U3.B"
+          ],
+          [
+            "U2.OSCIN"
+          ],
+          [
+            "U2.OSCOUT"
+          ],
+          [
+            "U2.NRST"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T2-5-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Unified ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.ADJ"
+      }
+    },
+    {
+      "id": "T2-5-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VOUT"
+      }
+    },
+    {
+      "id": "T2-5-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "5V input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-5-C01-003",
+      "check": "SAME_NET",
+      "desc": "UART legal bundle mapping: accept one complete legal GD32F103 USART0 TX/RX pair to the SP3485 DI/RO pins, either default pins or remapped pins. This forbids illegal mixed mappings such as PA9 for TX together with PB7 for RX.",
+      "params": {
+        "net_group_candidates": [
+          {
+            "label": "USART0_DEFAULT",
+            "pin_groups_list": [
+              [
+                [
+                  "U2.PA9"
+                ],
+                [
+                  "U3.DI"
+                ]
+              ],
+              [
+                [
+                  "U2.PA10"
+                ],
+                [
+                  "U3.RO"
+                ]
+              ]
+            ]
+          },
+          {
+            "label": "USART0_REMAP",
+            "pin_groups_list": [
+              [
+                [
+                  "U2.PB6"
+                ],
+                [
+                  "U3.DI"
+                ]
+              ],
+              [
+                [
+                  "U2.PB7"
+                ],
+                [
+                  "U3.RO"
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2-5-C01-005",
+      "check": "SAME_NET",
+      "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+      "params": {
+        "pin_groups": [
+          [
+            "U2.PA0",
+            "U2.PA1"
+          ],
+          [
+            "U3.DE"
+          ],
+          [
+            "U3.RE"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T2-5-C01-006",
+      "check": "SAME_NET",
+      "desc": "SPI0 legal bundle mapping: accept one complete legal GD32F103 SPI0 routing bundle to Flash, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+      "params": {
+        "net_group_candidates": [
+          {
+            "label": "SPI0_DEFAULT",
+            "pin_groups_list": [
+              [
+                [
+                  "U2.PA5"
+                ],
+                [
+                  "U4.CLK"
+                ]
+              ],
+              [
+                [
+                  "U2.PA7"
+                ],
+                [
+                  "U4.DI"
+                ]
+              ],
+              [
+                [
+                  "U2.PA6"
+                ],
+                [
+                  "U4.DO"
+                ]
+              ],
+              [
+                [
+                  "U2.PA4"
+                ],
+                [
+                  "U4.CS"
+                ]
+              ]
+            ]
+          },
+          {
+            "label": "SPI0_REMAP",
+            "pin_groups_list": [
+              [
+                [
+                  "U2.PB3"
+                ],
+                [
+                  "U4.CLK"
+                ]
+              ],
+              [
+                [
+                  "U2.PB5"
+                ],
+                [
+                  "U4.DI"
+                ]
+              ],
+              [
+                [
+                  "U2.PB4"
+                ],
+                [
+                  "U4.DO"
+                ]
+              ],
+              [
+                [
+                  "U2.PA15"
+                ],
+                [
+                  "U4.CS"
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2-5-I01-001",
+      "check": "NOT_SAME_NET",
+      "desc": "BOOT0 must not be tied to VDD; forces bootloader mode instead of normal flash boot.",
+      "params": {
+        "pins": [
+          "U2.BOOT0",
+          "U2.VDD_1"
+        ]
+      }
+    },
+    {
+      "id": "T2-5-ANY-001",
+      "type": "ANY_OF",
+      "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U2.BOOT0",
+              "U2.VSS_1"
+            ]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U2.BOOT0",
+            "destination": "U2.VSS_1",
+            "max_hops": 6,
+            "allowed_components": [
+              "Resistor"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-5-ANY-002",
+      "type": "ANY_OF",
+      "desc": "Flash WP must be inactive: direct tie to VDD or pull-up to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U4.WP",
+              "U1.VOUT"
+            ]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U4.WP"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-5-ANY-003",
+      "type": "ANY_OF",
+      "desc": "Flash HOLD must be inactive: direct tie to VDD or pull-up to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U4.HOLD",
+              "U1.VOUT"
+            ]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U4.HOLD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-5-T11-001",
+      "check": "HAS_BUS_TERMINATION",
+      "desc": "RS485 differential bus requires 120ohm termination resistor between A and B.",
+      "params": {
+        "pin_p": "U3.A",
+        "pin_n": "U3.B",
+        "resistance_range": "100-140"
+      }
+    },
+    {
+      "id": "T2-5-T12-001",
+      "check": "HAS_DECOUPLING_NETWORK",
+      "desc": "GD32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+      "params": {
+        "pin": "U2.NRST",
+        "require_pullup_to_power": true,
+        "require_cap_to_ground": true
+      }
+    },
+    {
+      "id": "T2-5-T05-001",
+      "check": "HAS_CRYSTAL_PAIR",
+      "desc": "GD32 8MHz crystal on OSCIN/OSCOUT with load capacitors to ground.",
+      "params": {
+        "pin_osc_in": "U2.OSCIN",
+        "pin_osc_out": "U2.OSCOUT"
+      }
+    },
+    {
+      "id": "T2-5-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "LDO input rail (VIN) must have bypass capacitor to ground.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-5-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V domain must have decoupling capacitor to ground. One T01 covers the unified rail.",
+      "params": {
+        "pin": "U2.VDD_1"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 18,
+    "by_category": {
+      "SAME_NET": 5,
+      "NET_GROUP_ISOLATION": 1,
+      "CONNECTED_TO_GROUND": 1,
+      "CONNECTED_TO_POWER": 2,
+      "NOT_SAME_NET": 1,
+      "ANY_OF": 3,
+      "HAS_BUS_TERMINATION": 1,
+      "HAS_DECOUPLING_NETWORK": 1,
+      "HAS_CRYSTAL_PAIR": 1,
+      "HAS_CAP_TO_GROUND": 2
+    }
+  }
+}

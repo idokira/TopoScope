@@ -1,0 +1,596 @@
+{
+  "meta": {
+    "design_id": "T1-3",
+    "tier": 1,
+    "type": "LED",
+    "provider": "deepseek",
+    "model": "DeepSeek-V3.2",
+    "method": "full_system",
+    "run_id": 1,
+    "wall_time_seconds": 18.925
+  },
+  "compile_result": {
+    "status": "blocked_phase0_interface_contract",
+    "message": "Phase0 interface contract violations detected before compile.",
+    "phase0_interface_failures": {
+      "led_load": [
+        "LED_CATHODE",
+        "LED_DRIVE"
+      ]
+    }
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_4.7uF"
+      },
+      {
+        "refdes": "D1",
+        "part_number": "DIODE_Schottky"
+      },
+      {
+        "refdes": "L1",
+        "part_number": "IND_68uH"
+      },
+      {
+        "refdes": "LED1",
+        "part_number": "LED_UserDefined"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_0.285R"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "PT4115"
+      }
+    ],
+    "nets": [
+      {
+        "name": "CURRENT_SENSE_PATH",
+        "pins": [
+          "L1.1",
+          "LED1.A",
+          "LED1.K",
+          "R1.2",
+          "U1.CSN"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "R1.2",
+          "U1.EP",
+          "U1.GND"
+        ]
+      },
+      {
+        "name": "LED_CURRENT_PATH",
+        "pins": [
+          "D1.A",
+          "L1.2",
+          "U1.SW"
+        ]
+      },
+      {
+        "name": "VCC_5V",
+        "pins": [
+          "U1.DIM"
+        ]
+      },
+      {
+        "name": "VIN_12V",
+        "pins": [
+          "C1.1",
+          "D1.K",
+          "R1.1",
+          "U1.VIN"
+        ]
+      }
+    ]
+  },
+  "graph_snapshot": {
+    "directed": false,
+    "multigraph": false,
+    "graph": {
+      "shared_nets": {
+        "CURRENT_SENSE_PATH": {
+          "type": "Signal",
+          "modules": [
+            "led_driver",
+            "led_load"
+          ]
+        },
+        "GND": {
+          "type": "Ground",
+          "modules": [
+            "led_driver",
+            "led_load"
+          ]
+        },
+        "LED_CURRENT_PATH": {
+          "type": "Signal",
+          "modules": [
+            "led_driver",
+            "led_load"
+          ]
+        },
+        "VIN_12V": {
+          "type": "Power",
+          "modules": [
+            "led_driver",
+            "led_load"
+          ]
+        }
+      }
+    },
+    "nodes": [
+      {
+        "type": "Net",
+        "name": "GND",
+        "scope": "Global",
+        "net_type": "Ground",
+        "net_class": "Ground",
+        "semantic_role": "System common ground",
+        "source_pin": "",
+        "shared_modules": [
+          "led_driver",
+          "led_load"
+        ],
+        "id": "GND"
+      },
+      {
+        "type": "Net",
+        "name": "VIN_12V",
+        "scope": "Global",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "External 12V to 24V input rail for LED driver",
+        "source_pin": "",
+        "shared_modules": [
+          "led_driver",
+          "led_load"
+        ],
+        "id": "VIN_12V"
+      },
+      {
+        "type": "Module",
+        "name": "led_driver",
+        "description": "PT4115 high-power LED constant-current driver. Input VIN_12V range 12V-24V. Output drives LED at constant 350mA via SW pin. Current sense via external resistor connected between CSN and GND sets 350mA. DIM pin configured for maximum brightness (open or high logic). EP thermal pad connected to GND for heat dissipation.",
+        "id": "led_driver"
+      },
+      {
+        "type": "Component",
+        "refdes": "U1",
+        "part_number": "PT4115",
+        "description": "High-power LED constant-current driver",
+        "id": "U1"
+      },
+      {
+        "type": "Pin",
+        "name": "SW",
+        "pin_number": "1",
+        "electrical_type": "PowerOut",
+        "description": "Drain of internal N-Ch MOSFET power switch. When ON, SW is pulled to GND internally. Connects to inductor and freewheeling diode anode.",
+        "id": "U1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "GND",
+        "pin_number": "2",
+        "electrical_type": "Ground",
+        "description": "Power and signal ground. Connect directly to ground plane.",
+        "id": "U1_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "DIM",
+        "pin_number": "3",
+        "electrical_type": "Input",
+        "description": "Dimming control input. Internal 1.2M pull-up to 5V, can float for always-on. DC 0.5-2.5V for analog dimming. Below 0.3V forces shutdown (60uA quiescent). PWM dimming 100Hz-20kHz supported.",
+        "id": "U1_Pin3"
+      },
+      {
+        "type": "Pin",
+        "name": "CSN",
+        "pin_number": "4",
+        "electrical_type": "AnalogIn",
+        "description": "High-side current sense input. Connect sense resistor between VIN and CSN. IC measures (VIN - VCSN) to regulate LED current. ILED = 100mV / Rs.",
+        "id": "U1_Pin4"
+      },
+      {
+        "type": "Pin",
+        "name": "VIN",
+        "pin_number": "5",
+        "electrical_type": "PowerIn",
+        "description": "Power supply input, 6V to 30V. Requires low-ESR bypass capacitor (>=4.7uF).",
+        "id": "U1_Pin5"
+      },
+      {
+        "type": "Pin",
+        "name": "EP",
+        "pin_number": "PAD",
+        "electrical_type": "Ground",
+        "description": "Exposed thermal pad, internally connected to GND. Must be soldered to PCB ground plane for thermal dissipation.",
+        "id": "U1_PinPAD"
+      },
+      {
+        "type": "Module",
+        "name": "led_load",
+        "description": "High-power LED load (1W, 350mA). Requires constant current drive and anode-to-cathode connection path.",
+        "id": "led_load"
+      },
+      {
+        "type": "Net",
+        "name": "LED_CURRENT_PATH",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "led_driver",
+          "led_load"
+        ],
+        "id": "LED_CURRENT_PATH"
+      },
+      {
+        "type": "Net",
+        "name": "CURRENT_SENSE_PATH",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "led_driver",
+          "led_load"
+        ],
+        "id": "CURRENT_SENSE_PATH"
+      },
+      {
+        "type": "Component",
+        "refdes": "C1",
+        "part_number": "CAP_4.7uF",
+        "description": "Added from component output",
+        "id": "C1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C1_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R1",
+        "part_number": "RES_0.285R",
+        "description": "Added from component output",
+        "id": "R1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R1_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "D1",
+        "part_number": "DIODE_Schottky",
+        "description": "Added from component output",
+        "id": "D1"
+      },
+      {
+        "type": "Pin",
+        "name": "A",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "D1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "K",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "D1_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "LED1",
+        "part_number": "LED_UserDefined",
+        "description": "Added from component output",
+        "id": "LED1"
+      },
+      {
+        "type": "Pin",
+        "name": "A",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "LED1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "K",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "LED1_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "L1",
+        "part_number": "IND_68uH",
+        "description": "Added from component output",
+        "id": "L1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "L1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "L1_Pin2"
+      },
+      {
+        "type": "Net",
+        "name": "VCC_5V",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in led_driver",
+        "source_pin": "",
+        "id": "VCC_5V"
+      }
+    ],
+    "links": [
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U1_PinPAD"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "R1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_12V",
+        "target": "U1_Pin5"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_12V",
+        "target": "C1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_12V",
+        "target": "R1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_12V",
+        "target": "D1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "led_driver",
+        "target": "U1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "led_driver",
+        "target": "C1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "led_driver",
+        "target": "R1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "led_driver",
+        "target": "D1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "led_driver",
+        "target": "LED1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "led_driver",
+        "target": "L1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "led_driver",
+        "target": "VCC_5V"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_PinPAD"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin1",
+        "target": "LED_CURRENT_PATH"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin3",
+        "target": "VCC_5V"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin4",
+        "target": "CURRENT_SENSE_PATH"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "LED_CURRENT_PATH",
+        "target": "L1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "LED_CURRENT_PATH",
+        "target": "D1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "CURRENT_SENSE_PATH",
+        "target": "LED1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "CURRENT_SENSE_PATH",
+        "target": "L1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "CURRENT_SENSE_PATH",
+        "target": "LED1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "CURRENT_SENSE_PATH",
+        "target": "R1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1",
+        "target": "C1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1",
+        "target": "C1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R1",
+        "target": "R1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R1",
+        "target": "R1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "D1",
+        "target": "D1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "D1",
+        "target": "D1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "LED1",
+        "target": "LED1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "LED1",
+        "target": "LED1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "L1",
+        "target": "L1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "L1",
+        "target": "L1_Pin2"
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U1": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {
+      "led_load": [
+        "LED_CATHODE",
+        "LED_DRIVE"
+      ]
+    },
+    "existing_passive_components_count": 5
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "method": "full_system",
+  "model": "gemini-3.1-pro-preview",
+  "ablation": null,
+  "design_id": "T3-6",
+  "tier": 3,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 5,
+  "pass_at_k": {
+    "pass_at_1": 0.7142857142857143,
+    "pass_at_2": 0.9523809523809523,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9489795918367347,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-6_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9642857142857143,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-6-I02-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7_Pin6' and 'U6_Pin4' share net(s) ['VREF_5V']."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-6_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8928571428571429,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-I02-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pins are not on the same net: ['U4.VCC1', 'U1.VOUT'].; ALL_OF failed: Pins are not on the same net: ['U4.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pins are not on the same net: ['U5.GND1', 'U1.VSS'].; ALL_OF failed: Pins are not on the same net: ['U5.VCC2', 'U1.VOUT']."
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7_Pin6' and 'U6_Pin4' share net(s) ['VREF_5V']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-6_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-6_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8928571428571429,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-I02-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pins are not on the same net: ['U4.VCC1', 'U1.VOUT'].; ALL_OF failed: Pins are not on the same net: ['U4.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pins are not on the same net: ['U5.GND1', 'U1.VSS'].; ALL_OF failed: Pins are not on the same net: ['U5.VCC2', 'U1.VOUT']."
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7_Pin6' and 'U6_Pin4' share net(s) ['ISO_VREF_5V']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-6_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9642857142857143,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-6-I02-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7_Pin6' and 'U6_Pin4' share net(s) ['VREF_5V0']."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-6_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9642857142857143,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-6-I02-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7_Pin6' and 'U6_Pin4' share net(s) ['VREF_5V']."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-6_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9642857142857143,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-6-I02-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7_Pin6' and 'U6_Pin4' share net(s) ['VREF_5V_MEAS']."
+        }
+      ]
+    }
+  ]
+}

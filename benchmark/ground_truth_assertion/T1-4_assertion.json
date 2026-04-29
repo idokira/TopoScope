@@ -1,0 +1,119 @@
+{
+  "design_id": "T1-4",
+  "tier": 1,
+  "type": "AUD",
+  "description": "Compact two-stage audio amplifier. NE5532 provides the low-level preamplifier stage and LM386 provides the final low-voltage audio power amplification stage. The design uses a shared single-supply style power rail, with NE5532 channel 1 feeding LM386 input through an AC-coupled or resistively coupled signal path, and LM386 driving the final audio output.",
+  "ic_list": [
+    "NE5532 (U1)",
+    "LM386 (U2)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T1-4-C01-001",
+      "check": "SAME_NET",
+      "desc": "Ground/reference unification: NE5532 negative supply and LM386 ground must share one common ground net in single-supply operation.",
+      "params": {
+        "pins": [
+          "U1.VCC_N",
+          "U2.GND"
+        ]
+      }
+    },
+    {
+      "id": "T1-4-C01-002",
+      "check": "SAME_NET",
+      "desc": "Positive supply unification: NE5532 positive supply and LM386 supply must share one common power rail.",
+      "params": {
+        "pins": [
+          "U1.VCC_P",
+          "U2.VS"
+        ]
+      }
+    },
+    {
+      "id": "T1-4-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical net isolation: positive supply, ground, NE5532 stage-1 output, LM386 signal input, and LM386 power output must all reside on mutually distinct nets.",
+      "params": {
+        "groups": [
+          ["U2.VS"],
+          ["U2.GND"],
+          ["U1.OUT1"],
+          ["U2.IN_POS"],
+          ["U2.VOUT"]
+        ]
+      }
+    },
+    {
+      "id": "T1-4-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Unified ground/reference net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U2.GND"
+      }
+    },
+    {
+      "id": "T1-4-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "Shared amplifier supply rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U2.VS"
+      }
+    },
+    {
+      "id": "T1-4-C02-002",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "LM386 inverting input must be ground-referenced for the intended single-ended input configuration.",
+      "params": {
+        "pin": "U2.IN_NEG"
+      }
+    },
+    {
+      "id": "T1-4-SC01-001",
+      "check": "EXISTS_PATH",
+      "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+      "params": {
+        "from_pin": "U1.OUT1",
+        "destination": "U2.IN_POS",
+        "max_hops": 4,
+        "allowed_components": ["Resistor", "Capacitor"]
+      }
+    },
+    {
+      "id": "T1-4-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "The shared amplifier supply rail must have a bypass/decoupling capacitor to ground.",
+      "params": {
+        "pin": "U2.VS"
+      }
+    },
+    {
+      "id": "T1-4-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "LM386 BYPASS pin should have a capacitor to ground for reference stabilization and improved PSRR.",
+      "params": {
+        "pin": "U2.BYPASS"
+      }
+    },
+    {
+      "id": "T1-4-S02-001",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "LM386 power output pin must not be left floating; it should connect to an output network.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 10,
+    "by_category": {
+      "SAME_NET": 2,
+      "NET_GROUP_ISOLATION": 1,
+      "CONNECTED_TO_GROUND": 2,
+      "CONNECTED_TO_POWER": 1,
+      "EXISTS_PATH": 1,
+      "HAS_CAP_TO_GROUND": 2,
+      "PIN_NOT_FLOATING": 1
+    }
+  }
+}

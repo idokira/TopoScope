@@ -1,0 +1,597 @@
+[
+  {
+    "design_id": "T1-1",
+    "tier": 1,
+    "type": "COM",
+    "title": "USB-to-UART Interface with 3.3V LDO",
+    "task_description": "Design a simple USB-to-UART interface board. Use CH340 as the USB-to-UART bridge and XC6206 as a 3.3V regulator derived from the USB 5V input. The board exposes TXD and RXD as the UART interface.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "CH340",
+        "description": "USB-to-UART bridge"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "XC6206",
+        "description": "3.3V LDO regulator for USB-powered logic rail"
+      }
+    ]
+  },
+  {
+    "design_id": "T1-2",
+    "tier": 1,
+    "type": "PM",
+    "title": "LDO Regulator with Voltage Supervisor",
+    "task_description": "Design a regulated 3.3V power output stage. 5V input, fixed 3.3V output. Use AMS1117-3.3 as the regulator and TPS3703 as a voltage supervisor. The supervisor monitors the 3.3V output rail and provides a POWER_GOOD signal.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "1A fixed 3.3V LDO regulator"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "TPS3703",
+        "description": "Voltage supervisor / reset generator"
+      }
+    ]
+  },
+  {
+    "design_id": "T1-3",
+    "tier": 1,
+    "type": "LED",
+    "title": "LED Constant-Current Driver",
+    "task_description": "Design a high-power LED constant-current driver. 12V-24V input, driving a 1W LED at 350mA. Use PT4115 as the LED driver.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "PT4115",
+        "description": "High-power LED constant-current driver"
+      }
+    ]
+  },
+  {
+    "design_id": "T1-4",
+    "tier": 1,
+    "type": "AUD",
+    "title": "Two-Stage Audio Amplifier",
+    "task_description": "Design a compact audio amplifier. Single 9V supply, overall voltage gain about 100x-200x, driving an 8-ohm speaker. Use NE5532 as a low-level preamplifier stage and LM386 as the final power amplifier stage. The NE5532 output feeds the LM386 input.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "NE5532",
+        "description": "Dual low-noise operational amplifier used as preamplifier"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "LM386",
+        "description": "Low-voltage audio power amplifier"
+      }
+    ]
+  },
+  {
+    "design_id": "T2-1",
+    "tier": 2,
+    "type": "SEN",
+    "title": "Environmental Monitoring Terminal with Display",
+    "task_description": "Design an environmental monitoring terminal. STM32F103 MCU reads BME280 sensor and drives SSD1306 OLED display, both on a shared I2C bus. 5V input, AMS1117-3.3 provides 3.3V system power.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103",
+        "description": "ARM Cortex-M3 MCU"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "BME280",
+        "description": "I2C temperature/humidity/pressure sensor"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "SSD1306",
+        "description": "I2C 0.96-inch OLED display module"
+      }
+    ]
+  },
+  {
+    "design_id": "T2-2",
+    "tier": 2,
+    "type": "SEN",
+    "title": "IMU Data Logger",
+    "task_description": "Design an inertial data logger. ATmega328P MCU reads MPU-6050 6-axis IMU via I2C and logs data to W25Q64JV Flash via SPI. 5V input, ME6211 provides 3.3V system power.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "ME6211",
+        "description": "3.3V LDO regulator"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "ATmega328P",
+        "description": "AVR 8-bit MCU"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MPU-6050",
+        "description": "6-axis IMU (accelerometer + gyroscope)"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "W25Q64JV",
+        "description": "64Mbit SPI NOR Flash"
+      }
+    ]
+  },
+  {
+    "design_id": "T2-3",
+    "tier": 2,
+    "type": "COM",
+    "title": "USB Development Board with EEPROM Storage",
+    "task_description": "Design a USB development board. CH32V003 RISC-V MCU as main controller, CH340 provides USB-to-UART bridge, AT24C256 EEPROM stores configuration data. USB 5V input, XC6206 provides 3.3V system power.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "XC6206",
+        "description": "3.3V LDO regulator"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "CH340",
+        "description": "USB to UART bridge"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "CH32V003",
+        "description": "RISC-V MCU"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "AT24C256",
+        "description": "256Kbit I2C EEPROM"
+      }
+    ]
+  },
+  {
+    "design_id": "T2-4",
+    "tier": 2,
+    "type": "COM",
+    "title": "CAN Bus Node",
+    "task_description": "Design a CAN bus communication node. STM32F103 communicates with MCP2515 standalone CAN controller via SPI, which connects to SN65HVD230 CAN transceiver for differential bus access. 5V input, AMS1117-3.3 provides 3.3V system power.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103",
+        "description": "ARM Cortex-M3 MCU"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MCP2515",
+        "description": "SPI CAN controller"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "SN65HVD230",
+        "description": "3.3V CAN transceiver"
+      }
+    ]
+  },
+  {
+    "design_id": "T2-5",
+    "tier": 2,
+    "type": "COM",
+    "title": "RS485 Modbus Node",
+    "task_description": "Design an RS485 Modbus communication node. GD32F103 connects to SP3485 RS485 transceiver via UART, and to W25Q128JV Flash via SPI for communication logging. 5V input, AMS1117-3.3 provides 3.3V system power.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "GD32F103",
+        "description": "ARM Cortex-M3 MCU (GigaDevice)"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "SP3485",
+        "description": "3.3V RS485 transceiver"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "W25Q128JV",
+        "description": "128Mbit SPI NOR Flash"
+      }
+    ]
+  },
+  {
+    "design_id": "T2-6",
+    "tier": 2,
+    "type": "PM",
+    "title": "Triple-Rail Power Supply with Single-Rail Power-Good Monitor",
+    "task_description": "Design a triple-rail power board without an MCU. A 12V input is converted to 5V, then to 3.3V, then to 1.8V in a three-stage cascade. Use one LM393 comparator channel to monitor the 3.3V rail and generate a POWER_GOOD signal. Tie the unused LM393 comparator channel inputs to ground.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "TPS54331",
+        "description": "12V to 5V Buck converter"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "ME6211",
+        "description": "3.3V to 1.8V LDO"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "LM393",
+        "description": "Dual comparator; use channel 1 for VCC_3V3 monitor, tie channel 2 inputs to GND"
+      }
+    ]
+  },
+  {
+    "design_id": "T2-7",
+    "tier": 2,
+    "type": "DRV",
+    "title": "DC Motor Driver with Current Sense Feedback",
+    "task_description": "Design a single-channel DC motor driver. STM32F103 controls TB6612FNG channel A using AIN1, AIN2, PWMA, and STBY. Use a low-side shunt for motor current sensing; INA128 senses the two shunt terminals and outputs to an STM32 ADC. VIN_MOTOR is external; VIN_5V feeds AMS1117-3.3 for VCC_3V3. Use common GND, not isolated grounds.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103",
+        "description": "ARM Cortex-M3 MCU"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "TB6612FNG",
+        "description": "Dual H-bridge motor driver"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "INA128",
+        "description": "Precision instrumentation amplifier"
+      }
+    ]
+  },
+  {
+    "design_id": "T2-8",
+    "tier": 2,
+    "type": "AUD",
+    "title": "Single-Channel Audio Preamplifier with DAC Bias Control",
+    "task_description": "Design a single-channel audio preamplifier. ATmega328P controls MCP4725 over I2C. MCP4725 VOUT provides a bias/control voltage to the NE5532 channel-1 non-inverting input network. Use NE5532 channel 1 as a non-inverting amplifier; tie unused channel-2 inputs to a safe bias state and leave its output unused. VIN_5V powers the analog stage; AMS1117-3.3 powers ATmega328P and MCP4725. Use common GND.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO for digital supply"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "ATmega328P",
+        "description": "AVR 8-bit MCU"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MCP4725",
+        "description": "12-bit I2C DAC"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "NE5532",
+        "description": "Dual low-noise operational amplifier"
+      }
+    ]
+  },
+  {
+    "design_id": "T2-9",
+    "tier": 2,
+    "type": "LED",
+    "title": "LED Matrix Display Controller",
+    "task_description": "Design an LED matrix display controller. STM32F103 drives MAX7219 LED driver via SPI. MAX7219 cascades to 74HC595 shift register for output expansion. 5V input, AMS1117-3.3 powers the MCU. Note: MAX7219 and 74HC595 require 5V supply.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO for MCU"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103",
+        "description": "ARM Cortex-M3 MCU"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MAX7219",
+        "description": "8-digit LED display driver"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "74HC595",
+        "description": "8-bit shift register"
+      }
+    ]
+  },
+  {
+    "design_id": "T2-10",
+    "tier": 2,
+    "type": "SEN",
+    "title": "Precision ADC Readout with Reference Monitoring",
+    "task_description": "Design a precision ADC readout board. STM32F103 reads ADS1115 via I2C. ADS1115 measures one external analog input and also monitors REF5050 output as a precision reference/calibration voltage. VIN_5V powers REF5050 and feeds AMS1117-3.3, which provides 3.3V for STM32F103 and ADS1115. Use common GND with analog/digital star-ground intent.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO for digital supply"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103",
+        "description": "ARM Cortex-M3 MCU"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "ADS1115",
+        "description": "16-bit I2C ADC"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "REF5050",
+        "description": "5.0V precision voltage reference monitored by ADC"
+      }
+    ]
+  },
+  {
+    "design_id": "T3-1",
+    "tier": 3,
+    "type": "SEN",
+    "title": "Flight Controller Core",
+    "task_description": "Design a flight controller core board. A 5V input feeds TPS54331 to generate a 3.3V digital rail and ME6211 to generate a separate 3.3V analog/sensor rail. STM32F427 connects to MPU-6050 IMU via I2C, and to BMP280 barometer and W25Q128JV black-box Flash via shared SPI with separate chip-select signals. Use common GND with analog/digital star-ground intent. Keep the digital 3.3V and analog 3.3V rails distinct, but do not galvanically isolate grounds.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "TPS54331",
+        "description": "5V to 3.3V Buck for digital power"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "ME6211",
+        "description": "5V to 3.3V LDO for analog power"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "STM32F427",
+        "description": "ARM Cortex-M4F MCU (100-pin)"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "MPU-6050",
+        "description": "6-axis IMU"
+      },
+      {
+        "refdes": "U5",
+        "part_number": "BMP280",
+        "description": "Barometric pressure sensor"
+      },
+      {
+        "refdes": "U6",
+        "part_number": "W25Q128JV",
+        "description": "128Mbit SPI NOR Flash"
+      }
+    ]
+  },
+  {
+    "design_id": "T3-2",
+    "tier": 3,
+    "type": "COM",
+    "title": "Battery-Powered IoT Gateway",
+    "task_description": "Design a battery-powered IoT gateway. USB-C 5V connects to CP2102N for debug UART and to TP4056 for Li-ion charging. TP4056 charges the battery, DW01A protects the battery, and the protected battery node feeds ME6211 to generate 3.3V. ESP32-WROOM-32E is the main controller and reads BME280 over I2C. Do not implement full USB/battery load-sharing or power-path ORing.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "CP2102N",
+        "description": "USB to UART bridge"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "TP4056",
+        "description": "Linear Li-ion battery charger"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "DW01A",
+        "description": "Li-ion battery protection IC"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "ME6211",
+        "description": "3.3V LDO regulator"
+      },
+      {
+        "refdes": "U5",
+        "part_number": "ESP32-WROOM-32E",
+        "description": "WiFi+BLE MCU module"
+      },
+      {
+        "refdes": "U6",
+        "part_number": "BME280",
+        "description": "I2C environmental sensor"
+      }
+    ]
+  },
+  {
+    "design_id": "T3-3",
+    "tier": 3,
+    "type": "DRV",
+    "title": "Dual Stepper Motor Controller",
+    "task_description": "Design a dual stepper motor controller. STM32F103 MCU connects to two TMC2209 stepper drivers via UART (different addresses) and to W25Q64JV Flash via SPI for motion parameter storage. 12V-24V motor power input, TPS54331 steps down to 5V, AMS1117-3.3 steps down to 3.3V. High-voltage motor supply and low-voltage logic supply are separate rails but share common GND. Do not create galvanic isolation.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "TPS54331",
+        "description": "Motor power to 5V Buck converter"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "STM32F103",
+        "description": "ARM Cortex-M3 MCU"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "TMC2209",
+        "description": "Stepper motor driver (channel A)"
+      },
+      {
+        "refdes": "U5",
+        "part_number": "TMC2209",
+        "description": "Stepper motor driver (channel B)"
+      },
+      {
+        "refdes": "U6",
+        "part_number": "W25Q64JV",
+        "description": "64Mbit SPI NOR Flash"
+      }
+    ]
+  },
+  {
+    "design_id": "T3-4",
+    "tier": 3,
+    "type": "AUD",
+    "title": "Stereo Audio Playback System",
+    "task_description": "Design a stereo audio playback system. USB_5V powers PAM8403 directly and feeds AMS1117-3.3 for ATmega328P and MCP4725. MT3608 boosts USB_5V to 9V only for the NE5532 preamplifier stage. ATmega328P controls MCP4725 over I2C. MCP4725 VOUT provides a shared GAIN_CTRL or bias-control signal to the NE5532 stereo preamp. NE5532 left/right outputs feed PAM8403 left/right inputs, and PAM8403 drives stereo speakers. Use common GND with analog/digital star-ground intent. Do not require a complete voltage-controlled gain circuit.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "MT3608",
+        "description": "5V to 9V Boost converter"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "ATmega328P",
+        "description": "AVR 8-bit MCU"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "MCP4725",
+        "description": "12-bit I2C DAC"
+      },
+      {
+        "refdes": "U5",
+        "part_number": "NE5532",
+        "description": "Dual low-noise op-amp"
+      },
+      {
+        "refdes": "U6",
+        "part_number": "PAM8403",
+        "description": "3W stereo Class-D amplifier"
+      }
+    ]
+  },
+  {
+    "design_id": "T3-5",
+    "tier": 3,
+    "type": "PM",
+    "title": "Branched Multi-Rail Power Management Board",
+    "task_description": "Design a multi-rail power management board without an MCU. A 12V input feeds TPS54331 to generate 5V. The 5V rail feeds TPS61088 to generate a boosted 12V load rail, AMS1117-3.3 to generate 3.3V, and ME6211 to generate 1.8V from 3.3V. TPS3703 monitors the 5V rail and outputs POWER_GOOD. Use simple always-on enable connections where required.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "TPS54331",
+        "description": "12V to 5V buck converter"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "TPS61088",
+        "description": "5V to boosted 12V converter"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "ME6211",
+        "description": "3.3V to 1.8V LDO"
+      },
+      {
+        "refdes": "U5",
+        "part_number": "TPS3703",
+        "description": "Single-channel voltage supervisor monitoring the 5V rail"
+      }
+    ]
+  },
+  {
+    "design_id": "T3-6",
+    "tier": 3,
+    "type": "SEN",
+    "title": "Galvanically Isolated Precision ADC Node",
+    "task_description": "Design a galvanically isolated precision ADC node. VIN_5V powers XC6206, STM32F103, and the MCU-side ISO7721 supplies. External ISO_5V powers REF5050 and a second XC6206, which generates ISO_3V3 for ADS1118 and the isolated-side ISO7721 supplies. REF5050 VOUT connects to one ADS1118 analog input. ISO7721 devices isolate STM32F103↔ADS1118 SPI, including ADS1118 return data. GND and ISO_GND must never connect.",
+    "component_list": [
+      {
+        "refdes": "U1",
+        "part_number": "XC6206",
+        "description": "3.3V LDO for non-isolated side"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "XC6206",
+        "description": "3.3V LDO for isolated-side digital supply"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "STM32F103",
+        "description": "ARM Cortex-M3 MCU"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "ISO7721",
+        "description": "Dual-channel digital isolator"
+      },
+      {
+        "refdes": "U5",
+        "part_number": "ISO7721",
+        "description": "Dual-channel digital isolator"
+      },
+      {
+        "refdes": "U6",
+        "part_number": "ADS1118",
+        "description": "16-bit SPI ADC on isolated side"
+      },
+      {
+        "refdes": "U7",
+        "part_number": "REF5050",
+        "description": "5.0V precision reference on isolated side"
+      }
+    ]
+  }
+]

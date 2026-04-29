@@ -1,0 +1,176 @@
+{
+  "method": "full_system",
+  "model": "gemini-3.1-pro-preview",
+  "ablation": null,
+  "design_id": "T3-1",
+  "tier": 3,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 7,
+  "pass_at_k": {
+    "pass_at_1": 1.0,
+    "pass_at_2": 1.0,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9567099567099567,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-1_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9696969696969697,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-1-C01-012"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-1_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9696969696969697,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-1-C01-012"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-1_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9090909090909091,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-1-C01-001",
+        "T3-1-C01-012",
+        "T3-1-ANY-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: power regulators, STM32 grounds/reference-negative, IMU ground, barometer grounds, and flash ground share one common GND with star-ground layout intent.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.VSS', 'U3.VSS_1', 'U3.VSS_2', 'U3.VSS_3', 'U3.VSSA', 'U3.VREF_N', 'U4.GND', 'U5.GND_1', 'U5.GND_2', 'U6.GND']."
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        },
+        {
+          "id": "T3-1-ANY-002",
+          "check": "ANY_OF",
+          "desc": "STM32F427 analog supply/reference-positive may either join the dedicated analog/sensor rail or remain on the digital 3.3V rail, but VDDA and VREF_P must be implemented consistently together.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VDDA', 'U3.VREF_P', 'U2.VOUT'].; Pins are not on the same net: ['U3.VDDA', 'U3.VREF_P', 'U6.VCC']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-1_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9696969696969697,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-1-C01-012"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-1_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9696969696969697,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-1-C01-012"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-1_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9696969696969697,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-1-C01-012"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-1_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9393939393939394,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-1-C01-012",
+        "T3-1-S02-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        },
+        {
+          "id": "T3-1-S02-001",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TPS54331 EN must not float; the digital buck regulator requires a defined enable state.",
+          "message": "Pin 'U1_Pin3' is floating."
+        }
+      ]
+    }
+  ]
+}

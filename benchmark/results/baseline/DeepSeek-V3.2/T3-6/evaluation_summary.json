@@ -1,0 +1,946 @@
+{
+  "method": "baseline",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T3-6",
+  "tier": 3,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.39039408866995073,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-6_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 28,
+      "violated_assertion_names": [
+        "T3-6-C01-001",
+        "T3-6-C01-002",
+        "T3-6-C01-003",
+        "T3-6-C01-004",
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-SC01-001",
+        "T3-6-I02-001",
+        "T3-6-I02-002",
+        "T3-6-I02-003",
+        "T3-6-I02-004",
+        "T3-6-I02-005",
+        "T3-6-C02-001",
+        "T3-6-C02-002",
+        "T3-6-C03-001",
+        "T3-6-C03-002",
+        "T3-6-C03-003",
+        "T3-6-C03-004",
+        "T3-6-I03-001",
+        "T3-6-T01-001",
+        "T3-6-T01-002",
+        "T3-6-T01-003",
+        "T3-6-T01-004",
+        "T3-6-T01-005",
+        "T3-6-T01-006"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-C01-001",
+          "check": "SAME_NET",
+          "desc": "Non-isolated ground backbone: U1 ground and STM32 grounds share common GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C01-002",
+          "check": "SAME_NET",
+          "desc": "Isolated ground backbone: U2 ground, ADS1118 ground, and REF5050 ground share ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "Non-isolated 3.3V backbone: U1 output powers STM32 core/analog supplies.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C01-004",
+          "check": "SAME_NET",
+          "desc": "Isolated 3.3V backbone: U2 output powers ADS1118.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Reference monitoring path: REF5050 VOUT reaches ADS1118 AIN0 through a resistor-based attenuation or signal-conditioning path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Galvanic isolation boundary: non-isolated GND and isolated ISO_GND must never be connected.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-002",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Non-isolated and isolated supply rails must remain separate.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 output, isolated rails, isolated ground, and ADS1118 digital SPI pins must remain distinct.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Non-isolated GND must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C02-002",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Isolated ISO_GND must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "VIN_5V input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Non-isolated 3.3V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "External isolated 5V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-004",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Isolated 3.3V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1118 analog reference-monitor input must not be shorted to SPI digital pins.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "VIN_5V input rail should have bypass capacitor to non-isolated GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "Non-isolated 3.3V rail should have decoupling capacitor to non-isolated GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "External ISO_5V rail should have bypass capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-004",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "Isolated ISO_3V3 rail should have decoupling capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 VOUT should have stabilization capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-006",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "ADS1118 VDD should have local decoupling capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-6_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 28,
+      "violated_assertion_names": [
+        "T3-6-C01-001",
+        "T3-6-C01-002",
+        "T3-6-C01-003",
+        "T3-6-C01-004",
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-SC01-001",
+        "T3-6-I02-001",
+        "T3-6-I02-002",
+        "T3-6-I02-003",
+        "T3-6-I02-004",
+        "T3-6-I02-005",
+        "T3-6-C02-001",
+        "T3-6-C02-002",
+        "T3-6-C03-001",
+        "T3-6-C03-002",
+        "T3-6-C03-003",
+        "T3-6-C03-004",
+        "T3-6-I03-001",
+        "T3-6-T01-001",
+        "T3-6-T01-002",
+        "T3-6-T01-003",
+        "T3-6-T01-004",
+        "T3-6-T01-005",
+        "T3-6-T01-006"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-C01-001",
+          "check": "SAME_NET",
+          "desc": "Non-isolated ground backbone: U1 ground and STM32 grounds share common GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C01-002",
+          "check": "SAME_NET",
+          "desc": "Isolated ground backbone: U2 ground, ADS1118 ground, and REF5050 ground share ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "Non-isolated 3.3V backbone: U1 output powers STM32 core/analog supplies.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C01-004",
+          "check": "SAME_NET",
+          "desc": "Isolated 3.3V backbone: U2 output powers ADS1118.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Reference monitoring path: REF5050 VOUT reaches ADS1118 AIN0 through a resistor-based attenuation or signal-conditioning path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Galvanic isolation boundary: non-isolated GND and isolated ISO_GND must never be connected.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-002",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Non-isolated and isolated supply rails must remain separate.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 output, isolated rails, isolated ground, and ADS1118 digital SPI pins must remain distinct.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Non-isolated GND must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C02-002",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Isolated ISO_GND must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "VIN_5V input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Non-isolated 3.3V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "External isolated 5V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-004",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Isolated 3.3V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1118 analog reference-monitor input must not be shorted to SPI digital pins.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "VIN_5V input rail should have bypass capacitor to non-isolated GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "Non-isolated 3.3V rail should have decoupling capacitor to non-isolated GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "External ISO_5V rail should have bypass capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-004",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "Isolated ISO_3V3 rail should have decoupling capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 VOUT should have stabilization capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-006",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "ADS1118 VDD should have local decoupling capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-6_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7241379310344828,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T3-6-C01-003",
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-I02-003",
+        "T3-6-I02-005",
+        "T3-6-T01-005",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "Non-isolated 3.3V backbone: U1 output powers STM32 core/analog supplies.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U3.VDD_1', 'U3.VDD_2', 'U3.VDD_3', 'U3.VDDA', 'U3.VBAT']."
+        },
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]']; ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]']"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.INA'].; ALL_OF failed: Pin(s) not found: ['U5.INB']."
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U6.CS', 'U6.GND'].; No constrained path found from 'U6.CS' to 'U6.GND' within 6 hops using components ['resistor'].; ALL_OF failed: Some pin groups unresolved or floating: [{'group_index': 1, 'missing': ['U5.INA']}]"
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Pin(s) not found: ['U4.INA']."
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Isolation violated: 'U7.VOUT' and 'U6.AIN0' share net(s) ['REF_5V']."
+        },
+        {
+          "id": "T3-6-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 VOUT should have stabilization capacitor to ISO_GND.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U7.VOUT'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R1.2",
+          "message": "Pin 'R1.2' is connected to multiple nets: [GND, U3_BOOT0]"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-6_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6785714285714286,
+      "violated_assertion_count": 9,
+      "violated_assertion_names": [
+        "T3-6-C01-002",
+        "T3-6-C01-003",
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-I02-003",
+        "T3-6-T01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-C01-002",
+          "check": "SAME_NET",
+          "desc": "Isolated ground backbone: U2 ground, ADS1118 ground, and REF5050 ground share ISO_GND.",
+          "message": "Pin(s) not found: ['U7.GND']."
+        },
+        {
+          "id": "T3-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "Non-isolated 3.3V backbone: U1 output powers STM32 core/analog supplies.",
+          "message": "Pin(s) not found: ['U3.VDDA']."
+        },
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]']; ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB13\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]']"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.INA'].; ALL_OF failed: Pin(s) not found: ['U5.INB']."
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U6.CS', 'U6.GND'].; No constrained path found from 'U6.CS' to 'U6.GND' within 6 hops using components ['resistor'].; ALL_OF failed: Some pin groups unresolved or floating: [{'group_index': 1, 'missing': ['U5.INA']}]"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pins are not on the same net: ['U4.GND1', 'U1.VSS'].; ALL_OF failed: Pins are not on the same net: ['U4.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Pins are not on the same net: ['U5.GND1', 'U1.VSS'].; ALL_OF failed: Pins are not on the same net: ['U5.GND2', 'U1.VSS']."
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Pin(s) not found: ['U4.INA']."
+        },
+        {
+          "id": "T3-6-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 VOUT should have stabilization capacitor to ISO_GND.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U7.VOUT'."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-6_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5714285714285714,
+      "violated_assertion_count": 12,
+      "violated_assertion_names": [
+        "T3-6-C01-002",
+        "T3-6-C01-003",
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-SC01-001",
+        "T3-6-I02-003",
+        "T3-6-I02-004",
+        "T3-6-I02-005",
+        "T3-6-T01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-C01-002",
+          "check": "SAME_NET",
+          "desc": "Isolated ground backbone: U2 ground, ADS1118 ground, and REF5050 ground share ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "Non-isolated 3.3V backbone: U1 output powers STM32 core/analog supplies.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U3.VDD_1', 'U3.VDD_2', 'U3.VDD_3', 'U3.VDDA', 'U3.VBAT']."
+        },
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U6.CS', 'U6.GND'].; No constrained path found from 'U6.CS' to 'U6.GND' within 6 hops using components ['resistor'].; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Reference monitoring path: REF5050 VOUT reaches ADS1118 AIN0 through a resistor-based attenuation or signal-conditioning path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 output, isolated rails, isolated ground, and ADS1118 digital SPI pins must remain distinct.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 VOUT should have stabilization capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-6_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7586206896551724,
+      "violated_assertion_count": 7,
+      "violated_assertion_names": [
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-SC01-001",
+        "T3-6-I02-003",
+        "T3-6-T01-005",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PA5\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INA\\']}]\"]']; ALL_OF failed: All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PA5\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI1_REMAP failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}, {\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]', 'Candidate SPI2 failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 1, \\'missing\\': [\\'U4.INB\\']}]\"]']"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Pin(s) not found: ['U5.INA'].; ALL_OF failed: Pin(s) not found: ['U5.INB']."
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U6.CS', 'U6.GND'].; No constrained path found from 'U6.CS' to 'U6.GND' within 6 hops using components ['resistor'].; ALL_OF failed: Some pin groups unresolved or floating: [{'group_index': 1, 'missing': ['U5.INA']}]"
+        },
+        {
+          "id": "T3-6-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Reference monitoring path: REF5050 VOUT reaches ADS1118 AIN0 through a resistor-based attenuation or signal-conditioning path.",
+          "message": "No constrained path found from 'U7.VOUT' to 'U6.AIN0' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Pin(s) not found: ['U4.INA']."
+        },
+        {
+          "id": "T3-6-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 VOUT should have stabilization capacitor to ISO_GND.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U7.VOUT'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U7.VOUT",
+          "message": "Pin 'U7.VOUT' is connected to multiple nets: [AIN3, ISO_5VREF]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-6_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 28,
+      "violated_assertion_names": [
+        "T3-6-C01-001",
+        "T3-6-C01-002",
+        "T3-6-C01-003",
+        "T3-6-C01-004",
+        "T3-6-ANY-001",
+        "T3-6-ANY-002",
+        "T3-6-ANY-003",
+        "T3-6-ANY-004",
+        "T3-6-ANY-005",
+        "T3-6-SC01-001",
+        "T3-6-I02-001",
+        "T3-6-I02-002",
+        "T3-6-I02-003",
+        "T3-6-I02-004",
+        "T3-6-I02-005",
+        "T3-6-C02-001",
+        "T3-6-C02-002",
+        "T3-6-C03-001",
+        "T3-6-C03-002",
+        "T3-6-C03-003",
+        "T3-6-C03-004",
+        "T3-6-I03-001",
+        "T3-6-T01-001",
+        "T3-6-T01-002",
+        "T3-6-T01-003",
+        "T3-6-T01-004",
+        "T3-6-T01-005",
+        "T3-6-T01-006"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-6-C01-001",
+          "check": "SAME_NET",
+          "desc": "Non-isolated ground backbone: U1 ground and STM32 grounds share common GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C01-002",
+          "check": "SAME_NET",
+          "desc": "Isolated ground backbone: U2 ground, ADS1118 ground, and REF5050 ground share ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "Non-isolated 3.3V backbone: U1 output powers STM32 core/analog supplies.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C01-004",
+          "check": "SAME_NET",
+          "desc": "Isolated 3.3V backbone: U2 output powers ADS1118.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-003",
+          "check": "ANY_OF",
+          "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-004",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-ANY-005",
+          "check": "ANY_OF",
+          "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+          "message": "ANY_OF failed: ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Reference monitoring path: REF5050 VOUT reaches ADS1118 AIN0 through a resistor-based attenuation or signal-conditioning path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Galvanic isolation boundary: non-isolated GND and isolated ISO_GND must never be connected.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-002",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Non-isolated and isolated supply rails must remain separate.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 output, isolated rails, isolated ground, and ADS1118 digital SPI pins must remain distinct.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Non-isolated GND must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C02-002",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Isolated ISO_GND must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "VIN_5V input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Non-isolated 3.3V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "External isolated 5V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-C03-004",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Isolated 3.3V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1118 analog reference-monitor input must not be shorted to SPI digital pins.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "VIN_5V input rail should have bypass capacitor to non-isolated GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "Non-isolated 3.3V rail should have decoupling capacitor to non-isolated GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "External ISO_5V rail should have bypass capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-004",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "Isolated ISO_3V3 rail should have decoupling capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 VOUT should have stabilization capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-6-T01-006",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "ADS1118 VDD should have local decoupling capacitor to ISO_GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    }
+  ]
+}

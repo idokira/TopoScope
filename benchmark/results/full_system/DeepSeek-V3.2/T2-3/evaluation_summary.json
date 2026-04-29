@@ -1,0 +1,267 @@
+{
+  "method": "full_system",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T2-3",
+  "tier": 2,
+  "type": "COM",
+  "num_runs": 7,
+  "pass_count": 1,
+  "pass_at_k": {
+    "pass_at_1": 0.1428571428571429,
+    "pass_at_2": 0.2857142857142857,
+    "pass_at_3": 0.4285714285714286,
+    "pass_at_4": 0.5714285714285714,
+    "pass_at_5": 0.7142857142857143,
+    "pass_at_6": 0.8571428571428572,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8367346938775511,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-3_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.85,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-3-C01-002",
+        "T2-3-C01-003",
+        "T2-3-C01-004"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, CH340 VCC+V3 (3.3V mode), MCU VDD, and EEPROM VCC share one power net. V3 tied to VCC is mandatory for CH340 3.3V IO level operation.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.V3', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-3-C01-003",
+          "check": "SAME_NET",
+          "desc": "UART TX crossover: MCU TX (PD5) connects to CH340 RXD.",
+          "message": "Pins are not on the same net: ['U3.PD5', 'U2.RXD']."
+        },
+        {
+          "id": "T2-3-C01-004",
+          "check": "SAME_NET",
+          "desc": "UART RX crossover: CH340 TXD connects to MCU RX (PD6).",
+          "message": "Pins are not on the same net: ['U3.PD6', 'U2.TXD']."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-3_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-3-C01-002",
+        "T2-3-I02-001",
+        "T2-3-T06-002",
+        "T2-3-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, CH340 VCC+V3 (3.3V mode), MCU VDD, and EEPROM VCC share one power net. V3 tied to VCC is mandatory for CH340 3.3V IO level operation.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.V3', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-3-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, VCC, VIN, USB D+/D-, UART TX/RX, I2C SDA/SCL, crystal XI/XO, and NRST must all reside on mutually distinct nets. C(12,2)=66 implicit isolation constraints.",
+          "message": "Isolation violated: 'U3_Pin2' and 'U3_Pin3' share net(s) ['USB_UART_TX_TO_MCU_RX']."
+        },
+        {
+          "id": "T2-3-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin11'."
+        },
+        {
+          "id": "T2-3-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin12'."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-3_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8571428571428571,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-3-C01-002",
+        "T2-3-I02-001",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, CH340 VCC+V3 (3.3V mode), MCU VDD, and EEPROM VCC share one power net. V3 tied to VCC is mandatory for CH340 3.3V IO level operation.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.V3', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-3-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, VCC, VIN, USB D+/D-, UART TX/RX, I2C SDA/SCL, crystal XI/XO, and NRST must all reside on mutually distinct nets. C(12,2)=66 implicit isolation constraints.",
+          "message": "Isolation violated: 'U3_Pin2' and 'U3_Pin3' share net(s) ['USB_UART_TX_TO_MCU_RX']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U2_Pin4",
+          "message": "Pin 'U2_Pin4' is connected to multiple nets: [U2_V3, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-3_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.85,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-3-C01-002",
+        "T2-3-T06-002",
+        "T2-3-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, CH340 VCC+V3 (3.3V mode), MCU VDD, and EEPROM VCC share one power net. V3 tied to VCC is mandatory for CH340 3.3V IO level operation.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.V3', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-3-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin11'."
+        },
+        {
+          "id": "T2-3-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin12'."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-3_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-3-C01-002",
+        "T2-3-I02-001",
+        "T2-3-T06-002",
+        "T2-3-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, CH340 VCC+V3 (3.3V mode), MCU VDD, and EEPROM VCC share one power net. V3 tied to VCC is mandatory for CH340 3.3V IO level operation.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.V3', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-3-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, VCC, VIN, USB D+/D-, UART TX/RX, I2C SDA/SCL, crystal XI/XO, and NRST must all reside on mutually distinct nets. C(12,2)=66 implicit isolation constraints.",
+          "message": "Isolation violated: 'U3_Pin2' and 'U3_Pin3' share net(s) ['MCU_TX_TO_CH340_RX']."
+        },
+        {
+          "id": "T2-3-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin11'."
+        },
+        {
+          "id": "T2-3-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin12'."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-3_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.75,
+      "violated_assertion_count": 5,
+      "violated_assertion_names": [
+        "T2-3-C01-002",
+        "T2-3-I02-001",
+        "T2-3-C02-003",
+        "T2-3-C02-004",
+        "T2-3-ANY-004"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, CH340 VCC+V3 (3.3V mode), MCU VDD, and EEPROM VCC share one power net. V3 tied to VCC is mandatory for CH340 3.3V IO level operation.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.V3', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-3-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, VCC, VIN, USB D+/D-, UART TX/RX, I2C SDA/SCL, crystal XI/XO, and NRST must all reside on mutually distinct nets. C(12,2)=66 implicit isolation constraints.",
+          "message": "Isolation violated: 'U3_Pin2' and 'U3_Pin3' share net(s) ['MCU_TX_TO_BRIDGE_RX']."
+        },
+        {
+          "id": "T2-3-C02-003",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "EEPROM A1 must be grounded per design spec (I2C address 0x50).",
+          "message": "Pin 'U4_Pin2' is not connected to a ground net."
+        },
+        {
+          "id": "T2-3-C02-004",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "EEPROM A2 must be grounded per design spec (I2C address 0x50).",
+          "message": "Pin 'U4_Pin3' is not connected to a ground net."
+        },
+        {
+          "id": "T2-3-ANY-004",
+          "check": "ANY_OF",
+          "desc": "EEPROM WP must be held low to enable writes: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.WP', 'U1.VSS'].; No constrained path found from 'U4_Pin7' to 'U1.VSS' within 6 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-3_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.95,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-3-C01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, CH340 VCC+V3 (3.3V mode), MCU VDD, and EEPROM VCC share one power net. V3 tied to VCC is mandatory for CH340 3.3V IO level operation.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.V3', 'U3.VDD', 'U4.VCC']."
+        }
+      ]
+    }
+  ]
+}

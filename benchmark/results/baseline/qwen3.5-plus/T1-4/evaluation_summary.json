@@ -1,0 +1,252 @@
+{
+  "method": "baseline",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T1-4",
+  "tier": 1,
+  "type": "AUD",
+  "num_runs": 8,
+  "pass_count": 5,
+  "pass_at_k": {
+    "pass_at_1": 0.625,
+    "pass_at_2": 0.8928571428571429,
+    "pass_at_3": 0.9821428571428571,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0,
+    "pass_at_8": 1.0
+  },
+  "avg_assertion_pass_rate": 0.7625000000000001,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T1-4_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T1-4-SC01-001",
+        "T1-4-T01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        },
+        {
+          "id": "T1-4-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "LM386 BYPASS pin should have a capacitor to ground for reference stabilization and improved PSRR.",
+          "message": "Pin not found."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T1-4_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 10,
+      "violated_assertion_names": [
+        "T1-4-C01-001",
+        "T1-4-C01-002",
+        "T1-4-I02-001",
+        "T1-4-C02-001",
+        "T1-4-C03-001",
+        "T1-4-C02-002",
+        "T1-4-SC01-001",
+        "T1-4-T01-001",
+        "T1-4-T01-002",
+        "T1-4-S02-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-C01-001",
+          "check": "SAME_NET",
+          "desc": "Ground/reference unification: NE5532 negative supply and LM386 ground must share one common ground net in single-supply operation.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T1-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "Positive supply unification: NE5532 positive supply and LM386 supply must share one common power rail.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T1-4-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical net isolation: positive supply, ground, NE5532 stage-1 output, LM386 signal input, and LM386 power output must all reside on mutually distinct nets.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T1-4-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Unified ground/reference net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T1-4-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Shared amplifier supply rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T1-4-C02-002",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "LM386 inverting input must be ground-referenced for the intended single-ended input configuration.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T1-4-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "The shared amplifier supply rail must have a bypass/decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T1-4-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "LM386 BYPASS pin should have a capacitor to ground for reference stabilization and improved PSRR.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T1-4-S02-001",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "LM386 power output pin must not be left floating; it should connect to an output network.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T1-4_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T1-4-SC01-001",
+        "T1-4-T01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        },
+        {
+          "id": "T1-4-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "LM386 BYPASS pin should have a capacitor to ground for reference stabilization and improved PSRR.",
+          "message": "Pin not found."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T1-4_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T1-4-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T1-4_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T1-4-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 5,
+      "result_file": "T1-4_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T1-4-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 6,
+      "result_file": "T1-4_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T1-4-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 8,
+      "run_id": 7,
+      "result_file": "T1-4_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T1-4-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        }
+      ]
+    }
+  ]
+}

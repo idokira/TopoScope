@@ -1,0 +1,415 @@
+{
+  "design_id": "T2-2",
+  "tier": 2,
+  "type": "SEN",
+  "description": "IMU data recorder. ATmega328P reads MPU-6050 6-axis motion data via I2C (PC4/PC5) and logs to W25Q64JV SPI Flash (PB2-PB5). MPU-6050 INT connects to ATmega328P INT0 (PD2). ME6211 LDO provides 3.3V from 5V input. 16MHz external crystal on PB6/PB7.",
+  "ic_list": [
+    "ME6211 (U1)",
+    "ATmega328P (U2)",
+    "MPU-6050 (U3)",
+    "W25Q64JV (U4)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T2-2-C01-001",
+      "check": "SAME_NET",
+      "desc": "GND unification: all ground pins across 4 ICs share one common ground net.",
+      "params": {
+        "pins": [
+          "U1.VSS",
+          "U2.GND",
+          "U2.GND_2",
+          "U3.GND",
+          "U4.GND"
+        ]
+      }
+    },
+    {
+      "id": "T2-2-C01-002",
+      "check": "SAME_NET",
+      "desc": "3.3V domain unification: LDO output, MCU VCC+AVCC, IMU VDD, and Flash VCC share one power net. AVCC included per ATmega328P datasheet (direct connection standard for non-precision designs).",
+      "params": {
+        "pins": [
+          "U1.VOUT",
+          "U2.VCC",
+          "U2.AVCC",
+          "U3.VDD",
+          "U4.VCC"
+        ]
+      }
+    },
+    {
+      "id": "T2-2-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical pin isolation: GND, VCC, VIN, I2C (SDA/SCL), SPI (MOSI/MISO/SCK/CS), crystal (XTAL1/XTAL2), and RESET must all reside on mutually distinct nets. Yields C(12,2)=66 implicit isolation constraints.",
+      "params": {
+        "groups": [
+          [
+            "U1.VSS"
+          ],
+          [
+            "U1.VOUT"
+          ],
+          [
+            "U1.VIN"
+          ],
+          [
+            "U2.PC4"
+          ],
+          [
+            "U2.PC5"
+          ],
+          [
+            "U2.PB3"
+          ],
+          [
+            "U2.PB4"
+          ],
+          [
+            "U2.PB5"
+          ],
+          [
+            "U2.PB2"
+          ],
+          [
+            "U2.PB6"
+          ],
+          [
+            "U2.PB7"
+          ],
+          [
+            "U2.PC6"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T2-2-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Unified ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.VSS"
+      }
+    },
+    {
+      "id": "T2-2-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VOUT"
+      }
+    },
+    {
+      "id": "T2-2-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "5V input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-2-C03-003",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "ME6211 CE must be driven high to enable the regulator. Typically tied to VIN.",
+      "params": {
+        "pin": "U1.CE"
+      }
+    },
+    {
+      "id": "T2-2-I01-001",
+      "check": "NOT_SAME_NET",
+      "desc": "ME6211 CE must not be tied to its own output (VOUT); causes startup deadlock \u2014 LDO needs output voltage to enable itself.",
+      "params": {
+        "pins": [
+          "U1.CE",
+          "U1.VOUT"
+        ]
+      }
+    },
+    {
+      "id": "T2-2-C01-003",
+      "check": "SAME_NET",
+      "desc": "I2C SDA bus: ATmega328P PC4 and MPU-6050 SDA share one net.",
+      "params": {
+        "pins": [
+          "U2.PC4",
+          "U3.SDA"
+        ]
+      }
+    },
+    {
+      "id": "T2-2-C01-004",
+      "check": "SAME_NET",
+      "desc": "I2C SCL bus: ATmega328P PC5 and MPU-6050 SCL share one net.",
+      "params": {
+        "pins": [
+          "U2.PC5",
+          "U3.SCL"
+        ]
+      }
+    },
+    {
+      "id": "T2-2-C01-005",
+      "check": "SAME_NET",
+      "desc": "SPI MOSI: ATmega328P PB3 and Flash DI share one net.",
+      "params": {
+        "pins": [
+          "U2.PB3",
+          "U4.DI"
+        ]
+      }
+    },
+    {
+      "id": "T2-2-C01-006",
+      "check": "SAME_NET",
+      "desc": "SPI MISO: ATmega328P PB4 and Flash DO share one net.",
+      "params": {
+        "pins": [
+          "U2.PB4",
+          "U4.DO"
+        ]
+      }
+    },
+    {
+      "id": "T2-2-C01-007",
+      "check": "SAME_NET",
+      "desc": "SPI SCK: ATmega328P PB5 and Flash CLK share one net.",
+      "params": {
+        "pins": [
+          "U2.PB5",
+          "U4.CLK"
+        ]
+      }
+    },
+    {
+      "id": "T2-2-C01-008",
+      "check": "SAME_NET",
+      "desc": "SPI CS: ATmega328P PB2 and Flash CS share one net.",
+      "params": {
+        "pins": [
+          "U2.PB2",
+          "U4.CS"
+        ]
+      }
+    },
+    {
+      "id": "T2-2-C01-009",
+      "check": "SAME_NET",
+      "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+      "params": {
+        "pins": [
+          "U2.PD2",
+          "U3.INT"
+        ]
+      }
+    },
+    {
+      "id": "T2-2-ANY-001",
+      "type": "ANY_OF",
+      "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U3.AD0",
+              "U1.VSS"
+            ]
+          }
+        },
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U3.AD0",
+              "U1.VOUT"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-2-ANY-002",
+      "type": "ANY_OF",
+      "desc": "MPU-6050 CS must select I2C mode: direct tie to VDD or pull-up to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U3.CS",
+              "U1.VOUT"
+            ]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U3.CS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-2-ANY-003",
+      "type": "ANY_OF",
+      "desc": "Flash WP must be inactive: direct tie to VDD or pull-up to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U4.WP",
+              "U1.VOUT"
+            ]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U4.WP"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-2-ANY-004",
+      "type": "ANY_OF",
+      "desc": "Flash HOLD must be inactive: direct tie to VDD or pull-up to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U4.HOLD",
+              "U1.VOUT"
+            ]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U4.HOLD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-2-ANY-005",
+      "type": "ANY_OF",
+      "desc": "MPU-6050 CLKIN (unused): grounded or left floating. Prevents LLM from connecting to random signals.",
+      "conditions": [
+        {
+          "check": "CONNECTED_TO_GROUND",
+          "params": {
+            "pin": "U3.CLKIN"
+          }
+        },
+        {
+          "check": "MUST_BE_FLOATING",
+          "params": {
+            "pin": "U3.CLKIN"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-2-ANY-006",
+      "type": "ANY_OF",
+      "desc": "MPU-6050 FSYNC (unused): grounded or left floating. Prevents LLM from connecting to random signals.",
+      "conditions": [
+        {
+          "check": "CONNECTED_TO_GROUND",
+          "params": {
+            "pin": "U3.FSYNC"
+          }
+        },
+        {
+          "check": "MUST_BE_FLOATING",
+          "params": {
+            "pin": "U3.FSYNC"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-2-T05-001",
+      "check": "HAS_CRYSTAL_PAIR",
+      "desc": "16MHz crystal on XTAL1/XTAL2 with load capacitors to ground.",
+      "params": {
+        "pin_osc_in": "U2.PB6",
+        "pin_osc_out": "U2.PB7"
+      }
+    },
+    {
+      "id": "T2-2-T06-001",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "ATmega328P RESET (PC6) requires external pull-up resistor to power.",
+      "params": {
+        "pin": "U2.PC6"
+      }
+    },
+    {
+      "id": "T2-2-T06-002",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SDA line requires external pull-up resistor to power.",
+      "params": {
+        "pin": "U2.PC4"
+      }
+    },
+    {
+      "id": "T2-2-T06-003",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SCL line requires external pull-up resistor to power.",
+      "params": {
+        "pin": "U2.PC5"
+      }
+    },
+    {
+      "id": "T2-2-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "LDO input rail (VIN) must have bypass capacitor to ground.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-2-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V domain must have decoupling capacitor to ground. One T01 covers the unified rail.",
+      "params": {
+        "pin": "U2.VCC"
+      }
+    },
+    {
+      "id": "T2-2-T01-003",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "MPU-6050 REGOUT (internal regulator output) requires dedicated 100nF capacitor to ground per datasheet. This is a separate net from VDD.",
+      "params": {
+        "pin": "U3.REGOUT"
+      }
+    },
+    {
+      "id": "T2-2-T01-004",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "MPU-6050 CPOUT (charge pump output) requires dedicated 10nF capacitor to ground per datasheet. This is a separate net from VDD.",
+      "params": {
+        "pin": "U3.CPOUT"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 29,
+    "by_category": {
+      "SAME_NET": 9,
+      "NET_GROUP_ISOLATION": 1,
+      "CONNECTED_TO_GROUND": 1,
+      "CONNECTED_TO_POWER": 3,
+      "NOT_SAME_NET": 1,
+      "ANY_OF": 6,
+      "HAS_CRYSTAL_PAIR": 1,
+      "HAS_PULLUP_TO_POWER": 3,
+      "HAS_CAP_TO_GROUND": 4
+    }
+  }
+}

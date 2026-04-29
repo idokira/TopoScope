@@ -1,0 +1,260 @@
+{
+  "method": "full_system",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T2-10",
+  "tier": 2,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 1,
+  "pass_at_k": {
+    "pass_at_1": 0.1428571428571429,
+    "pass_at_2": 0.2857142857142857,
+    "pass_at_3": 0.4285714285714286,
+    "pass_at_4": 0.5714285714285714,
+    "pass_at_5": 0.7142857142857143,
+    "pass_at_6": 0.8571428571428572,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8341269841269842,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-10_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8888888888888888,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-10-C01-002",
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers STM32F103 and ADS1115.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VBAT', 'U2.VDDA', 'U3.VDD']."
+        },
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-10_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-10-C01-002",
+        "T2-10-C01-005",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers STM32F103 and ADS1115.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VBAT', 'U2.VDDA', 'U3.VDD']."
+        },
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pins are not on the same net: ['U4.VOUT', 'U3.AIN2']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for Y1_Pin2",
+          "message": "Pin 'Y1_Pin2' is connected to multiple nets: [GND, U2_OSC_OUT]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for Y2_Pin2",
+          "message": "Pin 'Y2_Pin2' is connected to multiple nets: [GND, U2_OSC32_OUT]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-10_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.85,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-10-C01-005",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pins are not on the same net: ['U4.VOUT', 'U3.AIN2']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R4_Pin2",
+          "message": "Pin 'R4_Pin2' is connected to multiple nets: [GND, I2C_SCL]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5_Pin2",
+          "message": "Pin 'R5_Pin2' is connected to multiple nets: [GND, I2C_SDA]"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-10_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8888888888888888,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-10-C01-002",
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers STM32F103 and ADS1115.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VBAT', 'U2.VDDA', 'U3.VDD']."
+        },
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pins are not on the same net: ['U4.VOUT', 'U3.AIN2']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-10_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-10_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-10-C01-002",
+        "T2-10-C01-005",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers STM32F103 and ADS1115.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VBAT', 'U2.VDDA', 'U3.VDD']."
+        },
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pins are not on the same net: ['U4.VOUT', 'U3.AIN2']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R4_Pin2",
+          "message": "Pin 'R4_Pin2' is connected to multiple nets: [ANALOG_IN, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5_Pin2",
+          "message": "Pin 'R5_Pin2' is connected to multiple nets: [GND, VREF_5V]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-10_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6666666666666666,
+      "violated_assertion_count": 6,
+      "violated_assertion_names": [
+        "T2-10-C01-001",
+        "T2-10-C01-002",
+        "T2-10-C01-004",
+        "T2-10-C01-005",
+        "T2-10-T06-001",
+        "T2-10-T06-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, STM32 grounds, ADS1115 ground, and REF5050 ground share one common GND.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-10-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers STM32F103 and ADS1115.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-10-C01-004",
+          "check": "SAME_NET",
+          "desc": "I2C legal bundle mapping: accept one complete legal STM32F103 hardware I2C SDA/SCL pair to ADS1115, either I2C1 default, I2C1 remap, or I2C2. This forbids illegal mixed mappings such as PB7 for SDA together with PB8 for SCL.",
+          "message": "All combination candidates failed: ['Candidate I2C1_DEFAULT failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PB7\\\\\\']\"}]\\']', 'Candidate I2C1_REMAP failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PB9\\\\\\']\"}]\\']', 'Candidate I2C2 failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PB11\\\\\\']\"}]\\']']"
+        },
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pins are not on the same net: ['U4.VOUT', 'U3.AIN2']."
+        },
+        {
+          "id": "T2-10-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to power. Anchored on ADS1115 SDA so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin9'."
+        },
+        {
+          "id": "T2-10-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to power. Anchored on ADS1115 SCL so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin10'."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "meta": {
+    "design_id": "T2-2",
+    "tier": 2,
+    "type": "SEN",
+    "run_id": 5
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_2.2nF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_0R"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "ME6211"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "ATmega328P"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MPU-6050"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "W25Q64JV"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_16MHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "R6.1",
+          "U1.VSS",
+          "U2.GND",
+          "U2.GND_2",
+          "U3.AD0",
+          "U3.CLKIN",
+          "U3.FSYNC",
+          "U3.GND",
+          "U4.GND"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "R2.2",
+          "U2.PB5",
+          "U3.SCL"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "R3.2",
+          "U2.PB4",
+          "U3.SDA"
+        ]
+      },
+      {
+        "name": "INT",
+        "pins": [
+          "U3.INT"
+        ]
+      },
+      {
+        "name": "SPI_CS_FLASH",
+        "pins": [
+          "U2.PB0",
+          "U4.CS"
+        ]
+      },
+      {
+        "name": "SPI_MISO",
+        "pins": [
+          "U2.PB2",
+          "U4.DO"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U2.PB1",
+          "U4.DI"
+        ]
+      },
+      {
+        "name": "SPI_SCK",
+        "pins": [
+          "U2.PB3",
+          "U4.CLK"
+        ]
+      },
+      {
+        "name": "U2_AREF",
+        "pins": [
+          "C8.1",
+          "U2.AREF"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "C6.1",
+          "U2.PB6",
+          "Y1.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "C7.1",
+          "U2.PB7",
+          "Y1.2"
+        ]
+      },
+      {
+        "name": "U2_RESET",
+        "pins": [
+          "R1.2",
+          "U2.PC6"
+        ]
+      },
+      {
+        "name": "U3_CPOUT",
+        "pins": [
+          "C11.1",
+          "U3.CPOUT"
+        ]
+      },
+      {
+        "name": "U3_REGOUT",
+        "pins": [
+          "C10.1",
+          "U3.REGOUT"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C12.1",
+          "C2.1",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C9.1",
+          "R1.1",
+          "R2.1",
+          "R3.1",
+          "U1.VOUT",
+          "U2.AVCC",
+          "U2.VCC",
+          "U3.CS",
+          "U3.VDD",
+          "U4.HOLD",
+          "U4.VCC",
+          "U4.WP"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "U1.CE",
+          "U1.VIN"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 4,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 4,
+      "U3": 0,
+      "U4": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 19
+  }
+}

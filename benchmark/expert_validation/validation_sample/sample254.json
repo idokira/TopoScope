@@ -1,0 +1,207 @@
+{
+  "meta": {
+    "design_id": "T1-4",
+    "tier": 1,
+    "type": "AUD",
+    "run_id": 6
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_250uF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_50nF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_10R"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_100R"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "NE5532"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "LM386"
+      }
+    ],
+    "nets": [
+      {
+        "name": "AUDIO_IN",
+        "pins": [
+          "R1.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C2.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "R4.2",
+          "U1.VCC_N",
+          "U2.GND",
+          "U2.IN_NEG"
+        ]
+      },
+      {
+        "name": "PREAMP_OUT",
+        "pins": [
+          "C3.1",
+          "R2.1",
+          "U1.OUT1"
+        ]
+      },
+      {
+        "name": "SPK_OUT",
+        "pins": [
+          "C4.2"
+        ]
+      },
+      {
+        "name": "U1_BIAS_DIV",
+        "pins": [
+          "C2.1",
+          "R3.2",
+          "R4.1",
+          "U1.IN2_P"
+        ]
+      },
+      {
+        "name": "U1_IN1_N",
+        "pins": [
+          "R1.2",
+          "R2.2",
+          "U1.IN1_N"
+        ]
+      },
+      {
+        "name": "U1_VBIAS",
+        "pins": [
+          "U1.IN1_P",
+          "U1.IN2_N",
+          "U1.OUT2"
+        ]
+      },
+      {
+        "name": "U2_BYPASS",
+        "pins": [
+          "C6.1",
+          "U2.BYPASS"
+        ]
+      },
+      {
+        "name": "U2_GAIN_1",
+        "pins": [
+          "R6.1",
+          "U2.GAIN_1"
+        ]
+      },
+      {
+        "name": "U2_GAIN_2",
+        "pins": [
+          "C8.2",
+          "U2.GAIN_2"
+        ]
+      },
+      {
+        "name": "U2_GAIN_RC",
+        "pins": [
+          "C8.1",
+          "R6.2"
+        ]
+      },
+      {
+        "name": "U2_IN_POS",
+        "pins": [
+          "C3.2",
+          "U2.IN_POS"
+        ]
+      },
+      {
+        "name": "U2_VOUT",
+        "pins": [
+          "C4.1",
+          "R5.1",
+          "U2.VOUT"
+        ]
+      },
+      {
+        "name": "U2_ZOBEL_RC",
+        "pins": [
+          "C7.1",
+          "R5.2"
+        ]
+      },
+      {
+        "name": "VIN_9V",
+        "pins": [
+          "C1.1",
+          "C5.1",
+          "R3.1",
+          "U1.VCC_P",
+          "U2.VS"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 14
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "method": "full_system",
+  "model": "gemini-3.1-pro-preview",
+  "ablation": null,
+  "design_id": "T3-4",
+  "tier": 3,
+  "type": "AUD",
+  "num_runs": 7,
+  "pass_count": 6,
+  "pass_at_k": {
+    "pass_at_1": 0.8571428571428572,
+    "pass_at_2": 1.0,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9469387755102041,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-4_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-4_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9428571428571428,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-4-C01-001",
+        "T3-4-C01-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: boost converter, LDO, MCU, DAC, NE5532 negative supply, and PAM8403 grounds share common GND with star-ground layout intent.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.GND', 'U3.GND', 'U3.GND_2', 'U4.VSS', 'U5.VCC_N', 'U6.GND', 'U6.PGND_1', 'U6.PGND_2']."
+        },
+        {
+          "id": "T3-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U3.VCC', 'U3.AVCC', 'U4.VDD']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-4_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8857142857142857,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T3-4-C01-003",
+        "T3-4-ANY-001",
+        "T3-4-ANY-002",
+        "T3-4-T09-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U3.VCC', 'U3.AVCC', 'U4.VDD']."
+        },
+        {
+          "id": "T3-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal reaches NE5532 channel-1 non-inverting/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN1_P'].; No constrained path found from 'U4_Pin1' to 'U5.IN1_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal also reaches NE5532 channel-2 non-inverting/control node for stereo shared gain/bias behavior, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN2_P'].; No constrained path found from 'U4_Pin1' to 'U5.IN2_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-T09-001",
+          "check": "HAS_FREEWHEELING_PATH",
+          "desc": "MT3608 SW node must have a Schottky/freewheeling rectifier path for boost output generation.",
+          "message": "No freewheeling diode path found for pin 'U1_Pin1'."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-4_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9428571428571428,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-4-C01-003",
+        "T3-4-T09-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U3.VCC', 'U3.AVCC', 'U4.VDD']."
+        },
+        {
+          "id": "T3-4-T09-001",
+          "check": "HAS_FREEWHEELING_PATH",
+          "desc": "MT3608 SW node must have a Schottky/freewheeling rectifier path for boost output generation.",
+          "message": "No freewheeling diode path found for pin 'U1_Pin1'."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-4_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9142857142857143,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-4-C01-003",
+        "T3-4-ANY-001",
+        "T3-4-ANY-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U3.VCC', 'U3.AVCC', 'U4.VDD']."
+        },
+        {
+          "id": "T3-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal reaches NE5532 channel-1 non-inverting/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN1_P'].; No constrained path found from 'U4_Pin1' to 'U5.IN1_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal also reaches NE5532 channel-2 non-inverting/control node for stereo shared gain/bias behavior, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN2_P'].; No constrained path found from 'U4_Pin1' to 'U5.IN2_P' within 6 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-4_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9714285714285714,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-4-C01-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U3.VCC', 'U3.AVCC', 'U4.VDD']."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-4_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9714285714285714,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-4-C01-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U3.VCC', 'U3.AVCC', 'U4.VDD']."
+        }
+      ]
+    }
+  ]
+}

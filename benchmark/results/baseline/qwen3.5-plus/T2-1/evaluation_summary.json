@@ -1,0 +1,293 @@
+{
+  "method": "baseline",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T2-1",
+  "tier": 2,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 3,
+  "pass_at_k": {
+    "pass_at_1": 0.4285714285714286,
+    "pass_at_2": 0.7142857142857143,
+    "pass_at_3": 0.8857142857142857,
+    "pass_at_4": 0.9714285714285714,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.7757629367536488,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-1_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9411764705882353,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-1-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-1-ANY-003",
+          "check": "ANY_OF",
+          "desc": "BME280 SDO must select I2C address: tie to GND for 0x76 or VDD for 0x77.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.SDO', 'U2.VSS_1'].; Pins are not on the same net: ['U3.SDO', 'U2.VDD_1']."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-1_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9411764705882353,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-1-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-1-ANY-003",
+          "check": "ANY_OF",
+          "desc": "BME280 SDO must select I2C address: tie to GND for 0x76 or VDD for 0x77.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.SDO', 'U2.VSS_1'].; Pins are not on the same net: ['U3.SDO', 'U2.VDD_1']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-1_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8235294117647058,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-1-ANY-003",
+        "T2-1-T06-001",
+        "T2-1-T06-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-1-ANY-003",
+          "check": "ANY_OF",
+          "desc": "BME280 SDO must select I2C address: tie to GND for 0x76 or VDD for 0x77.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.SDO', 'U2.VSS_1'].; Pins are not on the same net: ['U3.SDO', 'U2.VDD_1']."
+        },
+        {
+          "id": "T2-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power. Anchored on the fixed peripheral-side SDA pin so the assertion is invariant to MCU pin mapping.",
+          "message": "No pull-up resistor to power found for pin 'U3.SDI'."
+        },
+        {
+          "id": "T2-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power. Anchored on the fixed peripheral-side SCL pin so the assertion is invariant to MCU pin mapping.",
+          "message": "No pull-up resistor to power found for pin 'U3.SCK'."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-1_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8823529411764706,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-1-T06-001",
+        "T2-1-T06-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power. Anchored on the fixed peripheral-side SDA pin so the assertion is invariant to MCU pin mapping.",
+          "message": "No pull-up resistor to power found for pin 'U3.SDI'."
+        },
+        {
+          "id": "T2-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power. Anchored on the fixed peripheral-side SCL pin so the assertion is invariant to MCU pin mapping.",
+          "message": "No pull-up resistor to power found for pin 'U3.SCK'."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-1_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8421052631578947,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-1-ANY-002",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-1-ANY-002",
+          "check": "ANY_OF",
+          "desc": "BME280 CSB must select I2C mode: either direct tie to VDD or external pull-up resistor to power.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.CSB', 'U2.VDD_1'].; No pull-up resistor to power found for pin 'U3.CSB'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C14.1",
+          "message": "Pin 'C14.1' is connected to multiple nets: [U3_VDDIO, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U3.VDDIO",
+          "message": "Pin 'U3.VDDIO' is connected to multiple nets: [U3_VDDIO, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-1_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 17,
+      "violated_assertion_names": [
+        "T2-1-C01-001",
+        "T2-1-C01-002",
+        "T2-1-I02-001",
+        "T2-1-C02-001",
+        "T2-1-C03-001",
+        "T2-1-C03-002",
+        "T2-1-C01-003",
+        "T2-1-I01-001",
+        "T2-1-ANY-001",
+        "T2-1-ANY-002",
+        "T2-1-ANY-003",
+        "T2-1-T12-001",
+        "T2-1-T05-001",
+        "T2-1-T06-001",
+        "T2-1-T06-002",
+        "T2-1-T01-001",
+        "T2-1-T01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-1-C01-001",
+          "check": "SAME_NET",
+          "desc": "GND unification: all ground pins across 4 ICs share one common ground net.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: regulator output, MCU core/analog/battery supply, sensor supply+IO, and display supply share one power net. CSB excluded (handled separately by ANY-002).",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical net isolation: GND, VCC_3V3, VIN, I2C SDA, I2C SCL, OSC_IN, OSC_OUT, and NRST must all reside on mutually distinct nets. Uses fixed peripheral-side bus pins so the check is invariant to MCU I2C pin mapping.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Unified ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "5V input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "I2C bus legal bundle mapping: accept one complete legal SDA/SCL pair of STM32F103 hardware I2C routing. This avoids illegal mixed mappings such as PB7 for SDA with PB8 for SCL.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-I01-001",
+          "check": "NOT_SAME_NET",
+          "desc": "BOOT0 must not be tied to VDD; doing so forces bootloader mode instead of normal flash boot.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: accept either direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-ANY-002",
+          "check": "ANY_OF",
+          "desc": "BME280 CSB must select I2C mode: either direct tie to VDD or external pull-up resistor to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-ANY-003",
+          "check": "ANY_OF",
+          "desc": "BME280 SDO must select I2C address: tie to GND for 0x76 or VDD for 0x77.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "HSE crystal on OSC_IN/OSC_OUT with load capacitors to ground on each side.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power. Anchored on the fixed peripheral-side SDA pin so the assertion is invariant to MCU pin mapping.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power. Anchored on the fixed peripheral-side SCL pin so the assertion is invariant to MCU pin mapping.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "LDO input rail (VIN) must have bypass capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-1-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V domain must have decoupling capacitor to ground. One T01 covers the unified rail per dedup rule.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-1_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    }
+  ]
+}

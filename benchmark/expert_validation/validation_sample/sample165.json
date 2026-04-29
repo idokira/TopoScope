@@ -1,0 +1,352 @@
+{
+  "meta": {
+    "design_id": "T3-2",
+    "tier": 3,
+    "type": "COM",
+    "run_id": 5
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "CP2102N"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "TP4056"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "DW01A"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "ME6211"
+      },
+      {
+        "refdes": "U5",
+        "part_number": "ESP32-WROOM-32E"
+      },
+      {
+        "refdes": "U6",
+        "part_number": "BME280"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_1K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_2K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_1K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_1K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_2K"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R7",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R8",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R9",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R10",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_4.7uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_4.7uF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_4.7uF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C13",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C14",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C15",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C16",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C17",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "D1",
+        "part_number": "DIODE_ESD"
+      },
+      {
+        "refdes": "D2",
+        "part_number": "DIODE_ESD"
+      }
+    ],
+    "nets": [
+      {
+        "name": "USB_DP",
+        "pins": [
+          "U1.DP",
+          "D1.A"
+        ]
+      },
+      {
+        "name": "USB_DM",
+        "pins": [
+          "U1.DM",
+          "D2.A"
+        ]
+      },
+      {
+        "name": "UART_TX",
+        "pins": [
+          "U1.TXD"
+        ]
+      },
+      {
+        "name": "UART_RX",
+        "pins": [
+          "U1.RXD"
+        ]
+      },
+      {
+        "name": "VIN_USB",
+        "pins": [
+          "U1.VREGIN",
+          "C1.1",
+          "C2.1"
+        ]
+      },
+      {
+        "name": "VIO_NET",
+        "pins": [
+          "U1.VIO",
+          "C5.1",
+          "C6.1",
+          "R1.2"
+        ]
+      },
+      {
+        "name": "VDD_NET",
+        "pins": [
+          "U1.VDD",
+          "C3.1",
+          "C4.1"
+        ]
+      },
+      {
+        "name": "VBUS_SENSE",
+        "pins": [
+          "U1.VBUS",
+          "R2.1"
+        ]
+      },
+      {
+        "name": "VBUS_DIV",
+        "pins": [
+          "R2.2",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "RSTB_NET",
+        "pins": [
+          "U1.RSTb",
+          "R1.1"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "U5.IO21",
+          "U6.SDI",
+          "R8.1"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "U5.IO22",
+          "U6.SCK",
+          "R9.1"
+        ]
+      },
+      {
+        "name": "I2C_ADDR_SEL",
+        "pins": [
+          "U6.SDO"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U4.VOUT",
+          "C11.1",
+          "U5.VCC",
+          "C13.1",
+          "C14.1",
+          "U6.VDDIO",
+          "U6.VDD",
+          "C16.1",
+          "C17.1",
+          "R6.1"
+        ]
+      },
+      {
+        "name": "VIN",
+        "pins": [
+          "U2.VCC",
+          "C7.1",
+          "U4.VIN",
+          "U4.CE",
+          "C12.1"
+        ]
+      },
+      {
+        "name": "VBAT",
+        "pins": [
+          "U2.BAT",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "PROG_NODE",
+        "pins": [
+          "U2.PROG",
+          "R5.1"
+        ]
+      },
+      {
+        "name": "CHRG_NODE",
+        "pins": [
+          "U2.CHRG",
+          "R4.1"
+        ]
+      },
+      {
+        "name": "STDBY_NODE",
+        "pins": [
+          "U2.STDBY",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "CSI_SENSE",
+        "pins": [
+          "U3.CSI"
+        ]
+      },
+      {
+        "name": "EN_NODE",
+        "pins": [
+          "U5.EN",
+          "R6.2",
+          "C15.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.GND",
+          "U1.EP",
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "D1.K",
+          "D2.K",
+          "R3.2",
+          "U2.GND",
+          "U2.EP",
+          "C7.2",
+          "U3.VSS",
+          "C9.2",
+          "C8.2",
+          "R5.2",
+          "U4.VSS",
+          "C12.2",
+          "C11.2",
+          "U5.GND_1",
+          "U5.GND_2",
+          "U5.GND_3",
+          "C13.2",
+          "C14.2",
+          "C15.2",
+          "U6.GND_1",
+          "U6.GND_2",
+          "C16.2",
+          "C17.2"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

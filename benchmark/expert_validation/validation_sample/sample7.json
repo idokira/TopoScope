@@ -1,0 +1,186 @@
+{
+  "meta": {
+    "design_id": "T1-4",
+    "tier": 1,
+    "type": "AUD",
+    "run_id": 1
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "NE5532"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "LM386"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_10R"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_50nF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_250uF"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VCC_9V",
+        "pins": [
+          "U1.VCC_P",
+          "C1.1",
+          "R1.1",
+          "U2.VS",
+          "C5.1",
+          "C6.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.VCC_N",
+          "C1.2",
+          "R2.2",
+          "C2.2",
+          "U1.IN2_P",
+          "U2.GND",
+          "U2.IN_NEG",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2"
+        ]
+      },
+      {
+        "name": "VREF_4V5",
+        "pins": [
+          "R1.2",
+          "R2.1",
+          "C2.1",
+          "U1.IN1_P"
+        ]
+      },
+      {
+        "name": "AUDIO_IN",
+        "pins": [
+          "C3.1"
+        ]
+      },
+      {
+        "name": "U1_IN_AC",
+        "pins": [
+          "C3.2",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "U1_IN_SUM",
+        "pins": [
+          "R3.2",
+          "R4.2",
+          "U1.IN1_N"
+        ]
+      },
+      {
+        "name": "U1_OUT1",
+        "pins": [
+          "U1.OUT1",
+          "R4.1",
+          "C4.1"
+        ]
+      },
+      {
+        "name": "U2_IN",
+        "pins": [
+          "C4.2",
+          "U2.IN_POS"
+        ]
+      },
+      {
+        "name": "U2_OUT",
+        "pins": [
+          "U2.VOUT",
+          "C9.1",
+          "R5.1"
+        ]
+      },
+      {
+        "name": "U2_ZOBEL",
+        "pins": [
+          "R5.2",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "SPEAKER_OUT",
+        "pins": [
+          "C9.2"
+        ]
+      },
+      {
+        "name": "U1_CH2_FB",
+        "pins": [
+          "U1.IN2_N",
+          "U1.OUT2"
+        ]
+      },
+      {
+        "name": "U2_BYPASS",
+        "pins": [
+          "U2.BYPASS",
+          "C7.1"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

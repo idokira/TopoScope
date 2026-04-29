@@ -1,0 +1,101 @@
+{
+  "method": "erc_only",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T1-2",
+  "tier": 1,
+  "type": "PM",
+  "num_runs": 7,
+  "pass_count": 7,
+  "pass_at_k": {
+    "pass_at_1": 1.0,
+    "pass_at_2": 1.0,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9857142857142858,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T1-2_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T1-2_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T1-2_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T1-2_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T1-2_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T1-2_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T1-2-ANY-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Unused TPS3703 manual reset pin is legal either floating or tied to VDD.",
+          "message": "ANY_OF failed: Pin not found.; Pin not found."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T1-2_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    }
+  ]
+}

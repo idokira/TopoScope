@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "design_id": "T2-8",
+    "tier": 2,
+    "type": "AUD",
+    "run_id": 3
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "L1",
+        "part_number": "IND_10uH"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10k"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "ATmega328P"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MCP4725"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "NE5532"
+      }
+    ],
+    "nets": [
+      {
+        "name": "AREF",
+        "pins": [
+          "C6.1",
+          "U2.AREF"
+        ]
+      },
+      {
+        "name": "AVCC",
+        "pins": [
+          "C4.1",
+          "L1.2",
+          "U2.AVCC"
+        ]
+      },
+      {
+        "name": "DAC_CONTROL_VOLTAGE",
+        "pins": [
+          "U3.VOUT"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "U1.GND",
+          "U2.GND",
+          "U2.GND_2",
+          "U3.A0",
+          "U3.VSS"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "U2.PC1",
+          "U3.SCL"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "U2.PC0",
+          "U3.SDA"
+        ]
+      },
+      {
+        "name": "RESET_NODE",
+        "pins": [
+          "R1.2",
+          "U2.PC6"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C2.1",
+          "C3.1",
+          "C5.1",
+          "C7.1",
+          "L1.1",
+          "R1.1",
+          "U1.VOUT",
+          "U2.VCC",
+          "U3.VDD"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "U1.VIN"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 0,
+      "U3": 0,
+      "U4": 0
+    },
+    "failed_components": [
+      "U4"
+    ],
+    "phase0_interface_failures": {
+      "audio_amp": [
+        "AUDIO_IN",
+        "AUDIO_OUT",
+        "DAC_BIAS"
+      ]
+    },
+    "existing_passive_components_count": 9
+  }
+}

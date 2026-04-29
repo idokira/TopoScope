@@ -1,0 +1,884 @@
+{
+  "design_id": "T3-6",
+  "tier": 3,
+  "type": "SEN",
+  "description": "Galvanically isolated precision ADC node. VIN_5V powers the non-isolated side, where XC6206 (U1) generates 3.3V for STM32F103 (U3) and the MCU-side supplies of two ISO7721 isolators (U4, U5). External ISO_5V powers REF5050 (U7) and a second XC6206 (U2), which generates ISO_3V3 for ADS1118 (U6) and the isolated-side supplies of the isolators. REF5050 VOUT is monitored by one ADS1118 analog input through an attenuating or signal-conditioning resistor path. ISO7721 devices isolate STM32F103-to-ADS1118 SPI, including ADS1118 return data. GND and ISO_GND must never connect. No isolated DC-DC or RS485 interface is required.",
+  "ic_list": [
+    "XC6206 (U1)",
+    "XC6206 (U2)",
+    "STM32F103 (U3)",
+    "ISO7721 (U4)",
+    "ISO7721 (U5)",
+    "ADS1118 (U6)",
+    "REF5050 / REF50xx (U7)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T3-6-C01-001",
+      "check": "SAME_NET",
+      "desc": "Non-isolated ground backbone: U1 ground and STM32 grounds share common GND.",
+      "params": {
+        "pins": [
+          "U1.VSS",
+          "U3.VSS_1",
+          "U3.VSS_2",
+          "U3.VSS_3",
+          "U3.VSSA"
+        ]
+      }
+    },
+    {
+      "id": "T3-6-C01-002",
+      "check": "SAME_NET",
+      "desc": "Isolated ground backbone: U2 ground, ADS1118 ground, and REF5050 ground share ISO_GND.",
+      "params": {
+        "pins": [
+          "U2.VSS",
+          "U6.GND",
+          "U7.GND"
+        ]
+      }
+    },
+    {
+      "id": "T3-6-C01-003",
+      "check": "SAME_NET",
+      "desc": "Non-isolated 3.3V backbone: U1 output powers STM32 core/analog supplies.",
+      "params": {
+        "pins": [
+          "U1.VOUT",
+          "U3.VDD_1",
+          "U3.VDD_2",
+          "U3.VDD_3",
+          "U3.VDDA",
+          "U3.VBAT"
+        ]
+      }
+    },
+    {
+      "id": "T3-6-C01-004",
+      "check": "SAME_NET",
+      "desc": "Isolated 3.3V backbone: U2 output powers ADS1118.",
+      "params": {
+        "pins": [
+          "U2.VOUT",
+          "U6.VDD"
+        ]
+      }
+    },
+    {
+      "id": "T3-6-ANY-001",
+      "type": "ANY_OF",
+      "desc": "Forward isolated SPI pair is implemented through ISO7721 U4 with a legal STM32F103 SPI SCK/MOSI bundle; A/B channel order may be swapped but the isolated-side outputs must reach ADS1118 SCLK and DIN.",
+      "conditions": [
+        {
+          "type": "AND_GROUP",
+          "conditions": [
+            {
+              "check": "SAME_NET",
+              "params": {
+                "net_group_candidates": [
+                  {
+                    "label": "SPI1_DEFAULT",
+                    "pin_groups_list": [
+                      [
+                        [
+                          "U3.PA5"
+                        ],
+                        [
+                          "U4.INA"
+                        ]
+                      ],
+                      [
+                        [
+                          "U3.PA7"
+                        ],
+                        [
+                          "U4.INB"
+                        ]
+                      ]
+                    ]
+                  },
+                  {
+                    "label": "SPI1_REMAP",
+                    "pin_groups_list": [
+                      [
+                        [
+                          "U3.PB3"
+                        ],
+                        [
+                          "U4.INA"
+                        ]
+                      ],
+                      [
+                        [
+                          "U3.PB5"
+                        ],
+                        [
+                          "U4.INB"
+                        ]
+                      ]
+                    ]
+                  },
+                  {
+                    "label": "SPI2",
+                    "pin_groups_list": [
+                      [
+                        [
+                          "U3.PB13"
+                        ],
+                        [
+                          "U4.INA"
+                        ]
+                      ],
+                      [
+                        [
+                          "U3.PB15"
+                        ],
+                        [
+                          "U4.INB"
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.OUTA",
+                  "U6.SCLK"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.OUTB",
+                  "U6.DIN"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "AND_GROUP",
+          "conditions": [
+            {
+              "check": "SAME_NET",
+              "params": {
+                "net_group_candidates": [
+                  {
+                    "label": "SPI1_DEFAULT",
+                    "pin_groups_list": [
+                      [
+                        [
+                          "U3.PA5"
+                        ],
+                        [
+                          "U4.INB"
+                        ]
+                      ],
+                      [
+                        [
+                          "U3.PA7"
+                        ],
+                        [
+                          "U4.INA"
+                        ]
+                      ]
+                    ]
+                  },
+                  {
+                    "label": "SPI1_REMAP",
+                    "pin_groups_list": [
+                      [
+                        [
+                          "U3.PB3"
+                        ],
+                        [
+                          "U4.INB"
+                        ]
+                      ],
+                      [
+                        [
+                          "U3.PB5"
+                        ],
+                        [
+                          "U4.INA"
+                        ]
+                      ]
+                    ]
+                  },
+                  {
+                    "label": "SPI2",
+                    "pin_groups_list": [
+                      [
+                        [
+                          "U3.PB13"
+                        ],
+                        [
+                          "U4.INB"
+                        ]
+                      ],
+                      [
+                        [
+                          "U3.PB15"
+                        ],
+                        [
+                          "U4.INA"
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.OUTB",
+                  "U6.SCLK"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.OUTA",
+                  "U6.DIN"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T3-6-ANY-002",
+      "type": "ANY_OF",
+      "desc": "Reverse isolated SPI return uses one U5 channel to bring ADS1118 DOUT back to a legal STM32F103 SPI MISO pin; A/B channel selection may be swapped.",
+      "conditions": [
+        {
+          "type": "AND_GROUP",
+          "conditions": [
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U6.DOUT",
+                  "U5.INA"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pin_groups": [
+                  [
+                    "U3.PA6",
+                    "U3.PB4",
+                    "U3.PB14"
+                  ],
+                  [
+                    "U5.OUTA"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "AND_GROUP",
+          "conditions": [
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U6.DOUT",
+                  "U5.INB"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pin_groups": [
+                  [
+                    "U3.PA6",
+                    "U3.PB4",
+                    "U3.PB14"
+                  ],
+                  [
+                    "U5.OUTB"
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T3-6-ANY-003",
+      "type": "ANY_OF",
+      "desc": "ADS1118 CS is either held permanently low because the isolated SPI bus is not shared, or is driven from a legal STM32 control pin through one ISO7721 U5 channel.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U6.CS",
+              "U6.GND"
+            ]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U6.CS",
+            "destination": "U6.GND",
+            "max_hops": 6,
+            "allowed_components": [
+              "Resistor"
+            ]
+          }
+        },
+        {
+          "type": "AND_GROUP",
+          "conditions": [
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pin_groups": [
+                  [
+                    "U3.PA0",
+                    "U3.PA1",
+                    "U3.PA2",
+                    "U3.PA3",
+                    "U3.PA4",
+                    "U3.PA8",
+                    "U3.PA9",
+                    "U3.PA10",
+                    "U3.PA11",
+                    "U3.PA12",
+                    "U3.PB0",
+                    "U3.PB1",
+                    "U3.PB6",
+                    "U3.PB7",
+                    "U3.PB8",
+                    "U3.PB9",
+                    "U3.PB10",
+                    "U3.PB11",
+                    "U3.PB12",
+                    "U3.PB13",
+                    "U3.PB14",
+                    "U3.PB15"
+                  ],
+                  [
+                    "U5.INA"
+                  ]
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U5.OUTA",
+                  "U6.CS"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "AND_GROUP",
+          "conditions": [
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pin_groups": [
+                  [
+                    "U3.PA0",
+                    "U3.PA1",
+                    "U3.PA2",
+                    "U3.PA3",
+                    "U3.PA4",
+                    "U3.PA8",
+                    "U3.PA9",
+                    "U3.PA10",
+                    "U3.PA11",
+                    "U3.PA12",
+                    "U3.PB0",
+                    "U3.PB1",
+                    "U3.PB6",
+                    "U3.PB7",
+                    "U3.PB8",
+                    "U3.PB9",
+                    "U3.PB10",
+                    "U3.PB11",
+                    "U3.PB12",
+                    "U3.PB13",
+                    "U3.PB14",
+                    "U3.PB15"
+                  ],
+                  [
+                    "U5.INB"
+                  ]
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U5.OUTB",
+                  "U6.CS"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T3-6-ANY-004",
+      "type": "ANY_OF",
+      "desc": "ISO7721 U4 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+      "conditions": [
+        {
+          "type": "AND_GROUP",
+          "conditions": [
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.GND1",
+                  "U1.VSS"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.VCC1",
+                  "U1.VOUT"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.GND2",
+                  "U2.VSS"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.VCC2",
+                  "U2.VOUT"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "AND_GROUP",
+          "conditions": [
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.GND2",
+                  "U1.VSS"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.VCC2",
+                  "U1.VOUT"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.GND1",
+                  "U2.VSS"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U4.VCC1",
+                  "U2.VOUT"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T3-6-ANY-005",
+      "type": "ANY_OF",
+      "desc": "ISO7721 U5 must bridge the two domains correctly: one side is on the non-isolated GND/3.3V domain and the opposite side is on the isolated ISO_GND/ISO_3V3 domain. Side numbering may be used in either orientation.",
+      "conditions": [
+        {
+          "type": "AND_GROUP",
+          "conditions": [
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U5.GND1",
+                  "U1.VSS"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U5.VCC1",
+                  "U1.VOUT"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U5.GND2",
+                  "U2.VSS"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U5.VCC2",
+                  "U2.VOUT"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "AND_GROUP",
+          "conditions": [
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U5.GND2",
+                  "U1.VSS"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U5.VCC2",
+                  "U1.VOUT"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U5.GND1",
+                  "U2.VSS"
+                ]
+              }
+            },
+            {
+              "check": "SAME_NET",
+              "params": {
+                "pins": [
+                  "U5.VCC1",
+                  "U2.VOUT"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T3-6-SC01-001",
+      "check": "EXISTS_PATH",
+      "desc": "Reference monitoring path: REF5050 VOUT reaches ADS1118 AIN0 through a resistor-based attenuation or signal-conditioning path.",
+      "params": {
+        "from_pin": "U7.VOUT",
+        "destination": "U6.AIN0",
+        "max_hops": 6,
+        "allowed_components": [
+          "Resistor"
+        ]
+      }
+    },
+    {
+      "id": "T3-6-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Galvanic isolation boundary: non-isolated GND and isolated ISO_GND must never be connected.",
+      "params": {
+        "groups": [
+          [
+            "U1.VSS"
+          ],
+          [
+            "U2.VSS"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-6-I02-002",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Non-isolated and isolated supply rails must remain separate.",
+      "params": {
+        "groups": [
+          [
+            "U1.VIN"
+          ],
+          [
+            "U1.VOUT"
+          ],
+          [
+            "U2.VIN"
+          ],
+          [
+            "U2.VOUT"
+          ],
+          [
+            "U1.VSS"
+          ],
+          [
+            "U2.VSS"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-6-I02-003",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Individual isolator channel-side nets must remain distinct; SPI and CS only cross the barrier through ISO7721 channel pairs, not by direct shorts.",
+      "params": {
+        "groups": [
+          [
+            "U4.INA"
+          ],
+          [
+            "U4.INB"
+          ],
+          [
+            "U4.OUTA"
+          ],
+          [
+            "U4.OUTB"
+          ],
+          [
+            "U5.INA"
+          ],
+          [
+            "U5.INB"
+          ],
+          [
+            "U5.OUTA"
+          ],
+          [
+            "U5.OUTB"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-6-I02-004",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "REF5050 output, isolated rails, isolated ground, and ADS1118 digital SPI pins must remain distinct.",
+      "params": {
+        "groups": [
+          [
+            "U7.VOUT"
+          ],
+          [
+            "U2.VOUT"
+          ],
+          [
+            "U2.VIN"
+          ],
+          [
+            "U2.VSS"
+          ],
+          [
+            "U6.SCLK"
+          ],
+          [
+            "U6.DIN"
+          ],
+          [
+            "U6.DOUT"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-6-I02-005",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "REF5050 5V reference output and the ADS1118 monitored analog input node must remain distinct; the ADC input must not be a direct short to the 5V reference output.",
+      "params": {
+        "groups": [
+          [
+            "U7.VOUT"
+          ],
+          [
+            "U6.AIN0"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-6-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Non-isolated GND must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.VSS"
+      }
+    },
+    {
+      "id": "T3-6-C02-002",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Isolated ISO_GND must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U2.VSS"
+      }
+    },
+    {
+      "id": "T3-6-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "VIN_5V input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T3-6-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "Non-isolated 3.3V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VOUT"
+      }
+    },
+    {
+      "id": "T3-6-C03-003",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "External isolated 5V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U2.VIN"
+      }
+    },
+    {
+      "id": "T3-6-C03-004",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "Isolated 3.3V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T3-6-I03-001",
+      "check": "PIN_NOT_ON_NET_WITH",
+      "desc": "ADS1118 analog reference-monitor input must not be shorted to SPI digital pins.",
+      "params": {
+        "pin": "U6.AIN0",
+        "forbidden_pins": [
+          "U6.SCLK",
+          "U6.DIN",
+          "U6.DOUT",
+          "U6.CS"
+        ]
+      }
+    },
+    {
+      "id": "T3-6-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "VIN_5V input rail should have bypass capacitor to non-isolated GND.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T3-6-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "Non-isolated 3.3V rail should have decoupling capacitor to non-isolated GND.",
+      "params": {
+        "pin": "U1.VOUT"
+      }
+    },
+    {
+      "id": "T3-6-T01-003",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "External ISO_5V rail should have bypass capacitor to ISO_GND.",
+      "params": {
+        "pin": "U2.VIN"
+      }
+    },
+    {
+      "id": "T3-6-T01-004",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "Isolated ISO_3V3 rail should have decoupling capacitor to ISO_GND.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T3-6-T01-005",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "REF5050 VOUT should have stabilization capacitor to ISO_GND.",
+      "params": {
+        "pin": "U7.VOUT"
+      }
+    },
+    {
+      "id": "T3-6-T01-006",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "ADS1118 VDD should have local decoupling capacitor to ISO_GND.",
+      "params": {
+        "pin": "U6.VDD"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 29,
+    "by_category": {
+      "SAME_NET": 5,
+      "ANY_OF": 5,
+      "NET_GROUP_ISOLATION": 5,
+      "CONNECTED_TO_GROUND": 2,
+      "CONNECTED_TO_POWER": 4,
+      "PIN_NOT_ON_NET_WITH": 1,
+      "HAS_CAP_TO_GROUND": 6,
+      "EXISTS_PATH": 1
+    }
+  }
+}

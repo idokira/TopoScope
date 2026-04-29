@@ -1,0 +1,160 @@
+{
+  "method": "full_system",
+  "model": "gpt-5.4",
+  "ablation": null,
+  "design_id": "T2-10",
+  "tier": 2,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 5,
+  "pass_at_k": {
+    "pass_at_1": 0.7142857142857143,
+    "pass_at_2": 0.9523809523809523,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9373433583959899,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-10_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-10_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8947368421052632,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-10-C01-005",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7_Pin1",
+          "message": "Pin 'R7_Pin1' is connected to multiple nets: [VCC_3V3, VREF_5V]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-10_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-10_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8888888888888888,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-10-C01-005",
+        "T2-10-I02-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-10-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V input, 3.3V digital rail, GND, REF5050 output, I2C SDA, I2C SCL, ADS1115 external analog input, and ADS1115 ALERT must remain distinct. I2C isolation is anchored on ADS1115-side pins so it is invariant to STM32 I2C pin selection.",
+          "message": "Isolation violated: 'U3_Pin9' and 'U3_Pin2' share net(s) ['ADC_ALERT_OPTIONAL']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-10_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-10_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-10_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    }
+  ]
+}

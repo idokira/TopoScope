@@ -1,0 +1,89 @@
+{
+  "design_id": "T1-3",
+  "tier": 1,
+  "type": "LED",
+  "description": "High-power LED constant-current driver based on PT4115. The circuit accepts a 12V-24V input supply and drives a 1W LED at 350mA using a buck constant-current topology. The design requires an input bypass capacitor, a high-side current-sense resistor between VIN and CSN, a switching freewheeling path from SW, and proper grounding of both the GND pin and exposed pad.",
+  "ic_list": [
+    "PT4115 (U1)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T1-3-C01-001",
+      "check": "SAME_NET",
+      "desc": "Ground unification: PT4115 GND pin and exposed pad must share one common ground net.",
+      "params": {
+        "pins": [
+          "U1.GND",
+          "U1.EP"
+        ]
+      }
+    },
+    {
+      "id": "T1-3-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical net isolation: VIN, CSN, SW, and GND must all reside on mutually distinct nets.",
+      "params": {
+        "groups": [
+          ["U1.VIN"],
+          ["U1.CSN"],
+          ["U1.SW"],
+          ["U1.GND"]
+        ]
+      }
+    },
+    {
+      "id": "T1-3-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Unified ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.GND"
+      }
+    },
+    {
+      "id": "T1-3-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "Input supply rail feeding PT4115 must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T1-3-T02-001",
+      "check": "HAS_SERIES_COMPONENT",
+      "desc": "A current-sense resistor must be inserted between VIN and CSN to set the regulated LED current.",
+      "params": {
+        "pin_a": "U1.VIN",
+        "pin_b": "U1.CSN",
+        "component_type": "Resistor"
+      }
+    },
+    {
+      "id": "T1-3-T09-001",
+      "check": "HAS_FREEWHEELING_PATH",
+      "desc": "The PT4115 SW node must have a valid freewheeling path for buck LED drive operation.",
+      "params": {
+        "pin": "U1.SW"
+      }
+    },
+    {
+      "id": "T1-3-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "The PT4115 input rail must have a low-ESR bypass capacitor to ground.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 7,
+    "by_category": {
+      "SAME_NET": 1,
+      "NET_GROUP_ISOLATION": 1,
+      "CONNECTED_TO_GROUND": 1,
+      "CONNECTED_TO_POWER": 1,
+      "HAS_SERIES_COMPONENT": 1,
+      "HAS_FREEWHEELING_PATH": 1,
+      "HAS_CAP_TO_GROUND": 1
+    }
+  }
+}

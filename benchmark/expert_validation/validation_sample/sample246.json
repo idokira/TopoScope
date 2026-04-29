@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "design_id": "T1-1",
+    "tier": 1,
+    "type": "COM",
+    "run_id": 7
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_1.0uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_1.0uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "CH340"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "XC6206"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_12MHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "U1.GND",
+          "U2.VSS"
+        ]
+      },
+      {
+        "name": "U1_V3_NODE",
+        "pins": [
+          "C4.1",
+          "U1.V3"
+        ]
+      },
+      {
+        "name": "U1_VCC_BYPASS",
+        "pins": [
+          "C3.1"
+        ]
+      },
+      {
+        "name": "U1_XI",
+        "pins": [
+          "C5.1",
+          "U1.XI",
+          "Y1.1"
+        ]
+      },
+      {
+        "name": "U1_XO",
+        "pins": [
+          "C6.1",
+          "U1.XO",
+          "Y1.2"
+        ]
+      },
+      {
+        "name": "UART_RXD",
+        "pins": [
+          "U1.RXD"
+        ]
+      },
+      {
+        "name": "UART_TXD",
+        "pins": [
+          "U1.TXD"
+        ]
+      },
+      {
+        "name": "USB_DM",
+        "pins": [
+          "U1.UD_N"
+        ]
+      },
+      {
+        "name": "USB_DP",
+        "pins": [
+          "U1.UD_P"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C2.1",
+          "U1.VCC",
+          "U2.VOUT"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "U2.VIN"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U2": 0,
+      "U1": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {
+      "uart_connector": [
+        "UART_RXD",
+        "UART_TXD"
+      ]
+    },
+    "existing_passive_components_count": 7
+  }
+}

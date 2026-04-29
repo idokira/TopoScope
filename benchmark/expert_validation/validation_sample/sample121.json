@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "design_id": "T1-1",
+    "tier": 1,
+    "type": "COM",
+    "run_id": 6
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_1.0uF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_1.0uF"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "CH340"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "XC6206"
+      },
+      {
+        "refdes": "X1",
+        "part_number": "CRYSTAL_12MHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "U1.GND",
+          "U2.VSS"
+        ]
+      },
+      {
+        "name": "RXD",
+        "pins": [
+          "U1.RXD"
+        ]
+      },
+      {
+        "name": "TXD",
+        "pins": [
+          "U1.TXD"
+        ]
+      },
+      {
+        "name": "USB_DN",
+        "pins": [
+          "U1.UD_N"
+        ]
+      },
+      {
+        "name": "USB_DP",
+        "pins": [
+          "U1.UD_P"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C2.1",
+          "C6.1",
+          "U1.V3",
+          "U2.VOUT"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "C5.1",
+          "U1.VCC",
+          "U2.VIN"
+        ]
+      },
+      {
+        "name": "XI_NODE",
+        "pins": [
+          "C3.1",
+          "U1.XI",
+          "X1.1"
+        ]
+      },
+      {
+        "name": "XO_NODE",
+        "pins": [
+          "C4.1",
+          "U1.XO",
+          "X1.2"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {
+      "uart_interface": [
+        "RX_IN",
+        "TX_OUT",
+        "VCC_3V3"
+      ]
+    },
+    "existing_passive_components_count": 7
+  }
+}

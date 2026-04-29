@@ -1,0 +1,608 @@
+{
+  "method": "baseline",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T2-8",
+  "tier": 2,
+  "type": "AUD",
+  "num_runs": 7,
+  "pass_count": 1,
+  "pass_at_k": {
+    "pass_at_1": 0.1428571428571429,
+    "pass_at_2": 0.2857142857142857,
+    "pass_at_3": 0.4285714285714286,
+    "pass_at_4": 0.5714285714285714,
+    "pass_at_5": 0.7142857142857143,
+    "pass_at_6": 0.8571428571428572,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.38392857142857145,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-8_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8125,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-8-ANY-003",
+        "T2-8-T06-001",
+        "T2-8-T06-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pin(s) not found: ['U4.OUT2'].; ALL_OF failed: Pin(s) not found: ['U4.OUT2']."
+        },
+        {
+          "id": "T2-8-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires pull-up resistor to power. Anchored on MCP4725 SDA so the assertion targets the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U3.SDA'."
+        },
+        {
+          "id": "T2-8-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires pull-up resistor to power. Anchored on MCP4725 SCL so the assertion targets the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U3.SCL'."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-8_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 16,
+      "violated_assertion_names": [
+        "T2-8-C01-001",
+        "T2-8-C01-002",
+        "T2-8-C01-003",
+        "T2-8-C01-004",
+        "T2-8-C01-005",
+        "T2-8-I02-001",
+        "T2-8-C02-001",
+        "T2-8-C03-001",
+        "T2-8-C03-002",
+        "T2-8-ANY-001",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003",
+        "T2-8-T06-001",
+        "T2-8-T06-002",
+        "T2-8-T01-001",
+        "T2-8-T01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, ATmega ground, MCP4725 ground, and NE5532 negative supply share common GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C01-003",
+          "check": "SAME_NET",
+          "desc": "Analog supply: VIN_5V input powers NE5532 positive supply.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C01-004",
+          "check": "SAME_NET",
+          "desc": "I2C SDA: ATmega328P hardware TWI SDA pin PC4 connects to MCP4725 SDA.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C01-005",
+          "check": "SAME_NET",
+          "desc": "I2C SCL: ATmega328P hardware TWI SCL pin PC5 connects to MCP4725 SCL.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V analog rail, VCC_3V3 digital rail, GND, I2C SDA, I2C SCL, DAC/control node, NE5532 channel-1 output, and NE5532 channel-1 inverting input must remain distinct. I2C isolation is anchored on MCP4725-side bus pins for semantic stability.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Common ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V digital rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "VIN_5V analog rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MCP4725 A0 must select I2C address: tie to GND for 0x60 or VDD for 0x61.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires pull-up resistor to power. Anchored on MCP4725 SDA so the assertion targets the bus itself.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires pull-up resistor to power. Anchored on MCP4725 SCL so the assertion targets the bus itself.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "VIN_5V analog rail must have bypass capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V digital rail must have decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-8_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 19,
+      "violated_assertion_names": [
+        "T2-8-C01-001",
+        "T2-8-C01-002",
+        "T2-8-C01-003",
+        "T2-8-C01-004",
+        "T2-8-C01-005",
+        "T2-8-I02-001",
+        "T2-8-C02-001",
+        "T2-8-C03-001",
+        "T2-8-C03-002",
+        "T2-8-ANY-001",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003",
+        "T2-8-T06-001",
+        "T2-8-T06-002",
+        "T2-8-T01-001",
+        "T2-8-T01-002",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, ATmega ground, MCP4725 ground, and NE5532 negative supply share common GND.",
+          "message": "Pin(s) not found: ['U1.GND', 'U2.GND', 'U2.GND_2', 'U3.VSS', 'U4.VCC_N']."
+        },
+        {
+          "id": "T2-8-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pin(s) not found: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD']."
+        },
+        {
+          "id": "T2-8-C01-003",
+          "check": "SAME_NET",
+          "desc": "Analog supply: VIN_5V input powers NE5532 positive supply.",
+          "message": "Pin(s) not found: ['U1.VIN', 'U4.VCC_P']."
+        },
+        {
+          "id": "T2-8-C01-004",
+          "check": "SAME_NET",
+          "desc": "I2C SDA: ATmega328P hardware TWI SDA pin PC4 connects to MCP4725 SDA.",
+          "message": "Pin(s) not found: ['U2.PC4', 'U3.SDA']."
+        },
+        {
+          "id": "T2-8-C01-005",
+          "check": "SAME_NET",
+          "desc": "I2C SCL: ATmega328P hardware TWI SCL pin PC5 connects to MCP4725 SCL.",
+          "message": "Pin(s) not found: ['U2.PC5', 'U3.SCL']."
+        },
+        {
+          "id": "T2-8-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V analog rail, VCC_3V3 digital rail, GND, I2C SDA, I2C SCL, DAC/control node, NE5532 channel-1 output, and NE5532 channel-1 inverting input must remain distinct. I2C isolation is anchored on MCP4725-side bus pins for semantic stability.",
+          "message": "Pin(s) not found: ['U1.VIN']."
+        },
+        {
+          "id": "T2-8-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Common ground net must carry Ground electrical attribute.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V digital rail must carry Power electrical attribute.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "VIN_5V analog rail must carry Power electrical attribute.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MCP4725 A0 must select I2C address: tie to GND for 0x60 or VDD for 0x61.",
+          "message": "ANY_OF failed: Pin not found.; Pin not found."
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U3.VOUT', 'U4.IN1_P'].; from_pin not found."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pin(s) not found: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pin(s) not found: ['U4.IN2_N', 'U4.OUT2']."
+        },
+        {
+          "id": "T2-8-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires pull-up resistor to power. Anchored on MCP4725 SDA so the assertion targets the bus itself.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires pull-up resistor to power. Anchored on MCP4725 SCL so the assertion targets the bus itself.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "VIN_5V analog rail must have bypass capacitor to ground.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V digital rail must have decoupling capacitor to ground.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C11.1",
+          "message": "Pin 'C11.1' is connected to multiple nets: [U4_VCC_P_NET, VIN_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U4.4",
+          "message": "Pin 'U4.4' is connected to multiple nets: [GND, U4_VCC_N_NET]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U4.8",
+          "message": "Pin 'U4.8' is connected to multiple nets: [U4_VCC_P_NET, VIN_5V]"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-8_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 16,
+      "violated_assertion_names": [
+        "T2-8-C01-001",
+        "T2-8-C01-002",
+        "T2-8-C01-003",
+        "T2-8-C01-004",
+        "T2-8-C01-005",
+        "T2-8-I02-001",
+        "T2-8-C02-001",
+        "T2-8-C03-001",
+        "T2-8-C03-002",
+        "T2-8-ANY-001",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003",
+        "T2-8-T06-001",
+        "T2-8-T06-002",
+        "T2-8-T01-001",
+        "T2-8-T01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, ATmega ground, MCP4725 ground, and NE5532 negative supply share common GND.",
+          "message": "Pin(s) not found: ['U1.GND', 'U2.GND', 'U2.GND_2', 'U3.VSS', 'U4.VCC_N']."
+        },
+        {
+          "id": "T2-8-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pin(s) not found: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD']."
+        },
+        {
+          "id": "T2-8-C01-003",
+          "check": "SAME_NET",
+          "desc": "Analog supply: VIN_5V input powers NE5532 positive supply.",
+          "message": "Pin(s) not found: ['U1.VIN', 'U4.VCC_P']."
+        },
+        {
+          "id": "T2-8-C01-004",
+          "check": "SAME_NET",
+          "desc": "I2C SDA: ATmega328P hardware TWI SDA pin PC4 connects to MCP4725 SDA.",
+          "message": "Pin(s) not found: ['U2.PC4', 'U3.SDA']."
+        },
+        {
+          "id": "T2-8-C01-005",
+          "check": "SAME_NET",
+          "desc": "I2C SCL: ATmega328P hardware TWI SCL pin PC5 connects to MCP4725 SCL.",
+          "message": "Pin(s) not found: ['U2.PC5', 'U3.SCL']."
+        },
+        {
+          "id": "T2-8-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V analog rail, VCC_3V3 digital rail, GND, I2C SDA, I2C SCL, DAC/control node, NE5532 channel-1 output, and NE5532 channel-1 inverting input must remain distinct. I2C isolation is anchored on MCP4725-side bus pins for semantic stability.",
+          "message": "Pin(s) not found: ['U1.VIN']."
+        },
+        {
+          "id": "T2-8-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Common ground net must carry Ground electrical attribute.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V digital rail must carry Power electrical attribute.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "VIN_5V analog rail must carry Power electrical attribute.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MCP4725 A0 must select I2C address: tie to GND for 0x60 or VDD for 0x61.",
+          "message": "ANY_OF failed: Pin not found.; Pin not found."
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U3.VOUT', 'U4.IN1_P'].; from_pin not found."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pin(s) not found: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pin(s) not found: ['U4.IN2_N', 'U4.OUT2']."
+        },
+        {
+          "id": "T2-8-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires pull-up resistor to power. Anchored on MCP4725 SDA so the assertion targets the bus itself.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires pull-up resistor to power. Anchored on MCP4725 SCL so the assertion targets the bus itself.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "VIN_5V analog rail must have bypass capacitor to ground.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-8-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V digital rail must have decoupling capacitor to ground.",
+          "message": "Pin not found."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-8_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-8-ANY-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U3.VOUT'].; ALL_OF failed: No constrained path found from 'U3.VOUT' to 'U4.IN2_P' within 4 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-8_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 16,
+      "violated_assertion_names": [
+        "T2-8-C01-001",
+        "T2-8-C01-002",
+        "T2-8-C01-003",
+        "T2-8-C01-004",
+        "T2-8-C01-005",
+        "T2-8-I02-001",
+        "T2-8-C02-001",
+        "T2-8-C03-001",
+        "T2-8-C03-002",
+        "T2-8-ANY-001",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003",
+        "T2-8-T06-001",
+        "T2-8-T06-002",
+        "T2-8-T01-001",
+        "T2-8-T01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, ATmega ground, MCP4725 ground, and NE5532 negative supply share common GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C01-003",
+          "check": "SAME_NET",
+          "desc": "Analog supply: VIN_5V input powers NE5532 positive supply.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C01-004",
+          "check": "SAME_NET",
+          "desc": "I2C SDA: ATmega328P hardware TWI SDA pin PC4 connects to MCP4725 SDA.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C01-005",
+          "check": "SAME_NET",
+          "desc": "I2C SCL: ATmega328P hardware TWI SCL pin PC5 connects to MCP4725 SCL.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V analog rail, VCC_3V3 digital rail, GND, I2C SDA, I2C SCL, DAC/control node, NE5532 channel-1 output, and NE5532 channel-1 inverting input must remain distinct. I2C isolation is anchored on MCP4725-side bus pins for semantic stability.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Common ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V digital rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "VIN_5V analog rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MCP4725 A0 must select I2C address: tie to GND for 0x60 or VDD for 0x61.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; ALL_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires pull-up resistor to power. Anchored on MCP4725 SDA so the assertion targets the bus itself.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires pull-up resistor to power. Anchored on MCP4725 SCL so the assertion targets the bus itself.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "VIN_5V analog rail must have bypass capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-8-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V digital rail must have decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-8_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    }
+  ]
+}

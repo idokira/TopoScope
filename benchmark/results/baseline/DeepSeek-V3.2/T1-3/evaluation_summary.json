@@ -1,0 +1,126 @@
+{
+  "method": "baseline",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T1-3",
+  "tier": 1,
+  "type": "LED",
+  "num_runs": 7,
+  "pass_count": 4,
+  "pass_at_k": {
+    "pass_at_1": 0.5714285714285714,
+    "pass_at_2": 0.8571428571428572,
+    "pass_at_3": 0.9714285714285714,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9325396825396826,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T1-3_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T1-3_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for D1.A",
+          "message": "Pin 'D1.A' is connected to multiple nets: [GND, U1_SW]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T1-3_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T1-3_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T1-3_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for D1.A",
+          "message": "Pin 'D1.A' is connected to multiple nets: [GND, U1_SW]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T1-3_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T1-3_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7777777777777778,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for D1.A",
+          "message": "Pin 'D1.A' is connected to multiple nets: [GND, U1_SW]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U1.VIN",
+          "message": "Pin 'U1.VIN' is connected to multiple nets: [U1_VCC, VIN_12V_24V]"
+        }
+      ]
+    }
+  ]
+}

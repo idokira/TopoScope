@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "design_id": "T1-2",
+    "tier": 1,
+    "type": "PM",
+    "run_id": 7
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_10nF"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "TPS3703"
+      }
+    ],
+    "nets": [
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "U1.GND",
+          "U2.GND"
+        ]
+      },
+      {
+        "name": "POWER_GOOD",
+        "pins": [
+          "R3.1",
+          "U2.RESET"
+        ]
+      },
+      {
+        "name": "U2_CT",
+        "pins": [
+          "C4.1",
+          "U2.CT"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C2.1",
+          "C3.1",
+          "R3.2",
+          "U1.VOUT",
+          "U2.SENSE",
+          "U2.VDD"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "U1.VIN"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 1,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 1
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 5
+  }
+}

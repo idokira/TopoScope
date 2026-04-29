@@ -1,0 +1,554 @@
+{
+  "method": "tcs_only",
+  "model": "gpt-5.4",
+  "ablation": null,
+  "design_id": "T3-3",
+  "tier": 3,
+  "type": "DRV",
+  "num_runs": 7,
+  "pass_count": 1,
+  "pass_at_k": {
+    "pass_at_1": 0.1428571428571429,
+    "pass_at_2": 0.2857142857142857,
+    "pass_at_3": 0.4285714285714286,
+    "pass_at_4": 0.5714285714285714,
+    "pass_at_5": 0.7142857142857143,
+    "pass_at_6": 0.8571428571428572,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8240258829694603,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-3_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8727272727272727,
+      "violated_assertion_count": 7,
+      "violated_assertion_names": [
+        "T3-3-C01-010",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "No common net exists across pin groups: [['U3.PA9', 'U3.PB6', 'U3.PA2', 'U3.PB10'], ['U4.PDN_UART'], ['U5.PDN_UART']]."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C5_Pin2",
+          "message": "Pin 'C5_Pin2' is connected to multiple nets: [GND, U1_COMP_RC]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C6_Pin2",
+          "message": "Pin 'C6_Pin2' is connected to multiple nets: [GND, U1_PH]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R11_Pin1",
+          "message": "Pin 'R11_Pin1' is connected to multiple nets: [MCU_TX_TO_DRIVER_A_UART_RX, U4_PDN_UART_RX]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R11_Pin2",
+          "message": "Pin 'R11_Pin2' is connected to multiple nets: [GND, U4_PDN_UART_RX]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R14_Pin2",
+          "message": "Pin 'R14_Pin2' is connected to multiple nets: [DRIVER_STDBY_B, MCU_TX_TO_DRIVER_B_UART_RX]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5_Pin20",
+          "message": "Pin 'U5_Pin20' is connected to multiple nets: [GND, U5_STDBY_CTRL]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-3_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8269230769230769,
+      "violated_assertion_count": 9,
+      "violated_assertion_names": [
+        "T3-3-C01-005",
+        "T3-3-C01-006",
+        "T3-3-C01-010",
+        "T3-3-I02-003",
+        "T3-3-I02-004",
+        "T3-3-I02-005",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-005",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U4.BRA', 'U4.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U5.BRA', 'U5.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "No common net exists across pin groups: [['U3.PA9', 'U3.PB6', 'U3.PA2', 'U3.PB10'], ['U4.PDN_UART'], ['U5.PDN_UART']]."
+        },
+        {
+          "id": "T3-3-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U4_Pin24' and 'U4_Pin21' share net(s) ['MOTOR_A_PHASE_A']."
+        },
+        {
+          "id": "T3-3-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel B motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U5_Pin24' and 'U5_Pin21' share net(s) ['MOTOR_B_PHASE_A']."
+        },
+        {
+          "id": "T3-3-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+          "message": "Isolation violated: 'U4_Pin24' and 'U4_Pin21' share net(s) ['MOTOR_A_PHASE_A']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C2_Pin1",
+          "message": "Pin 'C2_Pin1' is connected to multiple nets: [U1_PH, VIN_12V_24V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5_Pin14",
+          "message": "Pin 'U5_Pin14' is connected to multiple nets: [DRV_STDBY_B, MCU_TX_TO_DRIVER_B_UART_RX]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5_Pin20",
+          "message": "Pin 'U5_Pin20' is connected to multiple nets: [DRV_STDBY_B, GND]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-3_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6078431372549019,
+      "violated_assertion_count": 20,
+      "violated_assertion_names": [
+        "T3-3-C01-001",
+        "T3-3-C01-002",
+        "T3-3-C01-003",
+        "T3-3-C01-006",
+        "T3-3-C01-010",
+        "T3-3-C01-014",
+        "T3-3-C01-015",
+        "T3-3-C01-016",
+        "T3-3-I02-003",
+        "T3-3-I02-005",
+        "T3-3-S02-005",
+        "T3-3-S02-006",
+        "T3-3-S02-007",
+        "T3-3-S02-008",
+        "T3-3-T01-005",
+        "T3-3-T01-007",
+        "T3-3-SC01-002",
+        "T3-3-SC01-004",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: buck, LDO, STM32, both TMC2209 drivers, and flash share common GND.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T3-3-C01-002",
+          "check": "SAME_NET",
+          "desc": "Motor power rail: 12V-24V input feeds TPS54331 VIN and both TMC2209 motor supply pins.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T3-3-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V logic rail: AMS1117 output powers STM32, both TMC2209 VCC_IO pins, and W25Q64JV flash.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 2, 'missing': \"All pins floating in group: ['U5.PDN_UART']\"}]"
+        },
+        {
+          "id": "T3-3-C01-014",
+          "check": "SAME_NET",
+          "desc": "Channel B STEP: one legal STM32F103 control-capable pin connects to TMC2209 B STEP.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 1, 'missing': \"All pins floating in group: ['U5.STEP']\"}]"
+        },
+        {
+          "id": "T3-3-C01-015",
+          "check": "SAME_NET",
+          "desc": "Channel B DIR: one legal STM32F103 control-capable pin connects to TMC2209 B DIR.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 1, 'missing': \"All pins floating in group: ['U5.DIR']\"}]"
+        },
+        {
+          "id": "T3-3-C01-016",
+          "check": "SAME_NET",
+          "desc": "Channel B enable: one legal STM32F103 control-capable pin connects to TMC2209 B ENN.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 1, 'missing': \"All pins floating in group: ['U5.ENN']\"}]"
+        },
+        {
+          "id": "T3-3-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U4_Pin24' and 'U4_Pin21' share net(s) ['MOTOR_A_PHASE_A']."
+        },
+        {
+          "id": "T3-3-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+          "message": "Isolation violated: 'U4_Pin24' and 'U4_Pin21' share net(s) ['MOTOR_A_PHASE_A']."
+        },
+        {
+          "id": "T3-3-S02-005",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OA1 should be exposed.",
+          "message": "Pin 'U5_Pin24' is floating."
+        },
+        {
+          "id": "T3-3-S02-006",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OA2 should be exposed.",
+          "message": "Pin 'U5_Pin21' is floating."
+        },
+        {
+          "id": "T3-3-S02-007",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OB1 should be exposed.",
+          "message": "Pin 'U5_Pin26' is floating."
+        },
+        {
+          "id": "T3-3-S02-008",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OB2 should be exposed.",
+          "message": "Pin 'U5_Pin1' is floating."
+        },
+        {
+          "id": "T3-3-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "TMC2209 channel B motor supply requires local bulk capacitor to ground.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U5_Pin22'."
+        },
+        {
+          "id": "T3-3-T01-007",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "TMC2209 channel B internal 5VOUT requires local capacitor to ground.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U5_Pin8'."
+        },
+        {
+          "id": "T3-3-SC01-002",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel B charge pump requires capacitor path between CPO and CPI.",
+          "message": "No constrained path found from 'U5_Pin4' to 'U5.CPI' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-3-SC01-004",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel B VCP requires capacitor path to motor supply VS.",
+          "message": "No constrained path found from 'U5_Pin6' to 'U5.VS_1' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R10_Pin1",
+          "message": "Pin 'R10_Pin1' is connected to multiple nets: [TMC2209_A_TX_TO_MCU_RX, U4_PDN_UART]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9_Pin1",
+          "message": "Pin 'R9_Pin1' is connected to multiple nets: [MCU_TX_TO_TMC2209_A_RX, U4_PDN_UART]"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-3_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8269230769230769,
+      "violated_assertion_count": 9,
+      "violated_assertion_names": [
+        "T3-3-C01-005",
+        "T3-3-C01-010",
+        "T3-3-C01-011",
+        "T3-3-I02-003",
+        "T3-3-I02-004",
+        "T3-3-I02-005",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-005",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U4.BRA', 'U4.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "No common net exists across pin groups: [['U3.PA9', 'U3.PB6', 'U3.PA2', 'U3.PB10'], ['U4.PDN_UART'], ['U5.PDN_UART']]."
+        },
+        {
+          "id": "T3-3-C01-011",
+          "check": "SAME_NET",
+          "desc": "Channel A STEP: one legal STM32F103 control-capable pin connects to TMC2209 A STEP.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U4.STEP']]."
+        },
+        {
+          "id": "T3-3-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U4_Pin24' and 'U4_Pin21' share net(s) ['MOTOR_A_PHASE_A']."
+        },
+        {
+          "id": "T3-3-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel B motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U5_Pin24' and 'U5_Pin21' share net(s) ['MOTOR_B_PHASE_A']."
+        },
+        {
+          "id": "T3-3-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+          "message": "Isolation violated: 'U4_Pin24' and 'U4_Pin21' share net(s) ['MOTOR_A_PHASE_A']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R15_Pin2",
+          "message": "Pin 'R15_Pin2' is connected to multiple nets: [MCU_TX_TO_STEPPER_DRIVER_B_UART_RX, U5_PDN_TX_LINK]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U4_Pin14",
+          "message": "Pin 'U4_Pin14' is connected to multiple nets: [MCU_TX_TO_STEPPER_DRIVER_A_UART_RX, U4_PDN_UART]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5_Pin14",
+          "message": "Pin 'U5_Pin14' is connected to multiple nets: [MCU_TX_TO_STEPPER_DRIVER_B_UART_RX, U5_PDN_TX_LINK]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-3_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9387755102040817,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-3-C01-005",
+        "T3-3-C01-006",
+        "T3-3-C01-010"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-005",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U4.BRA', 'U4.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U5.BRA', 'U5.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "No common net exists across pin groups: [['U3.PA9', 'U3.PB6', 'U3.PA2', 'U3.PB10'], ['U4.PDN_UART'], ['U5.PDN_UART']]."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-3_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8431372549019608,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T3-3-C01-006",
+        "T3-3-C01-010",
+        "T3-3-C01-016",
+        "T3-3-I02-003",
+        "T3-3-I02-004",
+        "T3-3-I02-005",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U5.BRA', 'U5.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "No common net exists across pin groups: [['U3.PA9', 'U3.PB6', 'U3.PA2', 'U3.PB10'], ['U4.PDN_UART'], ['U5.PDN_UART']]."
+        },
+        {
+          "id": "T3-3-C01-016",
+          "check": "SAME_NET",
+          "desc": "Channel B enable: one legal STM32F103 control-capable pin connects to TMC2209 B ENN.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U5.ENN']]."
+        },
+        {
+          "id": "T3-3-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U4_Pin24' and 'U4_Pin21' share net(s) ['MOTOR_A_PHASE_A']."
+        },
+        {
+          "id": "T3-3-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel B motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U5_Pin24' and 'U5_Pin21' share net(s) ['MOTOR_B_PHASE_A']."
+        },
+        {
+          "id": "T3-3-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+          "message": "Isolation violated: 'U4_Pin24' and 'U4_Pin21' share net(s) ['MOTOR_A_PHASE_A']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U3_Pin13",
+          "message": "Pin 'U3_Pin13' is connected to multiple nets: [DRIVER_A_UART_TX_TO_MCU_RX, STEP_B]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U3_Pin31",
+          "message": "Pin 'U3_Pin31' is connected to multiple nets: [DRIVER_B_UART_TX_TO_MCU_RX, STEP_A]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-3_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8518518518518519,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T3-3-C01-005",
+        "T3-3-C01-006",
+        "T3-3-C01-010",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-005",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U4.BRA', 'U4.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U5.BRA', 'U5.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "No common net exists across pin groups: [['U3.PA9', 'U3.PB6', 'U3.PA2', 'U3.PB10'], ['U4.PDN_UART'], ['U5.PDN_UART']]."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R10_Pin1",
+          "message": "Pin 'R10_Pin1' is connected to multiple nets: [U4_MS1_AD0, U4_STDBY]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R11_Pin1",
+          "message": "Pin 'R11_Pin1' is connected to multiple nets: [U4_MS2_AD1, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R12_Pin2",
+          "message": "Pin 'R12_Pin2' is connected to multiple nets: [MCU_TX_TO_TMC_UART, U4_CLK]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R15_Pin2",
+          "message": "Pin 'R15_Pin2' is connected to multiple nets: [MCU_TX_TO_TMC_UART, U5_PDN_UART]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R16_Pin2",
+          "message": "Pin 'R16_Pin2' is connected to multiple nets: [TMC_B_UART_RX_TO_MCU, U5_PDN_UART]"
+        }
+      ]
+    }
+  ]
+}

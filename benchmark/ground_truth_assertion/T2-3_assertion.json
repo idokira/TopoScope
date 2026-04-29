@@ -1,0 +1,267 @@
+{
+  "design_id": "T2-3",
+  "tier": 2,
+  "type": "COM",
+  "description": "USB development board with EEPROM. CH32V003 RISC-V MCU communicates with host via CH340G USB-UART bridge (UART crossover: CH340.TXD->CH32V.PD6, CH32V.PD5->CH340.RXD). AT24C256 I2C EEPROM on PC1(SDA)/PC2(SCL). XC6206 LDO provides 3.3V from USB 5V. CH340G in 3.3V mode (V3 tied to VCC). CH340 uses 12MHz external crystal on XI/XO. CH32V003 uses internal oscillator (no external crystal).",
+  "ic_list": [
+    "XC6206 (U1)",
+    "CH340 (U2)",
+    "CH32V003 (U3)",
+    "AT24C256C (U4)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T2-3-C01-001",
+      "check": "SAME_NET",
+      "desc": "GND unification: all ground pins across 4 ICs share one common ground net.",
+      "params": {
+        "pins": [
+          "U1.VSS",
+          "U2.GND",
+          "U3.VSS",
+          "U4.GND"
+        ]
+      }
+    },
+    {
+      "id": "T2-3-C01-002",
+      "check": "SAME_NET",
+      "desc": "3.3V domain unification: LDO output, CH340 VCC+V3 (3.3V mode), MCU VDD, and EEPROM VCC share one power net. V3 tied to VCC is mandatory for CH340 3.3V IO level operation.",
+      "params": {
+        "pins": [
+          "U1.VOUT",
+          "U2.VCC",
+          "U2.V3",
+          "U3.VDD",
+          "U4.VCC"
+        ]
+      }
+    },
+    {
+      "id": "T2-3-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical pin isolation: GND, VCC, VIN, USB D+/D-, UART TX/RX, I2C SDA/SCL, crystal XI/XO, and NRST must all reside on mutually distinct nets. C(12,2)=66 implicit isolation constraints.",
+      "params": {
+        "groups": [
+          [
+            "U1.VSS"
+          ],
+          [
+            "U1.VOUT"
+          ],
+          [
+            "U1.VIN"
+          ],
+          [
+            "U2.UD_P"
+          ],
+          [
+            "U2.UD_N"
+          ],
+          [
+            "U3.PD5"
+          ],
+          [
+            "U3.PD6"
+          ],
+          [
+            "U3.PC1"
+          ],
+          [
+            "U3.PC2"
+          ],
+          [
+            "U2.XI"
+          ],
+          [
+            "U2.XO"
+          ],
+          [
+            "U3.PD7"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T2-3-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Unified ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.VSS"
+      }
+    },
+    {
+      "id": "T2-3-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VOUT"
+      }
+    },
+    {
+      "id": "T2-3-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "USB 5V input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-3-C01-003",
+      "check": "SAME_NET",
+      "desc": "UART TX crossover: MCU TX (PD5) connects to CH340 RXD.",
+      "params": {
+        "pins": [
+          "U3.PD5",
+          "U2.RXD"
+        ]
+      }
+    },
+    {
+      "id": "T2-3-C01-004",
+      "check": "SAME_NET",
+      "desc": "UART RX crossover: CH340 TXD connects to MCU RX (PD6).",
+      "params": {
+        "pins": [
+          "U3.PD6",
+          "U2.TXD"
+        ]
+      }
+    },
+    {
+      "id": "T2-3-C01-005",
+      "check": "SAME_NET",
+      "desc": "I2C SDA bus: MCU PC1 and EEPROM SDA share one net.",
+      "params": {
+        "pins": [
+          "U3.PC1",
+          "U4.SDA"
+        ]
+      }
+    },
+    {
+      "id": "T2-3-C01-006",
+      "check": "SAME_NET",
+      "desc": "I2C SCL bus: MCU PC2 and EEPROM SCL share one net.",
+      "params": {
+        "pins": [
+          "U3.PC2",
+          "U4.SCL"
+        ]
+      }
+    },
+    {
+      "id": "T2-3-C02-002",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "EEPROM A0 must be grounded per design spec (I2C address 0x50).",
+      "params": {
+        "pin": "U4.A0"
+      }
+    },
+    {
+      "id": "T2-3-C02-003",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "EEPROM A1 must be grounded per design spec (I2C address 0x50).",
+      "params": {
+        "pin": "U4.A1"
+      }
+    },
+    {
+      "id": "T2-3-C02-004",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "EEPROM A2 must be grounded per design spec (I2C address 0x50).",
+      "params": {
+        "pin": "U4.A2"
+      }
+    },
+    {
+      "id": "T2-3-ANY-004",
+      "type": "ANY_OF",
+      "desc": "EEPROM WP must be held low to enable writes: direct tie to GND or pull-down resistor to GND.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U4.WP",
+              "U1.VSS"
+            ]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U4.WP",
+            "destination": "U1.VSS",
+            "max_hops": 6,
+            "allowed_components": [
+              "Resistor"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-3-T05-001",
+      "check": "HAS_CRYSTAL_PAIR",
+      "desc": "CH340 12MHz crystal on XI/XO with load capacitors to ground.",
+      "params": {
+        "pin_osc_in": "U2.XI",
+        "pin_osc_out": "U2.XO"
+      }
+    },
+    {
+      "id": "T2-3-T06-001",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "CH32V003 NRST (PD7) requires external pull-up resistor to power.",
+      "params": {
+        "pin": "U3.PD7"
+      }
+    },
+    {
+      "id": "T2-3-T06-002",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SDA line requires external pull-up resistor to power.",
+      "params": {
+        "pin": "U3.PC1"
+      }
+    },
+    {
+      "id": "T2-3-T06-003",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SCL line requires external pull-up resistor to power.",
+      "params": {
+        "pin": "U3.PC2"
+      }
+    },
+    {
+      "id": "T2-3-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "LDO input rail (VIN) must have bypass capacitor to ground.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-3-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V domain must have decoupling capacitor to ground. One T01 covers the unified rail.",
+      "params": {
+        "pin": "U1.VOUT"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 20,
+    "by_category": {
+      "SAME_NET": 6,
+      "NET_GROUP_ISOLATION": 1,
+      "CONNECTED_TO_GROUND": 4,
+      "CONNECTED_TO_POWER": 2,
+      "ANY_OF": 1,
+      "HAS_CRYSTAL_PAIR": 1,
+      "HAS_PULLUP_TO_POWER": 3,
+      "HAS_CAP_TO_GROUND": 2
+    }
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "method": "baseline",
+  "model": "gpt-5.4",
+  "ablation": null,
+  "design_id": "T3-4",
+  "tier": 3,
+  "type": "AUD",
+  "num_runs": 7,
+  "pass_count": 1,
+  "pass_at_k": {
+    "pass_at_1": 0.1428571428571429,
+    "pass_at_2": 0.2857142857142857,
+    "pass_at_3": 0.4285714285714286,
+    "pass_at_4": 0.5714285714285714,
+    "pass_at_5": 0.7142857142857143,
+    "pass_at_6": 0.8571428571428572,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8967198657094128,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-4_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-4-T09-001",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-T09-001",
+          "check": "HAS_FREEWHEELING_PATH",
+          "desc": "MT3608 SW node must have a Schottky/freewheeling rectifier path for boost output generation.",
+          "message": "No freewheeling diode path found for pin 'U1.SW'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5.2",
+          "message": "Pin 'R5.2' is connected to multiple nets: [GND, I2C_SCL]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-4_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8918918918918919,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T3-4-ANY-004",
+        "T3-4-ANY-005",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT1', 'U6.INL'].; No constrained path found from 'U5.OUT1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT2', 'U6.INR'].; No constrained path found from 'U5.OUT2' to 'U6.INR' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7.1",
+          "message": "Pin 'R7.1' is connected to multiple nets: [AUDIO_PRE_L, U5_SUM1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9.1",
+          "message": "Pin 'R9.1' is connected to multiple nets: [AUDIO_PRE_R, U5_SUM2]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-4_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8918918918918919,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T3-4-ANY-004",
+        "T3-4-ANY-005",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT1', 'U6.INL'].; No constrained path found from 'U5.OUT1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT2', 'U6.INR'].; No constrained path found from 'U5.OUT2' to 'U6.INR' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7.1",
+          "message": "Pin 'R7.1' is connected to multiple nets: [AUDIO_IN_L, U5_SUM1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9.1",
+          "message": "Pin 'R9.1' is connected to multiple nets: [AUDIO_IN_R, U5_SUM2]"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-4_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9459459459459459,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7.1",
+          "message": "Pin 'R7.1' is connected to multiple nets: [U5_CH1_SUM, U5_OUT_L]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9.1",
+          "message": "Pin 'R9.1' is connected to multiple nets: [U5_CH2_SUM, U5_OUT_R]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-4_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8536585365853658,
+      "violated_assertion_count": 6,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C11.2",
+          "message": "Pin 'C11.2' is connected to multiple nets: [AUDIO_IN_R, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C14.2",
+          "message": "Pin 'C14.2' is connected to multiple nets: [AUDIO_IN_L, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7.2",
+          "message": "Pin 'R7.2' is connected to multiple nets: [GND, LEFT_INPUT_AC]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9.2",
+          "message": "Pin 'R9.2' is connected to multiple nets: [GND, RIGHT_INPUT_AC]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.OUT1",
+          "message": "Pin 'U5.OUT1' is connected to multiple nets: [NE5532_OUT_L, U5_OUT1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.OUT2",
+          "message": "Pin 'U5.OUT2' is connected to multiple nets: [NE5532_OUT_R, U5_OUT2]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-4_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7777777777777778,
+      "violated_assertion_count": 10,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7",
+        "AUTO-PIN_SINGLE_NET-8",
+        "AUTO-PIN_SINGLE_NET-9",
+        "AUTO-PIN_SINGLE_NET-10"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C18.2",
+          "message": "Pin 'C18.2' is connected to multiple nets: [AUDIO_TO_PAM_L, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C19.2",
+          "message": "Pin 'C19.2' is connected to multiple nets: [AUDIO_TO_PAM_R, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R6.2",
+          "message": "Pin 'R6.2' is connected to multiple nets: [U5_OUT1, U5_SUMMING1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7.1",
+          "message": "Pin 'R7.1' is connected to multiple nets: [AUDIO_PRE_L, GAIN_CTRL]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7.2",
+          "message": "Pin 'R7.2' is connected to multiple nets: [GND, U5_SUMMING1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R8.2",
+          "message": "Pin 'R8.2' is connected to multiple nets: [U5_OUT2, U5_SUMMING2]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9.1",
+          "message": "Pin 'R9.1' is connected to multiple nets: [AUDIO_PRE_R, GAIN_CTRL]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-8",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9.2",
+          "message": "Pin 'R9.2' is connected to multiple nets: [GND, U5_SUMMING2]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-9",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.OUT1",
+          "message": "Pin 'U5.OUT1' is connected to multiple nets: [AUDIO_TO_PAM_L, U5_OUT1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-10",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.OUT2",
+          "message": "Pin 'U5.OUT2' is connected to multiple nets: [AUDIO_TO_PAM_R, U5_OUT2]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-4_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9714285714285714,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-4-C01-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U3.VCC', 'U3.AVCC', 'U4.VDD']."
+        }
+      ]
+    }
+  ]
+}

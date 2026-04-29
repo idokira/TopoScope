@@ -1,0 +1,200 @@
+{
+  "method": "tcs_only",
+  "model": "gpt-5.4",
+  "ablation": null,
+  "design_id": "T3-1",
+  "tier": 3,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 6,
+  "pass_at_k": {
+    "pass_at_1": 0.8571428571428572,
+    "pass_at_2": 1.0,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9396485867074102,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-1_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9090909090909091,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-1-C01-012",
+        "T3-1-T06-001",
+        "T3-1-T06-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin24'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin23'."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-1_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-1_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-1_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9090909090909091,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-1-ANY-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pin 'U4_Pin9' is not connected to a ground net.; Pin 'U4_Pin9' is not connected to a power net."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin24'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin23'."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-1_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9090909090909091,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-1-C01-012",
+        "T3-1-T06-001",
+        "T3-1-T06-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin24'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin23'."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-1_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9090909090909091,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-1-ANY-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pin 'U4_Pin9' is not connected to a ground net.; Pin 'U4_Pin9' is not connected to a power net."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin24'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin23'."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-1_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9411764705882353,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-1-ANY-001",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pin 'U4_Pin9' is not connected to a ground net.; Pin 'U4_Pin9' is not connected to a power net."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5_Pin1",
+          "message": "Pin 'R5_Pin1' is connected to multiple nets: [U3_BOOT0, VCC_3V3_DIG]"
+        }
+      ]
+    }
+  ]
+}

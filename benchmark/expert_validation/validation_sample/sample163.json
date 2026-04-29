@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "design_id": "T2-8",
+    "tier": 2,
+    "type": "AUD",
+    "run_id": 6
+  },
+  "connection_set": {
+    "components": [],
+    "nets": []
+  },
+  "process_metrics": {}
+}

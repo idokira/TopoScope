@@ -1,0 +1,316 @@
+{
+  "method": "tcs_only",
+  "model": "gpt-5.4",
+  "ablation": null,
+  "design_id": "T2-5",
+  "tier": 2,
+  "type": "COM",
+  "num_runs": 7,
+  "pass_count": 1,
+  "pass_at_k": {
+    "pass_at_1": 0.1428571428571429,
+    "pass_at_2": 0.2857142857142857,
+    "pass_at_3": 0.4285714285714286,
+    "pass_at_4": 0.5714285714285714,
+    "pass_at_5": 0.7142857142857143,
+    "pass_at_6": 0.8571428571428572,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.7619047619047619,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-5_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6666666666666666,
+      "violated_assertion_count": 6,
+      "violated_assertion_names": [
+        "T2-5-C01-003",
+        "T2-5-C01-005",
+        "T2-5-ANY-001",
+        "T2-5-T11-001",
+        "T2-5-T12-001",
+        "T2-5-T05-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-003",
+          "check": "SAME_NET",
+          "desc": "UART legal bundle mapping: accept one complete legal GD32F103 USART0 TX/RX pair to the SP3485 DI/RO pins, either default pins or remapped pins. This forbids illegal mixed mappings such as PA9 for TX together with PB7 for RX.",
+          "message": "All combination candidates failed: ['Candidate USART0_DEFAULT failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PA9\\\\\\']\"}]\\']', 'Candidate USART0_REMAP failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PB6\\\\\\']\"}]\\']']"
+        },
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "No common net exists across pin groups: [['U2.PA0', 'U2.PA1'], ['U3.DE'], ['U3.RE']]."
+        },
+        {
+          "id": "T2-5-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U2_Pin44' to 'U2.VSS_1' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-5-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "RS485 differential bus requires 120ohm termination resistor between A and B.",
+          "message": "No termination resistor found between the two bus nets."
+        },
+        {
+          "id": "T2-5-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "GD32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "No decoupling network found for pin 'U2_Pin7' (need pull-up to power and capacitor to ground)."
+        },
+        {
+          "id": "T2-5-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "GD32 8MHz crystal on OSCIN/OSCOUT with load capacitors to ground.",
+          "message": "OSC pins are floating."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-5_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7222222222222222,
+      "violated_assertion_count": 5,
+      "violated_assertion_names": [
+        "T2-5-C01-005",
+        "T2-5-ANY-001",
+        "T2-5-T11-001",
+        "T2-5-T12-001",
+        "T2-5-T05-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': \"All pins floating in group: ['U2.PA0', 'U2.PA1']\"}]"
+        },
+        {
+          "id": "T2-5-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U2_Pin44' to 'U2.VSS_1' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-5-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "RS485 differential bus requires 120ohm termination resistor between A and B.",
+          "message": "No termination resistor found between the two bus nets."
+        },
+        {
+          "id": "T2-5-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "GD32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "No decoupling network found for pin 'U2_Pin7' (need pull-up to power and capacitor to ground)."
+        },
+        {
+          "id": "T2-5-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "GD32 8MHz crystal on OSCIN/OSCOUT with load capacitors to ground.",
+          "message": "OSC pins are floating."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-5_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6666666666666666,
+      "violated_assertion_count": 6,
+      "violated_assertion_names": [
+        "T2-5-C01-003",
+        "T2-5-C01-005",
+        "T2-5-ANY-001",
+        "T2-5-T11-001",
+        "T2-5-T12-001",
+        "T2-5-T05-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-003",
+          "check": "SAME_NET",
+          "desc": "UART legal bundle mapping: accept one complete legal GD32F103 USART0 TX/RX pair to the SP3485 DI/RO pins, either default pins or remapped pins. This forbids illegal mixed mappings such as PA9 for TX together with PB7 for RX.",
+          "message": "All combination candidates failed: ['Candidate USART0_DEFAULT failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PA9\\\\\\']\"}]\\']', 'Candidate USART0_REMAP failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PB6\\\\\\']\"}]\\']']"
+        },
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "No common net exists across pin groups: [['U2.PA0', 'U2.PA1'], ['U3.DE'], ['U3.RE']]."
+        },
+        {
+          "id": "T2-5-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U2_Pin44' to 'U2.VSS_1' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-5-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "RS485 differential bus requires 120ohm termination resistor between A and B.",
+          "message": "No termination resistor found between the two bus nets."
+        },
+        {
+          "id": "T2-5-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "GD32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "No decoupling network found for pin 'U2_Pin7' (need pull-up to power and capacitor to ground)."
+        },
+        {
+          "id": "T2-5-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "GD32 8MHz crystal on OSCIN/OSCOUT with load capacitors to ground.",
+          "message": "OSC pins are floating."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-5_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7222222222222222,
+      "violated_assertion_count": 5,
+      "violated_assertion_names": [
+        "T2-5-C01-005",
+        "T2-5-ANY-001",
+        "T2-5-T11-001",
+        "T2-5-T12-001",
+        "T2-5-T05-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': \"All pins floating in group: ['U2.PA0', 'U2.PA1']\"}]"
+        },
+        {
+          "id": "T2-5-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U2_Pin44' to 'U2.VSS_1' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-5-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "RS485 differential bus requires 120ohm termination resistor between A and B.",
+          "message": "No termination resistor found between the two bus nets."
+        },
+        {
+          "id": "T2-5-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "GD32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "No decoupling network found for pin 'U2_Pin7' (need pull-up to power and capacitor to ground)."
+        },
+        {
+          "id": "T2-5-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "GD32 8MHz crystal on OSCIN/OSCOUT with load capacitors to ground.",
+          "message": "OSC pins are floating."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-5_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8333333333333334,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-5-C01-003",
+        "T2-5-C01-005",
+        "T2-5-T11-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-003",
+          "check": "SAME_NET",
+          "desc": "UART legal bundle mapping: accept one complete legal GD32F103 USART0 TX/RX pair to the SP3485 DI/RO pins, either default pins or remapped pins. This forbids illegal mixed mappings such as PA9 for TX together with PB7 for RX.",
+          "message": "All combination candidates failed: ['Candidate USART0_DEFAULT failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PA9\\\\\\']\"}]\\']', 'Candidate USART0_REMAP failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PB6\\\\\\']\"}]\\']']"
+        },
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': \"All pins floating in group: ['U2.PA0', 'U2.PA1']\"}]"
+        },
+        {
+          "id": "T2-5-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "RS485 differential bus requires 120ohm termination resistor between A and B.",
+          "message": "No termination resistor found between the two bus nets."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-5_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7777777777777778,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-5-C01-003",
+        "T2-5-C01-005",
+        "T2-5-T11-001",
+        "T2-5-T05-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-003",
+          "check": "SAME_NET",
+          "desc": "UART legal bundle mapping: accept one complete legal GD32F103 USART0 TX/RX pair to the SP3485 DI/RO pins, either default pins or remapped pins. This forbids illegal mixed mappings such as PA9 for TX together with PB7 for RX.",
+          "message": "All combination candidates failed: ['Candidate USART0_DEFAULT failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PA9\\\\\\']\"}]\\']', 'Candidate USART0_REMAP failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PB6\\\\\\']\"}]\\']']"
+        },
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': \"All pins floating in group: ['U2.PA0', 'U2.PA1']\"}]"
+        },
+        {
+          "id": "T2-5-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "RS485 differential bus requires 120ohm termination resistor between A and B.",
+          "message": "No termination resistor found between the two bus nets."
+        },
+        {
+          "id": "T2-5-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "GD32 8MHz crystal on OSCIN/OSCOUT with load capacitors to ground.",
+          "message": "OSC pins are floating."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-5_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-5-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-5-C01-005",
+          "check": "SAME_NET",
+          "desc": "Half-duplex direction control: one legal GD32F103 control GPIO is tied to both SP3485 DE and RE for TX/RX switching.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': \"All pins floating in group: ['U2.PA0', 'U2.PA1']\"}]"
+        }
+      ]
+    }
+  ]
+}

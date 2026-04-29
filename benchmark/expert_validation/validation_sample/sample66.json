@@ -1,0 +1,447 @@
+{
+  "meta": {
+    "design_id": "T2-9",
+    "tier": 2,
+    "type": "LED",
+    "run_id": 4
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MAX7219"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "74HC595"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C13",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "C14",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "RESONATOR_8MHz"
+      },
+      {
+        "refdes": "Y2",
+        "part_number": "RESONATOR_32.768kHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "U1.VIN",
+          "C1.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.GND",
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "C13.2",
+          "C14.2",
+          "R2.2",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U2.VSSA",
+          "U3.GND_1",
+          "U3.GND_2",
+          "U4.GND",
+          "R3.2",
+          "R4.2"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U1.VOUT",
+          "C2.1",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U2.VBAT",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "R1.1"
+        ]
+      },
+      {
+        "name": "U2_VDDA",
+        "pins": [
+          "U2.VDDA",
+          "C6.1",
+          "C7.1"
+        ]
+      },
+      {
+        "name": "U2_NRST",
+        "pins": [
+          "U2.NRST",
+          "R1.2",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "U2.OSC_IN",
+          "Y1.1",
+          "C11.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "U2.OSC_OUT",
+          "Y1.2",
+          "C12.1"
+        ]
+      },
+      {
+        "name": "U2_OSC32_IN",
+        "pins": [
+          "U2.PC14",
+          "Y2.1",
+          "C13.1"
+        ]
+      },
+      {
+        "name": "U2_OSC32_OUT",
+        "pins": [
+          "U2.PC15",
+          "Y2.2",
+          "C14.1"
+        ]
+      },
+      {
+        "name": "U2_BOOT0",
+        "pins": [
+          "U2.BOOT0",
+          "R2.1"
+        ]
+      },
+      {
+        "name": "U2_BOOT1",
+        "pins": [
+          "U2.PB2",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "VCC_5V",
+        "pins": [
+          "U3.VIN",
+          "C9.1",
+          "C10.1",
+          "U4.VCC",
+          "R4.1"
+        ]
+      },
+      {
+        "name": "U3_ISET",
+        "pins": [
+          "U3.ISET",
+          "R4.2"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U2.PB15",
+          "U3.DIN"
+        ]
+      },
+      {
+        "name": "SPI_CLK",
+        "pins": [
+          "U2.PB13",
+          "U3.CLK"
+        ]
+      },
+      {
+        "name": "",
+        "pins": [
+          "U2.PA15",
+          "U3.LOAD"
+        ]
+      },
+      {
+        "name": "SHIFT_CLK",
+        "pins": [
+          "U2.PA5",
+          "U4.SRCLK"
+        ]
+      },
+      {
+        "name": "STORE_CLK",
+        "pins": [
+          "U2.PA4",
+          "U4.RCLK"
+        ]
+      },
+      {
+        "name": "SERIAL_DATA_IN",
+        "pins": [
+          "U2.PA7",
+          "U4.SER"
+        ]
+      },
+      {
+        "name": "CASCADE_DATA",
+        "pins": [
+          "U3.DOUT",
+          "U4.QH_PRIME"
+        ]
+      },
+      {
+        "name": "PARALLEL_OUT_QA",
+        "pins": [
+          "U4.QA"
+        ]
+      },
+      {
+        "name": "PARALLEL_OUT_QB",
+        "pins": [
+          "U4.QB"
+        ]
+      },
+      {
+        "name": "PARALLEL_OUT_QC",
+        "pins": [
+          "U4.QC"
+        ]
+      },
+      {
+        "name": "PARALLEL_OUT_QD",
+        "pins": [
+          "U4.QD"
+        ]
+      },
+      {
+        "name": "PARALLEL_OUT_QE",
+        "pins": [
+          "U4.QE"
+        ]
+      },
+      {
+        "name": "PARALLEL_OUT_QF",
+        "pins": [
+          "U4.QF"
+        ]
+      },
+      {
+        "name": "PARALLEL_OUT_QG",
+        "pins": [
+          "U4.QG"
+        ]
+      },
+      {
+        "name": "PARALLEL_OUT_QH",
+        "pins": [
+          "U4.QH"
+        ]
+      },
+      {
+        "name": "CLEAR_N",
+        "pins": [
+          "U4.SRCLR"
+        ]
+      },
+      {
+        "name": "OUTPUT_ENABLE_N",
+        "pins": [
+          "U4.OE"
+        ]
+      },
+      {
+        "name": "U3_DIG_0",
+        "pins": [
+          "U3.DIG_0"
+        ]
+      },
+      {
+        "name": "U3_DIG_1",
+        "pins": [
+          "U3.DIG_1"
+        ]
+      },
+      {
+        "name": "U3_DIG_2",
+        "pins": [
+          "U3.DIG_2"
+        ]
+      },
+      {
+        "name": "U3_DIG_3",
+        "pins": [
+          "U3.DIG_3"
+        ]
+      },
+      {
+        "name": "U3_DIG_4",
+        "pins": [
+          "U3.DIG_4"
+        ]
+      },
+      {
+        "name": "U3_DIG_5",
+        "pins": [
+          "U3.DIG_5"
+        ]
+      },
+      {
+        "name": "U3_DIG_6",
+        "pins": [
+          "U3.DIG_6"
+        ]
+      },
+      {
+        "name": "U3_DIG_7",
+        "pins": [
+          "U3.DIG_7"
+        ]
+      },
+      {
+        "name": "U3_SEG_A",
+        "pins": [
+          "U3.SEG_A"
+        ]
+      },
+      {
+        "name": "U3_SEG_B",
+        "pins": [
+          "U3.SEG_B"
+        ]
+      },
+      {
+        "name": "U3_SEG_C",
+        "pins": [
+          "U3.SEG_C"
+        ]
+      },
+      {
+        "name": "U3_SEG_D",
+        "pins": [
+          "U3.SEG_D"
+        ]
+      },
+      {
+        "name": "U3_SEG_E",
+        "pins": [
+          "U3.SEG_E"
+        ]
+      },
+      {
+        "name": "U3_SEG_F",
+        "pins": [
+          "U3.SEG_F"
+        ]
+      },
+      {
+        "name": "U3_SEG_G",
+        "pins": [
+          "U3.SEG_G"
+        ]
+      },
+      {
+        "name": "U3_SEG_DP",
+        "pins": [
+          "U3.SEG_DP"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

@@ -1,0 +1,267 @@
+{
+  "method": "baseline",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T1-4",
+  "tier": 1,
+  "type": "AUD",
+  "num_runs": 7,
+  "pass_count": 1,
+  "pass_at_k": {
+    "pass_at_1": 0.1428571428571429,
+    "pass_at_2": 0.2857142857142857,
+    "pass_at_3": 0.4285714285714286,
+    "pass_at_4": 0.5714285714285714,
+    "pass_at_5": 0.7142857142857143,
+    "pass_at_6": 0.8571428571428572,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.7371414299985729,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T1-4_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5384615384615384,
+      "violated_assertion_count": 6,
+      "violated_assertion_names": [
+        "T1-4-C01-001",
+        "T1-4-C01-002",
+        "T1-4-SC01-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-C01-001",
+          "check": "SAME_NET",
+          "desc": "Ground/reference unification: NE5532 negative supply and LM386 ground must share one common ground net in single-supply operation.",
+          "message": "Pins are not on the same net: ['U1.VCC_N', 'U2.GND']."
+        },
+        {
+          "id": "T1-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "Positive supply unification: NE5532 positive supply and LM386 supply must share one common power rail.",
+          "message": "Pins are not on the same net: ['U1.VCC_P', 'U2.VS']."
+        },
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R2.2",
+          "message": "Pin 'R2.2' is connected to multiple nets: [GND, U1_FB_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U1.IN2_P",
+          "message": "Pin 'U1.IN2_P' is connected to multiple nets: [GND, U1_IN2_P]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U1.OUT1",
+          "message": "Pin 'U1.OUT1' is connected to multiple nets: [PREAMP_OUT, U1_OUT1]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T1-4_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T1-4-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T1-4_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6428571428571429,
+      "violated_assertion_count": 5,
+      "violated_assertion_names": [
+        "T1-4-SC01-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C2.2",
+          "message": "Pin 'C2.2' is connected to multiple nets: [GND, U2_INPUT_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R2.2",
+          "message": "Pin 'R2.2' is connected to multiple nets: [GND, U1_SUMMING_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5.1",
+          "message": "Pin 'R5.1' is connected to multiple nets: [BIAS, BIAS_REF]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U1.OUT1",
+          "message": "Pin 'U1.OUT1' is connected to multiple nets: [PREAMP_TO_AMP, U1_OUT]"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T1-4_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6923076923076923,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T1-4-SC01-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C4.2",
+          "message": "Pin 'C4.2' is connected to multiple nets: [GND, U2_INPUT]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R2.2",
+          "message": "Pin 'R2.2' is connected to multiple nets: [GND, U1_OUT1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R3.2",
+          "message": "Pin 'R3.2' is connected to multiple nets: [GND, VCC_MID_4V5]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T1-4_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.75,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T1-4-SC01-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C2.2",
+          "message": "Pin 'C2.2' is connected to multiple nets: [GND, U2_GAIN_2]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R4.2",
+          "message": "Pin 'R4.2' is connected to multiple nets: [GAIN_MID, GND]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T1-4_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8181818181818182,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T1-4-SC01-001",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C9.2",
+          "message": "Pin 'C9.2' is connected to multiple nets: [GND, NE5532_CH2_INP_DIV]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T1-4_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8181818181818182,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T1-4-SC01-001",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T1-4-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Signal-chain continuity: NE5532 channel-1 output must reach LM386 non-inverting input through a legal passive coupling path.",
+          "message": "No constrained path found from 'U1.OUT1' to 'U2.IN_POS' within 4 hops using components ['capacitor', 'resistor']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R2.2",
+          "message": "Pin 'R2.2' is connected to multiple nets: [GND, U1_FB_NODE]"
+        }
+      ]
+    }
+  ]
+}

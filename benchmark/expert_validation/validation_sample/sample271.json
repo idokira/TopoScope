@@ -1,0 +1,241 @@
+{
+  "meta": {
+    "design_id": "T2-8",
+    "tier": 2,
+    "type": "AUD",
+    "run_id": 1
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "ATmega328P"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MCP4725"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "NE5532"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_16MHz"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R7",
+        "part_number": "RES_10K"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "U1.VIN",
+          "U4.VCC_P",
+          "C2.1",
+          "C10.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.GND",
+          "U2.GND",
+          "U2.GND_2",
+          "U3.VSS",
+          "U3.A0",
+          "U4.VCC_N",
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "C10.2",
+          "R5.2",
+          "R7.2"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U1.VOUT",
+          "U2.VCC",
+          "U2.AVCC",
+          "U3.VDD",
+          "C1.1",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C9.1",
+          "R1.1",
+          "R2.1",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "U2_RESET",
+        "pins": [
+          "U2.PC6",
+          "R1.2"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "U2.PB6",
+          "Y1.1",
+          "C6.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "U2.PB7",
+          "Y1.2",
+          "C7.1"
+        ]
+      },
+      {
+        "name": "U2_AREF",
+        "pins": [
+          "U2.AREF",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "U2.PC4",
+          "U3.SDA",
+          "R2.2"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "U2.PC5",
+          "U3.SCL",
+          "R3.2"
+        ]
+      },
+      {
+        "name": "DAC_OUT",
+        "pins": [
+          "U3.VOUT",
+          "R4.1"
+        ]
+      },
+      {
+        "name": "U4_BIAS",
+        "pins": [
+          "U4.IN1_P",
+          "R4.2",
+          "R5.1"
+        ]
+      },
+      {
+        "name": "U4_OUT1",
+        "pins": [
+          "U4.OUT1",
+          "R6.1"
+        ]
+      },
+      {
+        "name": "U4_SUMMING",
+        "pins": [
+          "U4.IN1_N",
+          "R6.2",
+          "R7.1"
+        ]
+      },
+      {
+        "name": "U4_CH2_BIAS",
+        "pins": [
+          "U4.IN2_P",
+          "U4.IN2_N"
+        ]
+      },
+      {
+        "name": "U4_CH2_OUT",
+        "pins": [
+          "U4.OUT2"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

@@ -1,0 +1,286 @@
+{
+  "method": "tcs_only",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T3-4",
+  "tier": 3,
+  "type": "AUD",
+  "num_runs": 7,
+  "pass_count": 3,
+  "pass_at_k": {
+    "pass_at_1": 0.4285714285714286,
+    "pass_at_2": 0.7142857142857143,
+    "pass_at_3": 0.8857142857142857,
+    "pass_at_4": 0.9714285714285714,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8965187694511003,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-4_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-4_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9428571428571428,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-4-ANY-004",
+        "T3-4-ANY-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT1', 'U6.INL'].; No constrained path found from 'U5_Pin1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT2', 'U6.INR'].; No constrained path found from 'U5_Pin7' to 'U6.INR' within 6 hops using components ['capacitor']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-4_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9428571428571428,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-4-ANY-001",
+        "T3-4-ANY-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal reaches NE5532 channel-1 non-inverting/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN1_P'].; No constrained path found from 'U4_Pin1' to 'U5.IN1_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal also reaches NE5532 channel-2 non-inverting/control node for stereo shared gain/bias behavior, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN2_P'].; No constrained path found from 'U4_Pin1' to 'U5.IN2_P' within 6 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-4_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8857142857142857,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T3-4-C01-001",
+        "T3-4-ANY-002",
+        "T3-4-ANY-004",
+        "T3-4-ANY-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: boost converter, LDO, MCU, DAC, NE5532 negative supply, and PAM8403 grounds share common GND with star-ground layout intent.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.GND', 'U3.GND', 'U3.GND_2', 'U4.VSS', 'U5.VCC_N', 'U6.GND', 'U6.PGND_1', 'U6.PGND_2']."
+        },
+        {
+          "id": "T3-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal also reaches NE5532 channel-2 non-inverting/control node for stereo shared gain/bias behavior, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN2_P'].; No constrained path found from 'U4_Pin1' to 'U5.IN2_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT1', 'U6.INL'].; No constrained path found from 'U5_Pin1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT2', 'U6.INR'].; No constrained path found from 'U5_Pin7' to 'U6.INR' within 6 hops using components ['capacitor']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-4_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6857142857142857,
+      "violated_assertion_count": 11,
+      "violated_assertion_names": [
+        "T3-4-C01-001",
+        "T3-4-ANY-001",
+        "T3-4-ANY-002",
+        "T3-4-ANY-004",
+        "T3-4-ANY-005",
+        "T3-4-C03-003",
+        "T3-4-S02-002",
+        "T3-4-S02-003",
+        "T3-4-T06-001",
+        "T3-4-T06-002",
+        "T3-4-T01-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: boost converter, LDO, MCU, DAC, NE5532 negative supply, and PAM8403 grounds share common GND with star-ground layout intent.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T3-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal reaches NE5532 channel-1 non-inverting/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U4_Pin1' to 'U5.IN1_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal also reaches NE5532 channel-2 non-inverting/control node for stereo shared gain/bias behavior, either directly or through a resistor network.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U4_Pin1' to 'U5.IN2_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U5_Pin1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U5_Pin7' to 'U6.INR' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "NE5532 boosted analog supply rail must carry Power electrical attribute.",
+          "message": "Pin 'U5_Pin8' is not connected to a power net."
+        },
+        {
+          "id": "T3-4-S02-002",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "NE5532 channel-1 inverting input must not float because channel 1 is used for the left preamp path.",
+          "message": "Pin 'U5_Pin2' is floating."
+        },
+        {
+          "id": "T3-4-S02-003",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "NE5532 channel-2 inverting input must not float because channel 2 is used for the right preamp path.",
+          "message": "Pin 'U5_Pin6' is floating."
+        },
+        {
+          "id": "T3-4-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SDA to target the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin4'."
+        },
+        {
+          "id": "T3-4-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SCL to target the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin5'."
+        },
+        {
+          "id": "T3-4-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "NE5532 boosted analog supply rail should have bypass capacitor to ground.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U5_Pin8'."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-4_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9210526315789473,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C10_Pin1",
+          "message": "Pin 'C10_Pin1' is connected to multiple nets: [U3_AREF, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5_Pin1",
+          "message": "Pin 'U5_Pin1' is connected to multiple nets: [AUDIO_PRE_L, U5_FB1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5_Pin7",
+          "message": "Pin 'U5_Pin7' is connected to multiple nets: [AUDIO_PRE_R, U5_FB2]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-4_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8974358974358975,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R6_Pin2",
+          "message": "Pin 'R6_Pin2' is connected to multiple nets: [U5_CH1_FB, U5_CH1_SUM]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R8_Pin2",
+          "message": "Pin 'R8_Pin2' is connected to multiple nets: [U5_CH2_FB, U5_CH2_SUM]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5_Pin1",
+          "message": "Pin 'U5_Pin1' is connected to multiple nets: [AUDIO_L, U5_CH1_FB]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5_Pin7",
+          "message": "Pin 'U5_Pin7' is connected to multiple nets: [AUDIO_R, U5_CH2_FB]"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "method": "full_system",
+  "model": "gpt-5.4",
+  "ablation": null,
+  "design_id": "T2-9",
+  "tier": 2,
+  "type": "LED",
+  "num_runs": 7,
+  "pass_count": 5,
+  "pass_at_k": {
+    "pass_at_1": 0.7142857142857143,
+    "pass_at_2": 0.9523809523809523,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.891156462585034,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-9_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9047619047619048,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-9-C01-007",
+        "T2-9-C02-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-9-C01-007",
+          "check": "SAME_NET",
+          "desc": "74HC595 latch: MCU PA3 connects to 74HC595 RCLK.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-9-C02-002",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "74HC595 OE (active-low output enable) tied to GND: outputs always enabled.",
+          "message": "Pin 'U4_Pin13' is not connected to a ground net."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-9_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9047619047619048,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-9-I02-001",
+        "T2-9-C01-007"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-9-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, 3.3V, 5V, serial data chain nets (DIN, DOUT), shared clock, latch signals (LOAD, RCLK), crystal, NRST, ISET, and unused QH' must all be on mutually distinct nets. SPI-related isolation is anchored on fixed peripheral-side pins so it is invariant to STM32 SPI1 default/remap selection.",
+          "message": "Isolation violated: 'U3_Pin12' and 'U4_Pin12' share net(s) ['SPI_LOAD']."
+        },
+        {
+          "id": "T2-9-C01-007",
+          "check": "SAME_NET",
+          "desc": "74HC595 latch: MCU PA3 connects to 74HC595 RCLK.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-9_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8571428571428571,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-9-I02-001",
+        "T2-9-C01-007",
+        "T2-9-C02-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-9-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, 3.3V, 5V, serial data chain nets (DIN, DOUT), shared clock, latch signals (LOAD, RCLK), crystal, NRST, ISET, and unused QH' must all be on mutually distinct nets. SPI-related isolation is anchored on fixed peripheral-side pins so it is invariant to STM32 SPI1 default/remap selection.",
+          "message": "Isolation violated: 'U3_Pin12' and 'U4_Pin12' share net(s) ['DISPLAY_LOAD']."
+        },
+        {
+          "id": "T2-9-C01-007",
+          "check": "SAME_NET",
+          "desc": "74HC595 latch: MCU PA3 connects to 74HC595 RCLK.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-9-C02-002",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "74HC595 OE (active-low output enable) tied to GND: outputs always enabled.",
+          "message": "Pin 'U4_Pin13' is not connected to a ground net."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-9_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9047619047619048,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-9-C01-003",
+        "T2-9-C01-007"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-9-C01-003",
+          "check": "SAME_NET",
+          "desc": "5V LED power domain: LDO input (VIN), MAX7219 VIN, and 74HC595 VCC share one power net.",
+          "message": "Pins are not on the same net: ['U1.VIN', 'U3.VIN', 'U4.VCC']."
+        },
+        {
+          "id": "T2-9-C01-007",
+          "check": "SAME_NET",
+          "desc": "74HC595 latch: MCU PA3 connects to 74HC595 RCLK.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-9_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9047619047619048,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-9-I02-001",
+        "T2-9-C01-007"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-9-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, 3.3V, 5V, serial data chain nets (DIN, DOUT), shared clock, latch signals (LOAD, RCLK), crystal, NRST, ISET, and unused QH' must all be on mutually distinct nets. SPI-related isolation is anchored on fixed peripheral-side pins so it is invariant to STM32 SPI1 default/remap selection.",
+          "message": "Isolation violated: 'U3_Pin12' and 'U4_Pin12' share net(s) ['SPI_CS']."
+        },
+        {
+          "id": "T2-9-C01-007",
+          "check": "SAME_NET",
+          "desc": "74HC595 latch: MCU PA3 connects to 74HC595 RCLK.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-9_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8571428571428571,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-9-I02-001",
+        "T2-9-C01-007",
+        "T2-9-C02-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-9-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, 3.3V, 5V, serial data chain nets (DIN, DOUT), shared clock, latch signals (LOAD, RCLK), crystal, NRST, ISET, and unused QH' must all be on mutually distinct nets. SPI-related isolation is anchored on fixed peripheral-side pins so it is invariant to STM32 SPI1 default/remap selection.",
+          "message": "Isolation violated: 'U3_Pin12' and 'U4_Pin12' share net(s) ['SPI_CS']."
+        },
+        {
+          "id": "T2-9-C01-007",
+          "check": "SAME_NET",
+          "desc": "74HC595 latch: MCU PA3 connects to 74HC595 RCLK.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-9-C02-002",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "74HC595 OE (active-low output enable) tied to GND: outputs always enabled.",
+          "message": "Pin 'U4_Pin13' is not connected to a ground net."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-9_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9047619047619048,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-9-C01-007",
+        "T2-9-C02-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-9-C01-007",
+          "check": "SAME_NET",
+          "desc": "74HC595 latch: MCU PA3 connects to 74HC595 RCLK.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-9-C02-002",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "74HC595 OE (active-low output enable) tied to GND: outputs always enabled.",
+          "message": "Pin 'U4_Pin13' is not connected to a ground net."
+        }
+      ]
+    }
+  ]
+}

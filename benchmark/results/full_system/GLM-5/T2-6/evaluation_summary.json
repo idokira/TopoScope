@@ -1,0 +1,190 @@
+{
+  "method": "full_system",
+  "model": "GLM-5",
+  "ablation": null,
+  "design_id": "T2-6",
+  "tier": 2,
+  "type": "PM",
+  "num_runs": 7,
+  "pass_count": 7,
+  "pass_at_k": {
+    "pass_at_1": 1.0,
+    "pass_at_2": 1.0,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9254658385093167,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-6_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-6-C01-003",
+        "T2-6-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "LM393 used monitor input observes the 3.3V rail directly.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U4.1IN_P']."
+        },
+        {
+          "id": "T2-6-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "LM393 threshold/reference input should be sourced from the 3.3V rail through resistor(s), allowing a simple threshold divider.",
+          "message": "No constrained path found from 'U2_Pin2' to 'U4.1IN_N' within 6 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-6_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-6-C01-003",
+        "T2-6-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "LM393 used monitor input observes the 3.3V rail directly.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U4.1IN_P']."
+        },
+        {
+          "id": "T2-6-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "LM393 threshold/reference input should be sourced from the 3.3V rail through resistor(s), allowing a simple threshold divider.",
+          "message": "No constrained path found from 'U2_Pin2' to 'U4.1IN_N' within 6 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-6_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-6-C01-003",
+        "T2-6-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "LM393 used monitor input observes the 3.3V rail directly.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U4.1IN_P']."
+        },
+        {
+          "id": "T2-6-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "LM393 threshold/reference input should be sourced from the 3.3V rail through resistor(s), allowing a simple threshold divider.",
+          "message": "No constrained path found from 'U2_Pin2' to 'U4.1IN_N' within 6 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-6_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-6-C01-003",
+        "T2-6-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "LM393 used monitor input observes the 3.3V rail directly.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U4.1IN_P']."
+        },
+        {
+          "id": "T2-6-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "LM393 threshold/reference input should be sourced from the 3.3V rail through resistor(s), allowing a simple threshold divider.",
+          "message": "No constrained path found from 'U2_Pin2' to 'U4.1IN_N' within 6 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-6_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-6-C01-003",
+        "T2-6-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "LM393 used monitor input observes the 3.3V rail directly.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U4.1IN_P']."
+        },
+        {
+          "id": "T2-6-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "LM393 threshold/reference input should be sourced from the 3.3V rail through resistor(s), allowing a simple threshold divider.",
+          "message": "No constrained path found from 'U2_Pin2' to 'U4.1IN_N' within 6 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-6_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9565217391304348,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-6-C01-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-6-C01-003",
+          "check": "SAME_NET",
+          "desc": "LM393 used monitor input observes the 3.3V rail directly.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U4.1IN_P']."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-6_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9565217391304348,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-6-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-6-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "LM393 threshold/reference input should be sourced from the 3.3V rail through resistor(s), allowing a simple threshold divider.",
+          "message": "No constrained path found from 'U2_Pin2' to 'U4.1IN_N' within 6 hops using components ['resistor']."
+        }
+      ]
+    }
+  ]
+}

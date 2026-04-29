@@ -1,0 +1,421 @@
+{
+  "method": "baseline",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T2-2",
+  "tier": 2,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.7838123708882886,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-2_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7586206896551724,
+      "violated_assertion_count": 7,
+      "violated_assertion_names": [
+        "T2-2-C01-002",
+        "T2-2-C01-009",
+        "T2-2-ANY-001",
+        "T2-2-T06-002",
+        "T2-2-T06-003",
+        "T2-2-T01-003",
+        "T2-2-T01-004"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU VCC+AVCC, IMU VDD, and Flash VCC share one power net. AVCC included per ATmega328P datasheet (direct connection standard for non-precision designs).",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "Pin(s) not found: ['U2.PD2']."
+        },
+        {
+          "id": "T2-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.AD0', 'U1.VSS'].; Pins are not on the same net: ['U3.AD0', 'U1.VOUT']."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2.PC4'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2.PC5'."
+        },
+        {
+          "id": "T2-2-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "MPU-6050 REGOUT (internal regulator output) requires dedicated 100nF capacitor to ground per datasheet. This is a separate net from VDD.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U3.REGOUT'."
+        },
+        {
+          "id": "T2-2-T01-004",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "MPU-6050 CPOUT (charge pump output) requires dedicated 10nF capacitor to ground per datasheet. This is a separate net from VDD.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U3.CPOUT'."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-2_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7741935483870968,
+      "violated_assertion_count": 7,
+      "violated_assertion_names": [
+        "T2-2-C01-001",
+        "T2-2-C01-009",
+        "T2-2-ANY-001",
+        "T2-2-T06-002",
+        "T2-2-T06-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-001",
+          "check": "SAME_NET",
+          "desc": "GND unification: all ground pins across 4 ICs share one common ground net.",
+          "message": "Pins are not on the same net: ['U1.VSS', 'U2.GND', 'U2.GND_2', 'U3.GND', 'U4.GND']."
+        },
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "Pin(s) not found: ['U2.PD2']."
+        },
+        {
+          "id": "T2-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.AD0', 'U1.VSS'].; Pins are not on the same net: ['U3.AD0', 'U1.VOUT']."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2.PC4'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2.PC5'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C4.2",
+          "message": "Pin 'C4.2' is connected to multiple nets: [GND, VCC_3V3_DECOUPLE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C8.2",
+          "message": "Pin 'C8.2' is connected to multiple nets: [AGND, GND]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-2_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8275862068965517,
+      "violated_assertion_count": 5,
+      "violated_assertion_names": [
+        "T2-2-C01-009",
+        "T2-2-ANY-001",
+        "T2-2-ANY-003",
+        "T2-2-ANY-004",
+        "T2-2-T06-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "Pin(s) not found: ['U2.PD2', 'U3.INT']."
+        },
+        {
+          "id": "T2-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U3.AD0'].; Pin(s) not found: ['U3.AD0']."
+        },
+        {
+          "id": "T2-2-ANY-003",
+          "check": "ANY_OF",
+          "desc": "Flash WP must be inactive: direct tie to VDD or pull-up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U4.WP'].; Pin not found."
+        },
+        {
+          "id": "T2-2-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Flash HOLD must be inactive: direct tie to VDD or pull-up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U4.HOLD'].; Pin not found."
+        },
+        {
+          "id": "T2-2-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "ATmega328P RESET (PC6) requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2.PC6'."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-2_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9032258064516129,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-2-C01-009",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "Pin(s) not found: ['U2.PD2', 'U3.INT']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C8.1",
+          "message": "Pin 'C8.1' is connected to multiple nets: [U2_OSC_IN, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C9.1",
+          "message": "Pin 'C9.1' is connected to multiple nets: [U2_OSC_OUT, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-2_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6551724137931034,
+      "violated_assertion_count": 10,
+      "violated_assertion_names": [
+        "T2-2-C01-009",
+        "T2-2-ANY-001",
+        "T2-2-ANY-002",
+        "T2-2-ANY-003",
+        "T2-2-ANY-004",
+        "T2-2-ANY-005",
+        "T2-2-ANY-006",
+        "T2-2-T06-001",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "Pin(s) not found: ['U2.PD2']."
+        },
+        {
+          "id": "T2-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.AD0', 'U1.VSS'].; Pins are not on the same net: ['U3.AD0', 'U1.VOUT']."
+        },
+        {
+          "id": "T2-2-ANY-002",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 CS must select I2C mode: direct tie to VDD or pull-up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U3.CS'].; Pin not found."
+        },
+        {
+          "id": "T2-2-ANY-003",
+          "check": "ANY_OF",
+          "desc": "Flash WP must be inactive: direct tie to VDD or pull-up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U4.WP'].; Pin not found."
+        },
+        {
+          "id": "T2-2-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Flash HOLD must be inactive: direct tie to VDD or pull-up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U4.HOLD'].; Pin not found."
+        },
+        {
+          "id": "T2-2-ANY-005",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 CLKIN (unused): grounded or left floating. Prevents LLM from connecting to random signals.",
+          "message": "ANY_OF failed: Pin not found.; Pin not found."
+        },
+        {
+          "id": "T2-2-ANY-006",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 FSYNC (unused): grounded or left floating. Prevents LLM from connecting to random signals.",
+          "message": "ANY_OF failed: Pin not found.; Pin not found."
+        },
+        {
+          "id": "T2-2-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "ATmega328P RESET (PC6) requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2.PC6'."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2.PC4'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2.PC5'."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-2_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.84375,
+      "violated_assertion_count": 5,
+      "violated_assertion_names": [
+        "T2-2-C01-009",
+        "T2-2-ANY-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "Pin(s) not found: ['U2.PD2']."
+        },
+        {
+          "id": "T2-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.AD0', 'U1.VSS'].; Pins are not on the same net: ['U3.AD0', 'U1.VOUT']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C5.2",
+          "message": "Pin 'C5.2' is connected to multiple nets: [AGND, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C7.2",
+          "message": "Pin 'C7.2' is connected to multiple nets: [AGND, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U2.GND_2",
+          "message": "Pin 'U2.GND_2' is connected to multiple nets: [AGND, GND]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-2_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7241379310344828,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T2-2-C01-009",
+        "T2-2-ANY-001",
+        "T2-2-ANY-002",
+        "T2-2-ANY-003",
+        "T2-2-ANY-004",
+        "T2-2-T06-001",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "Pin(s) not found: ['U2.PD2', 'U3.INT']."
+        },
+        {
+          "id": "T2-2-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.AD0', 'U1.VSS'].; Pins are not on the same net: ['U3.AD0', 'U1.VOUT']."
+        },
+        {
+          "id": "T2-2-ANY-002",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 CS must select I2C mode: direct tie to VDD or pull-up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U3.CS'].; Pin not found."
+        },
+        {
+          "id": "T2-2-ANY-003",
+          "check": "ANY_OF",
+          "desc": "Flash WP must be inactive: direct tie to VDD or pull-up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U4.WP'].; Pin not found."
+        },
+        {
+          "id": "T2-2-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Flash HOLD must be inactive: direct tie to VDD or pull-up to power.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U4.HOLD'].; Pin not found."
+        },
+        {
+          "id": "T2-2-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "ATmega328P RESET (PC6) requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2.PC6'."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2.PC4'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2.PC5'."
+        }
+      ]
+    }
+  ]
+}

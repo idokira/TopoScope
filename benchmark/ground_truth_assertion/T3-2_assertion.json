@@ -1,0 +1,425 @@
+{
+  "design_id": "T3-2",
+  "tier": 3,
+  "type": "COM",
+  "description": "Battery-powered IoT gateway. USB 5V connects to CP2102N for debug UART and to TP4056 for Li-ion charging. TP4056 charges the battery node, DW01A provides simplified battery protection participation, and the protected battery node feeds ME6211 to generate 3.3V. ESP32-WROOM-32E is the main controller and reads BME280 over I2C. This reduced benchmark does not require full USB/battery load-sharing, ORing, or complete external protection-FET topology.",
+  "ic_list": [
+    "CP2102N (U1)",
+    "TP4056 (U2)",
+    "DW01A (U3)",
+    "ME6211 (U4)",
+    "ESP32-WROOM-32E (U5)",
+    "BME280 (U6)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T3-2-C01-001",
+      "check": "SAME_NET",
+      "desc": "Common system ground: USB bridge, charger, LDO, ESP32 module grounds, and BME280 grounds share the main system GND. DW01A VSS is not forced onto this net in the reduced benchmark, allowing a more realistic battery-protection-side ground reference.",
+      "params": {
+        "pins": [
+          "U1.GND",
+          "U2.GND",
+          "U4.VSS",
+          "U5.GND_1",
+          "U5.GND_2",
+          "U5.GND_3",
+          "U6.GND_1",
+          "U6.GND_2"
+        ]
+      }
+    },
+    {
+      "id": "T3-2-C01-003",
+      "check": "SAME_NET",
+      "desc": "USB 5V rail feeds CP2102N USB regulator input and TP4056 charger input.",
+      "params": {
+        "pins": [
+          "U1.VREGIN",
+          "U2.VCC"
+        ]
+      }
+    },
+    {
+      "id": "T3-2-C01-004",
+      "type": "AND_GROUP",
+      "desc": "Battery/protected-battery abstraction: TP4056 BAT and DW01A VDD share the raw battery cell node, while the protected battery node feeding ME6211 VIN must participate with at least one DW01A battery-path pin.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U2.BAT",
+              "U3.VDD"
+            ]
+          }
+        },
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pin_groups": [
+              [
+                "U3.CSI",
+                "U3.OC",
+                "U3.OD"
+              ],
+              [
+                "U4.VIN"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-2-C01-005",
+      "check": "SAME_NET",
+      "desc": "3.3V system rail: ME6211 output powers CP2102N I/O, ESP32 module VCC, and BME280 VDD/VDDIO.",
+      "params": {
+        "pins": [
+          "U4.VOUT",
+          "U1.VIO",
+          "U5.VCC",
+          "U6.VDD",
+          "U6.VDDIO"
+        ]
+      }
+    },
+    {
+      "id": "T3-2-C01-007",
+      "check": "SAME_NET",
+      "desc": "Debug UART TX path: CP2102N TXD connects to ESP32 UART RXD0.",
+      "params": {
+        "pins": [
+          "U1.TXD",
+          "U5.RXD0"
+        ]
+      }
+    },
+    {
+      "id": "T3-2-C01-008",
+      "check": "SAME_NET",
+      "desc": "Debug UART RX path: CP2102N RXD connects to ESP32 UART TXD0.",
+      "params": {
+        "pins": [
+          "U1.RXD",
+          "U5.TXD0"
+        ]
+      }
+    },
+    {
+      "id": "T3-2-C01-009",
+      "check": "SAME_NET",
+      "desc": "I2C SDA: one legal ESP32 bidirectional GPIO connects to BME280 SDI/SDA.",
+      "params": {
+        "pin_groups": [
+          [
+            "U5.IO21",
+            "U5.IO22",
+            "U5.IO18",
+            "U5.IO19",
+            "U5.IO23",
+            "U5.IO25",
+            "U5.IO26",
+            "U5.IO27",
+            "U5.IO32",
+            "U5.IO33"
+          ],
+          [
+            "U6.SDI"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-2-C01-010",
+      "check": "SAME_NET",
+      "desc": "I2C SCL: one legal ESP32 bidirectional GPIO connects to BME280 SCK/SCL.",
+      "params": {
+        "pin_groups": [
+          [
+            "U5.IO21",
+            "U5.IO22",
+            "U5.IO18",
+            "U5.IO19",
+            "U5.IO23",
+            "U5.IO25",
+            "U5.IO26",
+            "U5.IO27",
+            "U5.IO32",
+            "U5.IO33"
+          ],
+          [
+            "U6.SCK"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-2-ANY-001",
+      "type": "ANY_OF",
+      "desc": "BME280 I2C mode select: CSB must be held high, either directly tied to VDDIO or pulled up to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U6.CSB",
+              "U6.VDDIO"
+            ]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U6.CSB"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-2-ANY-002",
+      "type": "ANY_OF",
+      "desc": "BME280 I2C address select: SDO is tied to GND for 0x76 or VDDIO for 0x77.",
+      "conditions": [
+        {
+          "check": "CONNECTED_TO_GROUND",
+          "params": {
+            "pin": "U6.SDO"
+          }
+        },
+        {
+          "check": "CONNECTED_TO_POWER",
+          "params": {
+            "pin": "U6.SDO"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-2-ANY-003",
+      "type": "ANY_OF",
+      "desc": "ME6211 enable must define always-on behavior: CE is directly tied to the battery input rail or pulled up to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U4.VIN",
+              "U4.CE"
+            ]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U4.CE"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-2-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical domain isolation: USB 5V, battery/protected-battery node, 3.3V rail, GND, UART TX, UART RX, I2C SDA, I2C SCL, USB D+, and USB D- must remain distinct. I2C isolation is anchored on the BME280-side pins so it is invariant to ESP32 GPIO choice.",
+      "params": {
+        "groups": [
+          [
+            "U1.VREGIN"
+          ],
+          [
+            "U4.VIN"
+          ],
+          [
+            "U4.VOUT"
+          ],
+          [
+            "U1.GND"
+          ],
+          [
+            "U1.TXD"
+          ],
+          [
+            "U1.RXD"
+          ],
+          [
+            "U6.SDI"
+          ],
+          [
+            "U6.SCK"
+          ],
+          [
+            "U1.DP"
+          ],
+          [
+            "U1.DM"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-2-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Common ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.GND"
+      }
+    },
+    {
+      "id": "T3-2-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "USB 5V input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U2.VCC"
+      }
+    },
+    {
+      "id": "T3-2-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "Battery/protected-battery node must carry Power electrical attribute.",
+      "params": {
+        "pin": "U4.VIN"
+      }
+    },
+    {
+      "id": "T3-2-C03-003",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V system rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U4.VOUT"
+      }
+    },
+    {
+      "id": "T3-2-S02-001",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "CP2102N USB D+ must be connected to the external USB data path.",
+      "params": {
+        "pin": "U1.DP"
+      }
+    },
+    {
+      "id": "T3-2-S02-002",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "CP2102N USB D- must be connected to the external USB data path.",
+      "params": {
+        "pin": "U1.DM"
+      }
+    },
+    {
+      "id": "T3-2-S02-004",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "DW01A CSI must participate in the battery protection sense path.",
+      "params": {
+        "pin": "U3.CSI"
+      }
+    },
+    {
+      "id": "T3-2-ANY-004",
+      "type": "ANY_OF",
+      "desc": "ESP32 boot strap IO0 should be in a defined normal-boot state: tied/pulled high to 3.3V.",
+      "conditions": [
+        {
+          "check": "CONNECTED_TO_POWER",
+          "params": {
+            "pin": "U5.IO0"
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U5.IO0",
+            "destination": "U4.VOUT",
+            "max_hops": 6,
+            "allowed_components": [
+              "Resistor"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-2-T06-001",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SDA requires pull-up resistor to 3.3V. Anchored on BME280 SDA so the assertion targets the bus itself rather than a specific ESP32 pin.",
+      "params": {
+        "pin": "U6.SDI"
+      }
+    },
+    {
+      "id": "T3-2-T06-002",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SCL requires pull-up resistor to 3.3V. Anchored on BME280 SCL so the assertion targets the bus itself rather than a specific ESP32 pin.",
+      "params": {
+        "pin": "U6.SCK"
+      }
+    },
+    {
+      "id": "T3-2-T06-003",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "ESP32 EN should have pull-up to 3.3V.",
+      "params": {
+        "pin": "U5.EN"
+      }
+    },
+    {
+      "id": "T3-2-T11-001",
+      "check": "EXISTS_PATH",
+      "desc": "TP4056 PROG must have a programming resistor path to GND.",
+      "params": {
+        "from_pin": "U2.PROG",
+        "destination": "U1.GND",
+        "max_hops": 6,
+        "allowed_components": [
+          "Resistor"
+        ]
+      }
+    },
+    {
+      "id": "T3-2-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "USB 5V input rail must have input/bulk capacitor to ground.",
+      "params": {
+        "pin": "U2.VCC"
+      }
+    },
+    {
+      "id": "T3-2-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "Battery/protected-battery node must have stabilization capacitor to ground.",
+      "params": {
+        "pin": "U2.BAT"
+      }
+    },
+    {
+      "id": "T3-2-T01-003",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V system rail must have decoupling capacitor to ground.",
+      "params": {
+        "pin": "U4.VOUT"
+      }
+    },
+    {
+      "id": "T3-2-T01-004",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "BME280 VDD should have local decoupling capacitor to ground.",
+      "params": {
+        "pin": "U6.VDD"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 28,
+    "by_category": {
+      "SAME_NET": 7,
+      "AND_GROUP": 1,
+      "ANY_OF": 4,
+      "NET_GROUP_ISOLATION": 1,
+      "CONNECTED_TO_GROUND": 1,
+      "CONNECTED_TO_POWER": 3,
+      "PIN_NOT_FLOATING": 3,
+      "HAS_PULLUP_TO_POWER": 3,
+      "EXISTS_PATH": 1,
+      "HAS_CAP_TO_GROUND": 4
+    }
+  }
+}

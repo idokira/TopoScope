@@ -1,0 +1,155 @@
+{
+  "method": "full_system",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T2-10",
+  "tier": 2,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 7,
+  "pass_at_k": {
+    "pass_at_1": 1.0,
+    "pass_at_2": 1.0,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9444444444444444,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-10_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-10_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-10_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pins are not on the same net: ['U4.VOUT', 'U3.AIN2']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-10_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pins are not on the same net: ['U4.VOUT', 'U3.AIN2']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-10_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-10_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-10_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9444444444444444,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-10-C01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pins are not on the same net: ['U4.VOUT', 'U3.AIN2']."
+        }
+      ]
+    }
+  ]
+}

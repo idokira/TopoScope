@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "design_id": "T2-10",
+    "tier": 2,
+    "type": "SEN",
+    "run_id": 2
+  },
+  "connection_set": {
+    "components": [],
+    "nets": []
+  },
+  "process_metrics": {}
+}

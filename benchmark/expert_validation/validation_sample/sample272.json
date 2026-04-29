@@ -1,0 +1,245 @@
+{
+  "meta": {
+    "design_id": "T2-9",
+    "tier": 2,
+    "type": "LED",
+    "run_id": 3
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MAX7219"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "74HC595"
+      }
+    ],
+    "nets": [
+      {
+        "name": "EXPANDED_OUTPUTS",
+        "pins": [
+          "U4.QA",
+          "U4.QB",
+          "U4.QC",
+          "U4.QD",
+          "U4.QE",
+          "U4.QF",
+          "U4.QG",
+          "U4.QH"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C10.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "U1.GND",
+          "U2.VSSA",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U3.GND_1",
+          "U3.GND_2",
+          "U4.GND",
+          "U4.OE"
+        ]
+      },
+      {
+        "name": "LED_MATRIX_COLS",
+        "pins": [
+          "U3.SEG_A",
+          "U3.SEG_B",
+          "U3.SEG_C",
+          "U3.SEG_D",
+          "U3.SEG_DP",
+          "U3.SEG_E",
+          "U3.SEG_F",
+          "U3.SEG_G"
+        ]
+      },
+      {
+        "name": "LED_MATRIX_ROWS",
+        "pins": [
+          "U3.DIG_0",
+          "U3.DIG_1",
+          "U3.DIG_2",
+          "U3.DIG_3",
+          "U3.DIG_4",
+          "U3.DIG_5",
+          "U3.DIG_6",
+          "U3.DIG_7"
+        ]
+      },
+      {
+        "name": "MAX7219_DOUT_TO_74HC595_DIN",
+        "pins": [
+          "U3.DOUT",
+          "U4.SER"
+        ]
+      },
+      {
+        "name": "SPI_LOAD",
+        "pins": [
+          "U2.PA4",
+          "U3.LOAD",
+          "U4.RCLK"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U2.PA7",
+          "U3.DIN"
+        ]
+      },
+      {
+        "name": "SPI_SCK",
+        "pins": [
+          "U2.PA5",
+          "U3.CLK",
+          "U4.SRCLK"
+        ]
+      },
+      {
+        "name": "U3_ISET",
+        "pins": [
+          "R1.2",
+          "U3.ISET"
+        ]
+      },
+      {
+        "name": "U4_OE_PULL",
+        "pins": [
+          "R3.2"
+        ]
+      },
+      {
+        "name": "U4_QH_PRIME",
+        "pins": [
+          "U4.QH_PRIME"
+        ]
+      },
+      {
+        "name": "U4_SRCLR",
+        "pins": [
+          "R2.2",
+          "U4.SRCLR"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C2.1",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C6.1",
+          "C7.1",
+          "U1.VOUT",
+          "U2.VBAT",
+          "U2.VDDA",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "C10.1",
+          "C8.1",
+          "C9.1",
+          "R1.1",
+          "R2.1",
+          "R3.1",
+          "U1.VIN",
+          "U3.VIN",
+          "U4.VCC"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 0,
+      "U3": 0,
+      "U4": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 13
+  }
+}

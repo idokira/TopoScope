@@ -1,0 +1,659 @@
+{
+  "meta": {
+    "design_id": "T1-2",
+    "tier": 1,
+    "type": "PM",
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "method": "full_system",
+    "run_id": 2,
+    "wall_time_seconds": 124.639
+  },
+  "compile_result": {
+    "status": "ok",
+    "message": "Validation and stitching completed.",
+    "local_hard_count": 0,
+    "local_soft_count": 0,
+    "global_hard_count": 0,
+    "global_soft_count": 0,
+    "pre_stitch_loops": 0,
+    "pre_stitch_tool_calls": 0,
+    "pre_stitch_successful_calls": 0,
+    "global_repair_loops": 0,
+    "global_repair_tool_calls": 0,
+    "global_repair_successful_calls": 0,
+    "node_count": 33,
+    "edge_count": 47
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_10nF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "TPS3703"
+      }
+    ],
+    "nets": [
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "U1.GND",
+          "U2.GND"
+        ]
+      },
+      {
+        "name": "POWER_GOOD",
+        "pins": [
+          "R1.1",
+          "U2.RESET"
+        ]
+      },
+      {
+        "name": "U2_CT",
+        "pins": [
+          "C4.1",
+          "U2.CT"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C2.1",
+          "C3.1",
+          "R1.2",
+          "U1.VOUT",
+          "U2.MR",
+          "U2.SENSE",
+          "U2.VDD"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "U1.VIN"
+        ]
+      }
+    ]
+  },
+  "graph_snapshot": {
+    "directed": false,
+    "multigraph": false,
+    "graph": {
+      "shared_nets": {
+        "GND": {
+          "type": "Ground",
+          "modules": [
+            "power_3v3",
+            "supervisor"
+          ]
+        },
+        "VCC_3V3": {
+          "type": "Power",
+          "modules": [
+            "power_3v3",
+            "supervisor"
+          ]
+        },
+        "VIN_5V": {
+          "type": "Power",
+          "modules": [
+            "power_3v3",
+            "supervisor"
+          ]
+        }
+      }
+    },
+    "nodes": [
+      {
+        "type": "Net",
+        "name": "GND",
+        "scope": "Global",
+        "net_type": "Ground",
+        "net_class": "Ground",
+        "semantic_role": "System common ground",
+        "source_pin": "",
+        "shared_modules": [
+          "power_3v3",
+          "supervisor"
+        ],
+        "id": "GND"
+      },
+      {
+        "type": "Net",
+        "name": "VIN_5V",
+        "scope": "Global",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "External 5V input rail",
+        "source_pin": "",
+        "shared_modules": [
+          "power_3v3",
+          "supervisor"
+        ],
+        "id": "VIN_5V"
+      },
+      {
+        "type": "Module",
+        "name": "power_3v3",
+        "description": "AMS1117-3.3 fixed 1A LDO regulator. Converts global VIN_5V down to internally generated VCC_3V3 rail. Requires input and output bypass capacitors for stability. Serves as the primary provider for the 3.3V power distribution.",
+        "id": "power_3v3"
+      },
+      {
+        "type": "Component",
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "1A fixed 3.3V LDO regulator",
+        "id": "U1"
+      },
+      {
+        "type": "Pin",
+        "name": "GND",
+        "pin_number": "1",
+        "electrical_type": "Ground",
+        "description": "Ground connection",
+        "id": "U1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "VOUT",
+        "pin_number": "2",
+        "electrical_type": "PowerOut",
+        "description": "Regulated output voltage",
+        "id": "U1_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "VIN",
+        "pin_number": "3",
+        "electrical_type": "PowerIn",
+        "description": "Input power supply",
+        "id": "U1_Pin3"
+      },
+      {
+        "type": "Module",
+        "name": "supervisor",
+        "description": "TPS3703 voltage supervisor. VDD is powered by VCC_3V3. The SENSE pin monitors the VCC_3V3 rail. The RESET pin is exposed as the POWER_GOOD signal, which is open-drain and requires a pull-up resistor. CT pin sets the reset delay time via an external capacitor to GND. MR (Manual Reset) pin should be tied to VDD (inactive high) so it does not trigger a manual reset.",
+        "id": "supervisor"
+      },
+      {
+        "type": "Component",
+        "refdes": "U2",
+        "part_number": "TPS3703",
+        "description": "Voltage supervisor / reset generator",
+        "id": "U2"
+      },
+      {
+        "type": "Pin",
+        "name": "SENSE",
+        "pin_number": "1",
+        "electrical_type": "AnalogIn",
+        "description": "Monitored voltage input. Internal resistor divider sets OV/UV thresholds. Connect to VDD if monitoring VDD directly.",
+        "id": "U2_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "VDD",
+        "pin_number": "2",
+        "electrical_type": "PowerIn",
+        "description": "Supply voltage 1.7-5.5V. Optional 0.1-1uF bypass cap to GND for noisy supplies.",
+        "id": "U2_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "CT",
+        "pin_number": "3",
+        "electrical_type": "Passive",
+        "description": "Delay time programming. Open=short delay, 10K to VDD=long delay, cap to GND=programmable, GND=latch mode.",
+        "id": "U2_Pin3"
+      },
+      {
+        "type": "Pin",
+        "name": "RESET",
+        "pin_number": "4",
+        "electrical_type": "OpenDrain",
+        "description": "Active-low open-drain output. Asserted when SENSE outside OV/UV window. Requires external pull-up resistor to logic supply.",
+        "id": "U2_Pin4"
+      },
+      {
+        "type": "Pin",
+        "name": "GND",
+        "pin_number": "5",
+        "electrical_type": "Ground",
+        "description": "Ground.",
+        "id": "U2_Pin5"
+      },
+      {
+        "type": "Pin",
+        "name": "MR",
+        "pin_number": "6",
+        "electrical_type": "Input",
+        "description": "Manual reset, active low. Internal 100K pull-up. Leave floating or tie to VDD if not used.",
+        "id": "U2_Pin6"
+      },
+      {
+        "type": "Net",
+        "name": "VCC_3V3",
+        "scope": "Global",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "power_3v3",
+          "supervisor"
+        ],
+        "id": "VCC_3V3"
+      },
+      {
+        "type": "Component",
+        "refdes": "C1",
+        "part_number": "CAP_10uF",
+        "description": "Added from component output",
+        "id": "C1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C1_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C2",
+        "part_number": "CAP_22uF",
+        "description": "Added from component output",
+        "id": "C2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C2_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C2_Pin2"
+      },
+      {
+        "type": "Net",
+        "name": "POWER_GOOD",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 virtual net in supervisor",
+        "source_pin": "",
+        "id": "POWER_GOOD"
+      },
+      {
+        "type": "Component",
+        "refdes": "C3",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C3"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C3_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C3_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C4",
+        "part_number": "CAP_10nF",
+        "description": "Added from component output",
+        "id": "C4"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C4_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C4_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R1",
+        "part_number": "RES_10K",
+        "description": "Added from component output",
+        "id": "R1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R1_Pin2"
+      },
+      {
+        "type": "Net",
+        "name": "U2_CT",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in supervisor",
+        "source_pin": "",
+        "id": "U2_CT"
+      }
+    ],
+    "links": [
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C2_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2_Pin5"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C3_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C4_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "U1_Pin3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "C1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "U1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "C1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "C2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin2",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "supervisor",
+        "target": "U2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "supervisor",
+        "target": "POWER_GOOD"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "supervisor",
+        "target": "C3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "supervisor",
+        "target": "C4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "supervisor",
+        "target": "R1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "supervisor",
+        "target": "U2_CT"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin6"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin1",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin2",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin3",
+        "target": "U2_CT"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin4",
+        "target": "POWER_GOOD"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin6",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C2_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C3_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "R1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1",
+        "target": "C1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1",
+        "target": "C1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C2",
+        "target": "C2_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C2",
+        "target": "C2_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "POWER_GOOD",
+        "target": "R1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C3",
+        "target": "C3_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C3",
+        "target": "C3_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C4",
+        "target": "C4_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C4",
+        "target": "C4_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "C4_Pin1",
+        "target": "U2_CT"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R1",
+        "target": "R1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R1",
+        "target": "R1_Pin2"
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 1,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 1
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 5
+  }
+}

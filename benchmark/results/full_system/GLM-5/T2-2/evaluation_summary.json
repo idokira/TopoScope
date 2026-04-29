@@ -1,0 +1,246 @@
+{
+  "method": "full_system",
+  "model": "GLM-5",
+  "ablation": null,
+  "design_id": "T2-2",
+  "tier": 2,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 1,
+  "pass_at_k": {
+    "pass_at_1": 0.1428571428571429,
+    "pass_at_2": 0.2857142857142857,
+    "pass_at_3": 0.4285714285714286,
+    "pass_at_4": 0.5714285714285714,
+    "pass_at_5": 0.7142857142857143,
+    "pass_at_6": 0.8571428571428572,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9014778325123153,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-2_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.896551724137931,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-2-C01-009",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin27'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin28'."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-2_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.896551724137931,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-2-C01-009",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin27'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin28'."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-2_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.896551724137931,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-2-C01-009",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin27'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin28'."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-2_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9655172413793104,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-2-C01-009"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-2_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.896551724137931,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-2-C01-009",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin27'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin28'."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-2_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.896551724137931,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-2-C01-009",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin27'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin28'."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-2_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8620689655172413,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-2-C01-002",
+        "T2-2-C01-009",
+        "T2-2-T06-002",
+        "T2-2-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-2-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU VCC+AVCC, IMU VDD, and Flash VCC share one power net. AVCC included per ATmega328P datasheet (direct connection standard for non-precision designs).",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-2-C01-009",
+          "check": "SAME_NET",
+          "desc": "MPU-6050 INT output connects to ATmega328P external interrupt INT0 (PD2).",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-2-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin27'."
+        },
+        {
+          "id": "T2-2-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U2_Pin28'."
+        }
+      ]
+    }
+  ]
+}

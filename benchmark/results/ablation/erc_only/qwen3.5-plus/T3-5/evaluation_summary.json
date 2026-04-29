@@ -1,0 +1,135 @@
+{
+  "method": "erc_only",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T3-5",
+  "tier": 3,
+  "type": "PM",
+  "num_runs": 7,
+  "pass_count": 7,
+  "pass_at_k": {
+    "pass_at_1": 1.0,
+    "pass_at_2": 1.0,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9735449735449735,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-5_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9629629629629629,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-5-T03-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-5-T03-002",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "TPS61088 boost input/power stage must use an inductor path into the boost switch node.",
+          "message": "No series 'IND' path between 'U2.VIN' and 'U2.SW_1'."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-5_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-5_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9629629629629629,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-5-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-5-ANY-003",
+          "check": "ANY_OF",
+          "desc": "TPS54331 enable must define always-on behavior: EN is directly tied to the 12V input rail or pulled up to that rail through a resistor.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U1.EN'].; from_pin not found."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-5_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9259259259259259,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-5-C01-003",
+        "T3-5-ANY-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-5-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V rail distribution: AMS1117 output feeds ME6211 input.",
+          "message": "Pins are not on the same net: ['U3.VOUT', 'U4.VIN']."
+        },
+        {
+          "id": "T3-5-ANY-001",
+          "check": "ANY_OF",
+          "desc": "ME6211 enable must implement always-on behavior: CE is directly tied to the 3.3V rail or pulled up to that rail through a resistor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.CE'].; No constrained path found from 'U4.CE' to 'U3.VOUT' within 6 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-5_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-5_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-5_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9629629629629629,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-5-C01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-5-C01-001",
+          "check": "SAME_NET",
+          "desc": "",
+          "message": "Pin(s) not found: ['U4.VSS']."
+        }
+      ]
+    }
+  ]
+}

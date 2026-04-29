@@ -1,0 +1,820 @@
+{
+  "method": "baseline",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T3-4",
+  "tier": 3,
+  "type": "AUD",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.6356433892148178,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-4_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8918918918918919,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T3-4-T06-001",
+        "T3-4-T06-002",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SDA to target the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U4.SDA'."
+        },
+        {
+          "id": "T3-4-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SCL to target the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U4.SCL'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C25.2",
+          "message": "Pin 'C25.2' is connected to multiple nets: [AGND, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for D1.K",
+          "message": "Pin 'D1.K' is connected to multiple nets: [U1_SW, VCC_9V]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-4_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 35,
+      "violated_assertion_names": [
+        "T3-4-C01-001",
+        "T3-4-C01-002",
+        "T3-4-C01-003",
+        "T3-4-C01-004",
+        "T3-4-C01-005",
+        "T3-4-ANY-001",
+        "T3-4-ANY-002",
+        "T3-4-ANY-004",
+        "T3-4-ANY-005",
+        "T3-4-ANY-003",
+        "T3-4-I02-001",
+        "T3-4-I02-002",
+        "T3-4-I02-003",
+        "T3-4-C02-001",
+        "T3-4-C03-001",
+        "T3-4-C03-002",
+        "T3-4-C03-003",
+        "T3-4-C03-004",
+        "T3-4-S02-001",
+        "T3-4-S02-002",
+        "T3-4-S02-003",
+        "T3-4-T10-001",
+        "T3-4-T03-001",
+        "T3-4-T09-001",
+        "T3-4-T06-001",
+        "T3-4-T06-002",
+        "T3-4-I03-001",
+        "T3-4-I03-002",
+        "T3-4-I03-003",
+        "T3-4-I03-004",
+        "T3-4-T01-001",
+        "T3-4-T01-002",
+        "T3-4-T01-003",
+        "T3-4-T01-004",
+        "T3-4-T01-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: boost converter, LDO, MCU, DAC, NE5532 negative supply, and PAM8403 grounds share common GND with star-ground layout intent.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "USB_5V input rail powers MT3608 input, AMS1117 input, and PAM8403 5V supply pins.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-C01-004",
+          "check": "SAME_NET",
+          "desc": "I2C SDA: ATmega328P hardware TWI SDA alias (PC4 or SDA) connects to MCP4725 SDA.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-C01-005",
+          "check": "SAME_NET",
+          "desc": "I2C SCL: ATmega328P hardware TWI SCL alias (PC5 or SCL) connects to MCP4725 SCL.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal reaches NE5532 channel-1 non-inverting/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal also reaches NE5532 channel-2 non-inverting/control node for stereo shared gain/bias behavior, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-ANY-003",
+          "check": "ANY_OF",
+          "desc": "MCP4725 A0 must select I2C address: tie to GND for 0x60 or VDD for 0x61.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domain isolation: USB_5V, 3.3V digital rail, GND, MT3608 switch node, MT3608 feedback node, NE5532 9V analog supply, DAC control node, I2C SDA, I2C SCL, left audio output, right audio output, and PAM8403 VREF must remain distinct. I2C isolation is anchored on MCP4725-side pins for semantic stability.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-I02-002",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "PAM8403 must not be powered from the 9V boost rail; its power pins stay on USB_5V while NE5532 VCC_P is on the boosted analog rail.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "PAM8403 BTL speaker output pairs must not be shorted together or to each other.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Common ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "USB_5V input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V digital rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "NE5532 boosted analog supply rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-C03-004",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "PAM8403 power rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-S02-001",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "MT3608 EN must not float; the boost converter requires a defined enable state.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-S02-002",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "NE5532 channel-1 inverting input must not float because channel 1 is used for the left preamp path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-S02-003",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "NE5532 channel-2 inverting input must not float because channel 2 is used for the right preamp path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-T10-001",
+          "check": "HAS_FEEDBACK_DIVIDER",
+          "desc": "MT3608 FB must have a feedback divider for the boosted 9V analog rail.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "MT3608 boost switch node must have an inductor path from USB_5V input to SW.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-T09-001",
+          "check": "HAS_FREEWHEELING_PATH",
+          "desc": "MT3608 SW node must have a Schottky/freewheeling rectifier path for boost output generation.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SDA to target the bus itself.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SCL to target the bus itself.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "I2C SDA must not be shorted to audio or speaker output nets.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "DAC control/bias output must not be shorted to PAM8403 speaker outputs.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "PAM8403 left input must not be shorted to the 9V analog supply or USB_5V power rail.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-I03-004",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "PAM8403 right input must not be shorted to the 9V analog supply or USB_5V power rail.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "USB_5V input rail must have input/bulk capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V digital rail must have decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "NE5532 boosted analog supply rail should have bypass capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-T01-004",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "PAM8403 power rail should have local decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-4-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "PAM8403 VREF should have bypass capacitor to ground for low-noise operation.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-4_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7777777777777778,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T3-4-ANY-001",
+        "T3-4-ANY-002",
+        "T3-4-I02-003",
+        "T3-4-T10-001",
+        "T3-4-T03-001",
+        "T3-4-I03-001",
+        "T3-4-I03-002",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal reaches NE5532 channel-1 non-inverting/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN1_P'].; No constrained path found from 'U4.VOUT' to 'U5.IN1_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal also reaches NE5532 channel-2 non-inverting/control node for stereo shared gain/bias behavior, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN2_P'].; No constrained path found from 'U4.VOUT' to 'U5.IN2_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "PAM8403 BTL speaker output pairs must not be shorted together or to each other.",
+          "message": "Pin(s) not found: ['U6.OUT_L_P']."
+        },
+        {
+          "id": "T3-4-T10-001",
+          "check": "HAS_FEEDBACK_DIVIDER",
+          "desc": "MT3608 FB must have a feedback divider for the boosted 9V analog rail.",
+          "message": "No feedback divider found for pin 'U1.FB'."
+        },
+        {
+          "id": "T3-4-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "MT3608 boost switch node must have an inductor path from USB_5V input to SW.",
+          "message": "No series 'IND' path between 'U1.VIN' and 'U1.SW'."
+        },
+        {
+          "id": "T3-4-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "I2C SDA must not be shorted to audio or speaker output nets.",
+          "message": "Pin(s) not found: ['U6.OUT_L_P', 'U6.OUT_L_N', 'U6.OUT_R_P', 'U6.OUT_R_N']."
+        },
+        {
+          "id": "T3-4-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "DAC control/bias output must not be shorted to PAM8403 speaker outputs.",
+          "message": "Pin(s) not found: ['U6.OUT_L_P', 'U6.OUT_L_N', 'U6.OUT_R_P', 'U6.OUT_R_N']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R8.2",
+          "message": "Pin 'R8.2' is connected to multiple nets: [GAIN_CTRL, OPAMP_IN_L_N]"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-4_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7111111111111111,
+      "violated_assertion_count": 13,
+      "violated_assertion_names": [
+        "T3-4-ANY-004",
+        "T3-4-ANY-005",
+        "T3-4-T03-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7",
+        "AUTO-PIN_SINGLE_NET-8",
+        "AUTO-PIN_SINGLE_NET-9",
+        "AUTO-PIN_SINGLE_NET-10"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT1', 'U6.INL'].; No constrained path found from 'U5.OUT1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT2', 'U6.INR'].; No constrained path found from 'U5.OUT2' to 'U6.INR' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "MT3608 boost switch node must have an inductor path from USB_5V input to SW.",
+          "message": "No series 'IND' path between 'U1.VIN' and 'U1.SW'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C1.1",
+          "message": "Pin 'C1.1' is connected to multiple nets: [L1_IN, USB_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C29.2",
+          "message": "Pin 'C29.2' is connected to multiple nets: [GND, SUMMING_NODE_L, U5_OUT1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C30.2",
+          "message": "Pin 'C30.2' is connected to multiple nets: [GND, SUMMING_NODE_R, U5_OUT2]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for D1.K",
+          "message": "Pin 'D1.K' is connected to multiple nets: [U1_SW, VCC_9V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R10.2",
+          "message": "Pin 'R10.2' is connected to multiple nets: [GAIN_CTRL_R, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R11.1",
+          "message": "Pin 'R11.1' is connected to multiple nets: [AUDIO_IN_L, DAC_OUT]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R11.2",
+          "message": "Pin 'R11.2' is connected to multiple nets: [SUMMING_NODE_L, U5_OUT1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-8",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R12.2",
+          "message": "Pin 'R12.2' is connected to multiple nets: [SUMMING_NODE_R, U5_OUT2]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-9",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9.2",
+          "message": "Pin 'R9.2' is connected to multiple nets: [GAIN_CTRL_L, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-10",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U4.VOUT",
+          "message": "Pin 'U4.VOUT' is connected to multiple nets: [DAC_OUT, U5_BIAS_DIV]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-4_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7619047619047619,
+      "violated_assertion_count": 10,
+      "violated_assertion_names": [
+        "T3-4-ANY-003",
+        "T3-4-T10-001",
+        "T3-4-T03-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-003",
+          "check": "ANY_OF",
+          "desc": "MCP4725 A0 must select I2C address: tie to GND for 0x60 or VDD for 0x61.",
+          "message": "ANY_OF failed: Pin not found.; Pin not found."
+        },
+        {
+          "id": "T3-4-T10-001",
+          "check": "HAS_FEEDBACK_DIVIDER",
+          "desc": "MT3608 FB must have a feedback divider for the boosted 9V analog rail.",
+          "message": "No feedback divider found for pin 'U1.FB'."
+        },
+        {
+          "id": "T3-4-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "MT3608 boost switch node must have an inductor path from USB_5V input to SW.",
+          "message": "No series 'IND' path between 'U1.VIN' and 'U1.SW'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C10.2",
+          "message": "Pin 'C10.2' is connected to multiple nets: [AGND, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C14.2",
+          "message": "Pin 'C14.2' is connected to multiple nets: [GND, PAM_IN_L]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C15.2",
+          "message": "Pin 'C15.2' is connected to multiple nets: [GND, PAM_IN_R]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C7.2",
+          "message": "Pin 'C7.2' is connected to multiple nets: [AGND, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U3.GND_2",
+          "message": "Pin 'U3.GND_2' is connected to multiple nets: [AGND, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.OUT1",
+          "message": "Pin 'U5.OUT1' is connected to multiple nets: [AUDIO_IN_L, U5_GAIN_FB_L]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.OUT2",
+          "message": "Pin 'U5.OUT2' is connected to multiple nets: [AUDIO_IN_R, U5_GAIN_FB_R]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-4_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6818181818181818,
+      "violated_assertion_count": 14,
+      "violated_assertion_names": [
+        "T3-4-C01-001",
+        "T3-4-ANY-001",
+        "T3-4-ANY-002",
+        "T3-4-T06-001",
+        "T3-4-T06-002",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7",
+        "AUTO-PIN_SINGLE_NET-8",
+        "AUTO-PIN_SINGLE_NET-9"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: boost converter, LDO, MCU, DAC, NE5532 negative supply, and PAM8403 grounds share common GND with star-ground layout intent.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.GND', 'U3.GND', 'U3.GND_2', 'U4.VSS', 'U5.VCC_N', 'U6.GND', 'U6.PGND_1', 'U6.PGND_2']."
+        },
+        {
+          "id": "T3-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal reaches NE5532 channel-1 non-inverting/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN1_P'].; No constrained path found from 'U4.VOUT' to 'U5.IN1_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal also reaches NE5532 channel-2 non-inverting/control node for stereo shared gain/bias behavior, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN2_P'].; No constrained path found from 'U4.VOUT' to 'U5.IN2_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SDA to target the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U4.SDA'."
+        },
+        {
+          "id": "T3-4-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SCL to target the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U4.SCL'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C19.1",
+          "message": "Pin 'C19.1' is connected to multiple nets: [NE5532_OUT1, PAM8403_AUDIO_IN_L]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C19.2",
+          "message": "Pin 'C19.2' is connected to multiple nets: [GND, NE5532_OUT2, PAM8403_AUDIO_IN_R]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for D1.A",
+          "message": "Pin 'D1.A' is connected to multiple nets: [GND, U1_SW]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5.1",
+          "message": "Pin 'R5.1' is connected to multiple nets: [MCP4725_VOUT, NE5532_OUT1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5.2",
+          "message": "Pin 'R5.2' is connected to multiple nets: [GND, NE5532_IN1_N]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R6.2",
+          "message": "Pin 'R6.2' is connected to multiple nets: [GND, NE5532_IN1_N]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7.1",
+          "message": "Pin 'R7.1' is connected to multiple nets: [MCP4725_VOUT, NE5532_OUT2]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-8",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7.2",
+          "message": "Pin 'R7.2' is connected to multiple nets: [GND, NE5532_IN2_N]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-9",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R8.2",
+          "message": "Pin 'R8.2' is connected to multiple nets: [GND, NE5532_IN2_N]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-4_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.625,
+      "violated_assertion_count": 18,
+      "violated_assertion_names": [
+        "T3-4-ANY-004",
+        "T3-4-ANY-005",
+        "T3-4-T03-001",
+        "T3-4-T06-001",
+        "T3-4-T06-002",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7",
+        "AUTO-PIN_SINGLE_NET-8",
+        "AUTO-PIN_SINGLE_NET-9",
+        "AUTO-PIN_SINGLE_NET-10",
+        "AUTO-PIN_SINGLE_NET-11",
+        "AUTO-PIN_SINGLE_NET-12",
+        "AUTO-PIN_SINGLE_NET-13"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT1', 'U6.INL'].; No constrained path found from 'U5.OUT1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT2', 'U6.INR'].; No constrained path found from 'U5.OUT2' to 'U6.INR' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "MT3608 boost switch node must have an inductor path from USB_5V input to SW.",
+          "message": "No series 'IND' path between 'U1.VIN' and 'U1.SW'."
+        },
+        {
+          "id": "T3-4-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SDA to target the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U4.SDA'."
+        },
+        {
+          "id": "T3-4-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SCL to target the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U4.SCL'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C14.2",
+          "message": "Pin 'C14.2' is connected to multiple nets: [AGND, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C15.2",
+          "message": "Pin 'C15.2' is connected to multiple nets: [AGND, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C19.1",
+          "message": "Pin 'C19.1' is connected to multiple nets: [U5_VCC_POS, USB_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C20.1",
+          "message": "Pin 'C20.1' is connected to multiple nets: [U5_VCC_POS, USB_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for D1.K",
+          "message": "Pin 'D1.K' is connected to multiple nets: [U1_SW_NODE, VCC_9V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R3.2",
+          "message": "Pin 'R3.2' is connected to multiple nets: [GAIN_CTRL_L, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R4.2",
+          "message": "Pin 'R4.2' is connected to multiple nets: [GND, U5_SUMMING_NODE_L]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-8",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5.2",
+          "message": "Pin 'R5.2' is connected to multiple nets: [GAIN_CTRL_R, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-9",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R6.2",
+          "message": "Pin 'R6.2' is connected to multiple nets: [GND, U5_SUMMING_NODE_L]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-10",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7.2",
+          "message": "Pin 'R7.2' is connected to multiple nets: [GND, U5_SUMMING_NODE_R]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-11",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R8.2",
+          "message": "Pin 'R8.2' is connected to multiple nets: [GND, U5_SUMMING_NODE_R]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-12",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U3.GND_2",
+          "message": "Pin 'U3.GND_2' is connected to multiple nets: [AGND, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-13",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.VCC_N",
+          "message": "Pin 'U5.VCC_N' is connected to multiple nets: [GND, U5_VCC_NEG]"
+        }
+      ]
+    }
+  ]
+}

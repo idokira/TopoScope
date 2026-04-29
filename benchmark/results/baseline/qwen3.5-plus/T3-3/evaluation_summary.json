@@ -1,0 +1,1226 @@
+{
+  "method": "baseline",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T3-3",
+  "tier": 3,
+  "type": "DRV",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.5378691159003284,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-3_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7962962962962963,
+      "violated_assertion_count": 11,
+      "violated_assertion_names": [
+        "T3-3-C01-005",
+        "T3-3-C01-006",
+        "T3-3-C01-010",
+        "T3-3-I02-003",
+        "T3-3-I02-004",
+        "T3-3-I02-005",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-005",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U4.BRA', 'U4.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U5.BRA', 'U5.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "No common net exists across pin groups: [['U3.PA9', 'U3.PB6', 'U3.PA2', 'U3.PB10'], ['U4.PDN_UART'], ['U5.PDN_UART']]."
+        },
+        {
+          "id": "T3-3-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U4.OA1' and 'U4.OA2' share net(s) ['MOTOR_A1']."
+        },
+        {
+          "id": "T3-3-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel B motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U5.OA1' and 'U5.OA2' share net(s) ['MOTOR_B1']."
+        },
+        {
+          "id": "T3-3-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+          "message": "Isolation violated: 'U4.OA1' and 'U4.OA2' share net(s) ['MOTOR_A1']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C12.1",
+          "message": "Pin 'C12.1' is connected to multiple nets: [VCC_3V3, VDDA_NET]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C13.1",
+          "message": "Pin 'C13.1' is connected to multiple nets: [VCC_3V3, VDDA_NET]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C21.2",
+          "message": "Pin 'C21.2' is connected to multiple nets: [GND, U4_CP_NEG]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C25.2",
+          "message": "Pin 'C25.2' is connected to multiple nets: [GND, U5_CP_NEG]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U3.VDDA",
+          "message": "Pin 'U3.VDDA' is connected to multiple nets: [VCC_3V3, VDDA_NET]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-3_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7647058823529411,
+      "violated_assertion_count": 12,
+      "violated_assertion_names": [
+        "T3-3-C01-005",
+        "T3-3-C01-006",
+        "T3-3-C01-013",
+        "T3-3-C01-016",
+        "T3-3-I02-003",
+        "T3-3-I02-004",
+        "T3-3-I02-005",
+        "T3-3-SC01-003",
+        "T3-3-SC01-004",
+        "T3-3-ANY-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-005",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U4.BRA', 'U4.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U5.BRA', 'U5.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-013",
+          "check": "SAME_NET",
+          "desc": "Channel A enable: one legal STM32F103 control-capable pin connects to TMC2209 A ENN.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U4.ENN']]."
+        },
+        {
+          "id": "T3-3-C01-016",
+          "check": "SAME_NET",
+          "desc": "Channel B enable: one legal STM32F103 control-capable pin connects to TMC2209 B ENN.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U5.ENN']]."
+        },
+        {
+          "id": "T3-3-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U4.OA1' and 'U4.OA2' share net(s) ['MOTOR_A_COIL_A']."
+        },
+        {
+          "id": "T3-3-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel B motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U5.OA1' and 'U5.OA2' share net(s) ['MOTOR_B_COIL_A']."
+        },
+        {
+          "id": "T3-3-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+          "message": "Isolation violated: 'U4.OA1' and 'U4.OA2' share net(s) ['MOTOR_A_COIL_A']."
+        },
+        {
+          "id": "T3-3-SC01-003",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel A VCP requires capacitor path to motor supply VS.",
+          "message": "No constrained path found from 'U4.VCP' to 'U4.VS_1' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-3-SC01-004",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel B VCP requires capacitor path to motor supply VS.",
+          "message": "No constrained path found from 'U5.VCP' to 'U5.VS_1' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-3-ANY-001",
+          "check": "ANY_OF",
+          "desc": "TPS54331 enable must define always-on behavior: EN is directly tied to the motor input rail or pulled up to that rail through a resistor.",
+          "message": "ANY_OF failed: Pin(s) not found: ['U1.EN'].; from_pin not found."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C7.1",
+          "message": "Pin 'C7.1' is connected to multiple nets: [U1_COMP, VCC_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.MS1_AD0",
+          "message": "Pin 'U5.MS1_AD0' is connected to multiple nets: [U5_MS1_AD0, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-3_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8367346938775511,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T3-3-C01-005",
+        "T3-3-C01-006",
+        "T3-3-I02-001",
+        "T3-3-I02-003",
+        "T3-3-I02-004",
+        "T3-3-I02-005",
+        "T3-3-SC01-003",
+        "T3-3-SC01-004"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-005",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U4.BRA', 'U4.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U5.BRA', 'U5.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical rail and low-voltage control/interface nets must remain distinct: motor rail, 5V rail, 3.3V rail, GND, TPS54331 switch node, TPS54331 feedback node, shared TMC2209 UART bus, both channels' STEP/DIR/ENN nets, and flash SPI/CS nets.",
+          "message": "Isolation violated: 'U4.ENN' and 'U5.ENN' share net(s) ['TMC_ENN']."
+        },
+        {
+          "id": "T3-3-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U4.OA1' and 'U4.OA2' share net(s) ['U4_MOTOR_A']."
+        },
+        {
+          "id": "T3-3-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel B motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U5.OA1' and 'U5.OA2' share net(s) ['U5_MOTOR_A']."
+        },
+        {
+          "id": "T3-3-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+          "message": "Isolation violated: 'U4.OA1' and 'U4.OA2' share net(s) ['U4_MOTOR_A']."
+        },
+        {
+          "id": "T3-3-SC01-003",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel A VCP requires capacitor path to motor supply VS.",
+          "message": "No constrained path found from 'U4.VCP' to 'U4.VS_1' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-3-SC01-004",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel B VCP requires capacitor path to motor supply VS.",
+          "message": "No constrained path found from 'U5.VCP' to 'U5.VS_1' within 6 hops using components ['capacitor']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-3_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5510204081632653,
+      "violated_assertion_count": 22,
+      "violated_assertion_names": [
+        "T3-3-C01-005",
+        "T3-3-C01-006",
+        "T3-3-C01-010",
+        "T3-3-C01-011",
+        "T3-3-C01-012",
+        "T3-3-C01-013",
+        "T3-3-C01-014",
+        "T3-3-C01-015",
+        "T3-3-C01-016",
+        "T3-3-I02-001",
+        "T3-3-I02-003",
+        "T3-3-I02-004",
+        "T3-3-I02-005",
+        "T3-3-S02-001",
+        "T3-3-S02-002",
+        "T3-3-S02-003",
+        "T3-3-S02-004",
+        "T3-3-S02-005",
+        "T3-3-S02-006",
+        "T3-3-S02-007",
+        "T3-3-S02-008",
+        "T3-3-I03-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-005",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U4.BRA', 'U4.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U5.BRA', 'U5.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "No common net exists across pin groups: [['U3.PA9', 'U3.PB6', 'U3.PA2', 'U3.PB10'], ['U4.PDN_UART'], ['U5.PDN_UART']]."
+        },
+        {
+          "id": "T3-3-C01-011",
+          "check": "SAME_NET",
+          "desc": "Channel A STEP: one legal STM32F103 control-capable pin connects to TMC2209 A STEP.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U4.STEP']]."
+        },
+        {
+          "id": "T3-3-C01-012",
+          "check": "SAME_NET",
+          "desc": "Channel A DIR: one legal STM32F103 control-capable pin connects to TMC2209 A DIR.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U4.DIR']]."
+        },
+        {
+          "id": "T3-3-C01-013",
+          "check": "SAME_NET",
+          "desc": "Channel A enable: one legal STM32F103 control-capable pin connects to TMC2209 A ENN.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U4.ENN']]."
+        },
+        {
+          "id": "T3-3-C01-014",
+          "check": "SAME_NET",
+          "desc": "Channel B STEP: one legal STM32F103 control-capable pin connects to TMC2209 B STEP.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U5.STEP']]."
+        },
+        {
+          "id": "T3-3-C01-015",
+          "check": "SAME_NET",
+          "desc": "Channel B DIR: one legal STM32F103 control-capable pin connects to TMC2209 B DIR.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U5.DIR']]."
+        },
+        {
+          "id": "T3-3-C01-016",
+          "check": "SAME_NET",
+          "desc": "Channel B enable: one legal STM32F103 control-capable pin connects to TMC2209 B ENN.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U5.ENN']]."
+        },
+        {
+          "id": "T3-3-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical rail and low-voltage control/interface nets must remain distinct: motor rail, 5V rail, 3.3V rail, GND, TPS54331 switch node, TPS54331 feedback node, shared TMC2209 UART bus, both channels' STEP/DIR/ENN nets, and flash SPI/CS nets.",
+          "message": "Isolation violated: 'U1.GND' and 'U4.STEP' share net(s) ['GND']."
+        },
+        {
+          "id": "T3-3-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Pin(s) not found: ['U4.OA1']."
+        },
+        {
+          "id": "T3-3-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel B motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Pin(s) not found: ['U5.OA1']."
+        },
+        {
+          "id": "T3-3-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+          "message": "Pin(s) not found: ['U4.OA1']."
+        },
+        {
+          "id": "T3-3-S02-001",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OA1 should be exposed as a motor terminal net.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T3-3-S02-002",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OA2 should be exposed.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T3-3-S02-003",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OB1 should be exposed.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T3-3-S02-004",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OB2 should be exposed.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T3-3-S02-005",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OA1 should be exposed.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T3-3-S02-006",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OA2 should be exposed.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T3-3-S02-007",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OB1 should be exposed.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T3-3-S02-008",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OB2 should be exposed.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T3-3-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Representative anti-bypass: flash SPI clock net must not be shorted to any TMC2209 motor output.",
+          "message": "Pin(s) not found: ['U4.OA1', 'U4.OA2', 'U4.OB1', 'U4.OB2', 'U5.OA1', 'U5.OA2', 'U5.OB1', 'U5.OB2']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-3_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8163265306122449,
+      "violated_assertion_count": 9,
+      "violated_assertion_names": [
+        "T3-3-C01-002",
+        "T3-3-C01-005",
+        "T3-3-C01-006",
+        "T3-3-C01-010",
+        "T3-3-C01-013",
+        "T3-3-C01-016",
+        "T3-3-I02-003",
+        "T3-3-I02-004",
+        "T3-3-I02-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-002",
+          "check": "SAME_NET",
+          "desc": "Motor power rail: 12V-24V input feeds TPS54331 VIN and both TMC2209 motor supply pins.",
+          "message": "Pins are not on the same net: ['U1.VIN', 'U4.VS_1', 'U4.VS_2', 'U5.VS_1', 'U5.VS_2']."
+        },
+        {
+          "id": "T3-3-C01-005",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U4.BRA', 'U4.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Pins are not on the same net: ['U5.BRA', 'U5.BRB', 'U1.GND']."
+        },
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "No common net exists across pin groups: [['U3.PA9', 'U3.PB6', 'U3.PA2', 'U3.PB10'], ['U4.PDN_UART'], ['U5.PDN_UART']]."
+        },
+        {
+          "id": "T3-3-C01-013",
+          "check": "SAME_NET",
+          "desc": "Channel A enable: one legal STM32F103 control-capable pin connects to TMC2209 A ENN.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U4.ENN']]."
+        },
+        {
+          "id": "T3-3-C01-016",
+          "check": "SAME_NET",
+          "desc": "Channel B enable: one legal STM32F103 control-capable pin connects to TMC2209 B ENN.",
+          "message": "No common net exists across pin groups: [['U3.PA0', 'U3.PA1', 'U3.PA2', 'U3.PA3', 'U3.PA4', 'U3.PA5', 'U3.PA6', 'U3.PA7', 'U3.PA8', 'U3.PA9', 'U3.PA10', 'U3.PA11', 'U3.PA12', 'U3.PB0', 'U3.PB1', 'U3.PB6', 'U3.PB7', 'U3.PB8', 'U3.PB9', 'U3.PB10', 'U3.PB11', 'U3.PB12', 'U3.PB13', 'U3.PB14', 'U3.PB15'], ['U5.ENN']]."
+        },
+        {
+          "id": "T3-3-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U4.OA1' and 'U4.OA2' share net(s) ['U4_COIL_A']."
+        },
+        {
+          "id": "T3-3-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel B motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Isolation violated: 'U5.OA1' and 'U5.OA2' share net(s) ['U5_COIL_A']."
+        },
+        {
+          "id": "T3-3-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+          "message": "Isolation violated: 'U4.OA1' and 'U4.OA2' share net(s) ['U4_COIL_A']."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-3_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 49,
+      "violated_assertion_names": [
+        "T3-3-C01-001",
+        "T3-3-C01-002",
+        "T3-3-C01-003",
+        "T3-3-C01-005",
+        "T3-3-C01-006",
+        "T3-3-C01-010",
+        "T3-3-C01-011",
+        "T3-3-C01-012",
+        "T3-3-C01-013",
+        "T3-3-C01-014",
+        "T3-3-C01-015",
+        "T3-3-C01-016",
+        "T3-3-C01-017",
+        "T3-3-C01-018",
+        "T3-3-I02-001",
+        "T3-3-I02-003",
+        "T3-3-I02-004",
+        "T3-3-I02-005",
+        "T3-3-C02-001",
+        "T3-3-C03-001",
+        "T3-3-C03-002",
+        "T3-3-C03-003",
+        "T3-3-S02-001",
+        "T3-3-S02-002",
+        "T3-3-S02-003",
+        "T3-3-S02-004",
+        "T3-3-S02-005",
+        "T3-3-S02-006",
+        "T3-3-S02-007",
+        "T3-3-S02-008",
+        "T3-3-T10-001",
+        "T3-3-T03-001",
+        "T3-3-T09-001",
+        "T3-3-T01-001",
+        "T3-3-T01-002",
+        "T3-3-T01-003",
+        "T3-3-T01-004",
+        "T3-3-T01-005",
+        "T3-3-T01-006",
+        "T3-3-T01-007",
+        "T3-3-T01-008",
+        "T3-3-SC01-001",
+        "T3-3-SC01-002",
+        "T3-3-SC01-003",
+        "T3-3-SC01-004",
+        "T3-3-I03-001",
+        "T3-3-ANY-001",
+        "T3-3-ANY-007",
+        "T3-3-ANY-008"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: buck, LDO, STM32, both TMC2209 drivers, and flash share common GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-002",
+          "check": "SAME_NET",
+          "desc": "Motor power rail: 12V-24V input feeds TPS54331 VIN and both TMC2209 motor supply pins.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V logic rail: AMS1117 output powers STM32, both TMC2209 VCC_IO pins, and W25Q64JV flash.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-005",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-011",
+          "check": "SAME_NET",
+          "desc": "Channel A STEP: one legal STM32F103 control-capable pin connects to TMC2209 A STEP.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-012",
+          "check": "SAME_NET",
+          "desc": "Channel A DIR: one legal STM32F103 control-capable pin connects to TMC2209 A DIR.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-013",
+          "check": "SAME_NET",
+          "desc": "Channel A enable: one legal STM32F103 control-capable pin connects to TMC2209 A ENN.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-014",
+          "check": "SAME_NET",
+          "desc": "Channel B STEP: one legal STM32F103 control-capable pin connects to TMC2209 B STEP.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-015",
+          "check": "SAME_NET",
+          "desc": "Channel B DIR: one legal STM32F103 control-capable pin connects to TMC2209 B DIR.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-016",
+          "check": "SAME_NET",
+          "desc": "Channel B enable: one legal STM32F103 control-capable pin connects to TMC2209 B ENN.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-017",
+          "check": "SAME_NET",
+          "desc": "Flash SPI legal bundle mapping: accept one complete legal STM32F103 SPI1 routing bundle for SCK/MOSI/MISO to W25Q64JV, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-018",
+          "check": "SAME_NET",
+          "desc": "Flash chip select: one legal STM32F103 control-capable pin connects to W25Q64JV CS.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical rail and low-voltage control/interface nets must remain distinct: motor rail, 5V rail, 3.3V rail, GND, TPS54331 switch node, TPS54331 feedback node, shared TMC2209 UART bus, both channels' STEP/DIR/ENN nets, and flash SPI/CS nets.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel B motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Common ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Motor input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "5V buck output rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V logic rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-001",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OA1 should be exposed as a motor terminal net.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-002",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OA2 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-003",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OB1 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-004",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OB2 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-005",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OA1 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-006",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OA2 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-007",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OB1 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-008",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OB2 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T10-001",
+          "check": "HAS_FEEDBACK_DIVIDER",
+          "desc": "TPS54331 feedback divider on VSENSE sets the 5V buck output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "TPS54331 switch node PH must reach the 5V rail through an inductor.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T09-001",
+          "check": "HAS_FREEWHEELING_PATH",
+          "desc": "TPS54331 switch node must have a freewheeling diode path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "Motor input rail must have bulk/input capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "5V rail must have output/decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V logic rail must have decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-004",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "TMC2209 channel A motor supply requires local bulk capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "TMC2209 channel B motor supply requires local bulk capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-006",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "TMC2209 channel A internal 5VOUT requires local capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-007",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "TMC2209 channel B internal 5VOUT requires local capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-008",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "W25Q64JV VCC requires local decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel A charge pump requires capacitor path between CPO and CPI.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-SC01-002",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel B charge pump requires capacitor path between CPO and CPI.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-SC01-003",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel A VCP requires capacitor path to motor supply VS.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-SC01-004",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel B VCP requires capacitor path to motor supply VS.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Representative anti-bypass: flash SPI clock net must not be shorted to any TMC2209 motor output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-ANY-001",
+          "check": "ANY_OF",
+          "desc": "TPS54331 enable must define always-on behavior: EN is directly tied to the motor input rail or pulled up to that rail through a resistor.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-ANY-007",
+          "check": "ANY_OF",
+          "desc": "W25Q64JV WP must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-ANY-008",
+          "check": "ANY_OF",
+          "desc": "W25Q64JV HOLD must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-3_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 49,
+      "violated_assertion_names": [
+        "T3-3-C01-001",
+        "T3-3-C01-002",
+        "T3-3-C01-003",
+        "T3-3-C01-005",
+        "T3-3-C01-006",
+        "T3-3-C01-010",
+        "T3-3-C01-011",
+        "T3-3-C01-012",
+        "T3-3-C01-013",
+        "T3-3-C01-014",
+        "T3-3-C01-015",
+        "T3-3-C01-016",
+        "T3-3-C01-017",
+        "T3-3-C01-018",
+        "T3-3-I02-001",
+        "T3-3-I02-003",
+        "T3-3-I02-004",
+        "T3-3-I02-005",
+        "T3-3-C02-001",
+        "T3-3-C03-001",
+        "T3-3-C03-002",
+        "T3-3-C03-003",
+        "T3-3-S02-001",
+        "T3-3-S02-002",
+        "T3-3-S02-003",
+        "T3-3-S02-004",
+        "T3-3-S02-005",
+        "T3-3-S02-006",
+        "T3-3-S02-007",
+        "T3-3-S02-008",
+        "T3-3-T10-001",
+        "T3-3-T03-001",
+        "T3-3-T09-001",
+        "T3-3-T01-001",
+        "T3-3-T01-002",
+        "T3-3-T01-003",
+        "T3-3-T01-004",
+        "T3-3-T01-005",
+        "T3-3-T01-006",
+        "T3-3-T01-007",
+        "T3-3-T01-008",
+        "T3-3-SC01-001",
+        "T3-3-SC01-002",
+        "T3-3-SC01-003",
+        "T3-3-SC01-004",
+        "T3-3-I03-001",
+        "T3-3-ANY-001",
+        "T3-3-ANY-007",
+        "T3-3-ANY-008"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-3-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: buck, LDO, STM32, both TMC2209 drivers, and flash share common GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-002",
+          "check": "SAME_NET",
+          "desc": "Motor power rail: 12V-24V input feeds TPS54331 VIN and both TMC2209 motor supply pins.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V logic rail: AMS1117 output powers STM32, both TMC2209 VCC_IO pins, and W25Q64JV flash.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-005",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-006",
+          "check": "SAME_NET",
+          "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-010",
+          "check": "SAME_NET",
+          "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-011",
+          "check": "SAME_NET",
+          "desc": "Channel A STEP: one legal STM32F103 control-capable pin connects to TMC2209 A STEP.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-012",
+          "check": "SAME_NET",
+          "desc": "Channel A DIR: one legal STM32F103 control-capable pin connects to TMC2209 A DIR.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-013",
+          "check": "SAME_NET",
+          "desc": "Channel A enable: one legal STM32F103 control-capable pin connects to TMC2209 A ENN.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-014",
+          "check": "SAME_NET",
+          "desc": "Channel B STEP: one legal STM32F103 control-capable pin connects to TMC2209 B STEP.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-015",
+          "check": "SAME_NET",
+          "desc": "Channel B DIR: one legal STM32F103 control-capable pin connects to TMC2209 B DIR.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-016",
+          "check": "SAME_NET",
+          "desc": "Channel B enable: one legal STM32F103 control-capable pin connects to TMC2209 B ENN.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-017",
+          "check": "SAME_NET",
+          "desc": "Flash SPI legal bundle mapping: accept one complete legal STM32F103 SPI1 routing bundle for SCK/MOSI/MISO to W25Q64JV, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C01-018",
+          "check": "SAME_NET",
+          "desc": "Flash chip select: one legal STM32F103 control-capable pin connects to W25Q64JV CS.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical rail and low-voltage control/interface nets must remain distinct: motor rail, 5V rail, 3.3V rail, GND, TPS54331 switch node, TPS54331 feedback node, shared TMC2209 UART bus, both channels' STEP/DIR/ENN nets, and flash SPI/CS nets.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-I02-004",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TMC2209 channel B motor coil outputs must be distinct from each other and from power/ground rails.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-I02-005",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Common ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Motor input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "5V buck output rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V logic rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-001",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OA1 should be exposed as a motor terminal net.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-002",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OA2 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-003",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OB1 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-004",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel A motor output OB2 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-005",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OA1 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-006",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OA2 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-007",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OB1 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-S02-008",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TMC2209 channel B motor output OB2 should be exposed.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T10-001",
+          "check": "HAS_FEEDBACK_DIVIDER",
+          "desc": "TPS54331 feedback divider on VSENSE sets the 5V buck output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "TPS54331 switch node PH must reach the 5V rail through an inductor.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T09-001",
+          "check": "HAS_FREEWHEELING_PATH",
+          "desc": "TPS54331 switch node must have a freewheeling diode path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "Motor input rail must have bulk/input capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "5V rail must have output/decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V logic rail must have decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-004",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "TMC2209 channel A motor supply requires local bulk capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "TMC2209 channel B motor supply requires local bulk capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-006",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "TMC2209 channel A internal 5VOUT requires local capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-007",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "TMC2209 channel B internal 5VOUT requires local capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-T01-008",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "W25Q64JV VCC requires local decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel A charge pump requires capacitor path between CPO and CPI.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-SC01-002",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel B charge pump requires capacitor path between CPO and CPI.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-SC01-003",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel A VCP requires capacitor path to motor supply VS.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-SC01-004",
+          "check": "EXISTS_PATH",
+          "desc": "TMC2209 channel B VCP requires capacitor path to motor supply VS.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Representative anti-bypass: flash SPI clock net must not be shorted to any TMC2209 motor output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-ANY-001",
+          "check": "ANY_OF",
+          "desc": "TPS54331 enable must define always-on behavior: EN is directly tied to the motor input rail or pulled up to that rail through a resistor.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-ANY-007",
+          "check": "ANY_OF",
+          "desc": "W25Q64JV WP must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-3-ANY-008",
+          "check": "ANY_OF",
+          "desc": "W25Q64JV HOLD must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    }
+  ]
+}

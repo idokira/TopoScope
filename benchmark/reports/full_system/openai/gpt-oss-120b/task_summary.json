@@ -1,0 +1,359 @@
+{
+  "method": "full_system",
+  "model": "openai/gpt-oss-120b",
+  "task_count": 20,
+  "tasks": [
+    {
+      "design_id": "T1-1",
+      "tier": 1,
+      "type": "COM",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 7,
+      "pass_at_k": {
+        "pass_at_1": 1.0,
+        "pass_at_2": 1.0,
+        "pass_at_3": 1.0,
+        "pass_at_4": 1.0,
+        "pass_at_5": 1.0,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 0.9142857142857143
+    },
+    {
+      "design_id": "T1-2",
+      "tier": 1,
+      "type": "PM",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 7,
+      "pass_at_k": {
+        "pass_at_1": 1.0,
+        "pass_at_2": 1.0,
+        "pass_at_3": 1.0,
+        "pass_at_4": 1.0,
+        "pass_at_5": 1.0,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 0.9857142857142858
+    },
+    {
+      "design_id": "T1-3",
+      "tier": 1,
+      "type": "LED",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 7,
+      "pass_at_k": {
+        "pass_at_1": 1.0,
+        "pass_at_2": 1.0,
+        "pass_at_3": 1.0,
+        "pass_at_4": 1.0,
+        "pass_at_5": 1.0,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 1.0
+    },
+    {
+      "design_id": "T1-4",
+      "tier": 1,
+      "type": "AUD",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 7,
+      "pass_at_k": {
+        "pass_at_1": 1.0,
+        "pass_at_2": 1.0,
+        "pass_at_3": 1.0,
+        "pass_at_4": 1.0,
+        "pass_at_5": 1.0,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 0.9
+    },
+    {
+      "design_id": "T2-1",
+      "tier": 2,
+      "type": "SEN",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 5,
+      "pass_at_k": {
+        "pass_at_1": 0.7142857142857143,
+        "pass_at_2": 0.9523809523809523,
+        "pass_at_3": 1.0,
+        "pass_at_4": 1.0,
+        "pass_at_5": 1.0,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 0.9593837535014006
+    },
+    {
+      "design_id": "T2-10",
+      "tier": 2,
+      "type": "SEN",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 2,
+      "pass_at_k": {
+        "pass_at_1": 0.2857142857142857,
+        "pass_at_2": 0.5238095238095238,
+        "pass_at_3": 0.7142857142857143,
+        "pass_at_4": 0.8571428571428572,
+        "pass_at_5": 0.9523809523809523,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 0.8937343358395989
+    },
+    {
+      "design_id": "T2-2",
+      "tier": 2,
+      "type": "SEN",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 4,
+      "pass_at_k": {
+        "pass_at_1": 0.5714285714285714,
+        "pass_at_2": 0.8571428571428572,
+        "pass_at_3": 0.9714285714285714,
+        "pass_at_4": 1.0,
+        "pass_at_5": 1.0,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 0.9211822660098522
+    },
+    {
+      "design_id": "T2-3",
+      "tier": 2,
+      "type": "COM",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 3,
+      "pass_at_k": {
+        "pass_at_1": 0.4285714285714286,
+        "pass_at_2": 0.7142857142857143,
+        "pass_at_3": 0.8857142857142857,
+        "pass_at_4": 0.9714285714285714,
+        "pass_at_5": 1.0,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 0.874025974025974
+    },
+    {
+      "design_id": "T2-4",
+      "tier": 2,
+      "type": "COM",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 5,
+      "pass_at_k": {
+        "pass_at_1": 0.7142857142857143,
+        "pass_at_2": 0.9523809523809523,
+        "pass_at_3": 1.0,
+        "pass_at_4": 1.0,
+        "pass_at_5": 1.0,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 0.9093581780538302
+    },
+    {
+      "design_id": "T2-5",
+      "tier": 2,
+      "type": "COM",
+      "ablation": null,
+      "num_runs": 5,
+      "pass_count": 1,
+      "pass_at_k": {
+        "pass_at_1": 0.19999999999999996,
+        "pass_at_2": 0.4,
+        "pass_at_3": 0.6,
+        "pass_at_4": 0.8,
+        "pass_at_5": 1.0
+      },
+      "assertion_pass_rate": 0.8567251461988304
+    },
+    {
+      "design_id": "T2-6",
+      "tier": 2,
+      "type": "PM",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 2,
+      "pass_at_k": {
+        "pass_at_1": 0.2857142857142857,
+        "pass_at_2": 0.5238095238095238,
+        "pass_at_3": 0.7142857142857143,
+        "pass_at_4": 0.8571428571428572,
+        "pass_at_5": 0.9523809523809523,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 0.8894927536231884
+    },
+    {
+      "design_id": "T2-7",
+      "tier": 2,
+      "type": "DRV",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 3,
+      "pass_at_k": {
+        "pass_at_1": 0.4285714285714286,
+        "pass_at_2": 0.7142857142857143,
+        "pass_at_3": 0.8857142857142857,
+        "pass_at_4": 0.9714285714285714,
+        "pass_at_5": 1.0,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 0.8445356403430937
+    },
+    {
+      "design_id": "T2-8",
+      "tier": 2,
+      "type": "AUD",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 2,
+      "pass_at_k": {
+        "pass_at_1": 0.2857142857142857,
+        "pass_at_2": 0.5238095238095238,
+        "pass_at_3": 0.7142857142857143,
+        "pass_at_4": 0.8571428571428572,
+        "pass_at_5": 0.9523809523809523,
+        "pass_at_6": 1.0,
+        "pass_at_7": 1.0
+      },
+      "assertion_pass_rate": 0.8660714285714286
+    },
+    {
+      "design_id": "T2-9",
+      "tier": 2,
+      "type": "LED",
+      "ablation": null,
+      "num_runs": 6,
+      "pass_count": 1,
+      "pass_at_k": {
+        "pass_at_1": 0.16666666666666663,
+        "pass_at_2": 0.33333333333333337,
+        "pass_at_3": 0.5,
+        "pass_at_4": 0.6666666666666667,
+        "pass_at_5": 0.8333333333333334,
+        "pass_at_6": 1.0
+      },
+      "assertion_pass_rate": 0.8412698412698413
+    },
+    {
+      "design_id": "T3-1",
+      "tier": 3,
+      "type": "SEN",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 0,
+      "pass_at_k": {
+        "pass_at_1": 0.0,
+        "pass_at_2": 0.0,
+        "pass_at_3": 0.0,
+        "pass_at_4": 0.0,
+        "pass_at_5": 0.0,
+        "pass_at_6": 0.0,
+        "pass_at_7": 0.0
+      },
+      "assertion_pass_rate": 0.8884644766997708
+    },
+    {
+      "design_id": "T3-2",
+      "tier": 3,
+      "type": "COM",
+      "ablation": null,
+      "num_runs": 7,
+      "pass_count": 0,
+      "pass_at_k": {
+        "pass_at_1": 0.0,
+        "pass_at_2": 0.0,
+        "pass_at_3": 0.0,
+        "pass_at_4": 0.0,
+        "pass_at_5": 0.0,
+        "pass_at_6": 0.0,
+        "pass_at_7": 0.0
+      },
+      "assertion_pass_rate": 0.8495073891625615
+    },
+    {
+      "design_id": "T3-3",
+      "tier": 3,
+      "type": "DRV",
+      "ablation": null,
+      "num_runs": 4,
+      "pass_count": 0,
+      "pass_at_k": {
+        "pass_at_1": 0.0,
+        "pass_at_2": 0.0,
+        "pass_at_3": 0.0,
+        "pass_at_4": 0.0
+      },
+      "assertion_pass_rate": 0.7706400742115027
+    },
+    {
+      "design_id": "T3-4",
+      "tier": 3,
+      "type": "AUD",
+      "ablation": null,
+      "num_runs": 5,
+      "pass_count": 3,
+      "pass_at_k": {
+        "pass_at_1": 0.6,
+        "pass_at_2": 0.9,
+        "pass_at_3": 1.0,
+        "pass_at_4": 1.0,
+        "pass_at_5": 1.0
+      },
+      "assertion_pass_rate": 0.9160902255639097
+    },
+    {
+      "design_id": "T3-5",
+      "tier": 3,
+      "type": "PM",
+      "ablation": null,
+      "num_runs": 5,
+      "pass_count": 5,
+      "pass_at_k": {
+        "pass_at_1": 1.0,
+        "pass_at_2": 1.0,
+        "pass_at_3": 1.0,
+        "pass_at_4": 1.0,
+        "pass_at_5": 1.0
+      },
+      "assertion_pass_rate": 0.9777777777777777
+    },
+    {
+      "design_id": "T3-6",
+      "tier": 3,
+      "type": "SEN",
+      "ablation": null,
+      "num_runs": 4,
+      "pass_count": 0,
+      "pass_at_k": {
+        "pass_at_1": 0.0,
+        "pass_at_2": 0.0,
+        "pass_at_3": 0.0,
+        "pass_at_4": 0.0
+      },
+      "assertion_pass_rate": 0.7075123152709359
+    }
+  ],
+  "overall": {
+    "mean_task_pass_at_1": 0.48404761904761906,
+    "mean_task_pass_at_3": 0.6992857142857143,
+    "mean_task_assertion_pass_rate": 0.8882885788061748
+  }
+}

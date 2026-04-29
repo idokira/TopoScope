@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "design_id": "T3-6",
+    "tier": 3,
+    "type": "SEN",
+    "provider": "deepseek",
+    "model": "DeepSeek-V3.2",
+    "method": "baseline",
+    "run_id": 1,
+    "wall_time_seconds": 50.111
+  },
+  "compile_result": {
+    "refdes": "U1",
+    "part_number": "XC6206"
+  },
+  "connection_set": {
+    "components": [],
+    "nets": []
+  },
+  "graph_snapshot": {
+    "directed": false,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "type": "Module",
+        "name": "baseline_module",
+        "description": "Auto-built from connection_set",
+        "id": "baseline_module"
+      }
+    ],
+    "links": []
+  },
+  "process_metrics": {}
+}

@@ -1,0 +1,267 @@
+{
+  "method": "full_system",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T2-4",
+  "tier": 2,
+  "type": "COM",
+  "num_runs": 7,
+  "pass_count": 4,
+  "pass_at_k": {
+    "pass_at_1": 0.5714285714285714,
+    "pass_at_2": 0.8571428571428572,
+    "pass_at_3": 0.9714285714285714,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8571428571428571,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-4_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9565217391304348,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-4-C01-007"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-4_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8695652173913043,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-4-C01-002",
+        "T2-4-C01-007",
+        "T2-4-T12-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, CAN controller VDD, and transceiver VCC share one power net.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-4-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "STM32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "No decoupling network found for pin 'U2_Pin7' (need pull-up to power and capacitor to ground)."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-4_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-4-C01-002",
+        "T2-4-C01-007"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, CAN controller VDD, and transceiver VCC share one power net.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-4_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-4-C01-002",
+        "T2-4-C01-007"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, CAN controller VDD, and transceiver VCC share one power net.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-4_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-4-C01-002",
+        "T2-4-C01-007"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, CAN controller VDD, and transceiver VCC share one power net.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "At least one pin is floating."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-4_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8695652173913043,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-4-C01-002",
+        "T2-4-C01-007",
+        "T2-4-T01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, CAN controller VDD, and transceiver VCC share one power net.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VDD', 'U4.VCC']."
+        },
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-4-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "LDO input rail (VIN) must have bypass capacitor to ground.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U1_Pin3'."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-4_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5652173913043478,
+      "violated_assertion_count": 10,
+      "violated_assertion_names": [
+        "T2-4-C01-001",
+        "T2-4-C01-002",
+        "T2-4-I02-001",
+        "T2-4-C01-003",
+        "T2-4-C01-007",
+        "T2-4-C01-008",
+        "T2-4-C01-009",
+        "T2-4-I01-002",
+        "T2-4-ANY-002",
+        "T2-4-T05-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-001",
+          "check": "SAME_NET",
+          "desc": "GND unification: all ground pins across 4 ICs share one common ground net.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-4-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V domain unification: LDO output, MCU core/analog/battery supply, CAN controller VDD, and transceiver VCC share one power net.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-4-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical pin isolation: GND, VCC, VIN, SPI bundle lines (SCK/MOSI/MISO/CS), CAN logic (TXCAN/RXCAN), CAN differential (CANH/CANL), STM32 crystal (OSC_IN/OUT), MCP2515 crystal (OSC1/OSC2), and NRST must all be on mutually distinct nets. SPI isolation is anchored on MCP2515-side pins so it is invariant to STM32 SPI1 default/remap selection.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "SPI1 legal bundle mapping: accept one complete legal STM32F103 SPI1 routing bundle to MCP2515, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-4-C01-008",
+          "check": "SAME_NET",
+          "desc": "CAN TX logic: MCP2515 TXCAN connects to SN65HVD230 D input.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-4-C01-009",
+          "check": "SAME_NET",
+          "desc": "CAN RX logic: MCP2515 RXCAN connects to SN65HVD230 R output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-4-I01-002",
+          "check": "NOT_SAME_NET",
+          "desc": "MCP2515 RESET must not be tied to GND; permanent reset locks out CAN controller.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "MCP2515 RESET must be held inactive: direct tie to VDD or external pull-up to power.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-4-T05-002",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "MCP2515 8MHz crystal on OSC1/OSC2 with load capacitors to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    }
+  ]
+}

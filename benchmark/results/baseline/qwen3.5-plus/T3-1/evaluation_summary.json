@@ -1,0 +1,491 @@
+{
+  "method": "baseline",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T3-1",
+  "tier": 3,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.7806847350913758,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-1_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9117647058823529,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-1-C01-012",
+        "T3-1-I02-001",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Isolation violated: 'U1.GND' and 'U5.SDO' share net(s) ['GND']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.SDO",
+          "message": "Pin 'U5.SDO' is connected to multiple nets: [GND, SPI_MISO]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-1_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6341463414634146,
+      "violated_assertion_count": 15,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-008",
+        "T3-1-C01-012",
+        "T3-1-ANY-001",
+        "T3-1-I02-001",
+        "T3-1-T03-001",
+        "T3-1-I03-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7",
+        "AUTO-PIN_SINGLE_NET-8"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pin(s) not found: ['U3.VBAT']."
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"No common net exists across pin groups: [[\\'U3.PA7\\'], [\\'U5.SDI\\'], [\\'U6.DI\\']].\"]', 'Candidate SPI1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        },
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pin 'U4.AD0' is not connected to a ground net.; Pin 'U4.AD0' is not connected to a power net."
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Isolation violated: 'U2.VOUT' and 'U1.VSENSE' share net(s) ['VCC_3V3A']."
+        },
+        {
+          "id": "T3-1-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "TPS54331 switch node PH must reach the 3.3V digital output rail through an inductor.",
+          "message": "No series 'IND' path between 'U1.PH' and 'U6.VCC'."
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Pin 'U4.CS' shares forbidden net(s) ['VCC_3V3A'] with 'U5.CSB'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C20.1",
+          "message": "Pin 'C20.1' is connected to multiple nets: [U5_VDD, VCC_3V3A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C21.1",
+          "message": "Pin 'C21.1' is connected to multiple nets: [U5_VDDIO, VCC_3V3A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C8.1",
+          "message": "Pin 'C8.1' is connected to multiple nets: [U2_VOUT, VCC_3V3A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U1.VSENSE",
+          "message": "Pin 'U1.VSENSE' is connected to multiple nets: [U1_FB_DIV, VCC_3V3A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U2.VOUT",
+          "message": "Pin 'U2.VOUT' is connected to multiple nets: [U2_VOUT, VCC_3V3A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.CSB",
+          "message": "Pin 'U5.CSB' is connected to multiple nets: [SPI1_CS_U5, U5_VDDIO, VCC_3V3A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.VDD",
+          "message": "Pin 'U5.VDD' is connected to multiple nets: [U5_VDD, VCC_3V3A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-8",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.VDDIO",
+          "message": "Pin 'U5.VDDIO' is connected to multiple nets: [U5_VDDIO, VCC_3V3A]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-1_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.75,
+      "violated_assertion_count": 9,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-008",
+        "T3-1-ANY-001",
+        "T3-1-I02-001",
+        "T3-1-T03-001",
+        "T3-1-I03-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pin(s) not found: ['U3.VBAT']."
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"No common net exists across pin groups: [[\\'U3.PA6\\'], [\\'U5.SDO\\'], [\\'U6.DO\\']].\"]', 'Candidate SPI1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pin 'U4.AD0' is not connected to a ground net.; Pin 'U4.AD0' is not connected to a power net."
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Isolation violated: 'U2.VOUT' and 'U5.CSB' share net(s) ['VCC_3V3A']."
+        },
+        {
+          "id": "T3-1-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "TPS54331 switch node PH must reach the 3.3V digital output rail through an inductor.",
+          "message": "No series 'IND' path between 'U1.PH' and 'U6.VCC'."
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Pin 'U4.CS' shares forbidden net(s) ['VCC_3V3A'] with 'U5.CSB'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C30.2",
+          "message": "Pin 'C30.2' is connected to multiple nets: [GND, U1_COMP_RC]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C31.1",
+          "message": "Pin 'C31.1' is connected to multiple nets: [U1_COMP_RC, VCC_3V3A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.CSB",
+          "message": "Pin 'U5.CSB' is connected to multiple nets: [SPI_CS_U5, VCC_3V3A]"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-1_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7428571428571429,
+      "violated_assertion_count": 9,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-012",
+        "T3-1-ANY-001",
+        "T3-1-I02-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002",
+        "T3-1-I03-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pin(s) not found: ['U3.VBAT']."
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        },
+        {
+          "id": "T3-1-ANY-001",
+          "check": "ANY_OF",
+          "desc": "MPU-6050 AD0 must select a valid I2C address: GND for 0x68 or VDD for 0x69.",
+          "message": "ANY_OF failed: Pin 'U4.AD0' is not connected to a ground net.; Pin 'U4.AD0' is not connected to a power net."
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Isolation violated: 'U2.VOUT' and 'U5.CSB' share net(s) ['VCC_3V3A']."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SDA'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SCL'."
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Pin 'U4.CS' shares forbidden net(s) ['VCC_3V3A'] with 'U5.CSB'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.CSB",
+          "message": "Pin 'U5.CSB' is connected to multiple nets: [SPI1_CS_U5, VCC_3V3A]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.SDO",
+          "message": "Pin 'U5.SDO' is connected to multiple nets: [GND, SPI1_MISO]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-1_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9411764705882353,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-1-C01-011",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U5.CSB']]."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U3.VDDA",
+          "message": "Pin 'U3.VDDA' is connected to multiple nets: [VCC_3V3A, VCC_3V3D]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-1_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7878787878787878,
+      "violated_assertion_count": 7,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-008",
+        "T3-1-C01-011",
+        "T3-1-I02-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002",
+        "T3-1-I03-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pin(s) not found: ['U3.VBAT']."
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"No common net exists across pin groups: [[\\'U3.PA5\\'], [\\'U5.SCK\\'], [\\'U6.CLK\\']].\"]', 'Candidate SPI1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U5.CSB']]."
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Isolation violated: 'U2.VOUT' and 'U5.CSB' share net(s) ['VCC_3V3A']."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SDA'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SCL'."
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Pin 'U4.CS' shares forbidden net(s) ['VCC_3V3A'] with 'U5.CSB'."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-1_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.696969696969697,
+      "violated_assertion_count": 10,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-004",
+        "T3-1-C01-008",
+        "T3-1-C01-011",
+        "T3-1-C01-012",
+        "T3-1-ANY-002",
+        "T3-1-I02-001",
+        "T3-1-T06-001",
+        "T3-1-T06-002",
+        "T3-1-I03-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pin(s) not found: ['U3.VBAT']."
+        },
+        {
+          "id": "T3-1-C01-004",
+          "check": "SAME_NET",
+          "desc": "Core analog/sensor rail: ME6211 output powers the motion/barometer sensor supplies. This captures the separate sensor rail requirement without over-constraining STM32 analog-domain implementation details.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U4.VDD', 'U5.VDD', 'U5.VDDIO']."
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PA5\\']}]\"]', 'Candidate SPI1_ALT failed: [\"Some pin groups unresolved or floating: [{\\'group_index\\': 0, \\'missing\\': [\\'U3.PB3\\']}]\"]']"
+        },
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1']}]"
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1']}]"
+        },
+        {
+          "id": "T3-1-ANY-002",
+          "check": "ANY_OF",
+          "desc": "STM32F427 analog supply/reference-positive may either join the dedicated analog/sensor rail or remain on the digital 3.3V rail, but VDDA and VREF_P must be implemented consistently together.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VDDA', 'U3.VREF_P', 'U2.VOUT'].; Pins are not on the same net: ['U3.VDDA', 'U3.VREF_P', 'U6.VCC']."
+        },
+        {
+          "id": "T3-1-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power and switching domains must remain distinct: 5V input, digital 3.3V, analog/sensor 3.3V, GND, TPS54331 switch node, TPS54331 feedback node, I2C SDA, I2C SCL, SPI SCK, SPI MOSI, SPI MISO, BMP280 CS, and Flash CS. Bus-related isolation is anchored on peripheral-side pins so it is invariant to STM32 pin selection.",
+          "message": "Isolation violated: 'U1.GND' and 'U5.SDO' share net(s) ['GND']."
+        },
+        {
+          "id": "T3-1-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SDA pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SDA'."
+        },
+        {
+          "id": "T3-1-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to a valid 3.3V rail. Anchored on the MPU-6050 SCL pin so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U4.SCL'."
+        },
+        {
+          "id": "T3-1-I03-003",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "MPU-6050 I2C-mode CS must not be tied to SPI chip-select nets.",
+          "message": "Pin 'U4.CS' shares forbidden net(s) ['VCC_3V3A'] with 'U5.CSB'."
+        }
+      ]
+    }
+  ]
+}

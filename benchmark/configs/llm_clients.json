@@ -1,0 +1,50 @@
+{
+  "default_provider": "qwen",
+  "providers": {
+    "qwen": {
+      "base_url": "",
+      "api_key_env": "",
+      "model": ""
+    },
+    "openai": {
+      "base_url": "https://www.autodl.art/api/v1",
+      "api_key_env": "AUTODL_API_KEY",
+      "model": "gpt-5.4"
+    },
+    "deepseek": {
+      "base_url": "",
+      "api_key_env": "",
+      "model": ""
+    },
+    "gemini": {
+      "base_url": "",
+      "api_key_env": "",
+      "model": ""
+    },
+    "llama": {
+      "base_url": "",
+      "api_key_env": "",
+      "model": ""
+    },
+    "glm": {
+      "base_url": "",
+      "api_key_env": "",
+      "model": ""
+    },
+    "claude": {
+      "base_url": "",
+      "api_key_env": "",
+      "model": ""
+    },
+    "minimax": {
+      "base_url": "",
+      "api_key_env": "",
+      "model": ""
+    },
+    "kimi": {
+      "base_url": "",
+      "api_key_env": "",
+      "model": ""
+    }
+  }
+}

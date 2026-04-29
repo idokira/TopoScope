@@ -1,0 +1,280 @@
+{
+  "meta": {
+    "design_id": "T2-9",
+    "tier": 2,
+    "type": "LED",
+    "run_id": 5
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MAX7219"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "74HC595"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "C13",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C14",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C15",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_9.53K"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz"
+      },
+      {
+        "refdes": "Y2",
+        "part_number": "CRYSTAL_32.768kHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "U1.3",
+          "C1.1"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U1.2",
+          "C2.1",
+          "U2.24",
+          "U2.36",
+          "U2.48",
+          "U2.1",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "VCC_5V",
+        "pins": [
+          "U3.19",
+          "U4.16",
+          "C13.1",
+          "C14.1",
+          "C15.1",
+          "R4.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.1",
+          "C1.2",
+          "C2.2",
+          "U2.23",
+          "U2.35",
+          "U2.47",
+          "U2.8",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "R1.2",
+          "R2.2",
+          "U3.4",
+          "U3.9",
+          "C13.2",
+          "C14.2",
+          "U4.8",
+          "C15.2"
+        ]
+      },
+      {
+        "name": "NRST_NODE",
+        "pins": [
+          "U2.7",
+          "R3.2",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "OSC_IN_NODE",
+        "pins": [
+          "U2.5",
+          "Y1.1",
+          "C9.1"
+        ]
+      },
+      {
+        "name": "OSC_OUT_NODE",
+        "pins": [
+          "U2.6",
+          "Y1.2",
+          "C10.1"
+        ]
+      },
+      {
+        "name": "OSC32_IN_NODE",
+        "pins": [
+          "U2.3",
+          "Y2.1",
+          "C11.1"
+        ]
+      },
+      {
+        "name": "OSC32_OUT_NODE",
+        "pins": [
+          "U2.4",
+          "Y2.2",
+          "C12.1"
+        ]
+      },
+      {
+        "name": "BOOT0_NODE",
+        "pins": [
+          "U2.44",
+          "R1.1"
+        ]
+      },
+      {
+        "name": "BOOT1_NODE",
+        "pins": [
+          "U2.20",
+          "R2.1"
+        ]
+      },
+      {
+        "name": "SPI1_SCK",
+        "pins": [
+          "U2.15",
+          "U3.13",
+          "U4.11"
+        ]
+      },
+      {
+        "name": "SPI1_MOSI",
+        "pins": [
+          "U2.17",
+          "U3.1"
+        ]
+      },
+      {
+        "name": "SPI1_CS",
+        "pins": [
+          "U2.14",
+          "U3.12",
+          "U4.12"
+        ]
+      },
+      {
+        "name": "MAX7219_DOUT_TO_595_SER",
+        "pins": [
+          "U3.24",
+          "U4.14"
+        ]
+      },
+      {
+        "name": "CLEAR_N",
+        "pins": [
+          "U4.10",
+          "GND"
+        ]
+      },
+      {
+        "name": "OUTPUT_ENABLE_N",
+        "pins": [
+          "U4.13",
+          "GND"
+        ]
+      },
+      {
+        "name": "U3_ISET_NODE",
+        "pins": [
+          "U3.18",
+          "R4.2"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

@@ -1,0 +1,666 @@
+{
+  "method": "baseline",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T2-7",
+  "tier": 2,
+  "type": "DRV",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.5385491320273929,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-7_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5666666666666667,
+      "violated_assertion_count": 13,
+      "violated_assertion_names": [
+        "T2-7-C01-002",
+        "T2-7-C01-004",
+        "T2-7-C01-005",
+        "T2-7-I02-001",
+        "T2-7-C03-003",
+        "T2-7-I03-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V logic rail: AMS1117 output powers STM32, TB6612 logic VCC, and INA128 positive supply.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VCC', 'U4.V_POS']."
+        },
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-C01-005",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt low side: INA128 VIN_N connects to common GND side of the shunt.",
+          "message": "Pins are not on the same net: ['U4.VIN_N', 'U1.GND']."
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Isolation violated: 'U1.GND' and 'U3.PGND1_1' share net(s) ['GND']."
+        },
+        {
+          "id": "T2-7-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Motor supply rail must carry Power electrical attribute.",
+          "message": "Pin 'U3.VM1' is not connected to a power net."
+        },
+        {
+          "id": "T2-7-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: motor outputs must not be wired directly to any legal low-voltage STM32 control or ADC candidate pin.",
+          "message": "Pin(s) not found: ['U2.PA5', 'U2.PA6', 'U2.PA7', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PA11', 'U2.PB0', 'U2.PB1', 'U2.PB6', 'U2.PB7', 'U2.PB8', 'U2.PB9', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C7.1",
+          "message": "Pin 'C7.1' is connected to multiple nets: [VCC_3V3, VDDA_NET]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C8.1",
+          "message": "Pin 'C8.1' is connected to multiple nets: [VCC_3V3, VDDA_NET]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R1.2",
+          "message": "Pin 'R1.2' is connected to multiple nets: [GND, NRST_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for Y1.1",
+          "message": "Pin 'Y1.1' is connected to multiple nets: [GND, OSC_IN_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for Y1.2",
+          "message": "Pin 'Y1.2' is connected to multiple nets: [GND, OSC_OUT_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for Y2.1",
+          "message": "Pin 'Y2.1' is connected to multiple nets: [GND, OSC32_IN_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for Y2.2",
+          "message": "Pin 'Y2.2' is connected to multiple nets: [GND, OSC32_OUT_NODE]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-7_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5652173913043478,
+      "violated_assertion_count": 10,
+      "violated_assertion_names": [
+        "T2-7-C01-001",
+        "T2-7-C01-004",
+        "T2-7-C01-005",
+        "T2-7-C01-006",
+        "T2-7-C01-007",
+        "T2-7-C01-008",
+        "T2-7-C01-009",
+        "T2-7-C01-010",
+        "T2-7-I02-001",
+        "T2-7-I03-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common logic ground: LDO ground, STM32 grounds, TB6612 logic GND, INA128 V_NEG, and INA128 REF share common system GND. TB6612 PGND pins are intentionally excluded because low-side shunt sensing places them on the motor-return side of the shunt.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.VSS_1', 'U2.VSS_2', 'U2.VSS_3', 'U2.VSSA', 'U3.GND', 'U4.V_NEG', 'U4.REF']."
+        },
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-C01-005",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt low side: INA128 VIN_N connects to common GND side of the shunt.",
+          "message": "Pins are not on the same net: ['U4.VIN_N', 'U1.GND']."
+        },
+        {
+          "id": "T2-7-C01-006",
+          "check": "SAME_NET",
+          "desc": "Motor direction control AIN1: one legal STM32F103 control GPIO connects to TB6612 AIN1.",
+          "message": "No common net exists across pin groups: [['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15'], ['U3.AIN1']]."
+        },
+        {
+          "id": "T2-7-C01-007",
+          "check": "SAME_NET",
+          "desc": "Motor direction control AIN2: one legal STM32F103 control GPIO connects to TB6612 AIN2.",
+          "message": "No common net exists across pin groups: [['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15'], ['U3.AIN2']]."
+        },
+        {
+          "id": "T2-7-C01-008",
+          "check": "SAME_NET",
+          "desc": "Motor PWM: one legal STM32F103 PWM-capable pin connects to TB6612 PWMA.",
+          "message": "No common net exists across pin groups: [['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA6', 'U2.PA7', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PB0', 'U2.PB1', 'U2.PB6', 'U2.PB7', 'U2.PB8', 'U2.PB9'], ['U3.PWMA']]."
+        },
+        {
+          "id": "T2-7-C01-009",
+          "check": "SAME_NET",
+          "desc": "Motor standby control: one legal STM32F103 control GPIO connects to TB6612 STBY.",
+          "message": "No common net exists across pin groups: [['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15'], ['U3.STBY']]."
+        },
+        {
+          "id": "T2-7-C01-010",
+          "check": "SAME_NET",
+          "desc": "Current feedback: INA128 output connects to one legal STM32F103 ADC-capable input.",
+          "message": "No common net exists across pin groups: [['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA5', 'U2.PA6', 'U2.PA7', 'U2.PB0', 'U2.PB1'], ['U4.VOUT']]."
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Isolation violated: 'U1.GND' and 'U3.PGND1_1' share net(s) ['GND']."
+        },
+        {
+          "id": "T2-7-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: motor outputs must not be wired directly to any legal low-voltage STM32 control or ADC candidate pin.",
+          "message": "Pin(s) not found: ['U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA5', 'U2.PA6', 'U2.PA7', 'U2.PA11', 'U2.PB0', 'U2.PB1', 'U2.PB6', 'U2.PB7', 'U2.PB8', 'U2.PB9', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-7_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6956521739130435,
+      "violated_assertion_count": 7,
+      "violated_assertion_names": [
+        "T2-7-C01-002",
+        "T2-7-C01-004",
+        "T2-7-C01-005",
+        "T2-7-C01-009",
+        "T2-7-I02-001",
+        "T2-7-C03-003",
+        "T2-7-I03-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V logic rail: AMS1117 output powers STM32, TB6612 logic VCC, and INA128 positive supply.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VCC', 'U4.V_POS']."
+        },
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-C01-005",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt low side: INA128 VIN_N connects to common GND side of the shunt.",
+          "message": "Pins are not on the same net: ['U4.VIN_N', 'U1.GND']."
+        },
+        {
+          "id": "T2-7-C01-009",
+          "check": "SAME_NET",
+          "desc": "Motor standby control: one legal STM32F103 control GPIO connects to TB6612 STBY.",
+          "message": "No common net exists across pin groups: [['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15'], ['U3.STBY']]."
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Isolation violated: 'U1.GND' and 'U3.PGND1_1' share net(s) ['GND']."
+        },
+        {
+          "id": "T2-7-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Motor supply rail must carry Power electrical attribute.",
+          "message": "Pin 'U3.VM1' is not connected to a power net."
+        },
+        {
+          "id": "T2-7-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: motor outputs must not be wired directly to any legal low-voltage STM32 control or ADC candidate pin.",
+          "message": "Pin(s) not found: ['U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA5', 'U2.PA6', 'U2.PA7', 'U2.PB0', 'U2.PB1', 'U2.PB6', 'U2.PB7', 'U2.PB8', 'U2.PB9', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-7_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6538461538461539,
+      "violated_assertion_count": 9,
+      "violated_assertion_names": [
+        "T2-7-C01-001",
+        "T2-7-C01-002",
+        "T2-7-C01-004",
+        "T2-7-C01-005",
+        "T2-7-I02-001",
+        "T2-7-I03-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common logic ground: LDO ground, STM32 grounds, TB6612 logic GND, INA128 V_NEG, and INA128 REF share common system GND. TB6612 PGND pins are intentionally excluded because low-side shunt sensing places them on the motor-return side of the shunt.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.VSS_1', 'U2.VSS_2', 'U2.VSS_3', 'U2.VSSA', 'U3.GND', 'U4.V_NEG', 'U4.REF']."
+        },
+        {
+          "id": "T2-7-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V logic rail: AMS1117 output powers STM32, TB6612 logic VCC, and INA128 positive supply.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VCC', 'U4.V_POS']."
+        },
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-C01-005",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt low side: INA128 VIN_N connects to common GND side of the shunt.",
+          "message": "Pins are not on the same net: ['U4.VIN_N', 'U1.GND']."
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Isolation violated: 'U1.GND' and 'U3.PGND1_1' share net(s) ['GND']."
+        },
+        {
+          "id": "T2-7-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: motor outputs must not be wired directly to any legal low-voltage STM32 control or ADC candidate pin.",
+          "message": "Pin(s) not found: ['U2.PA5', 'U2.PA6', 'U2.PA7', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PA11', 'U2.PB0', 'U2.PB1', 'U2.PB6', 'U2.PB7', 'U2.PB8', 'U2.PB9', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R1.2",
+          "message": "Pin 'R1.2' is connected to multiple nets: [GND, U2_NRST]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R3.2",
+          "message": "Pin 'R3.2' is connected to multiple nets: [GND, U2_BOOT1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for Rshunt.2",
+          "message": "Pin 'Rshunt.2' is connected to multiple nets: [GND, SHUNT_LOW]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-7_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.75,
+      "violated_assertion_count": 6,
+      "violated_assertion_names": [
+        "T2-7-C01-002",
+        "T2-7-C01-004",
+        "T2-7-C01-005",
+        "T2-7-I02-001",
+        "T2-7-I03-001",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V logic rail: AMS1117 output powers STM32, TB6612 logic VCC, and INA128 positive supply.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VDDA', 'U2.VBAT', 'U3.VCC', 'U4.V_POS']."
+        },
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-C01-005",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt low side: INA128 VIN_N connects to common GND side of the shunt.",
+          "message": "Pins are not on the same net: ['U4.VIN_N', 'U1.GND']."
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Isolation violated: 'U1.GND' and 'U3.PGND1_1' share net(s) ['GND']."
+        },
+        {
+          "id": "T2-7-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: motor outputs must not be wired directly to any legal low-voltage STM32 control or ADC candidate pin.",
+          "message": "Pin(s) not found: ['U2.PA5', 'U2.PA6', 'U2.PA7', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PA11', 'U2.PB0', 'U2.PB1', 'U2.PB6', 'U2.PB7', 'U2.PB8', 'U2.PB9', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C10.2",
+          "message": "Pin 'C10.2' is connected to multiple nets: [GND, VIN_MOTOR]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-7_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5384615384615384,
+      "violated_assertion_count": 12,
+      "violated_assertion_names": [
+        "T2-7-C01-004",
+        "T2-7-C01-005",
+        "T2-7-C01-006",
+        "T2-7-C01-007",
+        "T2-7-C01-008",
+        "T2-7-C01-009",
+        "T2-7-C01-010",
+        "T2-7-I02-001",
+        "T2-7-I03-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-C01-005",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt low side: INA128 VIN_N connects to common GND side of the shunt.",
+          "message": "Pins are not on the same net: ['U4.VIN_N', 'U1.GND']."
+        },
+        {
+          "id": "T2-7-C01-006",
+          "check": "SAME_NET",
+          "desc": "Motor direction control AIN1: one legal STM32F103 control GPIO connects to TB6612 AIN1.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15']}]"
+        },
+        {
+          "id": "T2-7-C01-007",
+          "check": "SAME_NET",
+          "desc": "Motor direction control AIN2: one legal STM32F103 control GPIO connects to TB6612 AIN2.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15']}]"
+        },
+        {
+          "id": "T2-7-C01-008",
+          "check": "SAME_NET",
+          "desc": "Motor PWM: one legal STM32F103 PWM-capable pin connects to TB6612 PWMA.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA6', 'U2.PA7', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PB0', 'U2.PB1', 'U2.PB6', 'U2.PB7', 'U2.PB8', 'U2.PB9']}]"
+        },
+        {
+          "id": "T2-7-C01-009",
+          "check": "SAME_NET",
+          "desc": "Motor standby control: one legal STM32F103 control GPIO connects to TB6612 STBY.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15']}]"
+        },
+        {
+          "id": "T2-7-C01-010",
+          "check": "SAME_NET",
+          "desc": "Current feedback: INA128 output connects to one legal STM32F103 ADC-capable input.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': ['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA5', 'U2.PA6', 'U2.PA7', 'U2.PB0', 'U2.PB1']}]"
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Isolation violated: 'U1.GND' and 'U3.PGND1_1' share net(s) ['GND']."
+        },
+        {
+          "id": "T2-7-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: motor outputs must not be wired directly to any legal low-voltage STM32 control or ADC candidate pin.",
+          "message": "Pin(s) not found: ['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA5', 'U2.PA6', 'U2.PA7', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PA11', 'U2.PB0', 'U2.PB1', 'U2.PB6', 'U2.PB7', 'U2.PB8', 'U2.PB9', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C13.1",
+          "message": "Pin 'C13.1' is connected to multiple nets: [VDDA_NET, VM]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R6.2",
+          "message": "Pin 'R6.2' is connected to multiple nets: [GND, RG_2_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U2.VDDA",
+          "message": "Pin 'U2.VDDA' is connected to multiple nets: [VCC_3V3, VDDA_NET]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-7_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 23,
+      "violated_assertion_names": [
+        "T2-7-C01-001",
+        "T2-7-C01-002",
+        "T2-7-C01-003",
+        "T2-7-C01-004",
+        "T2-7-C01-005",
+        "T2-7-C01-006",
+        "T2-7-C01-007",
+        "T2-7-C01-008",
+        "T2-7-C01-009",
+        "T2-7-C01-010",
+        "T2-7-I02-001",
+        "T2-7-I02-002",
+        "T2-7-I02-003",
+        "T2-7-C02-001",
+        "T2-7-C03-001",
+        "T2-7-C03-002",
+        "T2-7-C03-003",
+        "T2-7-SC01-001",
+        "T2-7-I03-001",
+        "T2-7-I03-002",
+        "T2-7-T01-001",
+        "T2-7-T01-002",
+        "T2-7-T01-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common logic ground: LDO ground, STM32 grounds, TB6612 logic GND, INA128 V_NEG, and INA128 REF share common system GND. TB6612 PGND pins are intentionally excluded because low-side shunt sensing places them on the motor-return side of the shunt.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V logic rail: AMS1117 output powers STM32, TB6612 logic VCC, and INA128 positive supply.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C01-003",
+          "check": "SAME_NET",
+          "desc": "TB6612 motor supply pins share the external motor power rail.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C01-005",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt low side: INA128 VIN_N connects to common GND side of the shunt.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C01-006",
+          "check": "SAME_NET",
+          "desc": "Motor direction control AIN1: one legal STM32F103 control GPIO connects to TB6612 AIN1.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C01-007",
+          "check": "SAME_NET",
+          "desc": "Motor direction control AIN2: one legal STM32F103 control GPIO connects to TB6612 AIN2.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C01-008",
+          "check": "SAME_NET",
+          "desc": "Motor PWM: one legal STM32F103 PWM-capable pin connects to TB6612 PWMA.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C01-009",
+          "check": "SAME_NET",
+          "desc": "Motor standby control: one legal STM32F103 control GPIO connects to TB6612 STBY.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C01-010",
+          "check": "SAME_NET",
+          "desc": "Current feedback: INA128 output connects to one legal STM32F103 ADC-capable input.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-I02-002",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "INA128 differential inputs must not be tied to the same net.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-I02-003",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "TB6612 control and feedback nets must remain distinct: AIN1, AIN2, PWMA, STBY, and INA128 output must not be shorted together.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Common ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V logic rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "5V logic input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Motor supply rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Low-side current shunt must exist between TB6612 motor return node and common GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "Anti-bypass: motor outputs must not be wired directly to any legal low-voltage STM32 control or ADC candidate pin.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "TB6612 STBY must not be driven by a motor output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "5V logic input rail must have bypass capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V logic domain must have decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-7-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "Motor power domain must have bypass capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    }
+  ]
+}

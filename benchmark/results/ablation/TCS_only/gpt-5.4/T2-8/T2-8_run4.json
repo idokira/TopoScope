@@ -1,0 +1,1891 @@
+{
+  "meta": {
+    "design_id": "T2-8",
+    "tier": 2,
+    "type": "AUD",
+    "provider": "openai",
+    "model": "gpt-5.4",
+    "method": "tcs_only",
+    "run_id": 4,
+    "wall_time_seconds": 57.456
+  },
+  "compile_result": {
+    "status": "ok",
+    "message": "Validation and stitching completed.",
+    "local_hard_count": 0,
+    "local_soft_count": 3,
+    "global_hard_count": 0,
+    "global_soft_count": 1,
+    "pre_stitch_loops": 0,
+    "pre_stitch_tool_calls": 0,
+    "pre_stitch_successful_calls": 0,
+    "global_repair_loops": 0,
+    "global_repair_tool_calls": 0,
+    "global_repair_successful_calls": 0,
+    "node_count": 106,
+    "edge_count": 147
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "ATmega328P"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MCP4725"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "NE5532"
+      }
+    ],
+    "nets": [
+      {
+        "name": "AREF",
+        "pins": [
+          "C6.1",
+          "U2.AREF"
+        ]
+      },
+      {
+        "name": "AUDIO_IN",
+        "pins": [
+          "R4.1"
+        ]
+      },
+      {
+        "name": "AUDIO_OUT",
+        "pins": [
+          "U4.OUT1"
+        ]
+      },
+      {
+        "name": "DAC_BIAS_CONTROL",
+        "pins": [
+          "R4.2",
+          "U3.VOUT",
+          "U4.IN1_P"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "R5.2",
+          "R6.2",
+          "U1.GND",
+          "U2.GND",
+          "U2.GND_2",
+          "U3.A0",
+          "U3.VSS",
+          "U4.VCC_N"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "R2.2",
+          "U2.PC5",
+          "U3.SCL"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "R3.2",
+          "U2.PC4",
+          "U3.SDA"
+        ]
+      },
+      {
+        "name": "U2_RESET",
+        "pins": [
+          "R1.2",
+          "U2.PC6"
+        ]
+      },
+      {
+        "name": "U4_CH2_SAFE",
+        "pins": [
+          "R5.1",
+          "R6.1",
+          "U4.IN2_N",
+          "U4.IN2_P"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C2.1",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C7.1",
+          "R1.1",
+          "R2.1",
+          "R3.1",
+          "U1.VOUT",
+          "U2.AVCC",
+          "U2.VCC",
+          "U3.VDD"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "C8.1",
+          "U1.VIN",
+          "U4.VCC_P"
+        ]
+      }
+    ]
+  },
+  "graph_snapshot": {
+    "directed": false,
+    "multigraph": false,
+    "graph": {
+      "shared_nets": {
+        "DAC_BIAS_CONTROL": {
+          "type": "Signal",
+          "modules": [
+            "audio_preamp",
+            "dac_control"
+          ]
+        },
+        "GND": {
+          "type": "Ground",
+          "modules": [
+            "audio_preamp",
+            "dac_control",
+            "mcu",
+            "power_3v3"
+          ]
+        },
+        "I2C_SCL": {
+          "type": "Signal",
+          "modules": [
+            "dac_control",
+            "mcu"
+          ]
+        },
+        "I2C_SDA": {
+          "type": "Signal",
+          "modules": [
+            "dac_control",
+            "mcu"
+          ]
+        },
+        "VCC_3V3": {
+          "type": "Power",
+          "modules": [
+            "dac_control",
+            "mcu",
+            "power_3v3"
+          ]
+        },
+        "VIN_5V": {
+          "type": "Power",
+          "modules": [
+            "audio_preamp",
+            "dac_control",
+            "mcu",
+            "power_3v3"
+          ]
+        }
+      }
+    },
+    "nodes": [
+      {
+        "type": "Net",
+        "name": "GND",
+        "scope": "Global",
+        "net_type": "Ground",
+        "net_class": "Ground",
+        "semantic_role": "System common ground",
+        "source_pin": "",
+        "shared_modules": [
+          "audio_preamp",
+          "dac_control",
+          "mcu",
+          "power_3v3"
+        ],
+        "id": "GND"
+      },
+      {
+        "type": "Net",
+        "name": "VIN_5V",
+        "scope": "Global",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "External 5V input rail for analog stage supply and 3.3V regulation source",
+        "source_pin": "",
+        "shared_modules": [
+          "audio_preamp",
+          "dac_control",
+          "mcu",
+          "power_3v3"
+        ],
+        "id": "VIN_5V"
+      },
+      {
+        "type": "Module",
+        "name": "power_3v3",
+        "description": "AMS1117-3.3 generates the internal VCC_3V3 rail from the external VIN_5V rail. This module is the sole provider of VCC_3V3 for the digital domain, powering the ATmega328P and MCP4725. Common GND is shared with the analog stage. No separate enable or sequencing control pins are provided in the component data, so the regulator is planned as always-on whenever VIN_5V is present.",
+        "id": "power_3v3"
+      },
+      {
+        "type": "Component",
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO for digital supply",
+        "id": "U1"
+      },
+      {
+        "type": "Pin",
+        "name": "GND",
+        "pin_number": "1",
+        "electrical_type": "Ground",
+        "description": "Ground connection",
+        "id": "U1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "VOUT",
+        "pin_number": "2",
+        "electrical_type": "PowerOut",
+        "description": "Regulated output voltage",
+        "id": "U1_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "VIN",
+        "pin_number": "3",
+        "electrical_type": "PowerIn",
+        "description": "Input power supply",
+        "id": "U1_Pin3"
+      },
+      {
+        "type": "Module",
+        "name": "mcu",
+        "description": "ATmega328P provides digital control for the preamplifier by acting as the I2C master to the MCP4725 DAC. This module consumes VCC_3V3 and shares common GND. PC4 and PC5 are the intended I2C interface signals based on the provided pin names, and this module owns the shared I2C bus master role and bus biasing policy. AVCC must be tied into the 3.3V supply domain along with VCC; AREF is present in the component data and should be placed in a safe reference configuration during downstream wiring. No external clock source is provided in the component list, so planning assumes operation without adding an active timing module.",
+        "id": "mcu"
+      },
+      {
+        "type": "Component",
+        "refdes": "U2",
+        "part_number": "ATmega328P",
+        "description": "AVR 8-bit MCU",
+        "id": "U2"
+      },
+      {
+        "type": "Pin",
+        "name": "PC6",
+        "pin_number": "1",
+        "electrical_type": "Input",
+        "description": "Port C bit 6 / RESET input (active low), I/O if RSTDISBL fuse programmed",
+        "id": "U2_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "PD0",
+        "pin_number": "2",
+        "electrical_type": "Bi-dir",
+        "description": "Port D bit 0, digital I/O with internal pull-up",
+        "id": "U2_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "PD1",
+        "pin_number": "3",
+        "electrical_type": "Bi-dir",
+        "description": "Port D bit 1, digital I/O with internal pull-up",
+        "id": "U2_Pin3"
+      },
+      {
+        "type": "Pin",
+        "name": "PD2",
+        "pin_number": "4",
+        "electrical_type": "Bi-dir",
+        "description": "Port D bit 2, digital I/O with internal pull-up, INT0 interrupt",
+        "id": "U2_Pin4"
+      },
+      {
+        "type": "Pin",
+        "name": "PD3",
+        "pin_number": "5",
+        "electrical_type": "Bi-dir",
+        "description": "Port D bit 3, digital I/O with internal pull-up, INT1 interrupt",
+        "id": "U2_Pin5"
+      },
+      {
+        "type": "Pin",
+        "name": "PD4",
+        "pin_number": "6",
+        "electrical_type": "Bi-dir",
+        "description": "Port D bit 4, digital I/O with internal pull-up",
+        "id": "U2_Pin6"
+      },
+      {
+        "type": "Pin",
+        "name": "VCC",
+        "pin_number": "7",
+        "electrical_type": "PowerIn",
+        "description": "Digital supply voltage, 1.8-5.5V",
+        "id": "U2_Pin7"
+      },
+      {
+        "type": "Pin",
+        "name": "GND",
+        "pin_number": "8",
+        "electrical_type": "Ground",
+        "description": "Digital ground",
+        "id": "U2_Pin8"
+      },
+      {
+        "type": "Pin",
+        "name": "PB6",
+        "pin_number": "9",
+        "electrical_type": "Bi-dir",
+        "description": "Port B bit 6 / XTAL1 input, oscillator amplifier input or TOSC1",
+        "id": "U2_Pin9"
+      },
+      {
+        "type": "Pin",
+        "name": "PB7",
+        "pin_number": "10",
+        "electrical_type": "Bi-dir",
+        "description": "Port B bit 7 / XTAL2 output, oscillator amplifier output or TOSC2",
+        "id": "U2_Pin10"
+      },
+      {
+        "type": "Pin",
+        "name": "PD5",
+        "pin_number": "11",
+        "electrical_type": "Bi-dir",
+        "description": "Port D bit 5, digital I/O with internal pull-up",
+        "id": "U2_Pin11"
+      },
+      {
+        "type": "Pin",
+        "name": "PD6",
+        "pin_number": "12",
+        "electrical_type": "Bi-dir",
+        "description": "Port D bit 6, digital I/O with internal pull-up",
+        "id": "U2_Pin12"
+      },
+      {
+        "type": "Pin",
+        "name": "PD7",
+        "pin_number": "13",
+        "electrical_type": "Bi-dir",
+        "description": "Port D bit 7, digital I/O with internal pull-up",
+        "id": "U2_Pin13"
+      },
+      {
+        "type": "Pin",
+        "name": "PB0",
+        "pin_number": "14",
+        "electrical_type": "Bi-dir",
+        "description": "Port B bit 0, digital I/O with internal pull-up",
+        "id": "U2_Pin14"
+      },
+      {
+        "type": "Pin",
+        "name": "PB1",
+        "pin_number": "15",
+        "electrical_type": "Bi-dir",
+        "description": "Port B bit 1, digital I/O with internal pull-up",
+        "id": "U2_Pin15"
+      },
+      {
+        "type": "Pin",
+        "name": "PB2",
+        "pin_number": "16",
+        "electrical_type": "Bi-dir",
+        "description": "Port B bit 2, digital I/O with internal pull-up",
+        "id": "U2_Pin16"
+      },
+      {
+        "type": "Pin",
+        "name": "PB3",
+        "pin_number": "17",
+        "electrical_type": "Bi-dir",
+        "description": "Port B bit 3, digital I/O with internal pull-up, MOSI/SPI",
+        "id": "U2_Pin17"
+      },
+      {
+        "type": "Pin",
+        "name": "PB4",
+        "pin_number": "18",
+        "electrical_type": "Bi-dir",
+        "description": "Port B bit 4, digital I/O with internal pull-up, MISO/SPI",
+        "id": "U2_Pin18"
+      },
+      {
+        "type": "Pin",
+        "name": "PB5",
+        "pin_number": "19",
+        "electrical_type": "Bi-dir",
+        "description": "Port B bit 5, digital I/O with internal pull-up, SCK/SPI",
+        "id": "U2_Pin19"
+      },
+      {
+        "type": "Pin",
+        "name": "AVCC",
+        "pin_number": "20",
+        "electrical_type": "PowerIn",
+        "description": "Analog supply voltage for ADC and PC3:0, should connect to VCC via low-pass filter",
+        "id": "U2_Pin20"
+      },
+      {
+        "type": "Pin",
+        "name": "AREF",
+        "pin_number": "21",
+        "electrical_type": "AnalogIn",
+        "description": "Analog reference pin for A/D Converter",
+        "id": "U2_Pin21"
+      },
+      {
+        "type": "Pin",
+        "name": "GND_2",
+        "pin_number": "22",
+        "electrical_type": "Ground",
+        "description": "Analog ground",
+        "id": "U2_Pin22"
+      },
+      {
+        "type": "Pin",
+        "name": "PC0",
+        "pin_number": "23",
+        "electrical_type": "Bi-dir",
+        "description": "Port C bit 0 / ADC0, analog input or digital I/O",
+        "id": "U2_Pin23"
+      },
+      {
+        "type": "Pin",
+        "name": "PC1",
+        "pin_number": "24",
+        "electrical_type": "Bi-dir",
+        "description": "Port C bit 1 / ADC1, analog input or digital I/O",
+        "id": "U2_Pin24"
+      },
+      {
+        "type": "Pin",
+        "name": "PC2",
+        "pin_number": "25",
+        "electrical_type": "Bi-dir",
+        "description": "Port C bit 2 / ADC2, analog input or digital I/O",
+        "id": "U2_Pin25"
+      },
+      {
+        "type": "Pin",
+        "name": "PC3",
+        "pin_number": "26",
+        "electrical_type": "Bi-dir",
+        "description": "Port C bit 3 / ADC3, analog input or digital I/O",
+        "id": "U2_Pin26"
+      },
+      {
+        "type": "Pin",
+        "name": "PC4",
+        "pin_number": "27",
+        "electrical_type": "Bi-dir",
+        "description": "Port C bit 4 / ADC4 / SDA, analog input, digital I/O, or I2C data",
+        "id": "U2_Pin27"
+      },
+      {
+        "type": "Pin",
+        "name": "PC5",
+        "pin_number": "28",
+        "electrical_type": "Bi-dir",
+        "description": "Port C bit 5 / ADC5 / SCL, analog input, digital I/O, or I2C clock",
+        "id": "U2_Pin28"
+      },
+      {
+        "type": "Module",
+        "name": "dac_control",
+        "description": "MCP4725 is a single-channel 12-bit I2C DAC powered from VCC_3V3. It receives control data from the MCU over the shared I2C bus and outputs an analog control/bias voltage on VOUT. That analog output is routed into the NE5532 channel-1 non-inverting input network through downstream passive circuitry, preserving the control relationship without assuming an internal gain-control feature in the op-amp. The A0 pin exists in the provided component data and must be tied to a defined logic level during downstream wiring to fix the I2C slave address; no additional address options should be assumed beyond that pin.",
+        "id": "dac_control"
+      },
+      {
+        "type": "Component",
+        "refdes": "U3",
+        "part_number": "MCP4725",
+        "description": "12-bit I2C DAC",
+        "id": "U3"
+      },
+      {
+        "type": "Pin",
+        "name": "VOUT",
+        "pin_number": "1",
+        "electrical_type": "AnalogOut",
+        "description": "DAC analog output, rail-to-rail (0 to VDD).",
+        "id": "U3_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "VSS",
+        "pin_number": "2",
+        "electrical_type": "Ground",
+        "description": "Ground reference.",
+        "id": "U3_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "VDD",
+        "pin_number": "3",
+        "electrical_type": "PowerIn",
+        "description": "Supply voltage (2.7-5.5V), also serves as DAC reference.",
+        "id": "U3_Pin3"
+      },
+      {
+        "type": "Pin",
+        "name": "SDA",
+        "pin_number": "4",
+        "electrical_type": "OpenDrain",
+        "description": "I2C data, open-drain. Requires external pull-up on bus.",
+        "id": "U3_Pin4"
+      },
+      {
+        "type": "Pin",
+        "name": "SCL",
+        "pin_number": "5",
+        "electrical_type": "OpenDrain",
+        "description": "I2C clock, open-drain. Requires external pull-up on bus.",
+        "id": "U3_Pin5"
+      },
+      {
+        "type": "Pin",
+        "name": "A0",
+        "pin_number": "6",
+        "electrical_type": "Input",
+        "description": "I2C address bit. VSS=0x60, VDD=0x61. Must not float.",
+        "id": "U3_Pin6"
+      },
+      {
+        "type": "Module",
+        "name": "audio_preamp",
+        "description": "NE5532 implements the analog preamplifier stage. Channel 1 is used as the required non-inverting amplifier, powered directly from the external VIN_5V rail with common GND as specified by the brief. The signal-conditioning and feedback passives are added later, but this module must expose the audio input path, the DAC-derived bias/control injection point into the channel-1 non-inverting input network, and the amplified audio output. The unused channel 2 is still part of this IC and must have both inputs tied to a safe bias state while its output remains intentionally unused; this stabilization is local to the module and not exposed as an inter-module interface. The brief requests only a single-channel preamplifier, and the provided dual op-amp has sufficient capacity with one unused channel safely terminated.",
+        "id": "audio_preamp"
+      },
+      {
+        "type": "Component",
+        "refdes": "U4",
+        "part_number": "NE5532",
+        "description": "Dual low-noise operational amplifier",
+        "id": "U4"
+      },
+      {
+        "type": "Pin",
+        "name": "OUT1",
+        "pin_number": "1",
+        "electrical_type": "AnalogOut",
+        "description": "Channel 1 output.",
+        "id": "U4_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "IN1_N",
+        "pin_number": "2",
+        "electrical_type": "AnalogIn",
+        "description": "Channel 1 inverting input.",
+        "id": "U4_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "IN1_P",
+        "pin_number": "3",
+        "electrical_type": "AnalogIn",
+        "description": "Channel 1 non-inverting input.",
+        "id": "U4_Pin3"
+      },
+      {
+        "type": "Pin",
+        "name": "VCC_N",
+        "pin_number": "4",
+        "electrical_type": "PowerIn",
+        "description": "Negative supply (or GND for single-supply).",
+        "id": "U4_Pin4"
+      },
+      {
+        "type": "Pin",
+        "name": "IN2_P",
+        "pin_number": "5",
+        "electrical_type": "AnalogIn",
+        "description": "Channel 2 non-inverting input.",
+        "id": "U4_Pin5"
+      },
+      {
+        "type": "Pin",
+        "name": "IN2_N",
+        "pin_number": "6",
+        "electrical_type": "AnalogIn",
+        "description": "Channel 2 inverting input.",
+        "id": "U4_Pin6"
+      },
+      {
+        "type": "Pin",
+        "name": "OUT2",
+        "pin_number": "7",
+        "electrical_type": "AnalogOut",
+        "description": "Channel 2 output.",
+        "id": "U4_Pin7"
+      },
+      {
+        "type": "Pin",
+        "name": "VCC_P",
+        "pin_number": "8",
+        "electrical_type": "PowerIn",
+        "description": "Positive supply.",
+        "id": "U4_Pin8"
+      },
+      {
+        "type": "Net",
+        "name": "VCC_3V3",
+        "scope": "Global",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "dac_control",
+          "mcu",
+          "power_3v3"
+        ],
+        "id": "VCC_3V3"
+      },
+      {
+        "type": "Net",
+        "name": "I2C_SCL",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "dac_control",
+          "mcu"
+        ],
+        "id": "I2C_SCL"
+      },
+      {
+        "type": "Net",
+        "name": "I2C_SDA",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "dac_control",
+          "mcu"
+        ],
+        "id": "I2C_SDA"
+      },
+      {
+        "type": "Net",
+        "name": "DAC_BIAS_CONTROL",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "audio_preamp",
+          "dac_control"
+        ],
+        "id": "DAC_BIAS_CONTROL"
+      },
+      {
+        "type": "Component",
+        "refdes": "C1",
+        "part_number": "CAP_10uF",
+        "description": "Added from component output",
+        "id": "C1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C1_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C2",
+        "part_number": "CAP_22uF",
+        "description": "Added from component output",
+        "id": "C2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C2_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C2_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C3",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C3"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C3_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C3_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C4",
+        "part_number": "CAP_10uF",
+        "description": "Added from component output",
+        "id": "C4"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C4_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C4_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C5",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C5"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C5_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C5_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C6",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C6"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C6_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C6_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R1",
+        "part_number": "RES_10K",
+        "description": "Added from component output",
+        "id": "R1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R1_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R2",
+        "part_number": "RES_4.7K",
+        "description": "Added from component output",
+        "id": "R2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R2_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R2_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R3",
+        "part_number": "RES_4.7K",
+        "description": "Added from component output",
+        "id": "R3"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R3_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R3_Pin2"
+      },
+      {
+        "type": "Net",
+        "name": "U2_RESET",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in mcu",
+        "source_pin": "",
+        "id": "U2_RESET"
+      },
+      {
+        "type": "Net",
+        "name": "AREF",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in mcu",
+        "source_pin": "",
+        "id": "AREF"
+      },
+      {
+        "type": "Component",
+        "refdes": "C7",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C7"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C7_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C7_Pin2"
+      },
+      {
+        "type": "Net",
+        "name": "AUDIO_IN",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 virtual net in audio_preamp",
+        "source_pin": "",
+        "id": "AUDIO_IN"
+      },
+      {
+        "type": "Net",
+        "name": "AUDIO_OUT",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 virtual net in audio_preamp",
+        "source_pin": "",
+        "id": "AUDIO_OUT"
+      },
+      {
+        "type": "Component",
+        "refdes": "C8",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C8"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C8_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C8_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R4",
+        "part_number": "RES_100K",
+        "description": "Added from component output",
+        "id": "R4"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R4_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R4_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R5",
+        "part_number": "RES_100K",
+        "description": "Added from component output",
+        "id": "R5"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R5_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R5_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R6",
+        "part_number": "RES_100K",
+        "description": "Added from component output",
+        "id": "R6"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R6_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R6_Pin2"
+      },
+      {
+        "type": "Net",
+        "name": "U4_CH2_SAFE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in audio_preamp",
+        "source_pin": "",
+        "id": "U4_CH2_SAFE"
+      }
+    ],
+    "links": [
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C2_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2_Pin8"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2_Pin22"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C3_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C4_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C5_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C6_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U3_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U3_Pin6"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C7_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U4_Pin4"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C8_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "R5_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "R6_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "U1_Pin3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "C1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "U4_Pin8"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "C8_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "U1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "C1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "C2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin2",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "U2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "R1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "R2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "R3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "U2_RESET"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "AREF"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin8"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin9"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin10"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin11"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin12"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin13"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin14"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin15"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin16"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin17"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin18"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin19"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin20"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin21"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin22"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin23"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin24"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin25"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin26"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin27"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin28"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin1",
+        "target": "U2_RESET"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin7",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin20",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin21",
+        "target": "AREF"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin27",
+        "target": "I2C_SDA"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin28",
+        "target": "I2C_SCL"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "dac_control",
+        "target": "U3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "dac_control",
+        "target": "C7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin6"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin1",
+        "target": "DAC_BIAS_CONTROL"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin3",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin4",
+        "target": "I2C_SDA"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin5",
+        "target": "I2C_SCL"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "audio_preamp",
+        "target": "U4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "audio_preamp",
+        "target": "AUDIO_IN"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "audio_preamp",
+        "target": "AUDIO_OUT"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "audio_preamp",
+        "target": "C8"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "audio_preamp",
+        "target": "R4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "audio_preamp",
+        "target": "R5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "audio_preamp",
+        "target": "R6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "audio_preamp",
+        "target": "U4_CH2_SAFE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin8"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_Pin1",
+        "target": "AUDIO_OUT"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_Pin3",
+        "target": "DAC_BIAS_CONTROL"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_Pin5",
+        "target": "U4_CH2_SAFE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_Pin6",
+        "target": "U4_CH2_SAFE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C2_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C3_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C4_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C5_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "R1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "R2_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "R3_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C7_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "I2C_SCL",
+        "target": "R2_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "I2C_SDA",
+        "target": "R3_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "DAC_BIAS_CONTROL",
+        "target": "R4_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1",
+        "target": "C1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1",
+        "target": "C1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C2",
+        "target": "C2_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C2",
+        "target": "C2_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C3",
+        "target": "C3_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C3",
+        "target": "C3_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C4",
+        "target": "C4_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C4",
+        "target": "C4_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C5",
+        "target": "C5_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C5",
+        "target": "C5_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C6",
+        "target": "C6_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C6",
+        "target": "C6_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "C6_Pin1",
+        "target": "AREF"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R1",
+        "target": "R1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R1",
+        "target": "R1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "R1_Pin2",
+        "target": "U2_RESET"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R2",
+        "target": "R2_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R2",
+        "target": "R2_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R3",
+        "target": "R3_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R3",
+        "target": "R3_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C7",
+        "target": "C7_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C7",
+        "target": "C7_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "AUDIO_IN",
+        "target": "R4_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C8",
+        "target": "C8_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C8",
+        "target": "C8_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R4",
+        "target": "R4_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R4",
+        "target": "R4_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R5",
+        "target": "R5_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R5",
+        "target": "R5_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "R5_Pin1",
+        "target": "U4_CH2_SAFE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R6",
+        "target": "R6_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R6",
+        "target": "R6_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "R6_Pin1",
+        "target": "U4_CH2_SAFE"
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 0,
+      "U3": 0,
+      "U4": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 14
+  }
+}

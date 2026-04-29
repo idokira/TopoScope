@@ -1,0 +1,520 @@
+{
+  "design_id": "T3-4",
+  "tier": 3,
+  "type": "AUD",
+  "description": "Stereo audio playback system. USB_5V powers PAM8403 directly and feeds AMS1117-3.3 for ATmega328P and MCP4725. MT3608 boosts USB_5V to a 9V analog rail only for the NE5532 preamplifier stage. ATmega328P controls MCP4725 over I2C. MCP4725 VOUT provides a shared GAIN_CTRL / bias-control signal to the NE5532 stereo preamp. NE5532 left/right outputs feed PAM8403 left/right inputs, and PAM8403 drives stereo speaker outputs. Common GND is used with analog/digital star-ground intent. A complete voltage-controlled gain circuit is not required.",
+  "ic_list": [
+    "MT3608 (U1)",
+    "AMS1117-3.3 (U2)",
+    "ATmega328P (U3)",
+    "MCP4725 (U4)",
+    "NE5532 (U5)",
+    "PAM8403 (U6)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T3-4-C01-001",
+      "check": "SAME_NET",
+      "desc": "Common ground: boost converter, LDO, MCU, DAC, NE5532 negative supply, and PAM8403 grounds share common GND with star-ground layout intent.",
+      "params": {
+        "pins": [
+          "U1.GND",
+          "U2.GND",
+          "U3.GND",
+          "U3.GND_2",
+          "U4.VSS",
+          "U5.VCC_N",
+          "U6.GND",
+          "U6.PGND_1",
+          "U6.PGND_2"
+        ]
+      }
+    },
+    {
+      "id": "T3-4-C01-002",
+      "check": "SAME_NET",
+      "desc": "USB_5V input rail powers MT3608 input, AMS1117 input, and PAM8403 5V supply pins.",
+      "params": {
+        "pins": [
+          "U1.VIN",
+          "U2.VIN",
+          "U6.PVDD_1",
+          "U6.PVDD_2",
+          "U6.VDD"
+        ]
+      }
+    },
+    {
+      "id": "T3-4-C01-003",
+      "check": "SAME_NET",
+      "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+      "params": {
+        "pins": [
+          "U2.VOUT",
+          "U3.VCC",
+          "U3.AVCC",
+          "U4.VDD"
+        ]
+      }
+    },
+    {
+      "id": "T3-4-C01-004",
+      "check": "SAME_NET",
+      "desc": "I2C SDA: ATmega328P hardware TWI SDA alias (PC4 or SDA) connects to MCP4725 SDA.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PC4",
+            "U3.SDA"
+          ],
+          [
+            "U4.SDA"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-4-C01-005",
+      "check": "SAME_NET",
+      "desc": "I2C SCL: ATmega328P hardware TWI SCL alias (PC5 or SCL) connects to MCP4725 SCL.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PC5",
+            "U3.SCL"
+          ],
+          [
+            "U4.SCL"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-4-ANY-001",
+      "type": "ANY_OF",
+      "desc": "Shared DAC control/bias signal reaches NE5532 channel-1 non-inverting/control node, either directly or through a resistor network.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U4.VOUT",
+              "U5.IN1_P"
+            ]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U4.VOUT",
+            "destination": "U5.IN1_P",
+            "max_hops": 6,
+            "allowed_components": [
+              "Resistor"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-4-ANY-002",
+      "type": "ANY_OF",
+      "desc": "Shared DAC control/bias signal also reaches NE5532 channel-2 non-inverting/control node for stereo shared gain/bias behavior, either directly or through a resistor network.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U4.VOUT",
+              "U5.IN2_P"
+            ]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U4.VOUT",
+            "destination": "U5.IN2_P",
+            "max_hops": 6,
+            "allowed_components": [
+              "Resistor"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-4-ANY-004",
+      "type": "ANY_OF",
+      "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U5.OUT1",
+              "U6.INL"
+            ]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U5.OUT1",
+            "destination": "U6.INL",
+            "max_hops": 6,
+            "allowed_components": [
+              "Capacitor"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-4-ANY-005",
+      "type": "ANY_OF",
+      "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U5.OUT2",
+              "U6.INR"
+            ]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U5.OUT2",
+            "destination": "U6.INR",
+            "max_hops": 6,
+            "allowed_components": [
+              "Capacitor"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-4-ANY-003",
+      "type": "ANY_OF",
+      "desc": "MCP4725 A0 must select I2C address: tie to GND for 0x60 or VDD for 0x61.",
+      "conditions": [
+        {
+          "check": "CONNECTED_TO_GROUND",
+          "params": {
+            "pin": "U4.A0"
+          }
+        },
+        {
+          "check": "CONNECTED_TO_POWER",
+          "params": {
+            "pin": "U4.A0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-4-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical domain isolation: USB_5V, 3.3V digital rail, GND, MT3608 switch node, MT3608 feedback node, NE5532 9V analog supply, DAC control node, I2C SDA, I2C SCL, left audio output, right audio output, and PAM8403 VREF must remain distinct. I2C isolation is anchored on MCP4725-side pins for semantic stability.",
+      "params": {
+        "groups": [
+          [
+            "U1.VIN"
+          ],
+          [
+            "U2.VOUT"
+          ],
+          [
+            "U1.GND"
+          ],
+          [
+            "U1.SW"
+          ],
+          [
+            "U1.FB"
+          ],
+          [
+            "U5.VCC_P"
+          ],
+          [
+            "U4.VOUT"
+          ],
+          [
+            "U4.SDA"
+          ],
+          [
+            "U4.SCL"
+          ],
+          [
+            "U5.OUT1"
+          ],
+          [
+            "U5.OUT2"
+          ],
+          [
+            "U6.VREF"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-4-I02-002",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "PAM8403 must not be powered from the 9V boost rail; its power pins stay on USB_5V while NE5532 VCC_P is on the boosted analog rail.",
+      "params": {
+        "groups": [
+          [
+            "U6.PVDD_1"
+          ],
+          [
+            "U5.VCC_P"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-4-I02-003",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "PAM8403 BTL speaker output pairs must not be shorted together or to each other.",
+      "params": {
+        "groups": [
+          [
+            "U6.OUT_L_P"
+          ],
+          [
+            "U6.OUT_L_N"
+          ],
+          [
+            "U6.OUT_R_P"
+          ],
+          [
+            "U6.OUT_R_N"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-4-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Common ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.GND"
+      }
+    },
+    {
+      "id": "T3-4-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "USB_5V input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T3-4-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V digital rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T3-4-C03-003",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "NE5532 boosted analog supply rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U5.VCC_P"
+      }
+    },
+    {
+      "id": "T3-4-C03-004",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "PAM8403 power rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U6.PVDD_1"
+      }
+    },
+    {
+      "id": "T3-4-S02-001",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "MT3608 EN must not float; the boost converter requires a defined enable state.",
+      "params": {
+        "pin": "U1.EN"
+      }
+    },
+    {
+      "id": "T3-4-S02-002",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "NE5532 channel-1 inverting input must not float because channel 1 is used for the left preamp path.",
+      "params": {
+        "pin": "U5.IN1_N"
+      }
+    },
+    {
+      "id": "T3-4-S02-003",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "NE5532 channel-2 inverting input must not float because channel 2 is used for the right preamp path.",
+      "params": {
+        "pin": "U5.IN2_N"
+      }
+    },
+    {
+      "id": "T3-4-T10-001",
+      "check": "HAS_FEEDBACK_DIVIDER",
+      "desc": "MT3608 FB must have a feedback divider for the boosted 9V analog rail.",
+      "params": {
+        "pin_fb": "U1.FB"
+      }
+    },
+    {
+      "id": "T3-4-T03-001",
+      "check": "HAS_INDUCTOR_PATH",
+      "desc": "MT3608 boost switch node must have an inductor path from USB_5V input to SW.",
+      "params": {
+        "pin_a": "U1.VIN",
+        "pin_b": "U1.SW"
+      }
+    },
+    {
+      "id": "T3-4-T09-001",
+      "check": "HAS_FREEWHEELING_PATH",
+      "desc": "MT3608 SW node must have a Schottky/freewheeling rectifier path for boost output generation.",
+      "params": {
+        "pin": "U1.SW"
+      }
+    },
+    {
+      "id": "T3-4-T06-001",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SDA requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SDA to target the bus itself.",
+      "params": {
+        "pin": "U4.SDA"
+      }
+    },
+    {
+      "id": "T3-4-T06-002",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SCL requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SCL to target the bus itself.",
+      "params": {
+        "pin": "U4.SCL"
+      }
+    },
+    {
+      "id": "T3-4-I03-001",
+      "check": "PIN_NOT_ON_NET_WITH",
+      "desc": "I2C SDA must not be shorted to audio or speaker output nets.",
+      "params": {
+        "pin": "U4.SDA",
+        "forbidden_pins": [
+          "U5.OUT1",
+          "U5.OUT2",
+          "U6.OUT_L_P",
+          "U6.OUT_L_N",
+          "U6.OUT_R_P",
+          "U6.OUT_R_N"
+        ]
+      }
+    },
+    {
+      "id": "T3-4-I03-002",
+      "check": "PIN_NOT_ON_NET_WITH",
+      "desc": "DAC control/bias output must not be shorted to PAM8403 speaker outputs.",
+      "params": {
+        "pin": "U4.VOUT",
+        "forbidden_pins": [
+          "U6.OUT_L_P",
+          "U6.OUT_L_N",
+          "U6.OUT_R_P",
+          "U6.OUT_R_N"
+        ]
+      }
+    },
+    {
+      "id": "T3-4-I03-003",
+      "check": "PIN_NOT_ON_NET_WITH",
+      "desc": "PAM8403 left input must not be shorted to the 9V analog supply or USB_5V power rail.",
+      "params": {
+        "pin": "U6.INL",
+        "forbidden_pins": [
+          "U5.VCC_P",
+          "U1.VIN"
+        ]
+      }
+    },
+    {
+      "id": "T3-4-I03-004",
+      "check": "PIN_NOT_ON_NET_WITH",
+      "desc": "PAM8403 right input must not be shorted to the 9V analog supply or USB_5V power rail.",
+      "params": {
+        "pin": "U6.INR",
+        "forbidden_pins": [
+          "U5.VCC_P",
+          "U1.VIN"
+        ]
+      }
+    },
+    {
+      "id": "T3-4-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "USB_5V input rail must have input/bulk capacitor to ground.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T3-4-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V digital rail must have decoupling capacitor to ground.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T3-4-T01-003",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "NE5532 boosted analog supply rail should have bypass capacitor to ground.",
+      "params": {
+        "pin": "U5.VCC_P"
+      }
+    },
+    {
+      "id": "T3-4-T01-004",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "PAM8403 power rail should have local decoupling capacitor to ground.",
+      "params": {
+        "pin": "U6.PVDD_1"
+      }
+    },
+    {
+      "id": "T3-4-T01-005",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "PAM8403 VREF should have bypass capacitor to ground for low-noise operation.",
+      "params": {
+        "pin": "U6.VREF"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 35,
+    "by_category": {
+      "total": 35,
+      "by_category": {
+        "SAME_NET": 5,
+        "ANY_OF": 5,
+        "NET_GROUP_ISOLATION": 3,
+        "CONNECTED_TO_GROUND": 1,
+        "CONNECTED_TO_POWER": 4,
+        "PIN_NOT_FLOATING": 3,
+        "HAS_FEEDBACK_DIVIDER": 1,
+        "HAS_INDUCTOR_PATH": 1,
+        "HAS_FREEWHEELING_PATH": 1,
+        "HAS_PULLUP_TO_POWER": 2,
+        "PIN_NOT_ON_NET_WITH": 4,
+        "HAS_CAP_TO_GROUND": 5
+      }
+    }
+  }
+}

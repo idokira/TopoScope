@@ -1,0 +1,151 @@
+{
+  "method": "baseline",
+  "model": "gpt-5.4",
+  "ablation": null,
+  "design_id": "T3-5",
+  "tier": 3,
+  "type": "PM",
+  "num_runs": 7,
+  "pass_count": 2,
+  "pass_at_k": {
+    "pass_at_1": 0.2857142857142857,
+    "pass_at_2": 0.5238095238095238,
+    "pass_at_3": 0.7142857142857143,
+    "pass_at_4": 0.8571428571428572,
+    "pass_at_5": 0.9523809523809523,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9648135116115412,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-5_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9642857142857143,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R10.1",
+          "message": "Pin 'R10.1' is connected to multiple nets: [POWER_GOOD, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-5_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9642857142857143,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R10.1",
+          "message": "Pin 'R10.1' is connected to multiple nets: [POWER_GOOD, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-5_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-5_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9642857142857143,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R10.1",
+          "message": "Pin 'R10.1' is connected to multiple nets: [POWER_GOOD, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-5_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.896551724137931,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-5-I02-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-5-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power domains and local switching/feedback nodes must remain isolated: VIN_12V input, 5V rail, boosted 12V rail, 3.3V rail, 1.8V rail, GND, TPS54331 switch node, TPS61088 switch node, TPS54331 feedback node, TPS61088 feedback node, and POWER_GOOD.",
+          "message": "Isolation violated: 'U3.VOUT' and 'U5.RESET' share net(s) ['VCC_3V3']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R10.1",
+          "message": "Pin 'R10.1' is connected to multiple nets: [POWER_GOOD, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U5.RESET",
+          "message": "Pin 'U5.RESET' is connected to multiple nets: [POWER_GOOD, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-5_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-5_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9642857142857143,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9.2",
+          "message": "Pin 'R9.2' is connected to multiple nets: [GND, U5_CT]"
+        }
+      ]
+    }
+  ]
+}

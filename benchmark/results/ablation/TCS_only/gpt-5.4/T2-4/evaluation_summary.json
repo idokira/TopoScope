@@ -1,0 +1,244 @@
+{
+  "method": "tcs_only",
+  "model": "gpt-5.4",
+  "ablation": null,
+  "design_id": "T2-4",
+  "tier": 2,
+  "type": "COM",
+  "num_runs": 7,
+  "pass_count": 2,
+  "pass_at_k": {
+    "pass_at_1": 0.2857142857142857,
+    "pass_at_2": 0.5238095238095238,
+    "pass_at_3": 0.7142857142857143,
+    "pass_at_4": 0.8571428571428572,
+    "pass_at_5": 0.9523809523809523,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8757763975155279,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-4_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8695652173913043,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-4-C01-003",
+        "T2-4-C01-007",
+        "T2-4-T11-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-003",
+          "check": "SAME_NET",
+          "desc": "SPI1 legal bundle mapping: accept one complete legal STM32F103 SPI1 routing bundle to MCP2515, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\"No common net exists across pin groups: [[\\'U2.PA4\\'], [\\'U3.CS\\']].\"]', 'Candidate SPI1_REMAP failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U2.PB3\\\\\\']\"}]\\']']"
+        },
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-4-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "CAN differential bus requires 120ohm termination resistor between CANH and CANL.",
+          "message": "No termination resistor found between the two bus nets."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-4_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8260869565217391,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-4-C01-007",
+        "T2-4-ANY-001",
+        "T2-4-T12-001",
+        "T2-4-T05-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U2_Pin44' to 'U2.VSS_1' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-4-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "STM32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "No decoupling network found for pin 'U2_Pin7' (need pull-up to power and capacitor to ground)."
+        },
+        {
+          "id": "T2-4-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "STM32 HSE 8MHz crystal on OSC_IN/OSC_OUT with load capacitors to ground.",
+          "message": "OSC pins are floating."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-4_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9565217391304348,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-4-T11-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "CAN differential bus requires 120ohm termination resistor between CANH and CANL.",
+          "message": "No termination resistor found between the two bus nets."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-4_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8260869565217391,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-4-ANY-001",
+        "T2-4-T11-001",
+        "T2-4-T12-001",
+        "T2-4-T05-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U2_Pin44' to 'U2.VSS_1' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-4-T11-001",
+          "check": "HAS_BUS_TERMINATION",
+          "desc": "CAN differential bus requires 120ohm termination resistor between CANH and CANL.",
+          "message": "No termination resistor found between the two bus nets."
+        },
+        {
+          "id": "T2-4-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "STM32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "No decoupling network found for pin 'U2_Pin7' (need pull-up to power and capacitor to ground)."
+        },
+        {
+          "id": "T2-4-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "STM32 HSE 8MHz crystal on OSC_IN/OSC_OUT with load capacitors to ground.",
+          "message": "OSC pins are floating."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-4_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8260869565217391,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-4-C01-007",
+        "T2-4-ANY-001",
+        "T2-4-T12-001",
+        "T2-4-T05-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U2_Pin44' to 'U2.VSS_1' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-4-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "STM32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "No decoupling network found for pin 'U2_Pin7' (need pull-up to power and capacitor to ground)."
+        },
+        {
+          "id": "T2-4-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "STM32 HSE 8MHz crystal on OSC_IN/OSC_OUT with load capacitors to ground.",
+          "message": "OSC pins are floating."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-4_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8260869565217391,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-4-C01-007",
+        "T2-4-ANY-001",
+        "T2-4-T12-001",
+        "T2-4-T05-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-4-C01-007",
+          "check": "SAME_NET",
+          "desc": "MCP2515 INT output connects to STM32 PA3.",
+          "message": "At least one pin is floating."
+        },
+        {
+          "id": "T2-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+          "message": "ANY_OF failed: At least one pin is floating.; No constrained path found from 'U2_Pin44' to 'U2.VSS_1' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-4-T12-001",
+          "check": "HAS_DECOUPLING_NETWORK",
+          "desc": "STM32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+          "message": "No decoupling network found for pin 'U2_Pin7' (need pull-up to power and capacitor to ground)."
+        },
+        {
+          "id": "T2-4-T05-001",
+          "check": "HAS_CRYSTAL_PAIR",
+          "desc": "STM32 HSE 8MHz crystal on OSC_IN/OSC_OUT with load capacitors to ground.",
+          "message": "OSC pins are floating."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-4_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    }
+  ]
+}

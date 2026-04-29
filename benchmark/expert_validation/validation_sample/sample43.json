@@ -1,0 +1,256 @@
+{
+  "meta": {
+    "design_id": "T2-1",
+    "tier": 2,
+    "type": "SEN",
+    "run_id": 1
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "BME280"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "SSD1306"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "C13",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C14",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C15",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz"
+      },
+      {
+        "refdes": "Y2",
+        "part_number": "CRYSTAL_32.768kHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "U1.VIN",
+          "C1.1"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U1.VOUT",
+          "C2.1",
+          "U2.VBAT",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U2.VDDA",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C6.1",
+          "C7.1",
+          "R1.1",
+          "U3.VDD",
+          "U3.VDDIO",
+          "U3.CSB",
+          "C13.1",
+          "C14.1",
+          "U4.VCC",
+          "C15.1",
+          "R4.1",
+          "R5.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.GND",
+          "C1.2",
+          "C2.2",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U2.VSSA",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "R2.2",
+          "R3.2",
+          "U3.GND_1",
+          "U3.GND_2",
+          "C13.2",
+          "C14.2",
+          "U3.SDO",
+          "U4.GND",
+          "C15.2"
+        ]
+      },
+      {
+        "name": "U2_NRST",
+        "pins": [
+          "U2.NRST",
+          "R1.2",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "U2.OSC_IN",
+          "Y1.1",
+          "C9.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "U2.OSC_OUT",
+          "Y1.2",
+          "C10.1"
+        ]
+      },
+      {
+        "name": "U2_OSC32_IN",
+        "pins": [
+          "U2.PC14",
+          "Y2.1",
+          "C11.1"
+        ]
+      },
+      {
+        "name": "U2_OSC32_OUT",
+        "pins": [
+          "U2.PC15",
+          "Y2.2",
+          "C12.1"
+        ]
+      },
+      {
+        "name": "U2_BOOT0",
+        "pins": [
+          "U2.BOOT0",
+          "R2.1"
+        ]
+      },
+      {
+        "name": "U2_BOOT1",
+        "pins": [
+          "U2.PB2",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "U2.PB6",
+          "U3.SCK",
+          "U4.SCL",
+          "R4.2"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "U2.PB7",
+          "U3.SDI",
+          "U4.SDA",
+          "R5.2"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

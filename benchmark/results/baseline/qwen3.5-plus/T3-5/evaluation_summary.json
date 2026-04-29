@@ -1,0 +1,391 @@
+{
+  "method": "baseline",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T3-5",
+  "tier": 3,
+  "type": "PM",
+  "num_runs": 7,
+  "pass_count": 2,
+  "pass_at_k": {
+    "pass_at_1": 0.2857142857142857,
+    "pass_at_2": 0.5238095238095238,
+    "pass_at_3": 0.7142857142857143,
+    "pass_at_4": 0.8571428571428572,
+    "pass_at_5": 0.9523809523809523,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.7907123960695389,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-5_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-5_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8125,
+      "violated_assertion_count": 6,
+      "violated_assertion_names": [
+        "T3-5-I02-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-5-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power domains and local switching/feedback nodes must remain isolated: VIN_12V input, 5V rail, boosted 12V rail, 3.3V rail, 1.8V rail, GND, TPS54331 switch node, TPS61088 switch node, TPS54331 feedback node, TPS61088 feedback node, and POWER_GOOD.",
+          "message": "Isolation violated: 'U2.VIN' and 'U1.PH' share net(s) ['VCC_5V']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C11.2",
+          "message": "Pin 'C11.2' is connected to multiple nets: [GND, U2_SW]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C2.2",
+          "message": "Pin 'C2.2' is connected to multiple nets: [GND, U1_PH]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for D1.K",
+          "message": "Pin 'D1.K' is connected to multiple nets: [U1_PH, VCC_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for L1.1",
+          "message": "Pin 'L1.1' is connected to multiple nets: [U1_PH, VCC_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U1.PH",
+          "message": "Pin 'U1.PH' is connected to multiple nets: [U1_PH, VCC_5V]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-5_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 27,
+      "violated_assertion_names": [
+        "T3-5-C01-001",
+        "T3-5-C01-002",
+        "T3-5-C01-003",
+        "T3-5-C01-004",
+        "T3-5-I02-001",
+        "T3-5-C02-001",
+        "T3-5-C03-001",
+        "T3-5-C03-002",
+        "T3-5-C03-003",
+        "T3-5-C03-004",
+        "T3-5-C03-005",
+        "T3-5-S02-003",
+        "T3-5-T10-001",
+        "T3-5-T10-002",
+        "T3-5-T03-001",
+        "T3-5-T03-002",
+        "T3-5-T09-001",
+        "T3-5-T06-001",
+        "T3-5-T01-001",
+        "T3-5-T01-002",
+        "T3-5-T01-003",
+        "T3-5-T01-004",
+        "T3-5-T01-005",
+        "T3-5-ANY-001",
+        "T3-5-ANY-002",
+        "T3-5-ANY-003",
+        "T3-5-ANY-004"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-5-C01-001",
+          "check": "SAME_NET",
+          "desc": "",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-C01-002",
+          "check": "SAME_NET",
+          "desc": "5V rail distribution: TPS54331 output rail feeds TPS61088 input and AMS1117 input.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V rail distribution: AMS1117 output feeds ME6211 input.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-C01-004",
+          "check": "SAME_NET",
+          "desc": "TPS3703 monitors the 5V rail through SENSE.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power domains and local switching/feedback nodes must remain isolated: VIN_12V input, 5V rail, boosted 12V rail, 3.3V rail, 1.8V rail, GND, TPS54331 switch node, TPS61088 switch node, TPS54331 feedback node, TPS61088 feedback node, and POWER_GOOD.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Unified ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "12V input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "5V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-C03-003",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "Boosted 12V load rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-C03-004",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-C03-005",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "1.8V rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-S02-003",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "TPS3703 RESET / POWER_GOOD output must be connected.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-T10-001",
+          "check": "HAS_FEEDBACK_DIVIDER",
+          "desc": "TPS54331 feedback divider on VSENSE sets the 5V buck output.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-T10-002",
+          "check": "HAS_FEEDBACK_DIVIDER",
+          "desc": "TPS61088 feedback divider on FB sets the boosted 12V load rail.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-T03-001",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "TPS54331 switch node PH must reach the 5V output rail through an inductor.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-T03-002",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "TPS61088 boost input/power stage must use an inductor path into the boost switch node.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-T09-001",
+          "check": "HAS_FREEWHEELING_PATH",
+          "desc": "TPS54331 switch node must have a freewheeling diode path.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "TPS3703 RESET is open-drain and requires a pull-up resistor to a valid logic power rail.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "12V input rail must have input bypass capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "5V rail must have output/decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "Boosted 12V load rail must have output capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-T01-004",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V rail must have output/decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-T01-005",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "1.8V rail must have output capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-ANY-001",
+          "check": "ANY_OF",
+          "desc": "ME6211 enable must implement always-on behavior: CE is directly tied to the 3.3V rail or pulled up to that rail through a resistor.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-ANY-002",
+          "check": "ANY_OF",
+          "desc": "TPS3703 VDD must be powered from a valid local supply rail: either the monitored 5V rail or the downstream 3.3V logic rail.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-ANY-003",
+          "check": "ANY_OF",
+          "desc": "TPS54331 enable must define always-on behavior: EN is directly tied to the 12V input rail or pulled up to that rail through a resistor.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T3-5-ANY-004",
+          "check": "ANY_OF",
+          "desc": "TPS61088 enable must define always-on behavior: EN is directly tied to the 5V rail or pulled up to that rail through a resistor.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-5_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9285714285714286,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-5-T03-002",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-5-T03-002",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "TPS61088 boost input/power stage must use an inductor path into the boost switch node.",
+          "message": "No series 'IND' path between 'U2.VIN' and 'U2.SW_1'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U1.EN",
+          "message": "Pin 'U1.EN' is connected to multiple nets: [U1_EN, VIN_12V]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-5_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9629629629629629,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T3-5-T03-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-5-T03-002",
+          "check": "HAS_INDUCTOR_PATH",
+          "desc": "TPS61088 boost input/power stage must use an inductor path into the boost switch node.",
+          "message": "No series 'IND' path between 'U2.VIN' and 'U2.SW_1'."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-5_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9642857142857143,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C20.1",
+          "message": "Pin 'C20.1' is connected to multiple nets: [VCC_1V8, VCC_5V]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-5_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8666666666666667,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T3-5-I02-001",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-5-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical power domains and local switching/feedback nodes must remain isolated: VIN_12V input, 5V rail, boosted 12V rail, 3.3V rail, 1.8V rail, GND, TPS54331 switch node, TPS61088 switch node, TPS54331 feedback node, TPS61088 feedback node, and POWER_GOOD.",
+          "message": "Isolation violated: 'U2.VIN' and 'U1.PH' share net(s) ['VCC_5V']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for D1.K",
+          "message": "Pin 'D1.K' is connected to multiple nets: [U1_SW, VCC_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for L1.1",
+          "message": "Pin 'L1.1' is connected to multiple nets: [U1_SW, VCC_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U1.PH",
+          "message": "Pin 'U1.PH' is connected to multiple nets: [U1_SW, VCC_5V]"
+        }
+      ]
+    }
+  ]
+}

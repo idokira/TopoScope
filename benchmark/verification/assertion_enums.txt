@@ -1,0 +1,176 @@
+General assertion object format (applies to all checks below):
+- id: Unique assertion ID. Recommended format: {design_id}-{check}-{index}
+- check: Check type. See the enum list below.
+- desc: Assertion description.
+- params: Parameter object. The required fields depend on the check type.
+- type: Composite logic type. Optional: ANY_OF / OR_GROUP / ALL_OF / AND_GROUP
+- conditions: List of sub-conditions. Required when type is a composite logic type.
+
+Compatible shorthand format for more concise JSON:
+- condition: Equivalent to check.
+- target: Primary target object. It will be mapped to pin / from_pin depending on the check type.
+- parameters: Equivalent to params.
+
+Evaluation semantics:
+- A single assertion returns a bool value: True = passed, False = failed.
+- Design-level pass condition: all assertions must pass.
+- Evaluation precondition: if a multi-net pin exists, meaning the same pin appears on two or more nets, the design may directly fail.
+- ANY_OF / OR_GROUP: passes if any sub-condition passes.
+- ALL_OF / AND_GROUP: passes only if all sub-conditions pass.
+
+
+STRUCTURAL
+S01 PIN_SINGLE_NET
+- Purpose: By default, checks all pins and ensures that each pin is connected to at most one net. If pin is provided, only that pin is checked.
+- params: {}
+- params: {"pin": "U1.VIN"}
+
+S02 PIN_NOT_FLOATING
+- Purpose: The specified pin must be connected to at least one net.
+- params: {"pin": "U1.EN"}
+
+S03 MUST_BE_FLOATING
+- Purpose: The specified pin must be floating and must not be connected to any net.
+- params: {"pin": "U1.NC"}
+
+
+CONNECTIVITY
+C01 SAME_NET
+- Purpose: All listed pins must be on the same net.
+- params: {"pins": ["U2.PB7", "U3.SDA", "U4.SDA"]}
+
+- Candidate mode for a single net:
+  When pin_groups is provided, SAME_NET enters candidate mode.
+  Each group in pin_groups represents a set of replaceable candidate pins.
+  The assertion passes if there exists a net such that at least one pin from each group is on that same net.
+- params: {"pin_groups": [["U3.PB7", "U3.PB9"], ["U4.SDA"]]}
+
+- Combination candidate mode with multiple bound nets:
+  When net_group_candidates is provided, SAME_NET enters combination candidate mode.
+  net_group_candidates contains multiple candidate combinations. Each candidate combination contains several pin_groups sub-constraints.
+  The assertion passes if there exists one candidate combination such that every pin_groups sub-constraint independently satisfies SAME_NET.
+- params: {
+    "net_group_candidates": [
+      {
+        "label": "I2C1_DEFAULT",
+        "pin_groups_list": [
+          [["U2.PB7"], ["U3.SDI"], ["U4.SDA"]],
+          [["U2.PB6"], ["U3.SCK"], ["U4.SCL"]]
+        ]
+      }
+    ]
+  }
+
+C02 CONNECTED_TO_GROUND
+- Purpose: The net containing the specified pin must have Ground semantics, either through a Ground net property or a Ground-class pin.
+- params: {"pin": "U2.BOOT0"}
+
+C03 CONNECTED_TO_POWER
+- Purpose: The net containing the specified pin must have Power semantics, either through a Power net property or a PowerOut/Power-class pin.
+- params: {"pin": "U3.VDD"}
+
+C04 CONNECTED_TO_NET_CLASS
+- Purpose: The net_type/net_class of the net containing the specified pin must match the target class.
+- params: {"pin": "U1.VOUT", "net_class": "Power"}
+
+C05 CONNECTED_TO
+- Purpose: The specified pin must be directly connected to the target pin or net, meaning they share the same net.
+- params: {"pin": "U1.FB", "net_name": "VCC_3V3"}
+- params: {"pin": "U1.FB", "destination_pin": "R2.1"}
+
+
+ISOLATION
+I01 NOT_SAME_NET
+- Purpose: The two pins must not be on the same net.
+- params: {"pins": ["U2.PB6", "U2.PB7"]}
+
+I02 NET_GROUP_ISOLATION
+- Purpose: No cross-group pin pair from the two groups may share the same net.
+- params: {"groups": [["U1.VOUT", "U2.VDD_1"], ["U1.GND", "U2.VSS_1"]]}
+- Shorthand: supports automatically expanding pin groups by net_class/net_type/net_name.
+- params: {"groups_by_net_class": ["Power_5V", "Power_3V3", "Ground"]}
+- params: {"groups": [["U1.VOUT"], ["U1.GND"]], "groups_by_net_class": ["Power_1V8"]}
+
+I03 PIN_NOT_ON_NET_WITH
+- Purpose: The specified pin must not share a net with any pin in forbidden_pins.
+- params: {"pin": "U2.PB7", "forbidden_pins": ["U2.PB6"]}
+
+
+TOPOLOGY
+T01 HAS_CAP_TO_GROUND
+- Purpose: The net containing the specified pin must have a capacitor-to-Ground path.
+- params: {"pin": "U2.VDD_1"}
+
+T02 HAS_SERIES_COMPONENT
+- Purpose: There must be a series path through the specified component type between pin_a and pin_b.
+- params: {"pin_a": "U1.PH", "pin_b": "L1.2", "component_type": "IND"}
+
+T03 HAS_INDUCTOR_PATH
+- Purpose: There must be a path through an inductor between pin_a and pin_b.
+- params: {"pin_a": "U1.PH", "pin_b": "L1.2"}
+
+T04 HAS_DIVIDER_TO_GROUND
+- Purpose: The net containing the specified pin must have a voltage-divider network with a pull-down path to Ground.
+- params: {"pin": "U1.VSENSE"}
+
+T05 HAS_CRYSTAL_PAIR
+- Purpose: The two oscillator pins must be on different nets, and each side must have a load capacitor to Ground.
+- params: {"pin_osc_in": "U2.OSC_IN", "pin_osc_out": "U2.OSC_OUT"}
+
+T06 HAS_PULLUP_TO_POWER
+- Purpose: The net containing the specified pin must be connected to Power through a resistor.
+- params: {"pin": "U2.PB6"}
+
+T07 HAS_DIFFERENTIAL_PAIR
+- Purpose: The differential pins must not be shorted together and must satisfy the basic paired topology. Termination is optional.
+- params: {"pin_p": "U4.CANH", "pin_n": "U4.CANL"}
+
+T08 HAS_SENSE_RESISTOR
+- Purpose: The net containing the specified pin must have a current-sense resistor. The other side is usually connected to Ground.
+- params: {"pin": "U1.CSN"}
+
+T09 HAS_FREEWHEELING_PATH
+- Purpose: The net containing the specified pin must have a freewheeling diode path.
+- params: {"pin": "U1.PH"}
+
+T10 HAS_FEEDBACK_DIVIDER
+- Purpose: The FB pin must be connected to the output and Ground through a voltage-divider network.
+- Recommended params: {"pin_fb": "U1.VSENSE", "output_net": "VCC_3V3", "ground_net": "GND"}
+- Compatible params: {"pin_fb": "U1.VSENSE", "pin_output_net": "VCC_3V3", "pin_ground_net": "GND"}
+- Pin-based form is also supported: {"pin_fb": "U1.VSENSE", "output_pin": "R1.1", "ground_pin": "U1.GND"}
+
+T11 HAS_BUS_TERMINATION
+- Purpose: There must be a termination resistor between the two differential lines. An optional resistance range can be specified.
+- params: {"pin_p": "U4.CANH", "pin_n": "U4.CANL", "resistance_range": "100-140"}
+
+T12 HAS_DECOUPLING_NETWORK
+- Purpose: The net containing the specified pin must satisfy both conditions: resistor pull-up to Power and capacitor pull-down to Ground.
+- params: {"pin": "U2.NRST"}
+- Optional: {"pin": "U2.NRST", "require_pullup_to_power": true, "require_cap_to_ground": true}
+
+
+SIGNAL_CHAIN
+SC01 EXISTS_PATH
+- Purpose: There must be a reachable electrical path from from_pin to destination, constrained by max_hops.
+- params: {"from_pin": "U2.PB7", "destination": "U4.SDA", "max_hops": 12, "allowed_components": ["Resistor", "Capacitor"]}
+- Note: allowed_components, or via, can be used to restrict the component types that the path may traverse.
+- Default: if allowed_components is not provided, the search only allows traversal through passive components by default, such as RES/CAP/IND/DIODE. It does not traverse ICs by default.
+- If IC traversal is required, it must be explicitly declared in allowed_components, for example ["ic", "resistor"].
+
+SC01A PATH_EXISTS
+- Compatible alias for EXISTS_PATH. Kept for historical compatibility.
+- params: {"from_pin": "U2.PB7", "to_pin": "U4.SDA", "max_hops": 12}
+
+SC02 SIGNAL_CHAIN_ORDER
+- Purpose: Adjacent pins in the pins list must be pairwise reachable in order.
+- params: {"pins": ["U2.PA7", "U3.SI", "U3.TXCAN", "U4.D"], "max_hops": 12}
+
+SC03 BUS_SHARED
+- Purpose: The same logical bus line must be shared by the master and all slaves on the same net.
+- params: {"bus_name": "I2C", "master_pins": ["U2.PB6", "U2.PB7"], "slave_pins_groups": [["U3.SCK", "U3.SDI"], ["U4.SCL", "U4.SDA"]]}
+
+
+Additional evaluation metric
+- ACR (Assertion Completion Rate): completion rate of functional assertions.
+- Definition: $\mathrm{ACR}=\frac{\#\text{functional passed}}{\#\text{functional total}}$
+- If functional classes are not explicitly annotated through class/category/assertion_class, all assertions are counted in ACR by default.

@@ -1,0 +1,3237 @@
+{
+  "meta": {
+    "design_id": "T2-7",
+    "tier": 2,
+    "type": "DRV",
+    "provider": "openai",
+    "model": "openai/gpt-oss-120b",
+    "method": "full_system",
+    "run_id": 3,
+    "wall_time_seconds": 485.425
+  },
+  "compile_result": {
+    "status": "ok",
+    "message": "Validation and stitching completed.",
+    "local_hard_count": 0,
+    "local_soft_count": 0,
+    "global_hard_count": 0,
+    "global_soft_count": 0,
+    "pre_stitch_loops": 0,
+    "pre_stitch_tool_calls": 0,
+    "pre_stitch_successful_calls": 0,
+    "global_repair_loops": 0,
+    "global_repair_tool_calls": 0,
+    "global_repair_successful_calls": 0,
+    "node_count": 180,
+    "edge_count": 261
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "C13",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C14",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C15",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C16",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R7",
+        "part_number": "RES_UserDefined"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "TB6612FNG"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "INA128"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz"
+      },
+      {
+        "refdes": "Y2",
+        "part_number": "CRYSTAL_32.768kHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "AIN1",
+        "pins": [
+          "U2.PA0",
+          "U3.AIN1"
+        ]
+      },
+      {
+        "name": "AIN2",
+        "pins": [
+          "U2.PA1",
+          "U3.AIN2"
+        ]
+      },
+      {
+        "name": "BOOT0_NODE",
+        "pins": [
+          "R4.1",
+          "U2.BOOT0"
+        ]
+      },
+      {
+        "name": "BOOT1_NODE",
+        "pins": [
+          "R5.1",
+          "U2.PB2"
+        ]
+      },
+      {
+        "name": "CURRENT_SENSE",
+        "pins": [
+          "U2.PA4",
+          "U4.VOUT"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "C13.2",
+          "C14.2",
+          "C15.2",
+          "C16.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "R4.2",
+          "R5.2",
+          "U1.GND",
+          "U2.VSSA",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U3.GND",
+          "U3.PGND1_1",
+          "U3.PGND1_2",
+          "U3.PGND2_1",
+          "U3.PGND2_2",
+          "U4.REF",
+          "U4.VIN_N",
+          "U4.V_NEG"
+        ]
+      },
+      {
+        "name": "MOTA_P",
+        "pins": [
+          "U3.AO1_1",
+          "U3.AO1_2"
+        ]
+      },
+      {
+        "name": "MOTOR_A_SHUNT",
+        "pins": [
+          "U3.AO2_1",
+          "U3.AO2_2",
+          "U4.VIN_P"
+        ]
+      },
+      {
+        "name": "NRST_NODE",
+        "pins": [
+          "C8.1",
+          "R3.2",
+          "U2.NRST"
+        ]
+      },
+      {
+        "name": "OSC32_IN_NODE",
+        "pins": [
+          "C11.1",
+          "U2.PC14",
+          "Y2.1"
+        ]
+      },
+      {
+        "name": "OSC32_OUT_NODE",
+        "pins": [
+          "C12.1",
+          "U2.PC15",
+          "Y2.2"
+        ]
+      },
+      {
+        "name": "OSC_IN_NODE",
+        "pins": [
+          "C9.1",
+          "U2.OSC_IN",
+          "Y1.1"
+        ]
+      },
+      {
+        "name": "OSC_OUT_NODE",
+        "pins": [
+          "C10.1",
+          "U2.OSC_OUT",
+          "Y1.2"
+        ]
+      },
+      {
+        "name": "PWMA",
+        "pins": [
+          "U2.PA2",
+          "U3.PWMA"
+        ]
+      },
+      {
+        "name": "RG_1_NODE",
+        "pins": [
+          "R7.1",
+          "U4.RG_1"
+        ]
+      },
+      {
+        "name": "RG_2_NODE",
+        "pins": [
+          "R7.2",
+          "U4.RG_2"
+        ]
+      },
+      {
+        "name": "STBY",
+        "pins": [
+          "R6.1",
+          "U2.PA3",
+          "U3.STBY"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C15.1",
+          "C16.1",
+          "C2.1",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C6.1",
+          "C7.1",
+          "R3.1",
+          "R6.2",
+          "U1.VOUT",
+          "U2.VBAT",
+          "U2.VDDA",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U3.VCC",
+          "U4.V_POS"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "U1.VIN"
+        ]
+      },
+      {
+        "name": "VIN_MOTOR",
+        "pins": [
+          "C13.1",
+          "C14.1",
+          "U3.VM1",
+          "U3.VM2",
+          "U3.VM3"
+        ]
+      }
+    ]
+  },
+  "graph_snapshot": {
+    "directed": false,
+    "multigraph": false,
+    "graph": {
+      "shared_nets": {
+        "AIN1": {
+          "type": "Signal",
+          "modules": [
+            "mcu",
+            "motor_driver_a"
+          ]
+        },
+        "AIN2": {
+          "type": "Signal",
+          "modules": [
+            "mcu",
+            "motor_driver_a"
+          ]
+        },
+        "CURRENT_SENSE": {
+          "type": "Signal",
+          "modules": [
+            "mcu",
+            "sense_amp"
+          ]
+        },
+        "GND": {
+          "type": "Ground",
+          "modules": [
+            "mcu",
+            "motor_driver_a",
+            "power_3v3",
+            "sense_amp"
+          ]
+        },
+        "MOTOR_A_SHUNT": {
+          "type": "Signal",
+          "modules": [
+            "motor_driver_a",
+            "sense_amp"
+          ]
+        },
+        "PWMA": {
+          "type": "Signal",
+          "modules": [
+            "mcu",
+            "motor_driver_a"
+          ]
+        },
+        "STBY": {
+          "type": "Signal",
+          "modules": [
+            "mcu",
+            "motor_driver_a"
+          ]
+        },
+        "VCC_3V3": {
+          "type": "Power",
+          "modules": [
+            "mcu",
+            "motor_driver_a",
+            "power_3v3",
+            "sense_amp"
+          ]
+        },
+        "VIN_5V": {
+          "type": "Power",
+          "modules": [
+            "mcu",
+            "motor_driver_a",
+            "power_3v3",
+            "sense_amp"
+          ]
+        },
+        "VIN_MOTOR": {
+          "type": "Power",
+          "modules": [
+            "mcu",
+            "motor_driver_a",
+            "power_3v3",
+            "sense_amp"
+          ]
+        }
+      }
+    },
+    "nodes": [
+      {
+        "type": "Net",
+        "name": "GND",
+        "scope": "Global",
+        "net_type": "Ground",
+        "net_class": "Ground",
+        "semantic_role": "System common ground",
+        "source_pin": "",
+        "shared_modules": [
+          "mcu",
+          "motor_driver_a",
+          "power_3v3",
+          "sense_amp"
+        ],
+        "id": "GND"
+      },
+      {
+        "type": "Net",
+        "name": "VIN_5V",
+        "scope": "Global",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "External 5 V input rail for logic",
+        "source_pin": "",
+        "shared_modules": [
+          "mcu",
+          "motor_driver_a",
+          "power_3v3",
+          "sense_amp"
+        ],
+        "id": "VIN_5V"
+      },
+      {
+        "type": "Net",
+        "name": "VIN_MOTOR",
+        "scope": "Global",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "External motor supply rail",
+        "source_pin": "",
+        "shared_modules": [
+          "mcu",
+          "motor_driver_a",
+          "power_3v3",
+          "sense_amp"
+        ],
+        "id": "VIN_MOTOR"
+      },
+      {
+        "type": "Module",
+        "name": "power_3v3",
+        "description": "AMS1117‑3.3 LDO converts external VIN_5V to VCC_3V3. Provides the core 3.3 V rail for MCU, driver logic, and sense amplifier. Always‑on configuration; bypass capacitors required on input and output.",
+        "id": "power_3v3"
+      },
+      {
+        "type": "Component",
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "5V to 3.3V LDO",
+        "id": "U1"
+      },
+      {
+        "type": "Pin",
+        "name": "GND",
+        "pin_number": "1",
+        "electrical_type": "Ground",
+        "description": "Ground connection",
+        "id": "U1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "VOUT",
+        "pin_number": "2",
+        "electrical_type": "PowerOut",
+        "description": "Regulated output voltage",
+        "id": "U1_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "VIN",
+        "pin_number": "3",
+        "electrical_type": "PowerIn",
+        "description": "Input power supply",
+        "id": "U1_Pin3"
+      },
+      {
+        "type": "Module",
+        "name": "mcu",
+        "description": "STM32F103 MCU runs from VCC_3V3. Generates motor control signals AIN1, AIN2, PWMA and STBY for TB6612 channel A. Samples INA128 VOUT on an ADC input (CURRENT_SENSE). BOOT0 is held low for flash boot. NRST pulled up externally (outside Phase 0).",
+        "id": "mcu"
+      },
+      {
+        "type": "Component",
+        "refdes": "U2",
+        "part_number": "STM32F103",
+        "description": "ARM Cortex-M3 MCU",
+        "id": "U2"
+      },
+      {
+        "type": "Pin",
+        "name": "VBAT",
+        "pin_number": "1",
+        "electrical_type": "PowerIn",
+        "description": "Battery backup power supply for RTC, backup registers and LSE oscillator. Connect to VDD if VBAT not used.",
+        "id": "U2_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "PC13",
+        "pin_number": "2",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO, alternate functions: TAMPER-RTC, RTC calibration output. Limited drive capability (2MHz max, sinks/sources up to 3mA).",
+        "id": "U2_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "PC14",
+        "pin_number": "3",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO, alternate function: OSC32_IN (32.768kHz LSE crystal input). Limited drive capability.",
+        "id": "U2_Pin3"
+      },
+      {
+        "type": "Pin",
+        "name": "PC15",
+        "pin_number": "4",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO, alternate function: OSC32_OUT (32.768kHz LSE crystal output). Limited drive capability.",
+        "id": "U2_Pin4"
+      },
+      {
+        "type": "Pin",
+        "name": "OSC_IN",
+        "pin_number": "5",
+        "electrical_type": "Passive",
+        "description": "HSE oscillator input (4-16MHz crystal). Can be remapped to PD0 GPIO via AFIO_MAPR register.",
+        "id": "U2_Pin5"
+      },
+      {
+        "type": "Pin",
+        "name": "OSC_OUT",
+        "pin_number": "6",
+        "electrical_type": "Passive",
+        "description": "HSE oscillator output (crystal). Can be remapped to PD1 GPIO via AFIO_MAPR register.",
+        "id": "U2_Pin6"
+      },
+      {
+        "type": "Pin",
+        "name": "NRST",
+        "pin_number": "7",
+        "electrical_type": "Input",
+        "description": "External reset input, active low with internal pull-up. Filter capacitor to GND recommended.",
+        "id": "U2_Pin7"
+      },
+      {
+        "type": "Pin",
+        "name": "VSSA",
+        "pin_number": "8",
+        "electrical_type": "Ground",
+        "description": "Analog ground reference for ADC, PLL, RC oscillators and comparators.",
+        "id": "U2_Pin8"
+      },
+      {
+        "type": "Pin",
+        "name": "VDDA",
+        "pin_number": "9",
+        "electrical_type": "PowerIn",
+        "description": "Analog power supply 2.0-3.6V (min 2.4V when ADC used). Also serves as VREF+ on LQFP48 package.",
+        "id": "U2_Pin9"
+      },
+      {
+        "type": "Pin",
+        "name": "PA0",
+        "pin_number": "10",
+        "electrical_type": "AnalogBi",
+        "description": "GPIO, alternate functions: WKUP, USART2_CTS, ADC12_IN0, TIM2_CH1_ETR.",
+        "id": "U2_Pin10"
+      },
+      {
+        "type": "Pin",
+        "name": "PA1",
+        "pin_number": "11",
+        "electrical_type": "AnalogBi",
+        "description": "GPIO, alternate functions: USART2_RTS, ADC12_IN1, TIM2_CH2.",
+        "id": "U2_Pin11"
+      },
+      {
+        "type": "Pin",
+        "name": "PA2",
+        "pin_number": "12",
+        "electrical_type": "AnalogBi",
+        "description": "GPIO, alternate functions: USART2_TX, ADC12_IN2, TIM2_CH3.",
+        "id": "U2_Pin12"
+      },
+      {
+        "type": "Pin",
+        "name": "PA3",
+        "pin_number": "13",
+        "electrical_type": "AnalogBi",
+        "description": "GPIO, alternate functions: USART2_RX, ADC12_IN3, TIM2_CH4.",
+        "id": "U2_Pin13"
+      },
+      {
+        "type": "Pin",
+        "name": "PA4",
+        "pin_number": "14",
+        "electrical_type": "AnalogBi",
+        "description": "GPIO, alternate functions: SPI1_NSS, USART2_CK, ADC12_IN4.",
+        "id": "U2_Pin14"
+      },
+      {
+        "type": "Pin",
+        "name": "PA5",
+        "pin_number": "15",
+        "electrical_type": "AnalogBi",
+        "description": "GPIO, alternate functions: SPI1_SCK, ADC12_IN5.",
+        "id": "U2_Pin15"
+      },
+      {
+        "type": "Pin",
+        "name": "PA6",
+        "pin_number": "16",
+        "electrical_type": "AnalogBi",
+        "description": "GPIO, alternate functions: SPI1_MISO, ADC12_IN6, TIM3_CH1.",
+        "id": "U2_Pin16"
+      },
+      {
+        "type": "Pin",
+        "name": "PA7",
+        "pin_number": "17",
+        "electrical_type": "AnalogBi",
+        "description": "GPIO, alternate functions: SPI1_MOSI, ADC12_IN7, TIM3_CH2.",
+        "id": "U2_Pin17"
+      },
+      {
+        "type": "Pin",
+        "name": "PB0",
+        "pin_number": "18",
+        "electrical_type": "AnalogBi",
+        "description": "GPIO, alternate functions: ADC12_IN8, TIM3_CH3.",
+        "id": "U2_Pin18"
+      },
+      {
+        "type": "Pin",
+        "name": "PB1",
+        "pin_number": "19",
+        "electrical_type": "AnalogBi",
+        "description": "GPIO, alternate functions: ADC12_IN9, TIM3_CH4.",
+        "id": "U2_Pin19"
+      },
+      {
+        "type": "Pin",
+        "name": "PB2",
+        "pin_number": "20",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate function: BOOT1 configuration pin. Should be pulled low for normal boot from Flash.",
+        "id": "U2_Pin20"
+      },
+      {
+        "type": "Pin",
+        "name": "PB10",
+        "pin_number": "21",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: I2C2_SCL, USART3_TX, TIM2_CH3.",
+        "id": "U2_Pin21"
+      },
+      {
+        "type": "Pin",
+        "name": "PB11",
+        "pin_number": "22",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: I2C2_SDA, USART3_RX, TIM2_CH4.",
+        "id": "U2_Pin22"
+      },
+      {
+        "type": "Pin",
+        "name": "VSS_1",
+        "pin_number": "23",
+        "electrical_type": "Ground",
+        "description": "Digital ground supply (1 of 3).",
+        "id": "U2_Pin23"
+      },
+      {
+        "type": "Pin",
+        "name": "VDD_1",
+        "pin_number": "24",
+        "electrical_type": "PowerIn",
+        "description": "Digital power supply 2.0-3.6V (1 of 3).",
+        "id": "U2_Pin24"
+      },
+      {
+        "type": "Pin",
+        "name": "PB12",
+        "pin_number": "25",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: SPI2_NSS, I2C2_SMBAI, USART3_CK, TIM1_BKIN.",
+        "id": "U2_Pin25"
+      },
+      {
+        "type": "Pin",
+        "name": "PB13",
+        "pin_number": "26",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: SPI2_SCK, USART3_CTS, TIM1_CH1N.",
+        "id": "U2_Pin26"
+      },
+      {
+        "type": "Pin",
+        "name": "PB14",
+        "pin_number": "27",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: SPI2_MISO, USART3_RTS, TIM1_CH2N.",
+        "id": "U2_Pin27"
+      },
+      {
+        "type": "Pin",
+        "name": "PB15",
+        "pin_number": "28",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: SPI2_MOSI, TIM1_CH3N.",
+        "id": "U2_Pin28"
+      },
+      {
+        "type": "Pin",
+        "name": "PA8",
+        "pin_number": "29",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: USART1_CK, TIM1_CH1, MCO.",
+        "id": "U2_Pin29"
+      },
+      {
+        "type": "Pin",
+        "name": "PA9",
+        "pin_number": "30",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: USART1_TX, TIM1_CH2.",
+        "id": "U2_Pin30"
+      },
+      {
+        "type": "Pin",
+        "name": "PA10",
+        "pin_number": "31",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: USART1_RX, TIM1_CH3.",
+        "id": "U2_Pin31"
+      },
+      {
+        "type": "Pin",
+        "name": "PA11",
+        "pin_number": "32",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: USART1_CTS, CAN_RX, TIM1_CH4, USB_DM.",
+        "id": "U2_Pin32"
+      },
+      {
+        "type": "Pin",
+        "name": "PA12",
+        "pin_number": "33",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: USART1_RTS, CAN_TX, TIM1_ETR, USB_DP.",
+        "id": "U2_Pin33"
+      },
+      {
+        "type": "Pin",
+        "name": "PA13",
+        "pin_number": "34",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO, default function: JTMS/SWDIO (Serial Wire Debug). Do not use as GPIO unless JTAG/SWD is disabled.",
+        "id": "U2_Pin34"
+      },
+      {
+        "type": "Pin",
+        "name": "VSS_2",
+        "pin_number": "35",
+        "electrical_type": "Ground",
+        "description": "Digital ground supply (2 of 3).",
+        "id": "U2_Pin35"
+      },
+      {
+        "type": "Pin",
+        "name": "VDD_2",
+        "pin_number": "36",
+        "electrical_type": "PowerIn",
+        "description": "Digital power supply 2.0-3.6V (2 of 3).",
+        "id": "U2_Pin36"
+      },
+      {
+        "type": "Pin",
+        "name": "PA14",
+        "pin_number": "37",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO, default function: JTCK/SWCLK (Serial Wire Debug). Do not use as GPIO unless JTAG/SWD is disabled.",
+        "id": "U2_Pin37"
+      },
+      {
+        "type": "Pin",
+        "name": "PA15",
+        "pin_number": "38",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), default function: JTDI. Alternate functions: SPI1_NSS (remap), TIM2_CH1_ETR (remap).",
+        "id": "U2_Pin38"
+      },
+      {
+        "type": "Pin",
+        "name": "PB3",
+        "pin_number": "39",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), default function: JTDO/TRACESWO. Alternate functions: SPI1_SCK (remap), TIM2_CH2 (remap).",
+        "id": "U2_Pin39"
+      },
+      {
+        "type": "Pin",
+        "name": "PB4",
+        "pin_number": "40",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), default function: NJTRST. Alternate functions: SPI1_MISO (remap), TIM3_CH1 (remap).",
+        "id": "U2_Pin40"
+      },
+      {
+        "type": "Pin",
+        "name": "PB5",
+        "pin_number": "41",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO, alternate functions: I2C1_SMBAI, SPI1_MOSI (remap), TIM3_CH2 (remap).",
+        "id": "U2_Pin41"
+      },
+      {
+        "type": "Pin",
+        "name": "PB6",
+        "pin_number": "42",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: I2C1_SCL, TIM4_CH1, USART1_TX (remap).",
+        "id": "U2_Pin42"
+      },
+      {
+        "type": "Pin",
+        "name": "PB7",
+        "pin_number": "43",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: I2C1_SDA, TIM4_CH2, USART1_RX (remap).",
+        "id": "U2_Pin43"
+      },
+      {
+        "type": "Pin",
+        "name": "BOOT0",
+        "pin_number": "44",
+        "electrical_type": "Input",
+        "description": "Boot mode selection input. Low=boot from Flash, High=boot from System Memory (bootloader) or SRAM depending on BOOT1.",
+        "id": "U2_Pin44"
+      },
+      {
+        "type": "Pin",
+        "name": "PB8",
+        "pin_number": "45",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: TIM4_CH3, I2C1_SCL (remap), CAN_RX (remap).",
+        "id": "U2_Pin45"
+      },
+      {
+        "type": "Pin",
+        "name": "PB9",
+        "pin_number": "46",
+        "electrical_type": "Bi-dir",
+        "description": "GPIO (5V tolerant), alternate functions: TIM4_CH4, I2C1_SDA (remap), CAN_TX (remap).",
+        "id": "U2_Pin46"
+      },
+      {
+        "type": "Pin",
+        "name": "VSS_3",
+        "pin_number": "47",
+        "electrical_type": "Ground",
+        "description": "Digital ground supply (3 of 3).",
+        "id": "U2_Pin47"
+      },
+      {
+        "type": "Pin",
+        "name": "VDD_3",
+        "pin_number": "48",
+        "electrical_type": "PowerIn",
+        "description": "Digital power supply 2.0-3.6V (3 of 3).",
+        "id": "U2_Pin48"
+      },
+      {
+        "type": "Module",
+        "name": "motor_driver_a",
+        "description": "TB6612FNG channel A driver. Receives logic VCC_3V3 and motor supply VIN_MOTOR. Control pins AIN1, AIN2, PWMA and STBY are inputs from MCU. Low‑side output AO2 (pins 5‑6) provides the motor return node (MOTOR_A_LOW) where the shunt resistor is placed for current sensing.",
+        "id": "motor_driver_a"
+      },
+      {
+        "type": "Component",
+        "refdes": "U3",
+        "part_number": "TB6612FNG",
+        "description": "Dual H-bridge motor driver",
+        "id": "U3"
+      },
+      {
+        "type": "Pin",
+        "name": "AO1_1",
+        "pin_number": "1",
+        "electrical_type": "Output",
+        "description": "Channel A output 1 (pair with pin 2)",
+        "id": "U3_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "AO1_2",
+        "pin_number": "2",
+        "electrical_type": "Output",
+        "description": "Channel A output 1 (pair with pin 1)",
+        "id": "U3_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "PGND1_1",
+        "pin_number": "3",
+        "electrical_type": "Ground",
+        "description": "Power ground 1",
+        "id": "U3_Pin3"
+      },
+      {
+        "type": "Pin",
+        "name": "PGND1_2",
+        "pin_number": "4",
+        "electrical_type": "Ground",
+        "description": "Power ground 1 (pair)",
+        "id": "U3_Pin4"
+      },
+      {
+        "type": "Pin",
+        "name": "AO2_1",
+        "pin_number": "5",
+        "electrical_type": "Output",
+        "description": "Channel A output 2 (pair with pin 6)",
+        "id": "U3_Pin5"
+      },
+      {
+        "type": "Pin",
+        "name": "AO2_2",
+        "pin_number": "6",
+        "electrical_type": "Output",
+        "description": "Channel A output 2 (pair with pin 5)",
+        "id": "U3_Pin6"
+      },
+      {
+        "type": "Pin",
+        "name": "BO2_1",
+        "pin_number": "7",
+        "electrical_type": "Output",
+        "description": "Channel B output 2 (pair with pin 8)",
+        "id": "U3_Pin7"
+      },
+      {
+        "type": "Pin",
+        "name": "BO2_2",
+        "pin_number": "8",
+        "electrical_type": "Output",
+        "description": "Channel B output 2 (pair with pin 7)",
+        "id": "U3_Pin8"
+      },
+      {
+        "type": "Pin",
+        "name": "PGND2_1",
+        "pin_number": "9",
+        "electrical_type": "Ground",
+        "description": "Power ground 2",
+        "id": "U3_Pin9"
+      },
+      {
+        "type": "Pin",
+        "name": "PGND2_2",
+        "pin_number": "10",
+        "electrical_type": "Ground",
+        "description": "Power ground 2 (pair)",
+        "id": "U3_Pin10"
+      },
+      {
+        "type": "Pin",
+        "name": "BO1_1",
+        "pin_number": "11",
+        "electrical_type": "Output",
+        "description": "Channel B output 1 (pair with pin 12)",
+        "id": "U3_Pin11"
+      },
+      {
+        "type": "Pin",
+        "name": "BO1_2",
+        "pin_number": "12",
+        "electrical_type": "Output",
+        "description": "Channel B output 1 (pair with pin 11)",
+        "id": "U3_Pin12"
+      },
+      {
+        "type": "Pin",
+        "name": "VM2",
+        "pin_number": "13",
+        "electrical_type": "PowerIn",
+        "description": "Motor power supply",
+        "id": "U3_Pin13"
+      },
+      {
+        "type": "Pin",
+        "name": "VM3",
+        "pin_number": "14",
+        "electrical_type": "PowerIn",
+        "description": "Motor power supply",
+        "id": "U3_Pin14"
+      },
+      {
+        "type": "Pin",
+        "name": "PWMB",
+        "pin_number": "15",
+        "electrical_type": "Input",
+        "description": "Channel B PWM input. 200K internal pull-down.",
+        "id": "U3_Pin15"
+      },
+      {
+        "type": "Pin",
+        "name": "BIN2",
+        "pin_number": "16",
+        "electrical_type": "Input",
+        "description": "Channel B direction input 2. 200K internal pull-down.",
+        "id": "U3_Pin16"
+      },
+      {
+        "type": "Pin",
+        "name": "BIN1",
+        "pin_number": "17",
+        "electrical_type": "Input",
+        "description": "Channel B direction input 1. 200K internal pull-down.",
+        "id": "U3_Pin17"
+      },
+      {
+        "type": "Pin",
+        "name": "GND",
+        "pin_number": "18",
+        "electrical_type": "Ground",
+        "description": "Logic ground.",
+        "id": "U3_Pin18"
+      },
+      {
+        "type": "Pin",
+        "name": "STBY",
+        "pin_number": "19",
+        "electrical_type": "Input",
+        "description": "Standby control. HIGH=active, LOW=standby. 200K internal pull-down.",
+        "id": "U3_Pin19"
+      },
+      {
+        "type": "Pin",
+        "name": "VCC",
+        "pin_number": "20",
+        "electrical_type": "PowerIn",
+        "description": "Logic supply, 2.7-5.5V.",
+        "id": "U3_Pin20"
+      },
+      {
+        "type": "Pin",
+        "name": "AIN1",
+        "pin_number": "21",
+        "electrical_type": "Input",
+        "description": "Channel A direction input 1. 200K internal pull-down.",
+        "id": "U3_Pin21"
+      },
+      {
+        "type": "Pin",
+        "name": "AIN2",
+        "pin_number": "22",
+        "electrical_type": "Input",
+        "description": "Channel A direction input 2. 200K internal pull-down.",
+        "id": "U3_Pin22"
+      },
+      {
+        "type": "Pin",
+        "name": "PWMA",
+        "pin_number": "23",
+        "electrical_type": "Input",
+        "description": "Channel A PWM input. 200K internal pull-down.",
+        "id": "U3_Pin23"
+      },
+      {
+        "type": "Pin",
+        "name": "VM1",
+        "pin_number": "24",
+        "electrical_type": "PowerIn",
+        "description": "Motor power supply",
+        "id": "U3_Pin24"
+      },
+      {
+        "type": "Module",
+        "name": "sense_amp",
+        "description": "INA128 instrumentation amplifier senses voltage across the low‑side shunt. Powered from VCC_3V3. VIN_P connects to the motor low‑side node; VIN_N is tied to GND (global). Amplified voltage appears on VOUT, routed to MCU ADC.",
+        "id": "sense_amp"
+      },
+      {
+        "type": "Component",
+        "refdes": "U4",
+        "part_number": "INA128",
+        "description": "Precision instrumentation amplifier",
+        "id": "U4"
+      },
+      {
+        "type": "Pin",
+        "name": "RG_1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Gain setting pin 1. Connect RG between pin 1 and pin 8. G = 1 + 50K/RG.",
+        "id": "U4_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "VIN_N",
+        "pin_number": "2",
+        "electrical_type": "AnalogIn",
+        "description": "Inverting differential input.",
+        "id": "U4_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "VIN_P",
+        "pin_number": "3",
+        "electrical_type": "AnalogIn",
+        "description": "Non-inverting differential input.",
+        "id": "U4_Pin3"
+      },
+      {
+        "type": "Pin",
+        "name": "V_NEG",
+        "pin_number": "4",
+        "electrical_type": "PowerIn",
+        "description": "Negative supply (or GND for single-supply operation).",
+        "id": "U4_Pin4"
+      },
+      {
+        "type": "Pin",
+        "name": "REF",
+        "pin_number": "5",
+        "electrical_type": "AnalogIn",
+        "description": "Output reference. VOUT = G*(VIN_P - VIN_N) + VREF. Low impedance source required.",
+        "id": "U4_Pin5"
+      },
+      {
+        "type": "Pin",
+        "name": "VOUT",
+        "pin_number": "6",
+        "electrical_type": "AnalogOut",
+        "description": "Amplifier output.",
+        "id": "U4_Pin6"
+      },
+      {
+        "type": "Pin",
+        "name": "V_POS",
+        "pin_number": "7",
+        "electrical_type": "PowerIn",
+        "description": "Positive supply voltage.",
+        "id": "U4_Pin7"
+      },
+      {
+        "type": "Pin",
+        "name": "RG_2",
+        "pin_number": "8",
+        "electrical_type": "Passive",
+        "description": "Gain setting pin 2. Connect RG between pin 1 and pin 8.",
+        "id": "U4_Pin8"
+      },
+      {
+        "type": "Net",
+        "name": "VCC_3V3",
+        "scope": "Global",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "mcu",
+          "motor_driver_a",
+          "power_3v3",
+          "sense_amp"
+        ],
+        "id": "VCC_3V3"
+      },
+      {
+        "type": "Net",
+        "name": "AIN1",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "mcu",
+          "motor_driver_a"
+        ],
+        "id": "AIN1"
+      },
+      {
+        "type": "Net",
+        "name": "AIN2",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "mcu",
+          "motor_driver_a"
+        ],
+        "id": "AIN2"
+      },
+      {
+        "type": "Net",
+        "name": "PWMA",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "mcu",
+          "motor_driver_a"
+        ],
+        "id": "PWMA"
+      },
+      {
+        "type": "Net",
+        "name": "STBY",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "mcu",
+          "motor_driver_a"
+        ],
+        "id": "STBY"
+      },
+      {
+        "type": "Net",
+        "name": "MOTOR_A_SHUNT",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "motor_driver_a",
+          "sense_amp"
+        ],
+        "id": "MOTOR_A_SHUNT"
+      },
+      {
+        "type": "Net",
+        "name": "CURRENT_SENSE",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "mcu",
+          "sense_amp"
+        ],
+        "id": "CURRENT_SENSE"
+      },
+      {
+        "type": "Component",
+        "refdes": "C1",
+        "part_number": "CAP_10uF",
+        "description": "Added from component output",
+        "id": "C1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C1_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C2",
+        "part_number": "CAP_22uF",
+        "description": "Added from component output",
+        "id": "C2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C2_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C2_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C3",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C3"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C3_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C3_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C4",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C4"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C4_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C4_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C5",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C5"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C5_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C5_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C6",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C6"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C6_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C6_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C7",
+        "part_number": "CAP_1uF",
+        "description": "Added from component output",
+        "id": "C7"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C7_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C7_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C8",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C8"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C8_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C8_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C9",
+        "part_number": "CAP_20pF",
+        "description": "Added from component output",
+        "id": "C9"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C9_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C9_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C10",
+        "part_number": "CAP_20pF",
+        "description": "Added from component output",
+        "id": "C10"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C10_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C10_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C11",
+        "part_number": "CAP_10pF",
+        "description": "Added from component output",
+        "id": "C11"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C11_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C11_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C12",
+        "part_number": "CAP_10pF",
+        "description": "Added from component output",
+        "id": "C12"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C12_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C12_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R3",
+        "part_number": "RES_10K",
+        "description": "Added from component output",
+        "id": "R3"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R3_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R3_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R4",
+        "part_number": "RES_10K",
+        "description": "Added from component output",
+        "id": "R4"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R4_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R4_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R5",
+        "part_number": "RES_100K",
+        "description": "Added from component output",
+        "id": "R5"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R5_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R5_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz",
+        "description": "Added from component output",
+        "id": "Y1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "Y1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "Y1_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "Y2",
+        "part_number": "CRYSTAL_32.768kHz",
+        "description": "Added from component output",
+        "id": "Y2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "Y2_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "Y2_Pin2"
+      },
+      {
+        "type": "Net",
+        "name": "NRST_NODE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in mcu",
+        "source_pin": "",
+        "id": "NRST_NODE"
+      },
+      {
+        "type": "Net",
+        "name": "OSC_IN_NODE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in mcu",
+        "source_pin": "",
+        "id": "OSC_IN_NODE"
+      },
+      {
+        "type": "Net",
+        "name": "OSC_OUT_NODE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in mcu",
+        "source_pin": "",
+        "id": "OSC_OUT_NODE"
+      },
+      {
+        "type": "Net",
+        "name": "OSC32_IN_NODE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in mcu",
+        "source_pin": "",
+        "id": "OSC32_IN_NODE"
+      },
+      {
+        "type": "Net",
+        "name": "OSC32_OUT_NODE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in mcu",
+        "source_pin": "",
+        "id": "OSC32_OUT_NODE"
+      },
+      {
+        "type": "Net",
+        "name": "BOOT0_NODE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in mcu",
+        "source_pin": "",
+        "id": "BOOT0_NODE"
+      },
+      {
+        "type": "Net",
+        "name": "BOOT1_NODE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in mcu",
+        "source_pin": "",
+        "id": "BOOT1_NODE"
+      },
+      {
+        "type": "Component",
+        "refdes": "C13",
+        "part_number": "CAP_10uF",
+        "description": "Added from component output",
+        "id": "C13"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C13_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C13_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C14",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C14"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C14_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C14_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C15",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C15"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C15_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C15_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R6",
+        "part_number": "RES_10K",
+        "description": "Added from component output",
+        "id": "R6"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R6_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R6_Pin2"
+      },
+      {
+        "type": "Net",
+        "name": "MOTA_P",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in motor_driver_a",
+        "source_pin": "",
+        "id": "MOTA_P"
+      },
+      {
+        "type": "Component",
+        "refdes": "R7",
+        "part_number": "RES_UserDefined",
+        "description": "Added from component output",
+        "id": "R7"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R7_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "R7_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C16",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C16"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C16_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C16_Pin2"
+      },
+      {
+        "type": "Net",
+        "name": "RG_1_NODE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in sense_amp",
+        "source_pin": "",
+        "id": "RG_1_NODE"
+      },
+      {
+        "type": "Net",
+        "name": "RG_2_NODE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in sense_amp",
+        "source_pin": "",
+        "id": "RG_2_NODE"
+      }
+    ],
+    "links": [
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C2_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2_Pin23"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2_Pin35"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2_Pin47"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2_Pin8"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C3_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C4_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C5_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C6_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C7_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C8_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C9_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C10_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C11_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C12_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "R4_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "R5_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U3_Pin18"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U3_Pin3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U3_Pin4"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U3_Pin9"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U3_Pin10"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C13_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C14_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C15_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U4_Pin4"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U4_Pin5"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U4_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C16_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "U1_Pin3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "C1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_MOTOR",
+        "target": "U3_Pin24"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_MOTOR",
+        "target": "U3_Pin13"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_MOTOR",
+        "target": "U3_Pin14"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_MOTOR",
+        "target": "C13_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_MOTOR",
+        "target": "C14_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "U1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "C1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "C2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin2",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "U2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C8"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C9"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C10"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C11"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "C12"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "R3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "R4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "R5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "Y1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "Y2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "NRST_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "OSC_IN_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "OSC_OUT_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "OSC32_IN_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "OSC32_OUT_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "BOOT0_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "mcu",
+        "target": "BOOT1_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin8"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin9"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin10"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin11"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin12"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin13"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin14"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin15"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin16"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin17"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin18"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin19"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin20"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin21"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin22"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin23"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin24"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin25"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin26"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin27"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin28"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin29"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin30"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin31"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin32"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin33"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin34"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin35"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin36"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin37"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin38"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin39"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin40"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin41"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin42"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin43"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin44"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin45"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin46"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin47"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin48"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin1",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin3",
+        "target": "OSC32_IN_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin4",
+        "target": "OSC32_OUT_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin5",
+        "target": "OSC_IN_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin6",
+        "target": "OSC_OUT_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin7",
+        "target": "NRST_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin9",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin10",
+        "target": "AIN1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin11",
+        "target": "AIN2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin12",
+        "target": "PWMA"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin13",
+        "target": "STBY"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin14",
+        "target": "CURRENT_SENSE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin20",
+        "target": "BOOT1_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin24",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin36",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin44",
+        "target": "BOOT0_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin48",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "motor_driver_a",
+        "target": "U3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "motor_driver_a",
+        "target": "C13"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "motor_driver_a",
+        "target": "C14"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "motor_driver_a",
+        "target": "C15"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "motor_driver_a",
+        "target": "R6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "motor_driver_a",
+        "target": "MOTA_P"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin8"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin9"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin10"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin11"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin12"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin13"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin14"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin15"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin16"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin17"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin18"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin19"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin20"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin21"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin22"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin23"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3_Pin24"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin1",
+        "target": "MOTA_P"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin2",
+        "target": "MOTA_P"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin5",
+        "target": "MOTOR_A_SHUNT"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin6",
+        "target": "MOTOR_A_SHUNT"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin19",
+        "target": "STBY"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin20",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin21",
+        "target": "AIN1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin22",
+        "target": "AIN2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_Pin23",
+        "target": "PWMA"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "sense_amp",
+        "target": "U4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "sense_amp",
+        "target": "R7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "sense_amp",
+        "target": "C16"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "sense_amp",
+        "target": "RG_1_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "sense_amp",
+        "target": "RG_2_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4_Pin8"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_Pin1",
+        "target": "RG_1_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_Pin3",
+        "target": "MOTOR_A_SHUNT"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_Pin6",
+        "target": "CURRENT_SENSE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_Pin7",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_Pin8",
+        "target": "RG_2_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C2_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C3_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C4_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C5_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C6_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C7_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "R3_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C15_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "R6_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C16_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "STBY",
+        "target": "R6_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1",
+        "target": "C1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1",
+        "target": "C1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C2",
+        "target": "C2_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C2",
+        "target": "C2_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C3",
+        "target": "C3_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C3",
+        "target": "C3_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C4",
+        "target": "C4_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C4",
+        "target": "C4_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C5",
+        "target": "C5_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C5",
+        "target": "C5_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C6",
+        "target": "C6_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C6",
+        "target": "C6_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C7",
+        "target": "C7_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C7",
+        "target": "C7_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C8",
+        "target": "C8_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C8",
+        "target": "C8_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "C8_Pin1",
+        "target": "NRST_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C9",
+        "target": "C9_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C9",
+        "target": "C9_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "C9_Pin1",
+        "target": "OSC_IN_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C10",
+        "target": "C10_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C10",
+        "target": "C10_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "C10_Pin1",
+        "target": "OSC_OUT_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C11",
+        "target": "C11_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C11",
+        "target": "C11_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "C11_Pin1",
+        "target": "OSC32_IN_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C12",
+        "target": "C12_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C12",
+        "target": "C12_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "C12_Pin1",
+        "target": "OSC32_OUT_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R3",
+        "target": "R3_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R3",
+        "target": "R3_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "R3_Pin2",
+        "target": "NRST_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R4",
+        "target": "R4_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R4",
+        "target": "R4_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "R4_Pin1",
+        "target": "BOOT0_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R5",
+        "target": "R5_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R5",
+        "target": "R5_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "R5_Pin1",
+        "target": "BOOT1_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "Y1",
+        "target": "Y1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "Y1",
+        "target": "Y1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "Y1_Pin1",
+        "target": "OSC_IN_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "Y1_Pin2",
+        "target": "OSC_OUT_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "Y2",
+        "target": "Y2_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "Y2",
+        "target": "Y2_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "Y2_Pin1",
+        "target": "OSC32_IN_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "Y2_Pin2",
+        "target": "OSC32_OUT_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C13",
+        "target": "C13_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C13",
+        "target": "C13_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C14",
+        "target": "C14_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C14",
+        "target": "C14_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C15",
+        "target": "C15_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C15",
+        "target": "C15_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R6",
+        "target": "R6_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R6",
+        "target": "R6_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R7",
+        "target": "R7_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R7",
+        "target": "R7_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "R7_Pin1",
+        "target": "RG_1_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "R7_Pin2",
+        "target": "RG_2_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C16",
+        "target": "C16_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C16",
+        "target": "C16_Pin2"
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 1,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 0,
+      "U3": 1,
+      "U4": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 23
+  }
+}

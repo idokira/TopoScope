@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "design_id": "T2-3",
+    "tier": 2,
+    "type": "COM",
+    "run_id": 1
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_1.0uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_1.0uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R8",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "XC6206"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "CH340"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "CH32V003"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "AT24C256"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_12MHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "U1.VSS",
+          "U2.GND",
+          "U3.VSS",
+          "U4.A0",
+          "U4.A1",
+          "U4.A2",
+          "U4.GND",
+          "U4.WP"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "U3.PC2",
+          "U4.SCL"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "U3.PC1",
+          "U4.SDA"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "C5.1",
+          "U2.XI",
+          "Y1.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "C6.1",
+          "U2.XO",
+          "Y1.2"
+        ]
+      },
+      {
+        "name": "U2_V3_NODE",
+        "pins": [
+          "C4.1",
+          "U2.V3"
+        ]
+      },
+      {
+        "name": "U3_NRST",
+        "pins": [
+          "R8.2",
+          "U3.PD7"
+        ]
+      },
+      {
+        "name": "UART_DTR",
+        "pins": [
+          "U2.DTR"
+        ]
+      },
+      {
+        "name": "USB_DM",
+        "pins": [
+          "U2.UD_N"
+        ]
+      },
+      {
+        "name": "USB_DP",
+        "pins": [
+          "U2.UD_P"
+        ]
+      },
+      {
+        "name": "USB_RTS_TO_MCU_BOOT",
+        "pins": [
+          "U2.RTS",
+          "U3.PD1"
+        ]
+      },
+      {
+        "name": "USB_UART_TX_TO_MCU_RX",
+        "pins": [
+          "U2.RXD",
+          "U2.TXD",
+          "U3.PD5",
+          "U3.PD6"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C2.1",
+          "C7.1",
+          "C8.1",
+          "C9.1",
+          "R8.1",
+          "U1.VOUT",
+          "U3.VDD",
+          "U4.VCC"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "C3.1",
+          "U1.VIN",
+          "U2.VCC"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 0,
+      "U3": 0,
+      "U4": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 11
+  }
+}

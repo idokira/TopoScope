@@ -1,0 +1,307 @@
+{
+  "method": "full_system",
+  "model": "Kimi-K2.5",
+  "ablation": null,
+  "design_id": "T3-4",
+  "tier": 3,
+  "type": "AUD",
+  "num_runs": 7,
+  "pass_count": 2,
+  "pass_at_k": {
+    "pass_at_1": 0.2857142857142857,
+    "pass_at_2": 0.5238095238095238,
+    "pass_at_3": 0.7142857142857143,
+    "pass_at_4": 0.8571428571428572,
+    "pass_at_5": 0.9523809523809523,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8980790362850164,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-4_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.813953488372093,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7",
+        "AUTO-PIN_SINGLE_NET-8"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C15_Pin2",
+          "message": "Pin 'C15_Pin2' is connected to multiple nets: [GND, PREAMP_L_OUT_TO_AMP_INL]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C16_Pin2",
+          "message": "Pin 'C16_Pin2' is connected to multiple nets: [GND, PREAMP_R_OUT_TO_AMP_INR]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R10_Pin2",
+          "message": "Pin 'R10_Pin2' is connected to multiple nets: [GND, U5_SUMMING_2]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R11_Pin2",
+          "message": "Pin 'R11_Pin2' is connected to multiple nets: [GND, PREAMP_R_OUT_TO_AMP_INR]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R6_Pin2",
+          "message": "Pin 'R6_Pin2' is connected to multiple nets: [GND, U5_FB_DIV_1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7_Pin2",
+          "message": "Pin 'R7_Pin2' is connected to multiple nets: [GND, U5_SUMMING_1]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R8_Pin2",
+          "message": "Pin 'R8_Pin2' is connected to multiple nets: [GND, PREAMP_L_OUT_TO_AMP_INL]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-8",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9_Pin2",
+          "message": "Pin 'R9_Pin2' is connected to multiple nets: [GND, U5_FB_DIV_2]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-4_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8974358974358975,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R11_Pin2",
+          "message": "Pin 'R11_Pin2' is connected to multiple nets: [GAIN_CTRL, U5_IN2_P_BIAS]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7_Pin2",
+          "message": "Pin 'R7_Pin2' is connected to multiple nets: [GAIN_CTRL, U5_IN1_P_BIAS]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R8_Pin1",
+          "message": "Pin 'R8_Pin1' is connected to multiple nets: [GND, PREAMP_L_TO_AMP]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9_Pin2",
+          "message": "Pin 'R9_Pin2' is connected to multiple nets: [U5_IN1_N_SUM, U5_IN2_N_SUM]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-4_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-4_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9428571428571428,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-4-ANY-001",
+        "T3-4-ANY-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-001",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal reaches NE5532 channel-1 non-inverting/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN1_P'].; No constrained path found from 'U4_Pin1' to 'U5.IN1_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "T3-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal also reaches NE5532 channel-2 non-inverting/control node for stereo shared gain/bias behavior, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN2_P'].; No constrained path found from 'U4_Pin1' to 'U5.IN2_P' within 6 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-4_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.9459459459459459,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C18_Pin2",
+          "message": "Pin 'C18_Pin2' is connected to multiple nets: [GND, PREAMP_OUT_L_TO_AMP_IN_L]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C19_Pin2",
+          "message": "Pin 'C19_Pin2' is connected to multiple nets: [GND, PREAMP_OUT_R_TO_AMP_IN_R]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-4_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.918918918918919,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T3-4-ANY-002",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-002",
+          "check": "ANY_OF",
+          "desc": "Shared DAC control/bias signal also reaches NE5532 channel-2 non-inverting/control node for stereo shared gain/bias behavior, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.VOUT', 'U5.IN2_P'].; No constrained path found from 'U4_Pin1' to 'U5.IN2_P' within 6 hops using components ['resistor']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C17_Pin2",
+          "message": "Pin 'C17_Pin2' is connected to multiple nets: [GND, PREAMP_L_OUT_TO_AMP]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C18_Pin2",
+          "message": "Pin 'C18_Pin2' is connected to multiple nets: [GND, PREAMP_R_OUT_TO_AMP]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-4_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7674418604651163,
+      "violated_assertion_count": 10,
+      "violated_assertion_names": [
+        "T3-4-T06-001",
+        "T3-4-T06-002",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4",
+        "AUTO-PIN_SINGLE_NET-5",
+        "AUTO-PIN_SINGLE_NET-6",
+        "AUTO-PIN_SINGLE_NET-7",
+        "AUTO-PIN_SINGLE_NET-8"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SDA to target the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin4'."
+        },
+        {
+          "id": "T3-4-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to the 3.3V digital rail. Anchored on MCP4725 SCL to target the bus itself.",
+          "message": "No pull-up resistor to power found for pin 'U4_Pin5'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C12_Pin1",
+          "message": "Pin 'C12_Pin1' is connected to multiple nets: [U5_CH1_IN, U5_CH2_IN]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for L2_Pin2",
+          "message": "Pin 'L2_Pin2' is connected to multiple nets: [GND, U3_AVCC_FILTERED]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R4_Pin2",
+          "message": "Pin 'R4_Pin2' is connected to multiple nets: [GAIN_CTRL, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5_Pin2",
+          "message": "Pin 'R5_Pin2' is connected to multiple nets: [GAIN_CTRL, GND]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-5",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R6_Pin2",
+          "message": "Pin 'R6_Pin2' is connected to multiple nets: [GND, U5_CH1_SUM]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-6",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R7_Pin2",
+          "message": "Pin 'R7_Pin2' is connected to multiple nets: [GND, U5_CH1_IN]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-7",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R8_Pin2",
+          "message": "Pin 'R8_Pin2' is connected to multiple nets: [GND, U5_CH2_SUM]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-8",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9_Pin2",
+          "message": "Pin 'R9_Pin2' is connected to multiple nets: [GND, U5_CH2_IN]"
+        }
+      ]
+    }
+  ]
+}

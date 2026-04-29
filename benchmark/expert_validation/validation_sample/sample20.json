@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "design_id": "T1-3",
+    "tier": 1,
+    "type": "LED",
+    "run_id": 4
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_4.7uF"
+      },
+      {
+        "refdes": "D1",
+        "part_number": "DIODE_Schottky"
+      },
+      {
+        "refdes": "L1",
+        "part_number": "IND_68uH"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_0.287R_1%"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "PT4115"
+      }
+    ],
+    "nets": [
+      {
+        "name": "DIM_CTRL",
+        "pins": [
+          "U1.DIM"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "U1.EP",
+          "U1.GND"
+        ]
+      },
+      {
+        "name": "LED_ANODE",
+        "pins": [
+          "R1.2",
+          "U1.CSN"
+        ]
+      },
+      {
+        "name": "LED_CATHODE",
+        "pins": [
+          "L1.1"
+        ]
+      },
+      {
+        "name": "U1_SW",
+        "pins": [
+          "D1.A",
+          "L1.2",
+          "U1.SW"
+        ]
+      },
+      {
+        "name": "VIN_12V_TO_24V",
+        "pins": [
+          "C1.1",
+          "D1.K",
+          "R1.1",
+          "U1.VIN"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U1": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 4
+  }
+}

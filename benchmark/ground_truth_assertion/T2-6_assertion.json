@@ -1,0 +1,231 @@
+{
+  "design_id": "T2-6",
+  "tier": 2,
+  "type": "PM",
+  "description": "Triple-rail power supply with a single-rail power-good monitor. TPS54331 converts 12V to 5V, AMS1117-3.3 converts 5V to 3.3V, ME6211 converts 3.3V to 1.8V. One LM393 comparator channel monitors the 3.3V rail and generates POWER_GOOD. The unused comparator channel inputs are tied to ground. Focus is multi-stage power distribution plus one minimal power-good monitor.",
+  "ic_list": [
+    "TPS54331 (U1)",
+    "AMS1117-3.3 (U2)",
+    "ME6211 (U3)",
+    "LM393 (U4)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T2-6-C01-001",
+      "check": "SAME_NET",
+      "desc": "GND unification: all ground pins across the power ICs and comparator share one common ground net.",
+      "params": {
+        "pins": ["U1.GND", "U2.GND", "U3.VSS", "U4.GND"]
+      }
+    },
+    {
+      "id": "T2-6-C01-002",
+      "check": "SAME_NET",
+      "desc": "3.3V rail: AMS1117 output feeds ME6211 input and ME6211 CE for auto-enable.",
+      "params": {
+        "pins": ["U2.VOUT", "U3.VIN", "U3.CE"]
+      }
+    },
+    {
+      "id": "T2-6-C01-003",
+      "check": "SAME_NET",
+      "desc": "LM393 used monitor input observes the 3.3V rail directly.",
+      "params": {
+        "pins": ["U2.VOUT", "U4.1IN_P"]
+      }
+    },
+    {
+      "id": "T2-6-C01-004",
+      "check": "SAME_NET",
+      "desc": "Unused LM393 comparator channel inputs are tied to ground.",
+      "params": {
+        "pins": ["U4.2IN_P", "U4.2IN_N", "U1.GND"]
+      }
+    },
+    {
+      "id": "T2-6-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical domain isolation: 12V input, switch node, 5V rail, 3.3V rail, 1.8V rail, GND, feedback midpoint, and LM393 threshold input must be distinct where required.",
+      "params": {
+        "groups": [
+          ["U1.VIN"],
+          ["U1.PH"],
+          ["U2.VIN"],
+          ["U2.VOUT"],
+          ["U3.VOUT"],
+          ["U1.GND"],
+          ["U1.VSENSE"],
+          ["U4.1IN_N"]
+        ]
+      }
+    },
+    {
+      "id": "T2-6-I02-002",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "The used LM393 comparator inputs must not be tied to the same net.",
+      "params": {
+        "groups": [
+          ["U4.1IN_P"],
+          ["U4.1IN_N"]
+        ]
+      }
+    },
+    {
+      "id": "T2-6-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Unified ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.GND"
+      }
+    },
+    {
+      "id": "T2-6-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "12V input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-6-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V rail must carry Power attribute.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T2-6-C03-003",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "1.8V rail must carry Power attribute.",
+      "params": {
+        "pin": "U3.VOUT"
+      }
+    },
+    {
+      "id": "T2-6-C03-004",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "LM393 supply must connect to a valid power rail.",
+      "params": {
+        "pin": "U4.VCC"
+      }
+    },
+    {
+      "id": "T2-6-S02-001",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "TPS54331 EN must not be left floating; requires a defined enable state.",
+      "params": {
+        "pin": "U1.EN"
+      }
+    },
+    {
+      "id": "T2-6-S02-002",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "LM393 used comparator threshold/reference input must not float.",
+      "params": {
+        "pin": "U4.1IN_N"
+      }
+    },
+    {
+      "id": "T2-6-T10-001",
+      "check": "HAS_FEEDBACK_DIVIDER",
+      "desc": "TPS54331 feedback divider on VSENSE sets the 5V output voltage.",
+      "params": {
+        "pin_fb": "U1.VSENSE"
+      }
+    },
+    {
+      "id": "T2-6-T03-001",
+      "check": "HAS_INDUCTOR_PATH",
+      "desc": "TPS54331 switch node PH must reach the 5V output rail through an inductor.",
+      "params": {
+        "pin_a": "U1.PH",
+        "pin_b": "U2.VIN"
+      }
+    },
+    {
+      "id": "T2-6-T09-001",
+      "check": "HAS_FREEWHEELING_PATH",
+      "desc": "TPS54331 switch node must have a freewheeling diode path.",
+      "params": {
+        "pin": "U1.PH"
+      }
+    },
+    {
+      "id": "T2-6-T04-001",
+      "check": "HAS_DIVIDER_TO_GROUND",
+      "desc": "LM393 used threshold/reference input should have a simple resistor divider or bias path to ground.",
+      "params": {
+        "pin": "U4.1IN_N"
+      }
+    },
+    {
+      "id": "T2-6-SC01-001",
+      "check": "EXISTS_PATH",
+      "desc": "LM393 threshold/reference input should be sourced from the 3.3V rail through resistor(s), allowing a simple threshold divider.",
+      "params": {
+        "from_pin": "U2.VOUT",
+        "destination": "U4.1IN_N",
+        "max_hops": 6,
+        "allowed_components": ["Resistor"]
+      }
+    },
+    {
+      "id": "T2-6-T06-001",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "LM393 POWER_GOOD open-drain output requires a pull-up resistor to a real power rail.",
+      "params": {
+        "pin": "U4.1OUT"
+      }
+    },
+    {
+      "id": "T2-6-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "12V input rail must have bypass capacitor to ground.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-6-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "5V rail must have output/decoupling capacitor to ground.",
+      "params": {
+        "pin": "U2.VIN"
+      }
+    },
+    {
+      "id": "T2-6-T01-003",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V rail must have output/decoupling capacitor to ground.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T2-6-T01-004",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "1.8V rail must have output capacitor to ground.",
+      "params": {
+        "pin": "U3.VOUT"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 23,
+    "by_category": {
+      "SAME_NET": 4,
+      "NET_GROUP_ISOLATION": 2,
+      "CONNECTED_TO_GROUND": 1,
+      "CONNECTED_TO_POWER": 4,
+      "PIN_NOT_FLOATING": 2,
+      "HAS_FEEDBACK_DIVIDER": 1,
+      "HAS_INDUCTOR_PATH": 1,
+      "HAS_FREEWHEELING_PATH": 1,
+      "HAS_DIVIDER_TO_GROUND": 1,
+      "EXISTS_PATH": 1,
+      "HAS_PULLUP_TO_POWER": 1,
+      "HAS_CAP_TO_GROUND": 4
+    }
+  }
+}

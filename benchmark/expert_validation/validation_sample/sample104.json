@@ -1,0 +1,416 @@
+{
+  "meta": {
+    "design_id": "T3-2",
+    "tier": 3,
+    "type": "COM",
+    "run_id": 1
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "CP2102N"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "TP4056"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "DW01A"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "ME6211"
+      },
+      {
+        "refdes": "U5",
+        "part_number": "ESP32-WROOM-32E"
+      },
+      {
+        "refdes": "U6",
+        "part_number": "BME280"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_4.7uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_4.7uF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_4.7uF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_1K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_200K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "D1",
+        "part_number": "DIODE_ESD"
+      },
+      {
+        "refdes": "D2",
+        "part_number": "DIODE_ESD"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_2K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R7",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R8",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "Q1",
+        "part_number": "MOSFET_N_8205A"
+      },
+      {
+        "refdes": "Q2",
+        "part_number": "MOSFET_N_8205A"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C13",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C14",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R9",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "C15",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "R10",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R11",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "C16",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C17",
+        "part_number": "CAP_100nF"
+      }
+    ],
+    "nets": [
+      {
+        "name": "GND",
+        "pins": [
+          "U1.GND",
+          "U1.EP",
+          "U2.GND",
+          "U2.EP",
+          "U3.VSS",
+          "U4.VSS",
+          "U5.GND_1",
+          "U5.GND_2",
+          "U5.GND_3",
+          "U6.GND_1",
+          "U6.GND_2",
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "C13.2",
+          "C14.2",
+          "C15.2",
+          "C16.2",
+          "C17.2",
+          "R3.2",
+          "R4.2",
+          "R7.2",
+          "R8.2"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "U1.VREGIN",
+          "U2.VCC",
+          "C1.1",
+          "C2.1",
+          "C7.1",
+          "R2.1",
+          "U2.CE"
+        ]
+      },
+      {
+        "name": "U1_VDD",
+        "pins": [
+          "U1.VDD",
+          "U1.VIO",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C6.1",
+          "R1.2"
+        ]
+      },
+      {
+        "name": "U1_RSTB",
+        "pins": [
+          "U1.RSTb",
+          "R1.1"
+        ]
+      },
+      {
+        "name": "USB_DP",
+        "pins": [
+          "U1.DP",
+          "D1.A"
+        ]
+      },
+      {
+        "name": "USB_DN",
+        "pins": [
+          "U1.DM",
+          "D2.A"
+        ]
+      },
+      {
+        "name": "U1_VBUS_DIV",
+        "pins": [
+          "R2.2",
+          "R3.1",
+          "U1.VBUS"
+        ]
+      },
+      {
+        "name": "UART_TX",
+        "pins": [
+          "U1.TXD",
+          "U5.RXD0"
+        ]
+      },
+      {
+        "name": "UART_RX",
+        "pins": [
+          "U1.RXD",
+          "U5.TXD0"
+        ]
+      },
+      {
+        "name": "U1_CTS",
+        "pins": [
+          "U1.CTS",
+          "R7.1"
+        ]
+      },
+      {
+        "name": "U1_DSR",
+        "pins": [
+          "U1.DSR",
+          "R8.1"
+        ]
+      },
+      {
+        "name": "U2_PROG",
+        "pins": [
+          "U2.PROG",
+          "R4.1"
+        ]
+      },
+      {
+        "name": "VBAT_RAW",
+        "pins": [
+          "U2.BAT",
+          "C8.1",
+          "U3.VDD",
+          "C9.1"
+        ]
+      },
+      {
+        "name": "U2_CHRG",
+        "pins": [
+          "U2.CHRG",
+          "R5.1"
+        ]
+      },
+      {
+        "name": "U2_STDBY",
+        "pins": [
+          "U2.STDBY",
+          "R6.1"
+        ]
+      },
+      {
+        "name": "U2_TEMP_DIV",
+        "pins": [
+          "U2.TEMP",
+          "R5.2",
+          "R6.2"
+        ]
+      },
+      {
+        "name": "BAT_NEG",
+        "pins": [
+          "U3.CSI",
+          "Q1.S",
+          "Q2.S"
+        ]
+      },
+      {
+        "name": "U3_OD",
+        "pins": [
+          "U3.OD",
+          "Q1.G"
+        ]
+      },
+      {
+        "name": "U3_OC",
+        "pins": [
+          "U3.OC",
+          "Q2.G"
+        ]
+      },
+      {
+        "name": "VBAT",
+        "pins": [
+          "U4.VIN",
+          "U4.CE",
+          "C10.1",
+          "Q1.D",
+          "Q2.D"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U4.VOUT",
+          "U5.VCC",
+          "U6.VDD",
+          "U6.VDDIO",
+          "U6.CSB",
+          "C11.1",
+          "C12.1",
+          "C13.1",
+          "C14.1",
+          "C16.1",
+          "C17.1",
+          "R9.1",
+          "R10.1",
+          "R11.1"
+        ]
+      },
+      {
+        "name": "U5_EN",
+        "pins": [
+          "U5.EN",
+          "R9.2",
+          "C15.1"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "U5.IO21",
+          "U6.SDI",
+          "R10.2"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "U5.IO22",
+          "U6.SCK",
+          "R11.2"
+        ]
+      },
+      {
+        "name": "U6_I2C_ADDR_SEL",
+        "pins": [
+          "U6.SDO"
+        ]
+      },
+      {
+        "name": "USB_DP_ESD_GND",
+        "pins": [
+          "D1.K"
+        ]
+      },
+      {
+        "name": "USB_DN_ESD_GND",
+        "pins": [
+          "D2.K"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

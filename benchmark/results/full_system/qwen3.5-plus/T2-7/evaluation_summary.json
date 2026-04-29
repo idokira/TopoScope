@@ -1,0 +1,225 @@
+{
+  "method": "full_system",
+  "model": "qwen3.5-plus",
+  "ablation": null,
+  "design_id": "T2-7",
+  "tier": 2,
+  "type": "DRV",
+  "num_runs": 7,
+  "pass_count": 4,
+  "pass_at_k": {
+    "pass_at_1": 0.5714285714285714,
+    "pass_at_2": 0.8571428571428572,
+    "pass_at_3": 0.9714285714285714,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8951863354037267,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-7_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-7-C01-004",
+        "T2-7-I02-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Isolation violated: 'U1_Pin1' and 'U3_Pin3' share net(s) ['GND']."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-7_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8695652173913043,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-7-C01-004",
+        "T2-7-C01-005",
+        "T2-7-I02-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-C01-005",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt low side: INA128 VIN_N connects to common GND side of the shunt.",
+          "message": "Pins are not on the same net: ['U4.VIN_N', 'U1.GND']."
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Isolation violated: 'U1_Pin1' and 'U3_Pin3' share net(s) ['GND']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-7_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-7-C01-004",
+        "T2-7-I02-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Isolation violated: 'U1_Pin1' and 'U3_Pin3' share net(s) ['GND']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-7_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-7-C01-004",
+        "T2-7-I02-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Isolation violated: 'U1_Pin1' and 'U3_Pin3' share net(s) ['GND']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-7_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9130434782608695,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-7-C01-004",
+        "T2-7-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Low-side current shunt must exist between TB6612 motor return node and common GND.",
+          "message": "No constrained path found from 'U3_Pin3' to 'U1.GND' within 6 hops using components ['resistor']."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-7_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-7-C01-004",
+        "T2-7-I02-001",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical domains must remain distinct: VIN_5V input, VIN_MOTOR, VCC_3V3, common GND, shunt high node, motor output AO1, motor output AO2, and INA128 output.",
+          "message": "Isolation violated: 'U1_Pin1' and 'U3_Pin3' share net(s) ['GND']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R4_Pin1",
+          "message": "Pin 'R4_Pin1' is connected to multiple nets: [MOTOR_A_N, SHUNT_SENSE_H]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-7_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8695652173913043,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-7-C01-004",
+        "T2-7-C01-009",
+        "T2-7-SC01-001"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-7-C01-004",
+          "check": "SAME_NET",
+          "desc": "Low-side shunt high side: TB6612 PGND motor-return pins and INA128 VIN_P connect to the motor-side shunt node.",
+          "message": "Pins are not on the same net: ['U3.PGND1_1', 'U3.PGND1_2', 'U3.PGND2_1', 'U3.PGND2_2', 'U4.VIN_P']."
+        },
+        {
+          "id": "T2-7-C01-009",
+          "check": "SAME_NET",
+          "desc": "Motor standby control: one legal STM32F103 control GPIO connects to TB6612 STBY.",
+          "message": "No common net exists across pin groups: [['U2.PA0', 'U2.PA1', 'U2.PA2', 'U2.PA3', 'U2.PA4', 'U2.PA8', 'U2.PA9', 'U2.PA10', 'U2.PB12', 'U2.PB13', 'U2.PB14', 'U2.PB15'], ['U3.STBY']]."
+        },
+        {
+          "id": "T2-7-SC01-001",
+          "check": "EXISTS_PATH",
+          "desc": "Low-side current shunt must exist between TB6612 motor return node and common GND.",
+          "message": "No constrained path found from 'U3_Pin3' to 'U1.GND' within 6 hops using components ['resistor']."
+        }
+      ]
+    }
+  ]
+}

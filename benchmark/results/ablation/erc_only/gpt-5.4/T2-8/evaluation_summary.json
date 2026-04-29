@@ -1,0 +1,211 @@
+{
+  "method": "erc_only",
+  "model": "gpt-5.4",
+  "ablation": null,
+  "design_id": "T2-8",
+  "tier": 2,
+  "type": "AUD",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.8660714285714286,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-8_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-8-ANY-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-8_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-8-ANY-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-8_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-8-ANY-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-8_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-8-ANY-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pin(s) not found: ['U4.OUT2'].; ALL_OF failed: Pin(s) not found: ['U4.OUT2']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-8_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8125,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-8-I02-001",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V analog rail, VCC_3V3 digital rail, GND, I2C SDA, I2C SCL, DAC/control node, NE5532 channel-1 output, and NE5532 channel-1 inverting input must remain distinct. I2C isolation is anchored on MCP4725-side bus pins for semantic stability.",
+          "message": "Isolation violated: 'U4.OUT1' and 'U4.IN1_N' share net(s) ['U4_FB']."
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-8_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-8-ANY-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-8_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-8-ANY-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3.VOUT' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "method": "full_system",
+  "model": "GLM-5",
+  "ablation": null,
+  "design_id": "T3-4",
+  "tier": 3,
+  "type": "AUD",
+  "num_runs": 7,
+  "pass_count": 7,
+  "pass_at_k": {
+    "pass_at_1": 1.0,
+    "pass_at_2": 1.0,
+    "pass_at_3": 1.0,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.9591836734693877,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-4_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9428571428571428,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-4-ANY-004",
+        "T3-4-ANY-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT1', 'U6.INL'].; No constrained path found from 'U5_Pin1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT2', 'U6.INR'].; No constrained path found from 'U5_Pin7' to 'U6.INR' within 6 hops using components ['capacitor']."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-4_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9428571428571428,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-4-ANY-004",
+        "T3-4-ANY-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT1', 'U6.INL'].; No constrained path found from 'U5_Pin1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT2', 'U6.INR'].; No constrained path found from 'U5_Pin7' to 'U6.INR' within 6 hops using components ['capacitor']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-4_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9428571428571428,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-4-ANY-004",
+        "T3-4-ANY-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT1', 'U6.INL'].; No constrained path found from 'U5_Pin1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT2', 'U6.INR'].; No constrained path found from 'U5_Pin7' to 'U6.INR' within 6 hops using components ['capacitor']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-4_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9428571428571428,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-4-ANY-004",
+        "T3-4-ANY-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT1', 'U6.INL'].; No constrained path found from 'U5_Pin1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT2', 'U6.INR'].; No constrained path found from 'U5_Pin7' to 'U6.INR' within 6 hops using components ['capacitor']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-4_run5.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-4_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-4_run7.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9428571428571428,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-4-ANY-004",
+        "T3-4-ANY-005"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-4-ANY-004",
+          "check": "ANY_OF",
+          "desc": "Left audio chain: NE5532 channel-1 output reaches PAM8403 left input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT1', 'U6.INL'].; No constrained path found from 'U5_Pin1' to 'U6.INL' within 6 hops using components ['capacitor']."
+        },
+        {
+          "id": "T3-4-ANY-005",
+          "check": "ANY_OF",
+          "desc": "Right audio chain: NE5532 channel-2 output reaches PAM8403 right input, either directly or through an AC-coupling capacitor.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U5.OUT2', 'U6.INR'].; No constrained path found from 'U5_Pin7' to 'U6.INR' within 6 hops using components ['capacitor']."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "design_id": "T2-2",
+    "tier": 2,
+    "type": "SEN",
+    "run_id": 3
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "ME6211"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "ATmega328P"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MPU-6050"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "W25Q64JV"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_2.2nF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_16MHz"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_4.7K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_4.7K"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "U1.VIN",
+          "U1.CE",
+          "C1.1"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U1.VOUT",
+          "C2.1",
+          "U2.VCC",
+          "U2.AVCC",
+          "U3.VDD",
+          "U4.VCC",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C6.1",
+          "C7.1",
+          "C10.1",
+          "R1.1",
+          "U3.CS",
+          "U3.WP",
+          "U3.HOLD"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.VSS",
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "U2.GND",
+          "U2.GND_2",
+          "U3.GND",
+          "U3.CLKIN",
+          "U3.FSYNC",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "U4.GND",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "R1.2"
+        ]
+      },
+      {
+        "name": "U3_REGOUT",
+        "pins": [
+          "U3.REGOUT",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "U3_CPOUT",
+        "pins": [
+          "U3.CPOUT",
+          "C9.1"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "U2.PC4",
+          "U3.SDA",
+          "R2.1"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "U2.PC5",
+          "U3.SCL",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "SPI_CS_U4",
+        "pins": [
+          "U2.PB2",
+          "U4.CS"
+        ]
+      },
+      {
+        "name": "SPI_CLK",
+        "pins": [
+          "U2.PB5",
+          "U4.CLK"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U2.PB3",
+          "U4.DI"
+        ]
+      },
+      {
+        "name": "SPI_MISO",
+        "pins": [
+          "U2.PB4",
+          "U4.DO"
+        ]
+      },
+      {
+        "name": "U2_RESET",
+        "pins": [
+          "U2.PC6"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "U2.PB6",
+          "Y1.1",
+          "C11.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "U2.PB7",
+          "Y1.2",
+          "C12.1"
+        ]
+      },
+      {
+        "name": "I2C_VCC",
+        "pins": [
+          "R2.2",
+          "R3.2"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

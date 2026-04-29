@@ -1,0 +1,264 @@
+{
+  "design_id": "T2-10",
+  "tier": 2,
+  "type": "SEN",
+  "description": "Precision ADC readout with reference monitoring. STM32F103 reads ADS1115 via I2C. ADS1115 measures one external analog input and also monitors REF5050 output as a precision reference/calibration voltage. AMS1117-3.3 provides 3.3V digital power for STM32F103 and ADS1115. REF5050 is powered from VIN_5V. Common GND is used with analog/digital star-ground layout intent.",
+  "ic_list": [
+    "AMS1117-3.3 (U1)",
+    "STM32F103 (U2)",
+    "ADS1115 (U3)",
+    "REF5050 / REF50xx (U4)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T2-10-C01-001",
+      "check": "SAME_NET",
+      "desc": "Common ground: LDO ground, STM32 grounds, ADS1115 ground, and REF5050 ground share one common GND.",
+      "params": {
+        "pins": [
+          "U1.GND",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U2.VSSA",
+          "U3.GND",
+          "U4.GND"
+        ]
+      }
+    },
+    {
+      "id": "T2-10-C01-002",
+      "check": "SAME_NET",
+      "desc": "3.3V digital rail: AMS1117 output powers STM32F103 and ADS1115.",
+      "params": {
+        "pins": [
+          "U1.VOUT",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U2.VBAT",
+          "U2.VDDA",
+          "U3.VDD"
+        ]
+      }
+    },
+    {
+      "id": "T2-10-C01-003",
+      "check": "SAME_NET",
+      "desc": "REF5050 input is powered from VIN_5V.",
+      "params": {
+        "pins": [
+          "U1.VIN",
+          "U4.VIN"
+        ]
+      }
+    },
+    {
+      "id": "T2-10-C01-004",
+      "check": "SAME_NET",
+      "desc": "I2C legal bundle mapping: accept one complete legal STM32F103 hardware I2C SDA/SCL pair to ADS1115, either I2C1 default, I2C1 remap, or I2C2. This forbids illegal mixed mappings such as PB7 for SDA together with PB8 for SCL.",
+      "params": {
+        "net_group_candidates": [
+          {
+            "label": "I2C1_DEFAULT",
+            "pin_groups_list": [
+              [["U2.PB7"], ["U3.SDA"]],
+              [["U2.PB6"], ["U3.SCL"]]
+            ]
+          },
+          {
+            "label": "I2C1_REMAP",
+            "pin_groups_list": [
+              [["U2.PB9"], ["U3.SDA"]],
+              [["U2.PB8"], ["U3.SCL"]]
+            ]
+          },
+          {
+            "label": "I2C2",
+            "pin_groups_list": [
+              [["U2.PB11"], ["U3.SDA"]],
+              [["U2.PB10"], ["U3.SCL"]]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2-10-C01-005",
+      "check": "SAME_NET",
+      "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+      "params": {
+        "pins": [
+          "U4.VOUT",
+          "U3.AIN2"
+        ]
+      }
+    },
+    {
+      "id": "T2-10-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical node isolation: VIN_5V input, 3.3V digital rail, GND, REF5050 output, I2C SDA, I2C SCL, ADS1115 external analog input, and ADS1115 ALERT must remain distinct. I2C isolation is anchored on ADS1115-side pins so it is invariant to STM32 I2C pin selection.",
+      "params": {
+        "groups": [
+          ["U1.VIN"],
+          ["U1.VOUT"],
+          ["U1.GND"],
+          ["U4.VOUT"],
+          ["U3.SDA"],
+          ["U3.SCL"],
+          ["U3.AIN0"],
+          ["U3.ALERT"]
+        ]
+      }
+    },
+    {
+      "id": "T2-10-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Common ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.GND"
+      }
+    },
+    {
+      "id": "T2-10-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V digital rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VOUT"
+      }
+    },
+    {
+      "id": "T2-10-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "VIN_5V input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-10-S02-001",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "ADS1115 external analog input AIN0 should be exposed as the measured analog input.",
+      "params": {
+        "pin": "U3.AIN0"
+      }
+    },
+    {
+      "id": "T2-10-ANY-001",
+      "type": "ANY_OF",
+      "desc": "ADS1115 ADDR must select a valid I2C address: GND, VDD, SDA, or SCL.",
+      "conditions": [
+        {
+          "check": "CONNECTED_TO_GROUND",
+          "params": {
+            "pin": "U3.ADDR"
+          }
+        },
+        {
+          "check": "CONNECTED_TO_POWER",
+          "params": {
+            "pin": "U3.ADDR"
+          }
+        },
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U3.ADDR",
+              "U3.SDA"
+            ]
+          }
+        },
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U3.ADDR",
+              "U3.SCL"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-10-I03-001",
+      "check": "PIN_NOT_ON_NET_WITH",
+      "desc": "ADS1115 external analog input AIN0 must not be shorted to digital I2C or ALERT nets.",
+      "params": {
+        "pin": "U3.AIN0",
+        "forbidden_pins": [
+          "U3.SDA",
+          "U3.SCL",
+          "U3.ALERT"
+        ]
+      }
+    },
+    {
+      "id": "T2-10-I03-002",
+      "check": "PIN_NOT_ON_NET_WITH",
+      "desc": "ADS1115 reference-monitor input AIN2 must not be shorted to digital I2C or ALERT nets.",
+      "params": {
+        "pin": "U3.AIN2",
+        "forbidden_pins": [
+          "U3.SDA",
+          "U3.SCL",
+          "U3.ALERT"
+        ]
+      }
+    },
+    {
+      "id": "T2-10-T06-001",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SDA requires pull-up resistor to power. Anchored on ADS1115 SDA so the assertion is invariant to STM32 I2C pin selection.",
+      "params": {
+        "pin": "U3.SDA"
+      }
+    },
+    {
+      "id": "T2-10-T06-002",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "I2C SCL requires pull-up resistor to power. Anchored on ADS1115 SCL so the assertion is invariant to STM32 I2C pin selection.",
+      "params": {
+        "pin": "U3.SCL"
+      }
+    },
+    {
+      "id": "T2-10-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V digital domain must have decoupling capacitor to ground.",
+      "params": {
+        "pin": "U1.VOUT"
+      }
+    },
+    {
+      "id": "T2-10-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "VIN_5V input rail must have bypass capacitor to ground.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-10-T01-003",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "REF5050 precision output should have stabilization capacitor to ground.",
+      "params": {
+        "pin": "U4.VOUT"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 18,
+    "by_category": {
+      "SAME_NET": 5,
+      "NET_GROUP_ISOLATION": 1,
+      "CONNECTED_TO_GROUND": 1,
+      "CONNECTED_TO_POWER": 2,
+      "PIN_NOT_FLOATING": 1,
+      "ANY_OF": 1,
+      "PIN_NOT_ON_NET_WITH": 2,
+      "HAS_PULLUP_TO_POWER": 2,
+      "HAS_CAP_TO_GROUND": 3
+    }
+  }
+}

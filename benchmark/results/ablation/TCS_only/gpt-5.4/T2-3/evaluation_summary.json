@@ -1,0 +1,225 @@
+{
+  "method": "tcs_only",
+  "model": "gpt-5.4",
+  "ablation": null,
+  "design_id": "T2-3",
+  "tier": 2,
+  "type": "COM",
+  "num_runs": 7,
+  "pass_count": 4,
+  "pass_at_k": {
+    "pass_at_1": 0.5714285714285714,
+    "pass_at_2": 0.8571428571428572,
+    "pass_at_3": 0.9714285714285714,
+    "pass_at_4": 1.0,
+    "pass_at_5": 1.0,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8785714285714286,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-3_run1.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-3-T06-002",
+        "T2-3-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin11'."
+        },
+        {
+          "id": "T2-3-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin12'."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-3_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-3-T06-002",
+        "T2-3-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin11'."
+        },
+        {
+          "id": "T2-3-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin12'."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-3_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.85,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-3-T06-001",
+        "T2-3-T06-002",
+        "T2-3-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "CH32V003 NRST (PD7) requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin4'."
+        },
+        {
+          "id": "T2-3-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin11'."
+        },
+        {
+          "id": "T2-3-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin12'."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-3_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-3-T06-002",
+        "T2-3-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin11'."
+        },
+        {
+          "id": "T2-3-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin12'."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-3_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.85,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-3-T06-001",
+        "T2-3-T06-002",
+        "T2-3-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "CH32V003 NRST (PD7) requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin4'."
+        },
+        {
+          "id": "T2-3-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin11'."
+        },
+        {
+          "id": "T2-3-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin12'."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-3_run6.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-3-T06-002",
+        "T2-3-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin11'."
+        },
+        {
+          "id": "T2-3-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin12'."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-3_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.85,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-3-T06-001",
+        "T2-3-T06-002",
+        "T2-3-T06-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-3-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "CH32V003 NRST (PD7) requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin4'."
+        },
+        {
+          "id": "T2-3-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin11'."
+        },
+        {
+          "id": "T2-3-T06-003",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL line requires external pull-up resistor to power.",
+          "message": "No pull-up resistor to power found for pin 'U3_Pin12'."
+        }
+      ]
+    }
+  ]
+}

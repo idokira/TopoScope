@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "design_id": "T2-1",
+    "tier": 2,
+    "type": "SEN",
+    "provider": "qwen",
+    "model": "qwen3.5-plus",
+    "method": "baseline",
+    "run_id": 6,
+    "wall_time_seconds": 597.381
+  },
+  "compile_result": {},
+  "connection_set": {
+    "components": [],
+    "nets": []
+  },
+  "graph_snapshot": {
+    "directed": false,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "type": "Module",
+        "name": "baseline_module",
+        "description": "Auto-built from connection_set",
+        "id": "baseline_module"
+      }
+    ],
+    "links": []
+  },
+  "process_metrics": {}
+}

@@ -1,0 +1,255 @@
+{
+  "meta": {
+    "design_id": "T2-4",
+    "tier": 2,
+    "type": "COM",
+    "run_id": 5
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_120R"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_47K"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MCP2515"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "SN65HVD230"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "CAN_CTRL_TX_TO_PHY_D",
+        "pins": [
+          "U3.TXCAN",
+          "U4.D"
+        ]
+      },
+      {
+        "name": "CAN_H",
+        "pins": [
+          "R2.1",
+          "U4.CANH"
+        ]
+      },
+      {
+        "name": "CAN_L",
+        "pins": [
+          "R2.2",
+          "U4.CANL"
+        ]
+      },
+      {
+        "name": "CAN_PHY_R_TO_CAN_CTRL_RX",
+        "pins": [
+          "U3.RXCAN",
+          "U4.R"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "R3.2",
+          "U1.GND",
+          "U2.VSSA",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U3.VSS",
+          "U4.GND"
+        ]
+      },
+      {
+        "name": "MCP2515_INT",
+        "pins": [
+          "U2.PB0",
+          "U3.INT"
+        ]
+      },
+      {
+        "name": "MCP2515_RESET",
+        "pins": [
+          "R1.2",
+          "U2.PB1",
+          "U3.RESET"
+        ]
+      },
+      {
+        "name": "SPI_CS_MCP2515",
+        "pins": [
+          "U2.PA4",
+          "U3.CS"
+        ]
+      },
+      {
+        "name": "SPI_MISO",
+        "pins": [
+          "U2.PA6",
+          "U3.SO"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U2.PA7",
+          "U3.SI"
+        ]
+      },
+      {
+        "name": "SPI_SCK",
+        "pins": [
+          "U2.PA5",
+          "U3.SCK"
+        ]
+      },
+      {
+        "name": "U3_OSC1",
+        "pins": [
+          "C10.1",
+          "U3.OSC1",
+          "Y1.1"
+        ]
+      },
+      {
+        "name": "U3_OSC2",
+        "pins": [
+          "C11.1",
+          "U3.OSC2",
+          "Y1.2"
+        ]
+      },
+      {
+        "name": "U4_RS",
+        "pins": [
+          "R3.1",
+          "U4.RS"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C12.1",
+          "C2.1",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C6.1",
+          "C7.1",
+          "C8.1",
+          "C9.1",
+          "R1.1",
+          "U1.VOUT",
+          "U2.VBAT",
+          "U2.VDDA",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U3.VDD",
+          "U4.VCC"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "U1.VIN"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 0,
+      "U3": 0,
+      "U4": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 16
+  }
+}

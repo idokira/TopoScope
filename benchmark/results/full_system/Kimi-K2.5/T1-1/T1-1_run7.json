@@ -1,0 +1,1072 @@
+{
+  "meta": {
+    "design_id": "T1-1",
+    "tier": 1,
+    "type": "COM",
+    "provider": "kimi",
+    "model": "Kimi-K2.5",
+    "method": "full_system",
+    "run_id": 7,
+    "wall_time_seconds": 45.609
+  },
+  "compile_result": {
+    "status": "blocked_phase0_interface_contract",
+    "message": "Phase0 interface contract violations detected before compile.",
+    "phase0_interface_failures": {
+      "uart_connector": [
+        "UART_RXD",
+        "UART_TXD"
+      ]
+    }
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_1.0uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_1.0uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_22pF"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "CH340"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "XC6206"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_12MHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "U1.GND",
+          "U2.VSS"
+        ]
+      },
+      {
+        "name": "U1_V3_NODE",
+        "pins": [
+          "C4.1",
+          "U1.V3"
+        ]
+      },
+      {
+        "name": "U1_VCC_BYPASS",
+        "pins": [
+          "C3.1"
+        ]
+      },
+      {
+        "name": "U1_XI",
+        "pins": [
+          "C5.1",
+          "U1.XI",
+          "Y1.1"
+        ]
+      },
+      {
+        "name": "U1_XO",
+        "pins": [
+          "C6.1",
+          "U1.XO",
+          "Y1.2"
+        ]
+      },
+      {
+        "name": "UART_RXD",
+        "pins": [
+          "U1.RXD"
+        ]
+      },
+      {
+        "name": "UART_TXD",
+        "pins": [
+          "U1.TXD"
+        ]
+      },
+      {
+        "name": "USB_DM",
+        "pins": [
+          "U1.UD_N"
+        ]
+      },
+      {
+        "name": "USB_DP",
+        "pins": [
+          "U1.UD_P"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C2.1",
+          "U1.VCC",
+          "U2.VOUT"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "U2.VIN"
+        ]
+      }
+    ]
+  },
+  "graph_snapshot": {
+    "directed": false,
+    "multigraph": false,
+    "graph": {
+      "shared_nets": {
+        "GND": {
+          "type": "Ground",
+          "modules": [
+            "power_3v3",
+            "uart_connector",
+            "usb_uart_bridge"
+          ]
+        },
+        "UART_RXD": {
+          "type": "Signal",
+          "modules": [
+            "uart_connector",
+            "usb_uart_bridge"
+          ]
+        },
+        "UART_TXD": {
+          "type": "Signal",
+          "modules": [
+            "uart_connector",
+            "usb_uart_bridge"
+          ]
+        },
+        "USB_DM": {
+          "type": "Bi-dir",
+          "modules": [
+            "power_3v3",
+            "uart_connector",
+            "usb_uart_bridge"
+          ]
+        },
+        "USB_DP": {
+          "type": "Bi-dir",
+          "modules": [
+            "power_3v3",
+            "uart_connector",
+            "usb_uart_bridge"
+          ]
+        },
+        "VCC_3V3": {
+          "type": "Power",
+          "modules": [
+            "power_3v3",
+            "usb_uart_bridge"
+          ]
+        },
+        "VIN_5V": {
+          "type": "Power",
+          "modules": [
+            "power_3v3",
+            "uart_connector",
+            "usb_uart_bridge"
+          ]
+        }
+      }
+    },
+    "nodes": [
+      {
+        "type": "Net",
+        "name": "GND",
+        "scope": "Global",
+        "net_type": "Ground",
+        "net_class": "Ground",
+        "semantic_role": "System common ground",
+        "source_pin": "",
+        "shared_modules": [
+          "power_3v3",
+          "uart_connector",
+          "usb_uart_bridge"
+        ],
+        "id": "GND"
+      },
+      {
+        "type": "Net",
+        "name": "VIN_5V",
+        "scope": "Global",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "USB 5V input rail from USB connector",
+        "source_pin": "",
+        "shared_modules": [
+          "power_3v3",
+          "uart_connector",
+          "usb_uart_bridge"
+        ],
+        "id": "VIN_5V"
+      },
+      {
+        "type": "Net",
+        "name": "USB_DP",
+        "scope": "Global",
+        "net_type": "Bi-dir",
+        "net_class": "Bi-dir",
+        "semantic_role": "USB D+ data line",
+        "source_pin": "",
+        "shared_modules": [
+          "power_3v3",
+          "uart_connector",
+          "usb_uart_bridge"
+        ],
+        "id": "USB_DP"
+      },
+      {
+        "type": "Net",
+        "name": "USB_DM",
+        "scope": "Global",
+        "net_type": "Bi-dir",
+        "net_class": "Bi-dir",
+        "semantic_role": "USB D- data line",
+        "source_pin": "",
+        "shared_modules": [
+          "power_3v3",
+          "uart_connector",
+          "usb_uart_bridge"
+        ],
+        "id": "USB_DM"
+      },
+      {
+        "type": "Module",
+        "name": "power_3v3",
+        "description": "XC6206 LDO regulator converts VIN_5V to VCC_3V3 for USB-to-UART bridge logic. Always-on operation with no enable pin. Input and output need bypass capacitors. This module is the sole VCC_3V3 provider for the system.",
+        "id": "power_3v3"
+      },
+      {
+        "type": "Component",
+        "refdes": "U2",
+        "part_number": "XC6206",
+        "description": "3.3V LDO regulator for USB-powered logic rail",
+        "id": "U2"
+      },
+      {
+        "type": "Pin",
+        "name": "VSS",
+        "pin_number": "1",
+        "electrical_type": "Ground",
+        "description": "Ground connection",
+        "id": "U2_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "VOUT",
+        "pin_number": "2",
+        "electrical_type": "PowerOut",
+        "description": "Regulated output voltage pin",
+        "id": "U2_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "VIN",
+        "pin_number": "3",
+        "electrical_type": "PowerIn",
+        "description": "Power input supply pin",
+        "id": "U2_Pin3"
+      },
+      {
+        "type": "Module",
+        "name": "usb_uart_bridge",
+        "description": "CH340 USB-to-UART bridge. V3 pin requires 100nF decoupling cap to GND for internal 3.3V reference. XI/XO need 12MHz crystal with load caps for USB timing. UD_P/UD_N connect to USB D+/D- signals. TXD/RXD are the UART interface output. CTS/DSR/RI/DCD/DTR/RTS are modem control pins; RTS and DTR can be used for auto-programming flow control if needed. R232 is unused (no RS232 level translation). VCC operates at 3.3V logic level.",
+        "id": "usb_uart_bridge"
+      },
+      {
+        "type": "Component",
+        "refdes": "U1",
+        "part_number": "CH340",
+        "description": "USB-to-UART bridge",
+        "id": "U1"
+      },
+      {
+        "type": "Pin",
+        "name": "GND",
+        "pin_number": "1",
+        "electrical_type": "Ground",
+        "description": "Ground. Connect to USB bus ground.",
+        "id": "U1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "TXD",
+        "pin_number": "2",
+        "electrical_type": "Output",
+        "description": "Serial data output to MCU RXD.",
+        "id": "U1_Pin2"
+      },
+      {
+        "type": "Pin",
+        "name": "RXD",
+        "pin_number": "3",
+        "electrical_type": "Input",
+        "description": "Serial data input from MCU TXD.",
+        "id": "U1_Pin3"
+      },
+      {
+        "type": "Pin",
+        "name": "V3",
+        "pin_number": "4",
+        "electrical_type": "Passive",
+        "description": "Internal 3.3V regulator output. At 5V: connect 0.1uF cap to GND. At 3.3V: connect to VCC.",
+        "id": "U1_Pin4"
+      },
+      {
+        "type": "Pin",
+        "name": "UD_P",
+        "pin_number": "5",
+        "electrical_type": "Bi-dir",
+        "description": "USB D+ data line. Connect directly to USB connector.",
+        "id": "U1_Pin5"
+      },
+      {
+        "type": "Pin",
+        "name": "UD_N",
+        "pin_number": "6",
+        "electrical_type": "Bi-dir",
+        "description": "USB D- data line. Connect directly to USB connector.",
+        "id": "U1_Pin6"
+      },
+      {
+        "type": "Pin",
+        "name": "XI",
+        "pin_number": "7",
+        "electrical_type": "Passive",
+        "description": "Crystal oscillator input. 12MHz crystal required (CH340G).",
+        "id": "U1_Pin7"
+      },
+      {
+        "type": "Pin",
+        "name": "XO",
+        "pin_number": "8",
+        "electrical_type": "Passive",
+        "description": "Crystal oscillator output. 12MHz crystal required (CH340G).",
+        "id": "U1_Pin8"
+      },
+      {
+        "type": "Pin",
+        "name": "CTS",
+        "pin_number": "9",
+        "electrical_type": "Input",
+        "description": "MODEM Clear To Send, active low. Leave unconnected if unused.",
+        "id": "U1_Pin9"
+      },
+      {
+        "type": "Pin",
+        "name": "DSR",
+        "pin_number": "10",
+        "electrical_type": "Input",
+        "description": "MODEM Data Set Ready, active low. Leave unconnected if unused.",
+        "id": "U1_Pin10"
+      },
+      {
+        "type": "Pin",
+        "name": "RI",
+        "pin_number": "11",
+        "electrical_type": "Input",
+        "description": "MODEM Ring Indicator, active low. Leave unconnected if unused.",
+        "id": "U1_Pin11"
+      },
+      {
+        "type": "Pin",
+        "name": "DCD",
+        "pin_number": "12",
+        "electrical_type": "Input",
+        "description": "MODEM Data Carrier Detect, active low. Leave unconnected if unused.",
+        "id": "U1_Pin12"
+      },
+      {
+        "type": "Pin",
+        "name": "DTR",
+        "pin_number": "13",
+        "electrical_type": "Output",
+        "description": "MODEM Data Terminal Ready, active low. Often used for MCU auto-reset.",
+        "id": "U1_Pin13"
+      },
+      {
+        "type": "Pin",
+        "name": "RTS",
+        "pin_number": "14",
+        "electrical_type": "Output",
+        "description": "MODEM Request To Send, active low. Often used for MCU boot mode.",
+        "id": "U1_Pin14"
+      },
+      {
+        "type": "Pin",
+        "name": "R232",
+        "pin_number": "15",
+        "electrical_type": "Input",
+        "description": "RS232 enable, active high. Built-in pull-down. Leave floating for TTL mode.",
+        "id": "U1_Pin15"
+      },
+      {
+        "type": "Pin",
+        "name": "VCC",
+        "pin_number": "16",
+        "electrical_type": "PowerIn",
+        "description": "Power supply input, 3.3V or 5V.",
+        "id": "U1_Pin16"
+      },
+      {
+        "type": "Module",
+        "name": "uart_connector",
+        "description": "Board-level UART interface connector exposing TXD and RXD signals to external systems. No active components; serves as system boundary for UART signals.",
+        "id": "uart_connector"
+      },
+      {
+        "type": "Net",
+        "name": "VCC_3V3",
+        "scope": "Global",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "power_3v3",
+          "usb_uart_bridge"
+        ],
+        "id": "VCC_3V3"
+      },
+      {
+        "type": "Net",
+        "name": "UART_TXD",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "uart_connector",
+          "usb_uart_bridge"
+        ],
+        "id": "UART_TXD"
+      },
+      {
+        "type": "Net",
+        "name": "UART_RXD",
+        "scope": "Global",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Phase0 shared net",
+        "source_pin": "",
+        "shared_modules": [
+          "uart_connector",
+          "usb_uart_bridge"
+        ],
+        "id": "UART_RXD"
+      },
+      {
+        "type": "Component",
+        "refdes": "C1",
+        "part_number": "CAP_1.0uF",
+        "description": "Added from component output",
+        "id": "C1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C1_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C2",
+        "part_number": "CAP_1.0uF",
+        "description": "Added from component output",
+        "id": "C2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C2_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C2_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C3",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C3"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C3_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C3_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C4",
+        "part_number": "CAP_100nF",
+        "description": "Added from component output",
+        "id": "C4"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C4_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C4_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C5",
+        "part_number": "CAP_22pF",
+        "description": "Added from component output",
+        "id": "C5"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C5_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C5_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C6",
+        "part_number": "CAP_22pF",
+        "description": "Added from component output",
+        "id": "C6"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C6_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "C6_Pin2"
+      },
+      {
+        "type": "Component",
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_12MHz",
+        "description": "Added from component output",
+        "id": "Y1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "Y1_Pin1"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "",
+        "id": "Y1_Pin2"
+      },
+      {
+        "type": "Net",
+        "name": "U1_V3_NODE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in usb_uart_bridge",
+        "source_pin": "",
+        "id": "U1_V3_NODE"
+      },
+      {
+        "type": "Net",
+        "name": "U1_XI",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in usb_uart_bridge",
+        "source_pin": "",
+        "id": "U1_XI"
+      },
+      {
+        "type": "Net",
+        "name": "U1_XO",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in usb_uart_bridge",
+        "source_pin": "",
+        "id": "U1_XO"
+      },
+      {
+        "type": "Net",
+        "name": "U1_VCC_BYPASS",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Module net in usb_uart_bridge",
+        "source_pin": "",
+        "id": "U1_VCC_BYPASS"
+      }
+    ],
+    "links": [
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C2_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C3_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C4_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C5_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C6_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "U2_Pin3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "C1_Pin1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "USB_DP",
+        "target": "U1_Pin5"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "USB_DM",
+        "target": "U1_Pin6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "U2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "C1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "power_3v3",
+        "target": "C2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2_Pin3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_Pin2",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "usb_uart_bridge",
+        "target": "U1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "usb_uart_bridge",
+        "target": "C3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "usb_uart_bridge",
+        "target": "C4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "usb_uart_bridge",
+        "target": "C5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "usb_uart_bridge",
+        "target": "C6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "usb_uart_bridge",
+        "target": "Y1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "usb_uart_bridge",
+        "target": "U1_V3_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "usb_uart_bridge",
+        "target": "U1_XI"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "usb_uart_bridge",
+        "target": "U1_XO"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "usb_uart_bridge",
+        "target": "U1_VCC_BYPASS"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin8"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin9"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin10"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin11"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin12"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin13"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin14"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin15"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1_Pin16"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin2",
+        "target": "UART_TXD"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin3",
+        "target": "UART_RXD"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin4",
+        "target": "U1_V3_NODE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin7",
+        "target": "U1_XI"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin8",
+        "target": "U1_XO"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U1_Pin16",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C2_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1",
+        "target": "C1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1",
+        "target": "C1_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C2",
+        "target": "C2_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C2",
+        "target": "C2_Pin2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C3",
+        "target": "C3_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C3",
+        "target": "C3_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "C3_Pin1",
+        "target": "U1_VCC_BYPASS"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C4",
+        "target": "C4_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C4",
+        "target": "C4_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "C4_Pin1",
+        "target": "U1_V3_NODE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C5",
+        "target": "C5_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C5",
+        "target": "C5_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "C5_Pin1",
+        "target": "U1_XI"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C6",
+        "target": "C6_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C6",
+        "target": "C6_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "C6_Pin1",
+        "target": "U1_XO"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "Y1",
+        "target": "Y1_Pin1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "Y1",
+        "target": "Y1_Pin2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "Y1_Pin1",
+        "target": "U1_XI"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "Y1_Pin2",
+        "target": "U1_XO"
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U2": 0,
+      "U1": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {
+      "uart_connector": [
+        "UART_RXD",
+        "UART_TXD"
+      ]
+    },
+    "existing_passive_components_count": 7
+  }
+}

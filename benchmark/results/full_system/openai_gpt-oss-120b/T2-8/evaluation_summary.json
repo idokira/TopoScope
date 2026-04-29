@@ -1,0 +1,209 @@
+{
+  "method": "full_system",
+  "model": "openai/gpt-oss-120b",
+  "ablation": null,
+  "design_id": "T2-8",
+  "tier": 2,
+  "type": "AUD",
+  "num_runs": 7,
+  "pass_count": 2,
+  "pass_at_k": {
+    "pass_at_1": 0.2857142857142857,
+    "pass_at_2": 0.5238095238095238,
+    "pass_at_3": 0.7142857142857143,
+    "pass_at_4": 0.8571428571428572,
+    "pass_at_5": 0.9523809523809523,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8660714285714286,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-8_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8125,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-8-C01-001",
+        "T2-8-C01-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, ATmega ground, MCP4725 ground, and NE5532 negative supply share common GND.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.GND', 'U2.GND_2', 'U3.VSS', 'U4.VCC_N']."
+        },
+        {
+          "id": "T2-8-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-8_run2.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9375,
+      "violated_assertion_count": 1,
+      "violated_assertion_names": [
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-8_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 1.0,
+      "violated_assertion_count": 0,
+      "violated_assertion_names": [],
+      "failed_assertions": []
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-8_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.75,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T2-8-C01-001",
+        "T2-8-C01-002",
+        "T2-8-C01-003",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, ATmega ground, MCP4725 ground, and NE5532 negative supply share common GND.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.GND', 'U2.GND_2', 'U3.VSS', 'U4.VCC_N']."
+        },
+        {
+          "id": "T2-8-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD']."
+        },
+        {
+          "id": "T2-8-C01-003",
+          "check": "SAME_NET",
+          "desc": "Analog supply: VIN_5V input powers NE5532 positive supply.",
+          "message": "Pins are not on the same net: ['U1.VIN', 'U4.VCC_P']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-8_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8125,
+      "violated_assertion_count": 3,
+      "violated_assertion_names": [
+        "T2-8-C01-001",
+        "T2-8-ANY-002",
+        "T2-8-ANY-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, ATmega ground, MCP4725 ground, and NE5532 negative supply share common GND.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.GND', 'U2.GND_2', 'U3.VSS', 'U4.VCC_N']."
+        },
+        {
+          "id": "T2-8-ANY-002",
+          "check": "ANY_OF",
+          "desc": "DAC output reaches the NE5532 channel-1 non-inverting input/control node, either directly or through a resistor network.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VOUT', 'U4.IN1_P'].; No constrained path found from 'U3_Pin1' to 'U4.IN1_P' within 4 hops using components ['resistor']."
+        },
+        {
+          "id": "T2-8-ANY-003",
+          "check": "ANY_OF",
+          "desc": "NE5532 channel-2 is either safely tied off as unused, or configured as a safe local buffer for the DAC bias/control node.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U4.IN2_P', 'U4.IN2_N', 'U1.GND'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2'].; ALL_OF failed: Pins are not on the same net: ['U4.IN2_N', 'U4.OUT2']."
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-8_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-8-C01-001",
+        "T2-8-C01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, ATmega ground, MCP4725 ground, and NE5532 negative supply share common GND.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.GND', 'U2.GND_2', 'U3.VSS', 'U4.VCC_N']."
+        },
+        {
+          "id": "T2-8-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD']."
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-8_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.875,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T2-8-C01-001",
+        "T2-8-C01-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-8-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, ATmega ground, MCP4725 ground, and NE5532 negative supply share common GND.",
+          "message": "Pins are not on the same net: ['U1.GND', 'U2.GND', 'U2.GND_2', 'U3.VSS', 'U4.VCC_N']."
+        },
+        {
+          "id": "T2-8-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers ATmega328P and MCP4725.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VCC', 'U2.AVCC', 'U3.VDD']."
+        }
+      ]
+    }
+  ]
+}

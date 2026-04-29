@@ -1,0 +1,288 @@
+{
+  "method": "full_system",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T3-1",
+  "tier": 3,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 2,
+  "pass_at_k": {
+    "pass_at_1": 0.2857142857142857,
+    "pass_at_2": 0.5238095238095238,
+    "pass_at_3": 0.7142857142857143,
+    "pass_at_4": 0.8571428571428572,
+    "pass_at_5": 0.9523809523809523,
+    "pass_at_6": 1.0,
+    "pass_at_7": 1.0
+  },
+  "avg_assertion_pass_rate": 0.8909090909090909,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T3-1_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8571428571428571,
+      "violated_assertion_count": 5,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-011",
+        "T3-1-C01-012",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pins are not on the same net: ['U3.VDD_1', 'U3.VDD_2', 'U3.VDD_3', 'U3.VDD_4', 'U3.VDD_USB', 'U3.VBAT', 'U6.VCC']."
+        },
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': \"All pins floating in group: ['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1']\"}]"
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': \"All pins floating in group: ['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1']\"}]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R9_Pin2",
+          "message": "Pin 'R9_Pin2' is connected to multiple nets: [GND, U3_BOOT1_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U3_Pin35",
+          "message": "Pin 'U3_Pin35' is connected to multiple nets: [U3_BOOT1_NODE, VCC_3V3_DIGITAL]"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T3-1_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8857142857142857,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-012",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pins are not on the same net: ['U3.VDD_1', 'U3.VDD_2', 'U3.VDD_3', 'U3.VDD_4', 'U3.VDD_USB', 'U3.VBAT', 'U6.VCC']."
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "No common net exists across pin groups: [['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1'], ['U6.CS']]."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R1_Pin2",
+          "message": "Pin 'R1_Pin2' is connected to multiple nets: [GND, U1_FB]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R5_Pin2",
+          "message": "Pin 'R5_Pin2' is connected to multiple nets: [GND, NRST]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T3-1_run3.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9393939393939394,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-004"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pins are not on the same net: ['U3.VDD_1', 'U3.VDD_2', 'U3.VDD_3', 'U3.VDD_4', 'U3.VDD_USB', 'U3.VBAT', 'U6.VCC']."
+        },
+        {
+          "id": "T3-1-C01-004",
+          "check": "SAME_NET",
+          "desc": "Core analog/sensor rail: ME6211 output powers the motion/barometer sensor supplies. This captures the separate sensor rail requirement without over-constraining STM32 analog-domain implementation details.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U4.VDD', 'U5.VDD', 'U5.VDDIO']."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T3-1_run4.json",
+      "pass": true,
+      "assertion_pass_rate": 0.9393939393939394,
+      "violated_assertion_count": 2,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-ANY-002"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pins are not on the same net: ['U3.VDD_1', 'U3.VDD_2', 'U3.VDD_3', 'U3.VDD_4', 'U3.VDD_USB', 'U3.VBAT', 'U6.VCC']."
+        },
+        {
+          "id": "T3-1-ANY-002",
+          "check": "ANY_OF",
+          "desc": "STM32F427 analog supply/reference-positive may either join the dedicated analog/sensor rail or remain on the digital 3.3V rail, but VDDA and VREF_P must be implemented consistently together.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VDDA', 'U3.VREF_P', 'U2.VOUT'].; Pins are not on the same net: ['U3.VDDA', 'U3.VREF_P', 'U6.VCC']."
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T3-1_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8787878787878788,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-004",
+        "T3-1-C01-011",
+        "T3-1-C01-012"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pins are not on the same net: ['U3.VDD_1', 'U3.VDD_2', 'U3.VDD_3', 'U3.VDD_4', 'U3.VDD_USB', 'U3.VBAT', 'U6.VCC']."
+        },
+        {
+          "id": "T3-1-C01-004",
+          "check": "SAME_NET",
+          "desc": "Core analog/sensor rail: ME6211 output powers the motion/barometer sensor supplies. This captures the separate sensor rail requirement without over-constraining STM32 analog-domain implementation details.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U4.VDD', 'U5.VDD', 'U5.VDDIO']."
+        },
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': \"All pins floating in group: ['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1']\"}]"
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': \"All pins floating in group: ['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1']\"}]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T3-1_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8787878787878788,
+      "violated_assertion_count": 4,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-004",
+        "T3-1-C01-011",
+        "T3-1-C01-012"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pins are not on the same net: ['U3.VDD_1', 'U3.VDD_2', 'U3.VDD_3', 'U3.VDD_4', 'U3.VDD_USB', 'U3.VBAT', 'U6.VCC']."
+        },
+        {
+          "id": "T3-1-C01-004",
+          "check": "SAME_NET",
+          "desc": "Core analog/sensor rail: ME6211 output powers the motion/barometer sensor supplies. This captures the separate sensor rail requirement without over-constraining STM32 analog-domain implementation details.",
+          "message": "Pins are not on the same net: ['U2.VOUT', 'U4.VDD', 'U5.VDD', 'U5.VDDIO']."
+        },
+        {
+          "id": "T3-1-C01-011",
+          "check": "SAME_NET",
+          "desc": "BMP280 has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': \"All pins floating in group: ['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1']\"}]"
+        },
+        {
+          "id": "T3-1-C01-012",
+          "check": "SAME_NET",
+          "desc": "W25Q128JV flash has an independent chip-select from one legal STM32F427 control pin.",
+          "message": "Some pin groups unresolved or floating: [{'group_index': 0, 'missing': \"All pins floating in group: ['U3.PA4', 'U3.PA15', 'U3.PB0', 'U3.PB1']\"}]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T3-1_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.8571428571428571,
+      "violated_assertion_count": 5,
+      "violated_assertion_names": [
+        "T3-1-C01-003",
+        "T3-1-C01-008",
+        "T3-1-ANY-002",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T3-1-C01-003",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail powers STM32F427 digital VDD pins, USB supply pin, backup domain, and W25Q128JV flash VCC.",
+          "message": "Pins are not on the same net: ['U3.VDD_1', 'U3.VDD_2', 'U3.VDD_3', 'U3.VDD_4', 'U3.VDD_USB', 'U3.VBAT', 'U6.VCC']."
+        },
+        {
+          "id": "T3-1-C01-008",
+          "check": "SAME_NET",
+          "desc": "Shared SPI legal bundle mapping: accept one complete legal STM32F427 SPI1 routing bundle for SCK/MOSI/MISO to both BMP280 and W25Q128JV. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+          "message": "All combination candidates failed: ['Candidate SPI1_DEFAULT failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U3.PA6\\\\\\']\"}]\\']', 'Candidate SPI1_ALT failed: [\\'Some pin groups unresolved or floating: [{\\\\\\'group_index\\\\\\': 0, \\\\\\'missing\\\\\\': \"All pins floating in group: [\\\\\\'U3.PB3\\\\\\']\"}]\\']']"
+        },
+        {
+          "id": "T3-1-ANY-002",
+          "check": "ANY_OF",
+          "desc": "STM32F427 analog supply/reference-positive may either join the dedicated analog/sensor rail or remain on the digital 3.3V rail, but VDDA and VREF_P must be implemented consistently together.",
+          "message": "ANY_OF failed: Pins are not on the same net: ['U3.VDDA', 'U3.VREF_P', 'U2.VOUT'].; Pins are not on the same net: ['U3.VDDA', 'U3.VREF_P', 'U6.VCC']."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U6_Pin3",
+          "message": "Pin 'U6_Pin3' is connected to multiple nets: [VCC_3V3_D, WP_PULLUP]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U6_Pin7",
+          "message": "Pin 'U6_Pin7' is connected to multiple nets: [HOLD_PULLUP, VCC_3V3_D]"
+        }
+      ]
+    }
+  ]
+}

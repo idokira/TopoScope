@@ -1,0 +1,229 @@
+{
+  "meta": {
+    "design_id": "T1-4",
+    "tier": 1,
+    "type": "AUD",
+    "run_id": 5
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_250uF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_50nF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_1K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_10R"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "NE5532"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "LM386"
+      }
+    ],
+    "nets": [
+      {
+        "name": "AUDIO_IN",
+        "pins": [
+          "C3.1"
+        ]
+      },
+      {
+        "name": "GAIN_MID",
+        "pins": [
+          "C10.1",
+          "R6.2"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C2.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "R2.2",
+          "U1.VCC_N",
+          "U2.GND",
+          "U2.IN_NEG"
+        ]
+      },
+      {
+        "name": "PREAMP_OUT_TO_AMP_IN",
+        "pins": [
+          "C4.2",
+          "C5.1"
+        ]
+      },
+      {
+        "name": "SPEAKER_OUT",
+        "pins": [
+          "C6.2"
+        ]
+      },
+      {
+        "name": "U1_BIAS",
+        "pins": [
+          "C2.1",
+          "R1.2",
+          "R2.1",
+          "U1.IN1_P",
+          "U1.IN2_P"
+        ]
+      },
+      {
+        "name": "U1_CH2_FB",
+        "pins": [
+          "U1.IN2_N",
+          "U1.OUT2"
+        ]
+      },
+      {
+        "name": "U1_IN_COUPLING",
+        "pins": [
+          "C3.2",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "U1_OUT",
+        "pins": [
+          "C4.1",
+          "R4.1",
+          "U1.OUT1"
+        ]
+      },
+      {
+        "name": "U1_SUMMING",
+        "pins": [
+          "R3.2",
+          "R4.2",
+          "U1.IN1_N"
+        ]
+      },
+      {
+        "name": "U2_BYPASS_NODE",
+        "pins": [
+          "C8.1",
+          "U2.BYPASS"
+        ]
+      },
+      {
+        "name": "U2_GAIN_1_NODE",
+        "pins": [
+          "R6.1",
+          "U2.GAIN_1"
+        ]
+      },
+      {
+        "name": "U2_GAIN_2_NODE",
+        "pins": [
+          "C10.2",
+          "U2.GAIN_2"
+        ]
+      },
+      {
+        "name": "U2_IN_POS",
+        "pins": [
+          "C5.2",
+          "U2.IN_POS"
+        ]
+      },
+      {
+        "name": "U2_VOUT_NODE",
+        "pins": [
+          "C6.1",
+          "R5.1",
+          "U2.VOUT"
+        ]
+      },
+      {
+        "name": "VIN_9V",
+        "pins": [
+          "C1.1",
+          "C7.1",
+          "R1.1",
+          "U1.VCC_P",
+          "U2.VS"
+        ]
+      },
+      {
+        "name": "ZOBEL_MID",
+        "pins": [
+          "C9.1",
+          "R5.2"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 0,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 0
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 16
+  }
+}

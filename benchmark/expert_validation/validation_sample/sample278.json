@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "design_id": "T1-4",
+    "tier": 1,
+    "type": "AUD",
+    "run_id": 2
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "NE5532"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "LM386"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_10uF_25V"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_10uF_25V"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_250uF_16V"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_50nF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_10R"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_10R"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_1K2"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VCC_9V",
+        "pins": [
+          "U1.VCC_P",
+          "U2.VS",
+          "C1.1",
+          "C4.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.VCC_N",
+          "U2.GND",
+          "U2.IN_NEG",
+          "C1.2",
+          "C2.2",
+          "C4.2",
+          "C5.2",
+          "C8.2",
+          "R4.2",
+          "R5.2"
+        ]
+      },
+      {
+        "name": "AUDIO_IN",
+        "pins": [
+          "R1.1"
+        ]
+      },
+      {
+        "name": "U1_IN1_P",
+        "pins": [
+          "U1.IN1_P"
+        ]
+      },
+      {
+        "name": "U1_SUMMING_NODE",
+        "pins": [
+          "U1.IN1_N",
+          "R1.2",
+          "R2.1"
+        ]
+      },
+      {
+        "name": "U1_FB_NODE",
+        "pins": [
+          "U1.OUT1",
+          "R2.2"
+        ]
+      },
+      {
+        "name": "U1_CH2_INP",
+        "pins": [
+          "U1.IN2_P"
+        ]
+      },
+      {
+        "name": "U1_CH2_INN",
+        "pins": [
+          "U1.IN2_N"
+        ]
+      },
+      {
+        "name": "U1_CH2_OUT",
+        "pins": [
+          "U1.OUT2",
+          "C3.1"
+        ]
+      },
+      {
+        "name": "U1_VCC_P_BYPASS",
+        "pins": [
+          "C2.1"
+        ]
+      },
+      {
+        "name": "U2_BYPASS_NODE",
+        "pins": [
+          "U2.BYPASS",
+          "C5.1"
+        ]
+      },
+      {
+        "name": "U2_INPUT_NODE",
+        "pins": [
+          "U2.IN_POS",
+          "C3.2"
+        ]
+      },
+      {
+        "name": "U2_GAIN_1_NODE",
+        "pins": [
+          "U2.GAIN_1",
+          "R4.1"
+        ]
+      },
+      {
+        "name": "U2_GAIN_2_NODE",
+        "pins": [
+          "U2.GAIN_2"
+        ]
+      },
+      {
+        "name": "U2_GAIN_MID",
+        "pins": [
+          "R5.1"
+        ]
+      },
+      {
+        "name": "U2_VOUT_NODE",
+        "pins": [
+          "U2.VOUT",
+          "C7.1",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "U2_ZOBEL_MID",
+        "pins": [
+          "R3.2",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "SPEAKER_POS",
+        "pins": [
+          "C7.2"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

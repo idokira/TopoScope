@@ -1,0 +1,589 @@
+{
+  "method": "baseline",
+  "model": "DeepSeek-V3.2",
+  "ablation": null,
+  "design_id": "T2-10",
+  "tier": 2,
+  "type": "SEN",
+  "num_runs": 7,
+  "pass_count": 0,
+  "pass_at_k": {
+    "pass_at_1": 0.0,
+    "pass_at_2": 0.0,
+    "pass_at_3": 0.0,
+    "pass_at_4": 0.0,
+    "pass_at_5": 0.0,
+    "pass_at_6": 0.0,
+    "pass_at_7": 0.0
+  },
+  "avg_assertion_pass_rate": 0.4847269689374953,
+  "runs": [
+    {
+      "run_index": 1,
+      "run_id": 1,
+      "result_file": "T2-10_run1.json",
+      "pass": false,
+      "assertion_pass_rate": 0.0,
+      "violated_assertion_count": 18,
+      "violated_assertion_names": [
+        "T2-10-C01-001",
+        "T2-10-C01-002",
+        "T2-10-C01-003",
+        "T2-10-C01-004",
+        "T2-10-C01-005",
+        "T2-10-I02-001",
+        "T2-10-C02-001",
+        "T2-10-C03-001",
+        "T2-10-C03-002",
+        "T2-10-S02-001",
+        "T2-10-ANY-001",
+        "T2-10-I03-001",
+        "T2-10-I03-002",
+        "T2-10-T06-001",
+        "T2-10-T06-002",
+        "T2-10-T01-001",
+        "T2-10-T01-002",
+        "T2-10-T01-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, STM32 grounds, ADS1115 ground, and REF5050 ground share one common GND.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers STM32F103 and ADS1115.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-C01-003",
+          "check": "SAME_NET",
+          "desc": "REF5050 input is powered from VIN_5V.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-C01-004",
+          "check": "SAME_NET",
+          "desc": "I2C legal bundle mapping: accept one complete legal STM32F103 hardware I2C SDA/SCL pair to ADS1115, either I2C1 default, I2C1 remap, or I2C2. This forbids illegal mixed mappings such as PB7 for SDA together with PB8 for SCL.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V input, 3.3V digital rail, GND, REF5050 output, I2C SDA, I2C SCL, ADS1115 external analog input, and ADS1115 ALERT must remain distinct. I2C isolation is anchored on ADS1115-side pins so it is invariant to STM32 I2C pin selection.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-C02-001",
+          "check": "CONNECTED_TO_GROUND",
+          "desc": "Common ground net must carry Ground electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-C03-001",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "3.3V digital rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-C03-002",
+          "check": "CONNECTED_TO_POWER",
+          "desc": "VIN_5V input rail must carry Power electrical attribute.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-S02-001",
+          "check": "PIN_NOT_FLOATING",
+          "desc": "ADS1115 external analog input AIN0 should be exposed as the measured analog input.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-ANY-001",
+          "check": "ANY_OF",
+          "desc": "ADS1115 ADDR must select a valid I2C address: GND, VDD, SDA, or SCL.",
+          "message": "ANY_OF failed: Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value; Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1115 external analog input AIN0 must not be shorted to digital I2C or ALERT nets.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1115 reference-monitor input AIN2 must not be shorted to digital I2C or ALERT nets.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to power. Anchored on ADS1115 SDA so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to power. Anchored on ADS1115 SCL so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-T01-001",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "3.3V digital domain must have decoupling capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-T01-002",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "VIN_5V input rail must have bypass capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        },
+        {
+          "id": "T2-10-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 precision output should have stabilization capacitor to ground.",
+          "message": "Assertion runtime error: cannot access local variable 're' where it is not associated with a value"
+        }
+      ]
+    },
+    {
+      "run_index": 2,
+      "run_id": 2,
+      "result_file": "T2-10_run2.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5,
+      "violated_assertion_count": 10,
+      "violated_assertion_names": [
+        "T2-10-C01-002",
+        "T2-10-C01-005",
+        "T2-10-I02-001",
+        "T2-10-ANY-001",
+        "T2-10-I03-002",
+        "T2-10-T06-001",
+        "T2-10-T06-002",
+        "T2-10-T01-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers STM32F103 and ADS1115.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VBAT', 'U2.VDDA', 'U3.VDD']."
+        },
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pin(s) not found: ['U3.AIN2']."
+        },
+        {
+          "id": "T2-10-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V input, 3.3V digital rail, GND, REF5050 output, I2C SDA, I2C SCL, ADS1115 external analog input, and ADS1115 ALERT must remain distinct. I2C isolation is anchored on ADS1115-side pins so it is invariant to STM32 I2C pin selection.",
+          "message": "Isolation violated: 'U4.VOUT' and 'U3.AIN0' share net(s) ['ADC_REFERENCE']."
+        },
+        {
+          "id": "T2-10-ANY-001",
+          "check": "ANY_OF",
+          "desc": "ADS1115 ADDR must select a valid I2C address: GND, VDD, SDA, or SCL.",
+          "message": "ANY_OF failed: Pin 'U3.ADDR' is not connected to a ground net.; Pin 'U3.ADDR' is not connected to a power net.; Pins are not on the same net: ['U3.ADDR', 'U3.SDA']."
+        },
+        {
+          "id": "T2-10-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1115 reference-monitor input AIN2 must not be shorted to digital I2C or ALERT nets.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-10-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to power. Anchored on ADS1115 SDA so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3.SDA'."
+        },
+        {
+          "id": "T2-10-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to power. Anchored on ADS1115 SCL so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3.SCL'."
+        },
+        {
+          "id": "T2-10-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 precision output should have stabilization capacitor to ground.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U4.VOUT'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for Y1.2",
+          "message": "Pin 'Y1.2' is connected to multiple nets: [GND, U2_OSC_OUT]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for Y2.2",
+          "message": "Pin 'Y2.2' is connected to multiple nets: [GND, OSC32_OUT]"
+        }
+      ]
+    },
+    {
+      "run_index": 3,
+      "run_id": 3,
+      "result_file": "T2-10_run3.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5555555555555556,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T2-10-C01-002",
+        "T2-10-C01-005",
+        "T2-10-I02-001",
+        "T2-10-I03-001",
+        "T2-10-I03-002",
+        "T2-10-T06-001",
+        "T2-10-T06-002",
+        "T2-10-T01-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers STM32F103 and ADS1115.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VBAT', 'U2.VDDA', 'U3.VDD']."
+        },
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pins are not on the same net: ['U4.VOUT', 'U3.AIN2']."
+        },
+        {
+          "id": "T2-10-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V input, 3.3V digital rail, GND, REF5050 output, I2C SDA, I2C SCL, ADS1115 external analog input, and ADS1115 ALERT must remain distinct. I2C isolation is anchored on ADS1115-side pins so it is invariant to STM32 I2C pin selection.",
+          "message": "Pin(s) not found: ['U3.ALERT']."
+        },
+        {
+          "id": "T2-10-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1115 external analog input AIN0 must not be shorted to digital I2C or ALERT nets.",
+          "message": "Pin(s) not found: ['U3.ALERT']."
+        },
+        {
+          "id": "T2-10-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1115 reference-monitor input AIN2 must not be shorted to digital I2C or ALERT nets.",
+          "message": "Pin(s) not found: ['U3.ALERT']."
+        },
+        {
+          "id": "T2-10-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to power. Anchored on ADS1115 SDA so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3.SDA'."
+        },
+        {
+          "id": "T2-10-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to power. Anchored on ADS1115 SCL so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3.SCL'."
+        },
+        {
+          "id": "T2-10-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 precision output should have stabilization capacitor to ground.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U4.VOUT'."
+        }
+      ]
+    },
+    {
+      "run_index": 4,
+      "run_id": 4,
+      "result_file": "T2-10_run4.json",
+      "pass": false,
+      "assertion_pass_rate": 0.6363636363636364,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T2-10-C01-005",
+        "T2-10-I02-001",
+        "T2-10-T06-001",
+        "T2-10-T06-002",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2",
+        "AUTO-PIN_SINGLE_NET-3",
+        "AUTO-PIN_SINGLE_NET-4"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pins are not on the same net: ['U4.VOUT', 'U3.AIN2']."
+        },
+        {
+          "id": "T2-10-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V input, 3.3V digital rail, GND, REF5050 output, I2C SDA, I2C SCL, ADS1115 external analog input, and ADS1115 ALERT must remain distinct. I2C isolation is anchored on ADS1115-side pins so it is invariant to STM32 I2C pin selection.",
+          "message": "Isolation violated: 'U1.VOUT' and 'U4.VOUT' share net(s) ['VCC_3V3']."
+        },
+        {
+          "id": "T2-10-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to power. Anchored on ADS1115 SDA so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3.SDA'."
+        },
+        {
+          "id": "T2-10-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to power. Anchored on ADS1115 SCL so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3.SCL'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C12.1",
+          "message": "Pin 'C12.1' is connected to multiple nets: [U2_NRST_NODE, U2_OSC32_IN]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R1.2",
+          "message": "Pin 'R1.2' is connected to multiple nets: [GND, U2_NRST_NODE]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-3",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R3.1",
+          "message": "Pin 'R3.1' is connected to multiple nets: [U2_BOOT1_NODE, VCC_3V3]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-4",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for U4.VOUT",
+          "message": "Pin 'U4.VOUT' is connected to multiple nets: [U3_AIN0_IN, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 5,
+      "run_id": 5,
+      "result_file": "T2-10_run5.json",
+      "pass": false,
+      "assertion_pass_rate": 0.5789473684210527,
+      "violated_assertion_count": 8,
+      "violated_assertion_names": [
+        "T2-10-C01-001",
+        "T2-10-C01-002",
+        "T2-10-C01-005",
+        "T2-10-I03-002",
+        "T2-10-T06-001",
+        "T2-10-T06-002",
+        "T2-10-T01-003",
+        "AUTO-PIN_SINGLE_NET-1"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, STM32 grounds, ADS1115 ground, and REF5050 ground share one common GND.",
+          "message": "Pin(s) not found: ['U4.GND']."
+        },
+        {
+          "id": "T2-10-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers STM32F103 and ADS1115.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VBAT', 'U2.VDDA', 'U3.VDD']."
+        },
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pin(s) not found: ['U3.AIN2']."
+        },
+        {
+          "id": "T2-10-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1115 reference-monitor input AIN2 must not be shorted to digital I2C or ALERT nets.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-10-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to power. Anchored on ADS1115 SDA so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3.SDA'."
+        },
+        {
+          "id": "T2-10-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to power. Anchored on ADS1115 SCL so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3.SCL'."
+        },
+        {
+          "id": "T2-10-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 precision output should have stabilization capacitor to ground.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U4.VOUT'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R1.2",
+          "message": "Pin 'R1.2' is connected to multiple nets: [GND, U2_NRST]"
+        }
+      ]
+    },
+    {
+      "run_index": 6,
+      "run_id": 6,
+      "result_file": "T2-10_run6.json",
+      "pass": false,
+      "assertion_pass_rate": 0.4,
+      "violated_assertion_count": 12,
+      "violated_assertion_names": [
+        "T2-10-C01-001",
+        "T2-10-C01-002",
+        "T2-10-C01-003",
+        "T2-10-C01-005",
+        "T2-10-I02-001",
+        "T2-10-I03-001",
+        "T2-10-I03-002",
+        "T2-10-T06-001",
+        "T2-10-T06-002",
+        "T2-10-T01-003",
+        "AUTO-PIN_SINGLE_NET-1",
+        "AUTO-PIN_SINGLE_NET-2"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-001",
+          "check": "SAME_NET",
+          "desc": "Common ground: LDO ground, STM32 grounds, ADS1115 ground, and REF5050 ground share one common GND.",
+          "message": "Pin(s) not found: ['U4.GND']."
+        },
+        {
+          "id": "T2-10-C01-002",
+          "check": "SAME_NET",
+          "desc": "3.3V digital rail: AMS1117 output powers STM32F103 and ADS1115.",
+          "message": "Pins are not on the same net: ['U1.VOUT', 'U2.VDD_1', 'U2.VDD_2', 'U2.VDD_3', 'U2.VBAT', 'U2.VDDA', 'U3.VDD']."
+        },
+        {
+          "id": "T2-10-C01-003",
+          "check": "SAME_NET",
+          "desc": "REF5050 input is powered from VIN_5V.",
+          "message": "Pin(s) not found: ['U4.VIN']."
+        },
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pin(s) not found: ['U3.AIN2']."
+        },
+        {
+          "id": "T2-10-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V input, 3.3V digital rail, GND, REF5050 output, I2C SDA, I2C SCL, ADS1115 external analog input, and ADS1115 ALERT must remain distinct. I2C isolation is anchored on ADS1115-side pins so it is invariant to STM32 I2C pin selection.",
+          "message": "Pin(s) not found: ['U3.ALERT']."
+        },
+        {
+          "id": "T2-10-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1115 external analog input AIN0 must not be shorted to digital I2C or ALERT nets.",
+          "message": "Pin(s) not found: ['U3.ALERT']."
+        },
+        {
+          "id": "T2-10-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1115 reference-monitor input AIN2 must not be shorted to digital I2C or ALERT nets.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-10-T06-001",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SDA requires pull-up resistor to power. Anchored on ADS1115 SDA so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3.SDA'."
+        },
+        {
+          "id": "T2-10-T06-002",
+          "check": "HAS_PULLUP_TO_POWER",
+          "desc": "I2C SCL requires pull-up resistor to power. Anchored on ADS1115 SCL so the assertion is invariant to STM32 I2C pin selection.",
+          "message": "No pull-up resistor to power found for pin 'U3.SCL'."
+        },
+        {
+          "id": "T2-10-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 precision output should have stabilization capacitor to ground.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U4.VOUT'."
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-1",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for C8.1",
+          "message": "Pin 'C8.1' is connected to multiple nets: [VCC_3V3, VCC_5V]"
+        },
+        {
+          "id": "AUTO-PIN_SINGLE_NET-2",
+          "check": "PIN_SINGLE_NET",
+          "desc": "Auto PIN_SINGLE_NET check for R1.1",
+          "message": "Pin 'R1.1' is connected to multiple nets: [U2_BOOT0, VCC_3V3]"
+        }
+      ]
+    },
+    {
+      "run_index": 7,
+      "run_id": 7,
+      "result_file": "T2-10_run7.json",
+      "pass": false,
+      "assertion_pass_rate": 0.7222222222222222,
+      "violated_assertion_count": 5,
+      "violated_assertion_names": [
+        "T2-10-C01-005",
+        "T2-10-I02-001",
+        "T2-10-I03-001",
+        "T2-10-I03-002",
+        "T2-10-T01-003"
+      ],
+      "failed_assertions": [
+        {
+          "id": "T2-10-C01-005",
+          "check": "SAME_NET",
+          "desc": "Reference monitoring path: REF5050 output is monitored by ADS1115 as a precision reference/calibration voltage.",
+          "message": "Pin(s) not found: ['U3.AIN2']."
+        },
+        {
+          "id": "T2-10-I02-001",
+          "check": "NET_GROUP_ISOLATION",
+          "desc": "Critical node isolation: VIN_5V input, 3.3V digital rail, GND, REF5050 output, I2C SDA, I2C SCL, ADS1115 external analog input, and ADS1115 ALERT must remain distinct. I2C isolation is anchored on ADS1115-side pins so it is invariant to STM32 I2C pin selection.",
+          "message": "Pin(s) not found: ['U3.ALERT']."
+        },
+        {
+          "id": "T2-10-I03-001",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1115 external analog input AIN0 must not be shorted to digital I2C or ALERT nets.",
+          "message": "Pin(s) not found: ['U3.ALERT']."
+        },
+        {
+          "id": "T2-10-I03-002",
+          "check": "PIN_NOT_ON_NET_WITH",
+          "desc": "ADS1115 reference-monitor input AIN2 must not be shorted to digital I2C or ALERT nets.",
+          "message": "Pin not found."
+        },
+        {
+          "id": "T2-10-T01-003",
+          "check": "HAS_CAP_TO_GROUND",
+          "desc": "REF5050 precision output should have stabilization capacitor to ground.",
+          "message": "No capacitor-to-ground path found on net(s) of pin 'U4.VOUT'."
+        }
+      ]
+    }
+  ]
+}

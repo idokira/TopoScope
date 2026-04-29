@@ -1,0 +1,322 @@
+{
+  "meta": {
+    "design_id": "T2-5",
+    "tier": 2,
+    "type": "COM",
+    "run_id": 4
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "D1",
+        "part_number": "DIODE_TVS"
+      },
+      {
+        "refdes": "D2",
+        "part_number": "DIODE_TVS"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_4K7"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_4K7"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_120R"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R7",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "GD32F103"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "SP3485"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "W25Q128JV"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz"
+      }
+    ],
+    "nets": [
+      {
+        "name": "GND",
+        "pins": [
+          "C1.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "D1.K",
+          "D2.K",
+          "R2.2",
+          "R3.2",
+          "R4.2",
+          "U1.GND",
+          "U2.VSSA",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U3.GND",
+          "U4.GND"
+        ]
+      },
+      {
+        "name": "I2C_SCL",
+        "pins": [
+          "R3.2",
+          "U2.PB6"
+        ]
+      },
+      {
+        "name": "I2C_SDA",
+        "pins": [
+          "R4.2",
+          "U2.PB7"
+        ]
+      },
+      {
+        "name": "MCU_TX_TO_RS485",
+        "pins": [
+          "U2.PA2",
+          "U3.DI"
+        ]
+      },
+      {
+        "name": "RS485_A",
+        "pins": [
+          "D1.A",
+          "R5.1",
+          "U3.A"
+        ]
+      },
+      {
+        "name": "RS485_B",
+        "pins": [
+          "D2.A",
+          "R5.2",
+          "U3.B"
+        ]
+      },
+      {
+        "name": "RS485_DIRECTION_CONTROL",
+        "pins": [
+          "U2.PA3",
+          "U3.DE",
+          "U3.RE"
+        ]
+      },
+      {
+        "name": "RS485_RO_TO_MCU_RX",
+        "pins": [
+          "U2.PA10",
+          "U3.RO"
+        ]
+      },
+      {
+        "name": "SPI_CS_FLASH",
+        "pins": [
+          "U2.PA4",
+          "U4.CS"
+        ]
+      },
+      {
+        "name": "SPI_MISO",
+        "pins": [
+          "U2.PA6",
+          "U4.DO"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U2.PA7",
+          "U4.DI"
+        ]
+      },
+      {
+        "name": "SPI_SCK",
+        "pins": [
+          "U2.PA5",
+          "U4.CLK"
+        ]
+      },
+      {
+        "name": "U2_BOOT0",
+        "pins": [
+          "R2.1",
+          "U2.BOOT0"
+        ]
+      },
+      {
+        "name": "U2_NRST",
+        "pins": [
+          "C8.1",
+          "R1.2",
+          "U2.NRST"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "C9.1",
+          "U2.OSCIN",
+          "Y1.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "C10.1",
+          "U2.OSCOUT",
+          "Y1.2"
+        ]
+      },
+      {
+        "name": "U2_VDDA",
+        "pins": [
+          "C6.1",
+          "C7.1",
+          "U2.VDDA"
+        ]
+      },
+      {
+        "name": "U4_HOLD",
+        "pins": [
+          "R7.1",
+          "U4.HOLD"
+        ]
+      },
+      {
+        "name": "U4_WP",
+        "pins": [
+          "R6.1",
+          "U4.WP"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "C11.1",
+          "C12.1",
+          "C2.1",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "R1.1",
+          "R3.1",
+          "R4.1",
+          "R6.2",
+          "R7.2",
+          "U1.VOUT",
+          "U2.VBAT",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U3.VCC",
+          "U4.VCC"
+        ]
+      },
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "C1.1",
+          "U1.VIN"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {
+    "erc_correction_rounds": 4,
+    "per_component_retries": {
+      "U1": 0,
+      "U2": 1,
+      "U3": 1,
+      "U4": 2
+    },
+    "failed_components": [],
+    "phase0_interface_failures": {},
+    "existing_passive_components_count": 22
+  }
+}

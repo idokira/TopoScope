@@ -1,0 +1,285 @@
+{
+  "meta": {
+    "design_id": "T2-6",
+    "tier": 2,
+    "type": "PM",
+    "run_id": 7
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "TPS54331"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "ME6211"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "LM393"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF_25V"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_0.1uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_47uF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "L1",
+        "part_number": "IND_6.8uH"
+      },
+      {
+        "refdes": "D1",
+        "part_number": "DIODE_SS34"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_49.9K_1%"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_8.06K_1%"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R5",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "R6",
+        "part_number": "RES_33K"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_1nF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R7",
+        "part_number": "RES_5K"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VIN_12V",
+        "pins": [
+          "U1.VIN",
+          "U1.EN",
+          "C1.1",
+          "C4.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.GND",
+          "U2.GND",
+          "U3.VSS",
+          "U4.GND",
+          "C1.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "C10.2",
+          "D1.A",
+          "R2.2",
+          "C11.2",
+          "C12.2",
+          "R7.2"
+        ]
+      },
+      {
+        "name": "U1_SW",
+        "pins": [
+          "U1.PH",
+          "L1.1",
+          "D1.K"
+        ]
+      },
+      {
+        "name": "VCC_5V",
+        "pins": [
+          "U1.BOOT",
+          "L1.2",
+          "C3.1",
+          "U2.VIN",
+          "C5.1",
+          "U4.VCC",
+          "C10.1",
+          "R3.1",
+          "R4.1"
+        ]
+      },
+      {
+        "name": "U1_FB",
+        "pins": [
+          "U1.VSENSE",
+          "R1.2",
+          "R2.1"
+        ]
+      },
+      {
+        "name": "U1_FB_DIV",
+        "pins": [
+          "R1.1",
+          "C11.1"
+        ]
+      },
+      {
+        "name": "U1_COMP",
+        "pins": [
+          "U1.COMP",
+          "R7.1",
+          "C12.1"
+        ]
+      },
+      {
+        "name": "U1_COMP_RC",
+        "pins": [
+          "R7.2",
+          "C11.1"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U2.VOUT",
+          "C6.1",
+          "U3.VIN",
+          "U3.CE",
+          "C8.1",
+          "R5.1",
+          "R6.1"
+        ]
+      },
+      {
+        "name": "VCC_1V8",
+        "pins": [
+          "U3.VOUT",
+          "C9.1"
+        ]
+      },
+      {
+        "name": "U4_COMP1_OUT",
+        "pins": [
+          "U4.1OUT",
+          "R3.2"
+        ]
+      },
+      {
+        "name": "U4_COMP2_OUT",
+        "pins": [
+          "U4.2OUT",
+          "R4.2"
+        ]
+      },
+      {
+        "name": "U4_COMP1_INP",
+        "pins": [
+          "U4.1IN_P",
+          "R6.2"
+        ]
+      },
+      {
+        "name": "U4_COMP1_INN",
+        "pins": [
+          "U4.1IN_N",
+          "R5.2"
+        ]
+      },
+      {
+        "name": "U4_COMP2_INP",
+        "pins": [
+          "U4.2IN_P"
+        ]
+      },
+      {
+        "name": "U4_COMP2_INN",
+        "pins": [
+          "U4.2IN_N"
+        ]
+      },
+      {
+        "name": "POWER_GOOD",
+        "pins": [
+          "U4.1OUT",
+          "R3.2"
+        ]
+      },
+      {
+        "name": "C2_NODE",
+        "pins": [
+          "U1.BOOT",
+          "C2.1"
+        ]
+      },
+      {
+        "name": "BOOT_GND",
+        "pins": [
+          "U1.PH",
+          "C2.2"
+        ]
+      },
+      {
+        "name": "U1_SS",
+        "pins": [
+          "U1.SS"
+        ]
+      }
+    ]
+  },
+  "process_metrics": {}
+}

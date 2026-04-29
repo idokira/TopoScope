@@ -1,0 +1,3715 @@
+{
+  "meta": {
+    "design_id": "T2-9",
+    "tier": 2,
+    "type": "LED",
+    "provider": "openai",
+    "model": "gpt-5.4",
+    "method": "erc_only",
+    "run_id": 5,
+    "wall_time_seconds": 43.978
+  },
+  "compile_result": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MAX7219"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "74HC595"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "Y2",
+        "part_number": "CRYSTAL_32.768kHz"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "C13",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C14",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "C15",
+        "part_number": "CAP_100nF"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "U1.VIN",
+          "U3.VIN",
+          "U4.VCC",
+          "C1.1",
+          "C13.1",
+          "C14.1",
+          "R4.1",
+          "C15.1"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U1.VOUT",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U2.VBAT",
+          "U2.VDDA",
+          "C2.1",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C6.1",
+          "C7.1",
+          "R1.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.GND",
+          "U2.VSSA",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U3.GND_1",
+          "U3.GND_2",
+          "U4.GND",
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "C13.2",
+          "C14.2",
+          "C15.2",
+          "R2.2",
+          "R3.2"
+        ]
+      },
+      {
+        "name": "U2_NRST",
+        "pins": [
+          "U2.NRST",
+          "R1.2",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "U2.OSC_IN",
+          "Y1.1",
+          "C9.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "U2.OSC_OUT",
+          "Y1.2",
+          "C10.1"
+        ]
+      },
+      {
+        "name": "U2_OSC32_IN",
+        "pins": [
+          "U2.PC14",
+          "Y2.1",
+          "C11.1"
+        ]
+      },
+      {
+        "name": "U2_OSC32_OUT",
+        "pins": [
+          "U2.PC15",
+          "Y2.2",
+          "C12.1"
+        ]
+      },
+      {
+        "name": "U2_BOOT0",
+        "pins": [
+          "U2.BOOT0",
+          "R2.1"
+        ]
+      },
+      {
+        "name": "U2_BOOT1",
+        "pins": [
+          "U2.PB2",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U2.PA7",
+          "U3.DIN"
+        ]
+      },
+      {
+        "name": "SPI_CLK",
+        "pins": [
+          "U2.PA5",
+          "U3.CLK",
+          "U4.SRCLK"
+        ]
+      },
+      {
+        "name": "SPI_CS_U3",
+        "pins": [
+          "U2.PA4",
+          "U3.LOAD"
+        ]
+      },
+      {
+        "name": "U3_DOUT",
+        "pins": [
+          "U3.DOUT",
+          "U4.SER"
+        ]
+      },
+      {
+        "name": "U4_RCLK",
+        "pins": [
+          "U2.PB0",
+          "U4.RCLK"
+        ]
+      },
+      {
+        "name": "U4_SRCLR",
+        "pins": [
+          "U4.SRCLR"
+        ]
+      },
+      {
+        "name": "U4_OE",
+        "pins": [
+          "U4.OE"
+        ]
+      },
+      {
+        "name": "U3_ISET",
+        "pins": [
+          "U3.ISET",
+          "R4.2"
+        ]
+      },
+      {
+        "name": "U3_DIG_0",
+        "pins": [
+          "U3.DIG_0"
+        ]
+      },
+      {
+        "name": "U3_DIG_1",
+        "pins": [
+          "U3.DIG_1"
+        ]
+      },
+      {
+        "name": "U3_DIG_2",
+        "pins": [
+          "U3.DIG_2"
+        ]
+      },
+      {
+        "name": "U3_DIG_3",
+        "pins": [
+          "U3.DIG_3"
+        ]
+      },
+      {
+        "name": "U3_DIG_4",
+        "pins": [
+          "U3.DIG_4"
+        ]
+      },
+      {
+        "name": "U3_DIG_5",
+        "pins": [
+          "U3.DIG_5"
+        ]
+      },
+      {
+        "name": "U3_DIG_6",
+        "pins": [
+          "U3.DIG_6"
+        ]
+      },
+      {
+        "name": "U3_DIG_7",
+        "pins": [
+          "U3.DIG_7"
+        ]
+      },
+      {
+        "name": "U3_SEG_A",
+        "pins": [
+          "U3.SEG_A"
+        ]
+      },
+      {
+        "name": "U3_SEG_B",
+        "pins": [
+          "U3.SEG_B"
+        ]
+      },
+      {
+        "name": "U3_SEG_C",
+        "pins": [
+          "U3.SEG_C"
+        ]
+      },
+      {
+        "name": "U3_SEG_D",
+        "pins": [
+          "U3.SEG_D"
+        ]
+      },
+      {
+        "name": "U3_SEG_E",
+        "pins": [
+          "U3.SEG_E"
+        ]
+      },
+      {
+        "name": "U3_SEG_F",
+        "pins": [
+          "U3.SEG_F"
+        ]
+      },
+      {
+        "name": "U3_SEG_G",
+        "pins": [
+          "U3.SEG_G"
+        ]
+      },
+      {
+        "name": "U3_SEG_DP",
+        "pins": [
+          "U3.SEG_DP"
+        ]
+      },
+      {
+        "name": "U4_QA",
+        "pins": [
+          "U4.QA"
+        ]
+      },
+      {
+        "name": "U4_QB",
+        "pins": [
+          "U4.QB"
+        ]
+      },
+      {
+        "name": "U4_QC",
+        "pins": [
+          "U4.QC"
+        ]
+      },
+      {
+        "name": "U4_QD",
+        "pins": [
+          "U4.QD"
+        ]
+      },
+      {
+        "name": "U4_QE",
+        "pins": [
+          "U4.QE"
+        ]
+      },
+      {
+        "name": "U4_QF",
+        "pins": [
+          "U4.QF"
+        ]
+      },
+      {
+        "name": "U4_QG",
+        "pins": [
+          "U4.QG"
+        ]
+      },
+      {
+        "name": "U4_QH",
+        "pins": [
+          "U4.QH"
+        ]
+      },
+      {
+        "name": "U4_QH_PRIME",
+        "pins": [
+          "U4.QH_PRIME"
+        ]
+      }
+    ]
+  },
+  "connection_set": {
+    "components": [
+      {
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3"
+      },
+      {
+        "refdes": "U2",
+        "part_number": "STM32F103"
+      },
+      {
+        "refdes": "U3",
+        "part_number": "MAX7219"
+      },
+      {
+        "refdes": "U4",
+        "part_number": "74HC595"
+      },
+      {
+        "refdes": "C1",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C2",
+        "part_number": "CAP_22uF"
+      },
+      {
+        "refdes": "C3",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C4",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C5",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C6",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "C7",
+        "part_number": "CAP_1uF"
+      },
+      {
+        "refdes": "R1",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "C8",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz"
+      },
+      {
+        "refdes": "C9",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "C10",
+        "part_number": "CAP_20pF"
+      },
+      {
+        "refdes": "Y2",
+        "part_number": "CRYSTAL_32.768kHz"
+      },
+      {
+        "refdes": "C11",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "C12",
+        "part_number": "CAP_10pF"
+      },
+      {
+        "refdes": "R2",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "R3",
+        "part_number": "RES_100K"
+      },
+      {
+        "refdes": "C13",
+        "part_number": "CAP_10uF"
+      },
+      {
+        "refdes": "C14",
+        "part_number": "CAP_100nF"
+      },
+      {
+        "refdes": "R4",
+        "part_number": "RES_10K"
+      },
+      {
+        "refdes": "C15",
+        "part_number": "CAP_100nF"
+      }
+    ],
+    "nets": [
+      {
+        "name": "VIN_5V",
+        "pins": [
+          "U1.VIN",
+          "U3.VIN",
+          "U4.VCC",
+          "C1.1",
+          "C13.1",
+          "C14.1",
+          "R4.1",
+          "C15.1"
+        ]
+      },
+      {
+        "name": "VCC_3V3",
+        "pins": [
+          "U1.VOUT",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U2.VBAT",
+          "U2.VDDA",
+          "C2.1",
+          "C3.1",
+          "C4.1",
+          "C5.1",
+          "C6.1",
+          "C7.1",
+          "R1.1"
+        ]
+      },
+      {
+        "name": "GND",
+        "pins": [
+          "U1.GND",
+          "U2.VSSA",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U3.GND_1",
+          "U3.GND_2",
+          "U4.GND",
+          "C1.2",
+          "C2.2",
+          "C3.2",
+          "C4.2",
+          "C5.2",
+          "C6.2",
+          "C7.2",
+          "C8.2",
+          "C9.2",
+          "C10.2",
+          "C11.2",
+          "C12.2",
+          "C13.2",
+          "C14.2",
+          "C15.2",
+          "R2.2",
+          "R3.2"
+        ]
+      },
+      {
+        "name": "U2_NRST",
+        "pins": [
+          "U2.NRST",
+          "R1.2",
+          "C8.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_IN",
+        "pins": [
+          "U2.OSC_IN",
+          "Y1.1",
+          "C9.1"
+        ]
+      },
+      {
+        "name": "U2_OSC_OUT",
+        "pins": [
+          "U2.OSC_OUT",
+          "Y1.2",
+          "C10.1"
+        ]
+      },
+      {
+        "name": "U2_OSC32_IN",
+        "pins": [
+          "U2.PC14",
+          "Y2.1",
+          "C11.1"
+        ]
+      },
+      {
+        "name": "U2_OSC32_OUT",
+        "pins": [
+          "U2.PC15",
+          "Y2.2",
+          "C12.1"
+        ]
+      },
+      {
+        "name": "U2_BOOT0",
+        "pins": [
+          "U2.BOOT0",
+          "R2.1"
+        ]
+      },
+      {
+        "name": "U2_BOOT1",
+        "pins": [
+          "U2.PB2",
+          "R3.1"
+        ]
+      },
+      {
+        "name": "SPI_MOSI",
+        "pins": [
+          "U2.PA7",
+          "U3.DIN"
+        ]
+      },
+      {
+        "name": "SPI_CLK",
+        "pins": [
+          "U2.PA5",
+          "U3.CLK",
+          "U4.SRCLK"
+        ]
+      },
+      {
+        "name": "SPI_CS_U3",
+        "pins": [
+          "U2.PA4",
+          "U3.LOAD"
+        ]
+      },
+      {
+        "name": "U3_DOUT",
+        "pins": [
+          "U3.DOUT",
+          "U4.SER"
+        ]
+      },
+      {
+        "name": "U4_RCLK",
+        "pins": [
+          "U2.PB0",
+          "U4.RCLK"
+        ]
+      },
+      {
+        "name": "U4_SRCLR",
+        "pins": [
+          "U4.SRCLR"
+        ]
+      },
+      {
+        "name": "U4_OE",
+        "pins": [
+          "U4.OE"
+        ]
+      },
+      {
+        "name": "U3_ISET",
+        "pins": [
+          "U3.ISET",
+          "R4.2"
+        ]
+      },
+      {
+        "name": "U3_DIG_0",
+        "pins": [
+          "U3.DIG_0"
+        ]
+      },
+      {
+        "name": "U3_DIG_1",
+        "pins": [
+          "U3.DIG_1"
+        ]
+      },
+      {
+        "name": "U3_DIG_2",
+        "pins": [
+          "U3.DIG_2"
+        ]
+      },
+      {
+        "name": "U3_DIG_3",
+        "pins": [
+          "U3.DIG_3"
+        ]
+      },
+      {
+        "name": "U3_DIG_4",
+        "pins": [
+          "U3.DIG_4"
+        ]
+      },
+      {
+        "name": "U3_DIG_5",
+        "pins": [
+          "U3.DIG_5"
+        ]
+      },
+      {
+        "name": "U3_DIG_6",
+        "pins": [
+          "U3.DIG_6"
+        ]
+      },
+      {
+        "name": "U3_DIG_7",
+        "pins": [
+          "U3.DIG_7"
+        ]
+      },
+      {
+        "name": "U3_SEG_A",
+        "pins": [
+          "U3.SEG_A"
+        ]
+      },
+      {
+        "name": "U3_SEG_B",
+        "pins": [
+          "U3.SEG_B"
+        ]
+      },
+      {
+        "name": "U3_SEG_C",
+        "pins": [
+          "U3.SEG_C"
+        ]
+      },
+      {
+        "name": "U3_SEG_D",
+        "pins": [
+          "U3.SEG_D"
+        ]
+      },
+      {
+        "name": "U3_SEG_E",
+        "pins": [
+          "U3.SEG_E"
+        ]
+      },
+      {
+        "name": "U3_SEG_F",
+        "pins": [
+          "U3.SEG_F"
+        ]
+      },
+      {
+        "name": "U3_SEG_G",
+        "pins": [
+          "U3.SEG_G"
+        ]
+      },
+      {
+        "name": "U3_SEG_DP",
+        "pins": [
+          "U3.SEG_DP"
+        ]
+      },
+      {
+        "name": "U4_QA",
+        "pins": [
+          "U4.QA"
+        ]
+      },
+      {
+        "name": "U4_QB",
+        "pins": [
+          "U4.QB"
+        ]
+      },
+      {
+        "name": "U4_QC",
+        "pins": [
+          "U4.QC"
+        ]
+      },
+      {
+        "name": "U4_QD",
+        "pins": [
+          "U4.QD"
+        ]
+      },
+      {
+        "name": "U4_QE",
+        "pins": [
+          "U4.QE"
+        ]
+      },
+      {
+        "name": "U4_QF",
+        "pins": [
+          "U4.QF"
+        ]
+      },
+      {
+        "name": "U4_QG",
+        "pins": [
+          "U4.QG"
+        ]
+      },
+      {
+        "name": "U4_QH",
+        "pins": [
+          "U4.QH"
+        ]
+      },
+      {
+        "name": "U4_QH_PRIME",
+        "pins": [
+          "U4.QH_PRIME"
+        ]
+      }
+    ]
+  },
+  "graph_snapshot": {
+    "directed": false,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "type": "Module",
+        "name": "baseline_module",
+        "description": "Auto-built from connection_set",
+        "id": "baseline_module"
+      },
+      {
+        "type": "Net",
+        "name": "VIN_5V",
+        "scope": "Local",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "VIN_5V"
+      },
+      {
+        "type": "Pin",
+        "name": "VIN",
+        "pin_number": "",
+        "electrical_type": "PowerIn",
+        "description": "Auto-built from connection_set",
+        "id": "U1.VIN"
+      },
+      {
+        "type": "Component",
+        "refdes": "U1",
+        "part_number": "AMS1117-3.3",
+        "description": "Auto-built from connection_set",
+        "id": "U1"
+      },
+      {
+        "type": "Pin",
+        "name": "VIN",
+        "pin_number": "",
+        "electrical_type": "PowerIn",
+        "description": "Auto-built from connection_set",
+        "id": "U3.VIN"
+      },
+      {
+        "type": "Component",
+        "refdes": "U3",
+        "part_number": "MAX7219",
+        "description": "Auto-built from connection_set",
+        "id": "U3"
+      },
+      {
+        "type": "Pin",
+        "name": "VCC",
+        "pin_number": "",
+        "electrical_type": "PowerIn",
+        "description": "Auto-built from connection_set",
+        "id": "U4.VCC"
+      },
+      {
+        "type": "Component",
+        "refdes": "U4",
+        "part_number": "74HC595",
+        "description": "Auto-built from connection_set",
+        "id": "U4"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C1.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "C1",
+        "part_number": "CAP_10uF",
+        "description": "Auto-built from connection_set",
+        "id": "C1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C13.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "C13",
+        "part_number": "CAP_10uF",
+        "description": "Auto-built from connection_set",
+        "id": "C13"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C14.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "C14",
+        "part_number": "CAP_100nF",
+        "description": "Auto-built from connection_set",
+        "id": "C14"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "R4.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "R4",
+        "part_number": "RES_10K",
+        "description": "Auto-built from connection_set",
+        "id": "R4"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C15.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "C15",
+        "part_number": "CAP_100nF",
+        "description": "Auto-built from connection_set",
+        "id": "C15"
+      },
+      {
+        "type": "Net",
+        "name": "VCC_3V3",
+        "scope": "Local",
+        "net_type": "Power",
+        "net_class": "Power",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "VCC_3V3"
+      },
+      {
+        "type": "Pin",
+        "name": "VOUT",
+        "pin_number": "",
+        "electrical_type": "PowerIn",
+        "description": "Auto-built from connection_set",
+        "id": "U1.VOUT"
+      },
+      {
+        "type": "Pin",
+        "name": "VDD_1",
+        "pin_number": "",
+        "electrical_type": "PowerIn",
+        "description": "Auto-built from connection_set",
+        "id": "U2.VDD_1"
+      },
+      {
+        "type": "Component",
+        "refdes": "U2",
+        "part_number": "STM32F103",
+        "description": "Auto-built from connection_set",
+        "id": "U2"
+      },
+      {
+        "type": "Pin",
+        "name": "VDD_2",
+        "pin_number": "",
+        "electrical_type": "PowerIn",
+        "description": "Auto-built from connection_set",
+        "id": "U2.VDD_2"
+      },
+      {
+        "type": "Pin",
+        "name": "VDD_3",
+        "pin_number": "",
+        "electrical_type": "PowerIn",
+        "description": "Auto-built from connection_set",
+        "id": "U2.VDD_3"
+      },
+      {
+        "type": "Pin",
+        "name": "VBAT",
+        "pin_number": "",
+        "electrical_type": "PowerIn",
+        "description": "Auto-built from connection_set",
+        "id": "U2.VBAT"
+      },
+      {
+        "type": "Pin",
+        "name": "VDDA",
+        "pin_number": "",
+        "electrical_type": "PowerIn",
+        "description": "Auto-built from connection_set",
+        "id": "U2.VDDA"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C2.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "C2",
+        "part_number": "CAP_22uF",
+        "description": "Auto-built from connection_set",
+        "id": "C2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C3.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "C3",
+        "part_number": "CAP_100nF",
+        "description": "Auto-built from connection_set",
+        "id": "C3"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C4.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "C4",
+        "part_number": "CAP_100nF",
+        "description": "Auto-built from connection_set",
+        "id": "C4"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C5.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "C5",
+        "part_number": "CAP_100nF",
+        "description": "Auto-built from connection_set",
+        "id": "C5"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C6.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "C6",
+        "part_number": "CAP_100nF",
+        "description": "Auto-built from connection_set",
+        "id": "C6"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C7.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "C7",
+        "part_number": "CAP_1uF",
+        "description": "Auto-built from connection_set",
+        "id": "C7"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "R1.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "R1",
+        "part_number": "RES_10K",
+        "description": "Auto-built from connection_set",
+        "id": "R1"
+      },
+      {
+        "type": "Net",
+        "name": "GND",
+        "scope": "Local",
+        "net_type": "Ground",
+        "net_class": "Ground",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "GND"
+      },
+      {
+        "type": "Pin",
+        "name": "GND",
+        "pin_number": "",
+        "electrical_type": "Ground",
+        "description": "Auto-built from connection_set",
+        "id": "U1.GND"
+      },
+      {
+        "type": "Pin",
+        "name": "VSSA",
+        "pin_number": "",
+        "electrical_type": "Ground",
+        "description": "Auto-built from connection_set",
+        "id": "U2.VSSA"
+      },
+      {
+        "type": "Pin",
+        "name": "VSS_1",
+        "pin_number": "",
+        "electrical_type": "Ground",
+        "description": "Auto-built from connection_set",
+        "id": "U2.VSS_1"
+      },
+      {
+        "type": "Pin",
+        "name": "VSS_2",
+        "pin_number": "",
+        "electrical_type": "Ground",
+        "description": "Auto-built from connection_set",
+        "id": "U2.VSS_2"
+      },
+      {
+        "type": "Pin",
+        "name": "VSS_3",
+        "pin_number": "",
+        "electrical_type": "Ground",
+        "description": "Auto-built from connection_set",
+        "id": "U2.VSS_3"
+      },
+      {
+        "type": "Pin",
+        "name": "GND_1",
+        "pin_number": "",
+        "electrical_type": "Ground",
+        "description": "Auto-built from connection_set",
+        "id": "U3.GND_1"
+      },
+      {
+        "type": "Pin",
+        "name": "GND_2",
+        "pin_number": "",
+        "electrical_type": "Ground",
+        "description": "Auto-built from connection_set",
+        "id": "U3.GND_2"
+      },
+      {
+        "type": "Pin",
+        "name": "GND",
+        "pin_number": "",
+        "electrical_type": "Ground",
+        "description": "Auto-built from connection_set",
+        "id": "U4.GND"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C1.2"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C2.2"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C3.2"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C4.2"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C5.2"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C6.2"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C7.2"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C8.2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C8",
+        "part_number": "CAP_100nF",
+        "description": "Auto-built from connection_set",
+        "id": "C8"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C9.2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C9",
+        "part_number": "CAP_20pF",
+        "description": "Auto-built from connection_set",
+        "id": "C9"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C10.2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C10",
+        "part_number": "CAP_20pF",
+        "description": "Auto-built from connection_set",
+        "id": "C10"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C11.2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C11",
+        "part_number": "CAP_10pF",
+        "description": "Auto-built from connection_set",
+        "id": "C11"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C12.2"
+      },
+      {
+        "type": "Component",
+        "refdes": "C12",
+        "part_number": "CAP_10pF",
+        "description": "Auto-built from connection_set",
+        "id": "C12"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C13.2"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C14.2"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C15.2"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "R2.2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R2",
+        "part_number": "RES_10K",
+        "description": "Auto-built from connection_set",
+        "id": "R2"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "R3.2"
+      },
+      {
+        "type": "Component",
+        "refdes": "R3",
+        "part_number": "RES_100K",
+        "description": "Auto-built from connection_set",
+        "id": "R3"
+      },
+      {
+        "type": "Net",
+        "name": "U2_NRST",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U2_NRST"
+      },
+      {
+        "type": "Pin",
+        "name": "NRST",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U2.NRST"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "R1.2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C8.1"
+      },
+      {
+        "type": "Net",
+        "name": "U2_OSC_IN",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U2_OSC_IN"
+      },
+      {
+        "type": "Pin",
+        "name": "OSC_IN",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U2.OSC_IN"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "Y1.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "Y1",
+        "part_number": "CRYSTAL_8MHz",
+        "description": "Auto-built from connection_set",
+        "id": "Y1"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C9.1"
+      },
+      {
+        "type": "Net",
+        "name": "U2_OSC_OUT",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U2_OSC_OUT"
+      },
+      {
+        "type": "Pin",
+        "name": "OSC_OUT",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U2.OSC_OUT"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "Y1.2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C10.1"
+      },
+      {
+        "type": "Net",
+        "name": "U2_OSC32_IN",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U2_OSC32_IN"
+      },
+      {
+        "type": "Pin",
+        "name": "PC14",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U2.PC14"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "Y2.1"
+      },
+      {
+        "type": "Component",
+        "refdes": "Y2",
+        "part_number": "CRYSTAL_32.768kHz",
+        "description": "Auto-built from connection_set",
+        "id": "Y2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C11.1"
+      },
+      {
+        "type": "Net",
+        "name": "U2_OSC32_OUT",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U2_OSC32_OUT"
+      },
+      {
+        "type": "Pin",
+        "name": "PC15",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U2.PC15"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "Y2.2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "C12.1"
+      },
+      {
+        "type": "Net",
+        "name": "U2_BOOT0",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U2_BOOT0"
+      },
+      {
+        "type": "Pin",
+        "name": "BOOT0",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U2.BOOT0"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "R2.1"
+      },
+      {
+        "type": "Net",
+        "name": "U2_BOOT1",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U2_BOOT1"
+      },
+      {
+        "type": "Pin",
+        "name": "PB2",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U2.PB2"
+      },
+      {
+        "type": "Pin",
+        "name": "1",
+        "pin_number": "1",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "R3.1"
+      },
+      {
+        "type": "Net",
+        "name": "SPI_MOSI",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "SPI_MOSI"
+      },
+      {
+        "type": "Pin",
+        "name": "PA7",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U2.PA7"
+      },
+      {
+        "type": "Pin",
+        "name": "DIN",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.DIN"
+      },
+      {
+        "type": "Net",
+        "name": "SPI_CLK",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "SPI_CLK"
+      },
+      {
+        "type": "Pin",
+        "name": "PA5",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U2.PA5"
+      },
+      {
+        "type": "Pin",
+        "name": "CLK",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.CLK"
+      },
+      {
+        "type": "Pin",
+        "name": "SRCLK",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.SRCLK"
+      },
+      {
+        "type": "Net",
+        "name": "SPI_CS_U3",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "SPI_CS_U3"
+      },
+      {
+        "type": "Pin",
+        "name": "PA4",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U2.PA4"
+      },
+      {
+        "type": "Pin",
+        "name": "LOAD",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.LOAD"
+      },
+      {
+        "type": "Net",
+        "name": "U3_DOUT",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_DOUT"
+      },
+      {
+        "type": "Pin",
+        "name": "DOUT",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.DOUT"
+      },
+      {
+        "type": "Pin",
+        "name": "SER",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.SER"
+      },
+      {
+        "type": "Net",
+        "name": "U4_RCLK",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_RCLK"
+      },
+      {
+        "type": "Pin",
+        "name": "PB0",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U2.PB0"
+      },
+      {
+        "type": "Pin",
+        "name": "RCLK",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.RCLK"
+      },
+      {
+        "type": "Net",
+        "name": "U4_SRCLR",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_SRCLR"
+      },
+      {
+        "type": "Pin",
+        "name": "SRCLR",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.SRCLR"
+      },
+      {
+        "type": "Net",
+        "name": "U4_OE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_OE"
+      },
+      {
+        "type": "Pin",
+        "name": "OE",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.OE"
+      },
+      {
+        "type": "Net",
+        "name": "U3_ISET",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_ISET"
+      },
+      {
+        "type": "Pin",
+        "name": "ISET",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.ISET"
+      },
+      {
+        "type": "Pin",
+        "name": "2",
+        "pin_number": "2",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "R4.2"
+      },
+      {
+        "type": "Net",
+        "name": "U3_DIG_0",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_DIG_0"
+      },
+      {
+        "type": "Pin",
+        "name": "DIG_0",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.DIG_0"
+      },
+      {
+        "type": "Net",
+        "name": "U3_DIG_1",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_DIG_1"
+      },
+      {
+        "type": "Pin",
+        "name": "DIG_1",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.DIG_1"
+      },
+      {
+        "type": "Net",
+        "name": "U3_DIG_2",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_DIG_2"
+      },
+      {
+        "type": "Pin",
+        "name": "DIG_2",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.DIG_2"
+      },
+      {
+        "type": "Net",
+        "name": "U3_DIG_3",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_DIG_3"
+      },
+      {
+        "type": "Pin",
+        "name": "DIG_3",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.DIG_3"
+      },
+      {
+        "type": "Net",
+        "name": "U3_DIG_4",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_DIG_4"
+      },
+      {
+        "type": "Pin",
+        "name": "DIG_4",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.DIG_4"
+      },
+      {
+        "type": "Net",
+        "name": "U3_DIG_5",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_DIG_5"
+      },
+      {
+        "type": "Pin",
+        "name": "DIG_5",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.DIG_5"
+      },
+      {
+        "type": "Net",
+        "name": "U3_DIG_6",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_DIG_6"
+      },
+      {
+        "type": "Pin",
+        "name": "DIG_6",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.DIG_6"
+      },
+      {
+        "type": "Net",
+        "name": "U3_DIG_7",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_DIG_7"
+      },
+      {
+        "type": "Pin",
+        "name": "DIG_7",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.DIG_7"
+      },
+      {
+        "type": "Net",
+        "name": "U3_SEG_A",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_SEG_A"
+      },
+      {
+        "type": "Pin",
+        "name": "SEG_A",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.SEG_A"
+      },
+      {
+        "type": "Net",
+        "name": "U3_SEG_B",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_SEG_B"
+      },
+      {
+        "type": "Pin",
+        "name": "SEG_B",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.SEG_B"
+      },
+      {
+        "type": "Net",
+        "name": "U3_SEG_C",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_SEG_C"
+      },
+      {
+        "type": "Pin",
+        "name": "SEG_C",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.SEG_C"
+      },
+      {
+        "type": "Net",
+        "name": "U3_SEG_D",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_SEG_D"
+      },
+      {
+        "type": "Pin",
+        "name": "SEG_D",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.SEG_D"
+      },
+      {
+        "type": "Net",
+        "name": "U3_SEG_E",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_SEG_E"
+      },
+      {
+        "type": "Pin",
+        "name": "SEG_E",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.SEG_E"
+      },
+      {
+        "type": "Net",
+        "name": "U3_SEG_F",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_SEG_F"
+      },
+      {
+        "type": "Pin",
+        "name": "SEG_F",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.SEG_F"
+      },
+      {
+        "type": "Net",
+        "name": "U3_SEG_G",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_SEG_G"
+      },
+      {
+        "type": "Pin",
+        "name": "SEG_G",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.SEG_G"
+      },
+      {
+        "type": "Net",
+        "name": "U3_SEG_DP",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U3_SEG_DP"
+      },
+      {
+        "type": "Pin",
+        "name": "SEG_DP",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U3.SEG_DP"
+      },
+      {
+        "type": "Net",
+        "name": "U4_QA",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_QA"
+      },
+      {
+        "type": "Pin",
+        "name": "QA",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.QA"
+      },
+      {
+        "type": "Net",
+        "name": "U4_QB",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_QB"
+      },
+      {
+        "type": "Pin",
+        "name": "QB",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.QB"
+      },
+      {
+        "type": "Net",
+        "name": "U4_QC",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_QC"
+      },
+      {
+        "type": "Pin",
+        "name": "QC",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.QC"
+      },
+      {
+        "type": "Net",
+        "name": "U4_QD",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_QD"
+      },
+      {
+        "type": "Pin",
+        "name": "QD",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.QD"
+      },
+      {
+        "type": "Net",
+        "name": "U4_QE",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_QE"
+      },
+      {
+        "type": "Pin",
+        "name": "QE",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.QE"
+      },
+      {
+        "type": "Net",
+        "name": "U4_QF",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_QF"
+      },
+      {
+        "type": "Pin",
+        "name": "QF",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.QF"
+      },
+      {
+        "type": "Net",
+        "name": "U4_QG",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_QG"
+      },
+      {
+        "type": "Pin",
+        "name": "QG",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.QG"
+      },
+      {
+        "type": "Net",
+        "name": "U4_QH",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_QH"
+      },
+      {
+        "type": "Pin",
+        "name": "QH",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.QH"
+      },
+      {
+        "type": "Net",
+        "name": "U4_QH_PRIME",
+        "scope": "Local",
+        "net_type": "Signal",
+        "net_class": "Signal",
+        "semantic_role": "Auto-built from connection_set",
+        "source_pin": "",
+        "id": "U4_QH_PRIME"
+      },
+      {
+        "type": "Pin",
+        "name": "QH_PRIME",
+        "pin_number": "",
+        "electrical_type": "Passive",
+        "description": "Auto-built from connection_set",
+        "id": "U4.QH_PRIME"
+      }
+    ],
+    "links": [
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "VIN_5V"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C13"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C14"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "R4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C15"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "VCC_3V3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "R1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "GND"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C8"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C9"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C10"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C11"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "C12"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "R2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "R3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U2_NRST"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U2_OSC_IN"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "Y1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U2_OSC_OUT"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U2_OSC32_IN"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "Y2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U2_OSC32_OUT"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U2_BOOT0"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U2_BOOT1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "SPI_MOSI"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "SPI_CLK"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "SPI_CS_U3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_DOUT"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_RCLK"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_SRCLR"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_OE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_ISET"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_DIG_0"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_DIG_1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_DIG_2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_DIG_3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_DIG_4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_DIG_5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_DIG_6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_DIG_7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_SEG_A"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_SEG_B"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_SEG_C"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_SEG_D"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_SEG_E"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_SEG_F"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_SEG_G"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U3_SEG_DP"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_QA"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_QB"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_QC"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_QD"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_QE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_QF"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_QG"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_QH"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "baseline_module",
+        "target": "U4_QH_PRIME"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "U1.VIN"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "U3.VIN"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "U4.VCC"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "C1.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "C13.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "C14.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "R4.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VIN_5V",
+        "target": "C15.1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1.VIN",
+        "target": "U1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1.VOUT"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U1",
+        "target": "U1.GND"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3.VIN",
+        "target": "U3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.GND_1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.GND_2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.DIN"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.CLK"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.LOAD"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.DOUT"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.ISET"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.DIG_0"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.DIG_1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.DIG_2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.DIG_3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.DIG_4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.DIG_5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.DIG_6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.DIG_7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.SEG_A"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.SEG_B"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.SEG_C"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.SEG_D"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.SEG_E"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.SEG_F"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.SEG_G"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U3",
+        "target": "U3.SEG_DP"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4.VCC",
+        "target": "U4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.GND"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.SRCLK"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.SER"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.RCLK"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.SRCLR"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.OE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.QA"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.QB"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.QC"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.QD"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.QE"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.QF"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.QG"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.QH"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U4",
+        "target": "U4.QH_PRIME"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1.1",
+        "target": "C1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C1",
+        "target": "C1.2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C13.1",
+        "target": "C13"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C13",
+        "target": "C13.2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C14.1",
+        "target": "C14"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C14",
+        "target": "C14.2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R4.1",
+        "target": "R4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R4",
+        "target": "R4.2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C15.1",
+        "target": "C15"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C15",
+        "target": "C15.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "U1.VOUT"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "U2.VDD_1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "U2.VDD_2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "U2.VDD_3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "U2.VBAT"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "U2.VDDA"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C2.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C3.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C4.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C5.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C6.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "C7.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "VCC_3V3",
+        "target": "R1.1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2.VDD_1",
+        "target": "U2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.VDD_2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.VDD_3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.VBAT"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.VDDA"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.VSSA"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.VSS_1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.VSS_2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.VSS_3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.NRST"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.OSC_IN"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.OSC_OUT"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.PC14"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.PC15"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.BOOT0"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.PB2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.PA7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.PA5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.PA4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "U2",
+        "target": "U2.PB0"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C2.1",
+        "target": "C2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C2",
+        "target": "C2.2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C3.1",
+        "target": "C3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C3",
+        "target": "C3.2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C4.1",
+        "target": "C4"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C4",
+        "target": "C4.2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C5.1",
+        "target": "C5"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C5",
+        "target": "C5.2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C6.1",
+        "target": "C6"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C6",
+        "target": "C6.2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C7.1",
+        "target": "C7"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C7",
+        "target": "C7.2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R1.1",
+        "target": "R1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R1",
+        "target": "R1.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U1.GND"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2.VSSA"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2.VSS_1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2.VSS_2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U2.VSS_3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U3.GND_1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U3.GND_2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "U4.GND"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C1.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C2.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C3.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C4.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C5.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C6.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C7.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C8.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C9.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C10.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C11.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C12.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C13.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C14.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "C15.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "R2.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "GND",
+        "target": "R3.2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C8.2",
+        "target": "C8"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C8",
+        "target": "C8.1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C9.2",
+        "target": "C9"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C9",
+        "target": "C9.1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C10.2",
+        "target": "C10"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C10",
+        "target": "C10.1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C11.2",
+        "target": "C11"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C11",
+        "target": "C11.1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C12.2",
+        "target": "C12"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "C12",
+        "target": "C12.1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R2.2",
+        "target": "R2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R2",
+        "target": "R2.1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R3.2",
+        "target": "R3"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "R3",
+        "target": "R3.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_NRST",
+        "target": "U2.NRST"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_NRST",
+        "target": "R1.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_NRST",
+        "target": "C8.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC_IN",
+        "target": "U2.OSC_IN"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC_IN",
+        "target": "Y1.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC_IN",
+        "target": "C9.1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "Y1.1",
+        "target": "Y1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "Y1",
+        "target": "Y1.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC_OUT",
+        "target": "U2.OSC_OUT"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC_OUT",
+        "target": "Y1.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC_OUT",
+        "target": "C10.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC32_IN",
+        "target": "U2.PC14"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC32_IN",
+        "target": "Y2.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC32_IN",
+        "target": "C11.1"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "Y2.1",
+        "target": "Y2"
+      },
+      {
+        "relation": "Belongs_To",
+        "source": "Y2",
+        "target": "Y2.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC32_OUT",
+        "target": "U2.PC15"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC32_OUT",
+        "target": "Y2.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_OSC32_OUT",
+        "target": "C12.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_BOOT0",
+        "target": "U2.BOOT0"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_BOOT0",
+        "target": "R2.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_BOOT1",
+        "target": "U2.PB2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U2_BOOT1",
+        "target": "R3.1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "SPI_MOSI",
+        "target": "U2.PA7"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "SPI_MOSI",
+        "target": "U3.DIN"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "SPI_CLK",
+        "target": "U2.PA5"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "SPI_CLK",
+        "target": "U3.CLK"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "SPI_CLK",
+        "target": "U4.SRCLK"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "SPI_CS_U3",
+        "target": "U2.PA4"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "SPI_CS_U3",
+        "target": "U3.LOAD"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_DOUT",
+        "target": "U3.DOUT"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_DOUT",
+        "target": "U4.SER"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_RCLK",
+        "target": "U2.PB0"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_RCLK",
+        "target": "U4.RCLK"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_SRCLR",
+        "target": "U4.SRCLR"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_OE",
+        "target": "U4.OE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_ISET",
+        "target": "U3.ISET"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_ISET",
+        "target": "R4.2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_DIG_0",
+        "target": "U3.DIG_0"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_DIG_1",
+        "target": "U3.DIG_1"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_DIG_2",
+        "target": "U3.DIG_2"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_DIG_3",
+        "target": "U3.DIG_3"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_DIG_4",
+        "target": "U3.DIG_4"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_DIG_5",
+        "target": "U3.DIG_5"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_DIG_6",
+        "target": "U3.DIG_6"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_DIG_7",
+        "target": "U3.DIG_7"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_SEG_A",
+        "target": "U3.SEG_A"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_SEG_B",
+        "target": "U3.SEG_B"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_SEG_C",
+        "target": "U3.SEG_C"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_SEG_D",
+        "target": "U3.SEG_D"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_SEG_E",
+        "target": "U3.SEG_E"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_SEG_F",
+        "target": "U3.SEG_F"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_SEG_G",
+        "target": "U3.SEG_G"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U3_SEG_DP",
+        "target": "U3.SEG_DP"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_QA",
+        "target": "U4.QA"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_QB",
+        "target": "U4.QB"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_QC",
+        "target": "U4.QC"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_QD",
+        "target": "U4.QD"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_QE",
+        "target": "U4.QE"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_QF",
+        "target": "U4.QF"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_QG",
+        "target": "U4.QG"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_QH",
+        "target": "U4.QH"
+      },
+      {
+        "relation": "Connected_To",
+        "source": "U4_QH_PRIME",
+        "target": "U4.QH_PRIME"
+      }
+    ]
+  },
+  "process_metrics": {}
+}

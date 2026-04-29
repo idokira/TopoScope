@@ -1,0 +1,265 @@
+{
+  "design_id": "T2-9",
+  "tier": 2,
+  "type": "LED",
+  "description": "LED matrix display controller with SPI daisy-chain. STM32F103 drives MAX7219 and 74HC595 in cascade. Shared serial data and clock may use STM32 SPI1 default or remapped pins; MAX7219 LOAD and 74HC595 RCLK remain dedicated GPIO latch signals. MAX7219 ISET resistor to 5V sets LED segment current. MAX7219 and 74HC595 are powered from 5V (VIN), MCU from 3.3V via AMS1117. 74HC595 OE->GND, SRCLR->VCC.",
+  "ic_list": [
+    "AMS1117-3.3 (U1)",
+    "STM32F103xB (U2)",
+    "MAX7219 (U3)",
+    "SN74HC595 (U4)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T2-9-C01-001",
+      "check": "SAME_NET",
+      "desc": "GND unification: all ground pins across 4 ICs share one common ground net.",
+      "params": {
+        "pins": [
+          "U1.GND",
+          "U2.VSS_1",
+          "U2.VSS_2",
+          "U2.VSS_3",
+          "U2.VSSA",
+          "U3.GND_1",
+          "U3.GND_2",
+          "U4.GND"
+        ]
+      }
+    },
+    {
+      "id": "T2-9-C01-002",
+      "check": "SAME_NET",
+      "desc": "3.3V MCU domain: LDO output and MCU core/analog/battery supply share one power net.",
+      "params": {
+        "pins": [
+          "U1.VOUT",
+          "U2.VDD_1",
+          "U2.VDD_2",
+          "U2.VDD_3",
+          "U2.VBAT",
+          "U2.VDDA"
+        ]
+      }
+    },
+    {
+      "id": "T2-9-C01-003",
+      "check": "SAME_NET",
+      "desc": "5V LED power domain: LDO input (VIN), MAX7219 VIN, and 74HC595 VCC share one power net.",
+      "params": {
+        "pins": [
+          "U1.VIN",
+          "U3.VIN",
+          "U4.VCC"
+        ]
+      }
+    },
+    {
+      "id": "T2-9-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical pin isolation: GND, 3.3V, 5V, serial data chain nets (DIN, DOUT), shared clock, latch signals (LOAD, RCLK), crystal, NRST, ISET, and unused QH' must all be on mutually distinct nets. SPI-related isolation is anchored on fixed peripheral-side pins so it is invariant to STM32 SPI1 default/remap selection.",
+      "params": {
+        "groups": [
+          ["U1.GND"],
+          ["U1.VOUT"],
+          ["U1.VIN"],
+          ["U3.DIN"],
+          ["U3.DOUT"],
+          ["U3.CLK"],
+          ["U3.LOAD"],
+          ["U4.RCLK"],
+          ["U2.OSC_IN"],
+          ["U2.OSC_OUT"],
+          ["U2.NRST"],
+          ["U3.ISET"],
+          ["U4.QH_PRIME"]
+        ]
+      }
+    },
+    {
+      "id": "T2-9-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Unified ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.GND"
+      }
+    },
+    {
+      "id": "T2-9-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VOUT"
+      }
+    },
+    {
+      "id": "T2-9-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "5V rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T2-9-C01-004",
+      "check": "SAME_NET",
+      "desc": "SPI serial-data-plus-clock legal bundle mapping: accept one complete legal STM32F103 SPI1 routing bundle for MOSI and SCK, either default pins or remapped pins. This forbids illegal mixed mappings such as PA7 for MOSI together with PB3 for SCK.",
+      "params": {
+        "net_group_candidates": [
+          {
+            "label": "SPI1_DEFAULT",
+            "pin_groups_list": [
+              [["U2.PA7"], ["U3.DIN"]],
+              [["U2.PA5"], ["U3.CLK"], ["U4.SRCLK"]]
+            ]
+          },
+          {
+            "label": "SPI1_REMAP",
+            "pin_groups_list": [
+              [["U2.PB5"], ["U3.DIN"]],
+              [["U2.PB3"], ["U3.CLK"], ["U4.SRCLK"]]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2-9-C01-005",
+      "check": "SAME_NET",
+      "desc": "Daisy-chain stage 2: MAX7219 DOUT cascades to 74HC595 SER.",
+      "params": {
+        "pins": ["U3.DOUT", "U4.SER"]
+      }
+    },
+    {
+      "id": "T2-9-C01-006",
+      "check": "SAME_NET",
+      "desc": "MAX7219 latch: MCU PA4 connects to MAX7219 LOAD.",
+      "params": {
+        "pins": ["U2.PA4", "U3.LOAD"]
+      }
+    },
+    {
+      "id": "T2-9-C01-007",
+      "check": "SAME_NET",
+      "desc": "74HC595 latch: MCU PA3 connects to 74HC595 RCLK.",
+      "params": {
+        "pins": ["U2.PA3", "U4.RCLK"]
+      }
+    },
+    {
+      "id": "T2-9-I03-001",
+      "check": "PIN_NOT_ON_NET_WITH",
+      "desc": "Anti-bypass (star topology prevention): 74HC595 SER must not connect directly to any STM32 MOSI candidate pin. Data must flow through MAX7219 DOUT in daisy-chain.",
+      "params": {
+        "pin": "U4.SER",
+        "forbidden_pins": ["U2.PA7", "U2.PB5"]
+      }
+    },
+    {
+      "id": "T2-9-I01-001",
+      "check": "NOT_SAME_NET",
+      "desc": "BOOT0 must not be tied to VDD; forces bootloader mode.",
+      "params": {
+        "pins": ["U2.BOOT0", "U2.VDD_1"]
+      }
+    },
+    {
+      "id": "T2-9-ANY-001",
+      "type": "ANY_OF",
+      "desc": "BOOT0 grounding policy: direct tie to GND or pull-down resistor to GND.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": ["U2.BOOT0", "U2.VSS_1"]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U2.BOOT0",
+            "destination": "U2.VSS_1",
+            "max_hops": 6,
+            "allowed_components": ["Resistor"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2-9-C02-002",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "74HC595 OE (active-low output enable) tied to GND: outputs always enabled.",
+      "params": {
+        "pin": "U4.OE"
+      }
+    },
+    {
+      "id": "T2-9-C03-003",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "74HC595 SRCLR (active-low shift register clear) tied to VCC: never cleared.",
+      "params": {
+        "pin": "U4.SRCLR"
+      }
+    },
+    {
+      "id": "T2-9-T06-001",
+      "check": "HAS_PULLUP_TO_POWER",
+      "desc": "MAX7219 ISET: programming resistor to 5V sets LED segment current. T06 verifies resistor-to-power path exists.",
+      "params": {
+        "pin": "U3.ISET"
+      }
+    },
+    {
+      "id": "T2-9-T12-001",
+      "check": "HAS_DECOUPLING_NETWORK",
+      "desc": "STM32 NRST requires RC reset topology: pull-up resistor to power plus filter capacitor to ground.",
+      "params": {
+        "pin": "U2.NRST",
+        "require_pullup_to_power": true,
+        "require_cap_to_ground": true
+      }
+    },
+    {
+      "id": "T2-9-T05-001",
+      "check": "HAS_CRYSTAL_PAIR",
+      "desc": "STM32 HSE 8MHz crystal on OSC_IN/OSC_OUT with load capacitors to ground.",
+      "params": {
+        "pin_osc_in": "U2.OSC_IN",
+        "pin_osc_out": "U2.OSC_OUT"
+      }
+    },
+    {
+      "id": "T2-9-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V MCU domain must have decoupling capacitor to ground.",
+      "params": {
+        "pin": "U2.VDD_1"
+      }
+    },
+    {
+      "id": "T2-9-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "5V LED domain must have decoupling capacitor to ground. One T01 covers the unified 5V rail.",
+      "params": {
+        "pin": "U3.VIN"
+      }
+    }
+  ],
+  "assertion_summary": {
+    "total": 21,
+    "by_category": {
+      "SAME_NET": 7,
+      "NET_GROUP_ISOLATION": 1,
+      "CONNECTED_TO_GROUND": 2,
+      "CONNECTED_TO_POWER": 3,
+      "NOT_SAME_NET": 1,
+      "ANY_OF": 1,
+      "PIN_NOT_ON_NET_WITH": 1,
+      "HAS_PULLUP_TO_POWER": 1,
+      "HAS_DECOUPLING_NETWORK": 1,
+      "HAS_CRYSTAL_PAIR": 1,
+      "HAS_CAP_TO_GROUND": 2
+    }
+  }
+}

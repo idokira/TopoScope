@@ -1,0 +1,1362 @@
+{
+  "design_id": "T3-3",
+  "tier": 3,
+  "type": "DRV",
+  "description": "Dual stepper motor controller. A 12V-24V motor input feeds TPS54331 to generate 5V, and AMS1117-3.3 generates 3.3V logic power. STM32F103 controls two TMC2209 stepper drivers through independent STEP/DIR/ENN signals. The two TMC2209 drivers share a UART configuration bus but use different address/configuration pin states. STM32F103 also connects to W25Q64JV Flash via SPI. Motor supply and logic supply are separate rails but share common GND; no galvanic isolation is required.",
+  "ic_list": [
+    "TPS54331 (U1)",
+    "AMS1117-3.3 (U2)",
+    "STM32F103 (U3)",
+    "TMC2209 channel A (U4)",
+    "TMC2209 channel B (U5)",
+    "W25Q64JV (U6)"
+  ],
+  "verification_assertions": [
+    {
+      "id": "T3-3-C01-001",
+      "check": "SAME_NET",
+      "desc": "Common ground: buck, LDO, STM32, both TMC2209 drivers, and flash share common GND.",
+      "params": {
+        "pins": [
+          "U1.GND",
+          "U2.GND",
+          "U3.VSS_1",
+          "U3.VSS_2",
+          "U3.VSS_3",
+          "U3.VSSA",
+          "U4.GND_1",
+          "U4.GND_2",
+          "U4.EP",
+          "U5.GND_1",
+          "U5.GND_2",
+          "U5.EP",
+          "U6.GND"
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-002",
+      "check": "SAME_NET",
+      "desc": "Motor power rail: 12V-24V input feeds TPS54331 VIN and both TMC2209 motor supply pins.",
+      "params": {
+        "pins": [
+          "U1.VIN",
+          "U4.VS_1",
+          "U4.VS_2",
+          "U5.VS_1",
+          "U5.VS_2"
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-003",
+      "check": "SAME_NET",
+      "desc": "3.3V logic rail: AMS1117 output powers STM32, both TMC2209 VCC_IO pins, and W25Q64JV flash.",
+      "params": {
+        "pins": [
+          "U2.VOUT",
+          "U3.VDD_1",
+          "U3.VDD_2",
+          "U3.VDD_3",
+          "U3.VDDA",
+          "U3.VBAT",
+          "U4.VCC_IO",
+          "U5.VCC_IO",
+          "U6.VCC"
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-005",
+      "check": "SAME_NET",
+      "desc": "TMC2209 channel A uses internal current sensing mode: BRA and BRB are tied to GND.",
+      "params": {
+        "pins": [
+          "U4.BRA",
+          "U4.BRB",
+          "U1.GND"
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-006",
+      "check": "SAME_NET",
+      "desc": "TMC2209 channel B uses internal current sensing mode: BRA and BRB are tied to GND.",
+      "params": {
+        "pins": [
+          "U5.BRA",
+          "U5.BRB",
+          "U1.GND"
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-010",
+      "check": "SAME_NET",
+      "desc": "Shared UART configuration bus: one legal STM32F103 UART TX/control pin connects to both TMC2209 PDN_UART pins.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PA9",
+            "U3.PB6",
+            "U3.PA2",
+            "U3.PB10"
+          ],
+          [
+            "U4.PDN_UART"
+          ],
+          [
+            "U5.PDN_UART"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-011",
+      "check": "SAME_NET",
+      "desc": "Channel A STEP: one legal STM32F103 control-capable pin connects to TMC2209 A STEP.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PA0",
+            "U3.PA1",
+            "U3.PA2",
+            "U3.PA3",
+            "U3.PA4",
+            "U3.PA5",
+            "U3.PA6",
+            "U3.PA7",
+            "U3.PA8",
+            "U3.PA9",
+            "U3.PA10",
+            "U3.PA11",
+            "U3.PA12",
+            "U3.PB0",
+            "U3.PB1",
+            "U3.PB6",
+            "U3.PB7",
+            "U3.PB8",
+            "U3.PB9",
+            "U3.PB10",
+            "U3.PB11",
+            "U3.PB12",
+            "U3.PB13",
+            "U3.PB14",
+            "U3.PB15"
+          ],
+          [
+            "U4.STEP"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-012",
+      "check": "SAME_NET",
+      "desc": "Channel A DIR: one legal STM32F103 control-capable pin connects to TMC2209 A DIR.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PA0",
+            "U3.PA1",
+            "U3.PA2",
+            "U3.PA3",
+            "U3.PA4",
+            "U3.PA5",
+            "U3.PA6",
+            "U3.PA7",
+            "U3.PA8",
+            "U3.PA9",
+            "U3.PA10",
+            "U3.PA11",
+            "U3.PA12",
+            "U3.PB0",
+            "U3.PB1",
+            "U3.PB6",
+            "U3.PB7",
+            "U3.PB8",
+            "U3.PB9",
+            "U3.PB10",
+            "U3.PB11",
+            "U3.PB12",
+            "U3.PB13",
+            "U3.PB14",
+            "U3.PB15"
+          ],
+          [
+            "U4.DIR"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-013",
+      "check": "SAME_NET",
+      "desc": "Channel A enable: one legal STM32F103 control-capable pin connects to TMC2209 A ENN.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PA0",
+            "U3.PA1",
+            "U3.PA2",
+            "U3.PA3",
+            "U3.PA4",
+            "U3.PA5",
+            "U3.PA6",
+            "U3.PA7",
+            "U3.PA8",
+            "U3.PA9",
+            "U3.PA10",
+            "U3.PA11",
+            "U3.PA12",
+            "U3.PB0",
+            "U3.PB1",
+            "U3.PB6",
+            "U3.PB7",
+            "U3.PB8",
+            "U3.PB9",
+            "U3.PB10",
+            "U3.PB11",
+            "U3.PB12",
+            "U3.PB13",
+            "U3.PB14",
+            "U3.PB15"
+          ],
+          [
+            "U4.ENN"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-014",
+      "check": "SAME_NET",
+      "desc": "Channel B STEP: one legal STM32F103 control-capable pin connects to TMC2209 B STEP.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PA0",
+            "U3.PA1",
+            "U3.PA2",
+            "U3.PA3",
+            "U3.PA4",
+            "U3.PA5",
+            "U3.PA6",
+            "U3.PA7",
+            "U3.PA8",
+            "U3.PA9",
+            "U3.PA10",
+            "U3.PA11",
+            "U3.PA12",
+            "U3.PB0",
+            "U3.PB1",
+            "U3.PB6",
+            "U3.PB7",
+            "U3.PB8",
+            "U3.PB9",
+            "U3.PB10",
+            "U3.PB11",
+            "U3.PB12",
+            "U3.PB13",
+            "U3.PB14",
+            "U3.PB15"
+          ],
+          [
+            "U5.STEP"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-015",
+      "check": "SAME_NET",
+      "desc": "Channel B DIR: one legal STM32F103 control-capable pin connects to TMC2209 B DIR.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PA0",
+            "U3.PA1",
+            "U3.PA2",
+            "U3.PA3",
+            "U3.PA4",
+            "U3.PA5",
+            "U3.PA6",
+            "U3.PA7",
+            "U3.PA8",
+            "U3.PA9",
+            "U3.PA10",
+            "U3.PA11",
+            "U3.PA12",
+            "U3.PB0",
+            "U3.PB1",
+            "U3.PB6",
+            "U3.PB7",
+            "U3.PB8",
+            "U3.PB9",
+            "U3.PB10",
+            "U3.PB11",
+            "U3.PB12",
+            "U3.PB13",
+            "U3.PB14",
+            "U3.PB15"
+          ],
+          [
+            "U5.DIR"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-016",
+      "check": "SAME_NET",
+      "desc": "Channel B enable: one legal STM32F103 control-capable pin connects to TMC2209 B ENN.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PA0",
+            "U3.PA1",
+            "U3.PA2",
+            "U3.PA3",
+            "U3.PA4",
+            "U3.PA5",
+            "U3.PA6",
+            "U3.PA7",
+            "U3.PA8",
+            "U3.PA9",
+            "U3.PA10",
+            "U3.PA11",
+            "U3.PA12",
+            "U3.PB0",
+            "U3.PB1",
+            "U3.PB6",
+            "U3.PB7",
+            "U3.PB8",
+            "U3.PB9",
+            "U3.PB10",
+            "U3.PB11",
+            "U3.PB12",
+            "U3.PB13",
+            "U3.PB14",
+            "U3.PB15"
+          ],
+          [
+            "U5.ENN"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-017",
+      "check": "SAME_NET",
+      "desc": "Flash SPI legal bundle mapping: accept one complete legal STM32F103 SPI1 routing bundle for SCK/MOSI/MISO to W25Q64JV, either default pins or remapped pins. This forbids illegal mixed mappings such as PA5 for SCK together with PB5 for MOSI.",
+      "params": {
+        "net_group_candidates": [
+          {
+            "label": "SPI1_DEFAULT",
+            "pin_groups_list": [
+              [
+                [
+                  "U3.PA5"
+                ],
+                [
+                  "U6.CLK"
+                ]
+              ],
+              [
+                [
+                  "U3.PA7"
+                ],
+                [
+                  "U6.DI"
+                ]
+              ],
+              [
+                [
+                  "U3.PA6"
+                ],
+                [
+                  "U6.DO"
+                ]
+              ]
+            ]
+          },
+          {
+            "label": "SPI1_REMAP",
+            "pin_groups_list": [
+              [
+                [
+                  "U3.PB3"
+                ],
+                [
+                  "U6.CLK"
+                ]
+              ],
+              [
+                [
+                  "U3.PB5"
+                ],
+                [
+                  "U6.DI"
+                ]
+              ],
+              [
+                [
+                  "U3.PB4"
+                ],
+                [
+                  "U6.DO"
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C01-018",
+      "check": "SAME_NET",
+      "desc": "Flash chip select: one legal STM32F103 control-capable pin connects to W25Q64JV CS.",
+      "params": {
+        "pin_groups": [
+          [
+            "U3.PA0",
+            "U3.PA1",
+            "U3.PA2",
+            "U3.PA3",
+            "U3.PA4",
+            "U3.PA5",
+            "U3.PA6",
+            "U3.PA7",
+            "U3.PA8",
+            "U3.PA9",
+            "U3.PA10",
+            "U3.PA11",
+            "U3.PA12",
+            "U3.PB0",
+            "U3.PB1",
+            "U3.PB6",
+            "U3.PB7",
+            "U3.PB8",
+            "U3.PB9",
+            "U3.PB10",
+            "U3.PB11",
+            "U3.PB12",
+            "U3.PB13",
+            "U3.PB14",
+            "U3.PB15"
+          ],
+          [
+            "U6.CS"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-I02-001",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Critical rail and low-voltage control/interface nets must remain distinct: motor rail, 5V rail, 3.3V rail, GND, TPS54331 switch node, TPS54331 feedback node, shared TMC2209 UART bus, both channels' STEP/DIR/ENN nets, and flash SPI/CS nets.",
+      "params": {
+        "groups": [
+          [
+            "U1.VIN"
+          ],
+          [
+            "U2.VIN"
+          ],
+          [
+            "U2.VOUT"
+          ],
+          [
+            "U1.GND"
+          ],
+          [
+            "U1.PH"
+          ],
+          [
+            "U1.VSENSE"
+          ],
+          [
+            "U4.PDN_UART"
+          ],
+          [
+            "U4.STEP"
+          ],
+          [
+            "U4.DIR"
+          ],
+          [
+            "U4.ENN"
+          ],
+          [
+            "U5.STEP"
+          ],
+          [
+            "U5.DIR"
+          ],
+          [
+            "U5.ENN"
+          ],
+          [
+            "U6.CLK"
+          ],
+          [
+            "U6.DO"
+          ],
+          [
+            "U6.DI"
+          ],
+          [
+            "U6.CS"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-I02-003",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "TMC2209 channel A motor coil outputs must be distinct from each other and from power/ground rails.",
+      "params": {
+        "groups": [
+          [
+            "U4.OA1"
+          ],
+          [
+            "U4.OA2"
+          ],
+          [
+            "U4.OB1"
+          ],
+          [
+            "U4.OB2"
+          ],
+          [
+            "U1.VIN"
+          ],
+          [
+            "U1.GND"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-I02-004",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "TMC2209 channel B motor coil outputs must be distinct from each other and from power/ground rails.",
+      "params": {
+        "groups": [
+          [
+            "U5.OA1"
+          ],
+          [
+            "U5.OA2"
+          ],
+          [
+            "U5.OB1"
+          ],
+          [
+            "U5.OB2"
+          ],
+          [
+            "U1.VIN"
+          ],
+          [
+            "U1.GND"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-I02-005",
+      "check": "NET_GROUP_ISOLATION",
+      "desc": "Motor outputs of channel A and channel B must not be shorted together.",
+      "params": {
+        "groups": [
+          [
+            "U4.OA1"
+          ],
+          [
+            "U4.OA2"
+          ],
+          [
+            "U4.OB1"
+          ],
+          [
+            "U4.OB2"
+          ],
+          [
+            "U5.OA1"
+          ],
+          [
+            "U5.OA2"
+          ],
+          [
+            "U5.OB1"
+          ],
+          [
+            "U5.OB2"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "T3-3-C02-001",
+      "check": "CONNECTED_TO_GROUND",
+      "desc": "Common ground net must carry Ground electrical attribute.",
+      "params": {
+        "pin": "U1.GND"
+      }
+    },
+    {
+      "id": "T3-3-C03-001",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "Motor input rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T3-3-C03-002",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "5V buck output rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U2.VIN"
+      }
+    },
+    {
+      "id": "T3-3-C03-003",
+      "check": "CONNECTED_TO_POWER",
+      "desc": "3.3V logic rail must carry Power electrical attribute.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T3-3-S02-001",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "TMC2209 channel A motor output OA1 should be exposed as a motor terminal net.",
+      "params": {
+        "pin": "U4.OA1"
+      }
+    },
+    {
+      "id": "T3-3-S02-002",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "TMC2209 channel A motor output OA2 should be exposed.",
+      "params": {
+        "pin": "U4.OA2"
+      }
+    },
+    {
+      "id": "T3-3-S02-003",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "TMC2209 channel A motor output OB1 should be exposed.",
+      "params": {
+        "pin": "U4.OB1"
+      }
+    },
+    {
+      "id": "T3-3-S02-004",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "TMC2209 channel A motor output OB2 should be exposed.",
+      "params": {
+        "pin": "U4.OB2"
+      }
+    },
+    {
+      "id": "T3-3-S02-005",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "TMC2209 channel B motor output OA1 should be exposed.",
+      "params": {
+        "pin": "U5.OA1"
+      }
+    },
+    {
+      "id": "T3-3-S02-006",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "TMC2209 channel B motor output OA2 should be exposed.",
+      "params": {
+        "pin": "U5.OA2"
+      }
+    },
+    {
+      "id": "T3-3-S02-007",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "TMC2209 channel B motor output OB1 should be exposed.",
+      "params": {
+        "pin": "U5.OB1"
+      }
+    },
+    {
+      "id": "T3-3-S02-008",
+      "check": "PIN_NOT_FLOATING",
+      "desc": "TMC2209 channel B motor output OB2 should be exposed.",
+      "params": {
+        "pin": "U5.OB2"
+      }
+    },
+    {
+      "id": "T3-3-T10-001",
+      "check": "HAS_FEEDBACK_DIVIDER",
+      "desc": "TPS54331 feedback divider on VSENSE sets the 5V buck output.",
+      "params": {
+        "pin_fb": "U1.VSENSE"
+      }
+    },
+    {
+      "id": "T3-3-T03-001",
+      "check": "HAS_INDUCTOR_PATH",
+      "desc": "TPS54331 switch node PH must reach the 5V rail through an inductor.",
+      "params": {
+        "pin_a": "U1.PH",
+        "pin_b": "U2.VIN"
+      }
+    },
+    {
+      "id": "T3-3-T09-001",
+      "check": "HAS_FREEWHEELING_PATH",
+      "desc": "TPS54331 switch node must have a freewheeling diode path.",
+      "params": {
+        "pin": "U1.PH"
+      }
+    },
+    {
+      "id": "T3-3-T01-001",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "Motor input rail must have bulk/input capacitor to ground.",
+      "params": {
+        "pin": "U1.VIN"
+      }
+    },
+    {
+      "id": "T3-3-T01-002",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "5V rail must have output/decoupling capacitor to ground.",
+      "params": {
+        "pin": "U2.VIN"
+      }
+    },
+    {
+      "id": "T3-3-T01-003",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "3.3V logic rail must have decoupling capacitor to ground.",
+      "params": {
+        "pin": "U2.VOUT"
+      }
+    },
+    {
+      "id": "T3-3-T01-004",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "TMC2209 channel A motor supply requires local bulk capacitor to ground.",
+      "params": {
+        "pin": "U4.VS_1"
+      }
+    },
+    {
+      "id": "T3-3-T01-005",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "TMC2209 channel B motor supply requires local bulk capacitor to ground.",
+      "params": {
+        "pin": "U5.VS_1"
+      }
+    },
+    {
+      "id": "T3-3-T01-006",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "TMC2209 channel A internal 5VOUT requires local capacitor to ground.",
+      "params": {
+        "pin": "U4.5VOUT"
+      }
+    },
+    {
+      "id": "T3-3-T01-007",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "TMC2209 channel B internal 5VOUT requires local capacitor to ground.",
+      "params": {
+        "pin": "U5.5VOUT"
+      }
+    },
+    {
+      "id": "T3-3-T01-008",
+      "check": "HAS_CAP_TO_GROUND",
+      "desc": "W25Q64JV VCC requires local decoupling capacitor to ground.",
+      "params": {
+        "pin": "U6.VCC"
+      }
+    },
+    {
+      "id": "T3-3-SC01-001",
+      "check": "EXISTS_PATH",
+      "desc": "TMC2209 channel A charge pump requires capacitor path between CPO and CPI.",
+      "params": {
+        "from_pin": "U4.CPO",
+        "destination": "U4.CPI",
+        "max_hops": 6,
+        "allowed_components": [
+          "Capacitor"
+        ]
+      }
+    },
+    {
+      "id": "T3-3-SC01-002",
+      "check": "EXISTS_PATH",
+      "desc": "TMC2209 channel B charge pump requires capacitor path between CPO and CPI.",
+      "params": {
+        "from_pin": "U5.CPO",
+        "destination": "U5.CPI",
+        "max_hops": 6,
+        "allowed_components": [
+          "Capacitor"
+        ]
+      }
+    },
+    {
+      "id": "T3-3-SC01-003",
+      "check": "EXISTS_PATH",
+      "desc": "TMC2209 channel A VCP requires capacitor path to motor supply VS.",
+      "params": {
+        "from_pin": "U4.VCP",
+        "destination": "U4.VS_1",
+        "max_hops": 6,
+        "allowed_components": [
+          "Capacitor"
+        ]
+      }
+    },
+    {
+      "id": "T3-3-SC01-004",
+      "check": "EXISTS_PATH",
+      "desc": "TMC2209 channel B VCP requires capacitor path to motor supply VS.",
+      "params": {
+        "from_pin": "U5.VCP",
+        "destination": "U5.VS_1",
+        "max_hops": 6,
+        "allowed_components": [
+          "Capacitor"
+        ]
+      }
+    },
+    {
+      "id": "T3-3-I03-001",
+      "check": "PIN_NOT_ON_NET_WITH",
+      "desc": "Representative anti-bypass: flash SPI clock net must not be shorted to any TMC2209 motor output.",
+      "params": {
+        "pin": "U6.CLK",
+        "forbidden_pins": [
+          "U4.OA1",
+          "U4.OA2",
+          "U4.OB1",
+          "U4.OB2",
+          "U5.OA1",
+          "U5.OA2",
+          "U5.OB1",
+          "U5.OB2"
+        ]
+      }
+    },
+    {
+      "id": "T3-3-ANY-001",
+      "type": "ANY_OF",
+      "desc": "TPS54331 enable must define always-on behavior: EN is directly tied to the motor input rail or pulled up to that rail through a resistor.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U1.EN",
+              "U1.VIN"
+            ]
+          }
+        },
+        {
+          "check": "EXISTS_PATH",
+          "params": {
+            "from_pin": "U1.EN",
+            "destination": "U1.VIN",
+            "max_hops": 6,
+            "allowed_components": [
+              "Resistor"
+            ]
+          }
+        }
+      ]
+    },
+    [
+      {
+        "id": "T3-3-ANY-002",
+        "type": "ANY_OF",
+        "desc": "TMC2209 channel A address bit MS1_AD0 must be defined low or high, either directly or through a resistor strap.",
+        "conditions": [
+          {
+            "check": "SAME_NET",
+            "params": {
+              "pins": [
+                "U4.MS1_AD0",
+                "U1.GND"
+              ]
+            }
+          },
+          {
+            "check": "EXISTS_PATH",
+            "params": {
+              "from_pin": "U4.MS1_AD0",
+              "destination": "U1.GND",
+              "max_hops": 6,
+              "allowed_components": [
+                "Resistor"
+              ]
+            }
+          },
+          {
+            "check": "SAME_NET",
+            "params": {
+              "pins": [
+                "U4.MS1_AD0",
+                "U2.VOUT"
+              ]
+            }
+          },
+          {
+            "check": "EXISTS_PATH",
+            "params": {
+              "from_pin": "U4.MS1_AD0",
+              "destination": "U2.VOUT",
+              "max_hops": 6,
+              "allowed_components": [
+                "Resistor"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "T3-3-ANY-003",
+        "type": "ANY_OF",
+        "desc": "TMC2209 channel A address bit MS2_AD1 must be defined low or high, either directly or through a resistor strap.",
+        "conditions": [
+          {
+            "check": "SAME_NET",
+            "params": {
+              "pins": [
+                "U4.MS2_AD1",
+                "U1.GND"
+              ]
+            }
+          },
+          {
+            "check": "EXISTS_PATH",
+            "params": {
+              "from_pin": "U4.MS2_AD1",
+              "destination": "U1.GND",
+              "max_hops": 6,
+              "allowed_components": [
+                "Resistor"
+              ]
+            }
+          },
+          {
+            "check": "SAME_NET",
+            "params": {
+              "pins": [
+                "U4.MS2_AD1",
+                "U2.VOUT"
+              ]
+            }
+          },
+          {
+            "check": "EXISTS_PATH",
+            "params": {
+              "from_pin": "U4.MS2_AD1",
+              "destination": "U2.VOUT",
+              "max_hops": 6,
+              "allowed_components": [
+                "Resistor"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "T3-3-ANY-004",
+        "type": "ANY_OF",
+        "desc": "TMC2209 channel B address bit MS1_AD0 must be defined low or high, either directly or through a resistor strap.",
+        "conditions": [
+          {
+            "check": "SAME_NET",
+            "params": {
+              "pins": [
+                "U5.MS1_AD0",
+                "U1.GND"
+              ]
+            }
+          },
+          {
+            "check": "EXISTS_PATH",
+            "params": {
+              "from_pin": "U5.MS1_AD0",
+              "destination": "U1.GND",
+              "max_hops": 6,
+              "allowed_components": [
+                "Resistor"
+              ]
+            }
+          },
+          {
+            "check": "SAME_NET",
+            "params": {
+              "pins": [
+                "U5.MS1_AD0",
+                "U2.VOUT"
+              ]
+            }
+          },
+          {
+            "check": "EXISTS_PATH",
+            "params": {
+              "from_pin": "U5.MS1_AD0",
+              "destination": "U2.VOUT",
+              "max_hops": 6,
+              "allowed_components": [
+                "Resistor"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "T3-3-ANY-005",
+        "type": "ANY_OF",
+        "desc": "TMC2209 channel B address bit MS2_AD1 must be defined low or high, either directly or through a resistor strap.",
+        "conditions": [
+          {
+            "check": "SAME_NET",
+            "params": {
+              "pins": [
+                "U5.MS2_AD1",
+                "U1.GND"
+              ]
+            }
+          },
+          {
+            "check": "EXISTS_PATH",
+            "params": {
+              "from_pin": "U5.MS2_AD1",
+              "destination": "U1.GND",
+              "max_hops": 6,
+              "allowed_components": [
+                "Resistor"
+              ]
+            }
+          },
+          {
+            "check": "SAME_NET",
+            "params": {
+              "pins": [
+                "U5.MS2_AD1",
+                "U2.VOUT"
+              ]
+            }
+          },
+          {
+            "check": "EXISTS_PATH",
+            "params": {
+              "from_pin": "U5.MS2_AD1",
+              "destination": "U2.VOUT",
+              "max_hops": 6,
+              "allowed_components": [
+                "Resistor"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "T3-3-ANY-006",
+        "type": "ANY_OF",
+        "desc": "The two TMC2209 drivers must not share the same UART address combination; at least one corresponding address bit must be driven to opposite logical states, allowing direct ties or resistor straps.",
+        "conditions": [
+          {
+            "type": "AND_GROUP",
+            "conditions": [
+              {
+                "type": "ANY_OF",
+                "conditions": [
+                  {
+                    "check": "SAME_NET",
+                    "params": {
+                      "pins": [
+                        "U4.MS1_AD0",
+                        "U1.GND"
+                      ]
+                    }
+                  },
+                  {
+                    "check": "EXISTS_PATH",
+                    "params": {
+                      "from_pin": "U4.MS1_AD0",
+                      "destination": "U1.GND",
+                      "max_hops": 6,
+                      "allowed_components": [
+                        "Resistor"
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ANY_OF",
+                "conditions": [
+                  {
+                    "check": "SAME_NET",
+                    "params": {
+                      "pins": [
+                        "U5.MS1_AD0",
+                        "U2.VOUT"
+                      ]
+                    }
+                  },
+                  {
+                    "check": "EXISTS_PATH",
+                    "params": {
+                      "from_pin": "U5.MS1_AD0",
+                      "destination": "U2.VOUT",
+                      "max_hops": 6,
+                      "allowed_components": [
+                        "Resistor"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "AND_GROUP",
+            "conditions": [
+              {
+                "type": "ANY_OF",
+                "conditions": [
+                  {
+                    "check": "SAME_NET",
+                    "params": {
+                      "pins": [
+                        "U4.MS1_AD0",
+                        "U2.VOUT"
+                      ]
+                    }
+                  },
+                  {
+                    "check": "EXISTS_PATH",
+                    "params": {
+                      "from_pin": "U4.MS1_AD0",
+                      "destination": "U2.VOUT",
+                      "max_hops": 6,
+                      "allowed_components": [
+                        "Resistor"
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ANY_OF",
+                "conditions": [
+                  {
+                    "check": "SAME_NET",
+                    "params": {
+                      "pins": [
+                        "U5.MS1_AD0",
+                        "U1.GND"
+                      ]
+                    }
+                  },
+                  {
+                    "check": "EXISTS_PATH",
+                    "params": {
+                      "from_pin": "U5.MS1_AD0",
+                      "destination": "U1.GND",
+                      "max_hops": 6,
+                      "allowed_components": [
+                        "Resistor"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "AND_GROUP",
+            "conditions": [
+              {
+                "type": "ANY_OF",
+                "conditions": [
+                  {
+                    "check": "SAME_NET",
+                    "params": {
+                      "pins": [
+                        "U4.MS2_AD1",
+                        "U1.GND"
+                      ]
+                    }
+                  },
+                  {
+                    "check": "EXISTS_PATH",
+                    "params": {
+                      "from_pin": "U4.MS2_AD1",
+                      "destination": "U1.GND",
+                      "max_hops": 6,
+                      "allowed_components": [
+                        "Resistor"
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ANY_OF",
+                "conditions": [
+                  {
+                    "check": "SAME_NET",
+                    "params": {
+                      "pins": [
+                        "U5.MS2_AD1",
+                        "U2.VOUT"
+                      ]
+                    }
+                  },
+                  {
+                    "check": "EXISTS_PATH",
+                    "params": {
+                      "from_pin": "U5.MS2_AD1",
+                      "destination": "U2.VOUT",
+                      "max_hops": 6,
+                      "allowed_components": [
+                        "Resistor"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "AND_GROUP",
+            "conditions": [
+              {
+                "type": "ANY_OF",
+                "conditions": [
+                  {
+                    "check": "SAME_NET",
+                    "params": {
+                      "pins": [
+                        "U4.MS2_AD1",
+                        "U2.VOUT"
+                      ]
+                    }
+                  },
+                  {
+                    "check": "EXISTS_PATH",
+                    "params": {
+                      "from_pin": "U4.MS2_AD1",
+                      "destination": "U2.VOUT",
+                      "max_hops": 6,
+                      "allowed_components": [
+                        "Resistor"
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ANY_OF",
+                "conditions": [
+                  {
+                    "check": "SAME_NET",
+                    "params": {
+                      "pins": [
+                        "U5.MS2_AD1",
+                        "U1.GND"
+                      ]
+                    }
+                  },
+                  {
+                    "check": "EXISTS_PATH",
+                    "params": {
+                      "from_pin": "U5.MS2_AD1",
+                      "destination": "U1.GND",
+                      "max_hops": 6,
+                      "allowed_components": [
+                        "Resistor"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    {
+      "id": "T3-3-ANY-007",
+      "type": "ANY_OF",
+      "desc": "W25Q64JV WP must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U6.WP",
+              "U6.VCC"
+            ]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U6.WP"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T3-3-ANY-008",
+      "type": "ANY_OF",
+      "desc": "W25Q64JV HOLD must be held inactive for normal Standard SPI operation: either directly tied high or pulled up to power.",
+      "conditions": [
+        {
+          "check": "SAME_NET",
+          "params": {
+            "pins": [
+              "U6.HOLD",
+              "U6.VCC"
+            ]
+          }
+        },
+        {
+          "check": "HAS_PULLUP_TO_POWER",
+          "params": {
+            "pin": "U6.HOLD"
+          }
+        }
+      ]
+    }
+  ],
+  "assertion_summary": {
+    "total": 52,
+    "by_category": {
+      "SAME_NET": 14,
+      "ANY_OF": 8,
+      "NET_GROUP_ISOLATION": 4,
+      "CONNECTED_TO_GROUND": 1,
+      "CONNECTED_TO_POWER": 3,
+      "PIN_NOT_FLOATING": 8,
+      "HAS_FEEDBACK_DIVIDER": 1,
+      "HAS_INDUCTOR_PATH": 1,
+      "HAS_FREEWHEELING_PATH": 1,
+      "HAS_CAP_TO_GROUND": 8,
+      "EXISTS_PATH": 4,
+      "PIN_NOT_ON_NET_WITH": 1
+    }
+  }
+}
